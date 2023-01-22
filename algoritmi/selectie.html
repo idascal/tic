@@ -1,0 +1,545 @@
+<!doctype html>
+<html>
+  <head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.1.0/pixi.min.js"></script>
+  </head>
+  <body>
+	<script>
+        //  https://pixijs.io/examples/#/demos-basic/blendmodes.js
+        //  https://github.com/pixijs/pixijs/wiki/v5-Custom-Application-GameLoop
+        //  https://stackoverflow.com/questions/69518512/removing-a-specific-instance-of-a-function-from-ticker
+        //  https://www.html5gamedevs.com/topic/28098-simple-lines-with-pixijs/
+        class Arrow extends PIXI.Graphics {
+            constructor(startPoint) {
+                super();
+                var s = 4;
+                var c = "0xff0000";
+                this.lineStyle(s, c)
+                this.moveTo(startPoint[0], startPoint[1]);
+                this.lineTo(startPoint[0], startPoint[1]-40);
+                this.lineTo(startPoint[0]-15, startPoint[1]-25);
+                this.lineTo(startPoint[0]+15, startPoint[1]-25);
+                this.lineTo(startPoint[0], startPoint[1]-40);
+            }
+        }
+		var contor=0,nrAnimale,deltaX,poz,pozMin,sus=true,yStep=0.2;
+		var vec=new Array();
+        const animale=new Array();
+        var width=window.innerWidth-25;
+        console.log("width="+width);
+        var height=window.innerHeight-25;
+        console.log("height="+height);
+        var images=new Array();
+        images.push('images/pisica.png');
+        images.push('images/caine.png');
+        images.push('images/leu.png');
+        images.push('images/vaca.png');
+        images.push('images/rinocer.png');
+        images.push('images/elefant.png');
+        nrAnimale=images.length;
+        deltaX=parseInt((width-40)/nrAnimale);
+        console.log("deltaX="+deltaX);
+        var ratio=deltaX/150;
+        console.log("ratio="+ratio);
+        var yMax=parseInt(0.67*height);
+        console.log("yMax="+yMax);
+        var yMin=yMax-200;
+        var fontSize=Math.floor(24*ratio);
+        console.log("fontSize="+fontSize);
+		let app = new PIXI.Application({ width: width, height: height });
+		document.body.appendChild(app.view);
+        for(i=0;i<nrAnimale;i++)
+        {
+            var texture = PIXI.Texture.from(images[i]);
+            var animal= new PIXI.Sprite(texture);
+            animal.position.y = yMax;
+            animal.scale.set(ratio,ratio);
+            animale.push(animal);
+        }
+        var slowMes = new PIXI.Text('INCET', { fontFamily: 'Arial', fontSize:14, fill: '#ff0000'});
+        slowMes.position.set(185,55);
+        var slow=new PIXI.Graphics();
+         // set a fill and line style
+        slow.beginFill(0xccffff);		
+        slow.lineStyle(1, 0xff0000, 1);
+        slow.drawCircle(215, 65, 35);
+        slow.endFill();
+        slow.addChild(slowMes);
+        app.stage.addChild(slow);
+        slow.interactive=true;
+        slow.on("click",function(){
+            yStep=0.5;
+            slow.clear();
+            slow.beginFill(0x00ff00);		
+            slow.lineStyle(1, 0xff0000, 1);
+            slow.drawCircle(215, 65, 35);
+            slow.endFill();
+            fast.clear();
+            fast.beginFill(0xccffff);		
+            fast.lineStyle(1, 0xff0000, 1);
+            fast.drawCircle(285, 65, 35);
+            fast.endFill();
+            accel.clear();
+            accel.beginFill(0xccffff);		
+            accel.lineStyle(1, 0xff0000, 1);
+            accel.drawCircle(355, 65, 35);
+            accel.endFill();
+        });
+        var fastMes = new PIXI.Text('REPEDE', { fontFamily: 'Arial', fontSize:14, fill: '#ff0000'});
+        fastMes.position.set(255,55);
+        var fast=new PIXI.Graphics();
+         // set a fill and line style
+        fast.beginFill(0xccffff);		
+        fast.lineStyle(1, 0xff0000, 1);
+        fast.drawCircle(285, 65, 35);
+        fast.endFill();
+        fast.addChild(fastMes);
+        app.stage.addChild(fast);
+        fast.interactive=true;
+        fast.on("click",function(){
+            yStep=1.25;
+            fast.clear();
+            fast.beginFill(0x00ff00);		
+            fast.lineStyle(1, 0xff0000, 1);
+            fast.drawCircle(285, 65, 35);
+            fast.endFill();
+            slow.clear();
+            slow.beginFill(0xccffff);		
+            slow.lineStyle(1, 0xff0000, 1);
+            slow.drawCircle(215, 65, 35);
+            slow.endFill();
+            accel.clear();
+            accel.beginFill(0xccffff);		
+            accel.lineStyle(1, 0xff0000, 1);
+            accel.drawCircle(355, 65, 35);
+            accel.endFill();
+        });
+        var accelMes = new PIXI.Text('FOARTE\nREPEDE', { fontFamily: 'Arial', fontSize:14, fill: '#ff0000'});
+        accelMes.position.set(325,50);
+        var accel=new PIXI.Graphics();
+         // set a fill and line style
+        accel.beginFill(0xccffff);		
+        accel.lineStyle(1, 0xff0000, 1);
+        accel.drawCircle(355, 65, 35);
+        accel.endFill();
+        accel.addChild(accelMes);
+        app.stage.addChild(accel);
+        accel.interactive=true;
+        accel.on("click",function(){
+            yStep=2;
+            accel.clear();
+            accel.beginFill(0x00ff00);		
+            accel.lineStyle(1, 0xff0000, 1);
+            accel.drawCircle(355, 65, 35);
+            accel.endFill();
+            fast.clear();
+            fast.beginFill(0xccffff);		
+            fast.lineStyle(1, 0xff0000, 1);
+            fast.drawCircle(285, 65, 35);
+            fast.endFill();
+            slow.clear();
+            slow.beginFill(0xccffff);		
+            slow.lineStyle(1, 0xff0000, 1);
+            slow.drawCircle(215, 65, 35);
+            slow.endFill();
+        });
+        var start = new PIXI.Graphics();
+		// set a fill and line style
+        start.beginFill(0xFFFF00);		
+        start.lineStyle(1, 0x0000ff, 1);       
+            // draw a shape
+        start.moveTo(10,30);
+        start.lineTo(180, 30);
+        start.lineTo(180, 100);
+        start.lineTo(10, 100);
+        start.lineTo(10, 30);
+        start.endFill();
+        var click = new PIXI.Text('START', { font: 'bold 16px Arial', fill: '#cc00ff'});
+        var mesaj= new PIXI.Text('Se adauga elementele la intamplare.', { fontFamily: 'Arial', fontSize:fontSize, fill: '#cc00ff'});
+        click.position.set(40,32);
+        mesaj.position.set(10,110);
+        start.addChild(click);
+        app.stage.addChild(start);
+        app.stage.addChild(mesaj);
+        start.interactive=true;
+        var arrow=new Arrow([95*ratio,yMax+117*ratio+40]);
+        start.on("click", function() {     
+            console.log('contor='+contor);
+            if(contor==0)
+            {
+                var i=0;
+                vec[i]=Math.floor((Math.random() * 6) + 1);
+                while(i<nrAnimale)
+                {
+                    var x=Math.floor((Math.random() * 6) + 1);
+                    var ok=1;
+                    for(j=0;j<=i;j++)
+                        if(vec[j]==x)
+                            ok=0;
+                    if(ok)
+                    {
+                        i++;
+                        vec[i]=x;
+                    }
+                    if(i==5 && !ok)
+                        i++;
+                }
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                    animale[j].position.x = (vec[j]-1)*deltaX+20;
+                    app.stage.addChild(animale[j]);
+                }
+            }
+            else if(contor==1)
+            {
+                click.text="Pasul 1";
+                mesaj.text="Se cauta pozitia celui mai mic element."
+                poz=vec.indexOf(1);
+                console.log("poz="+poz);
+                pozMin=vec[0]-1;
+                console.log("pozMin="+pozMin);
+                app.stage.addChild(arrow);
+                const tickerMin1=new PIXI.Ticker;
+                tickerMin1.add(delta =>loop1(delta));
+                tickerMin1.start();
+                function loop1(delta){
+                    if(arrow.position.x<=20+pozMin*deltaX)
+                        arrow.position.x+=1;
+                    else
+                    {
+                        mesaj.text="Cel mai mic element se afla in pozitia "+(pozMin+1);
+                        tickerMin1.remove(loop1);
+                        tickerMin1.destroy();
+                    }
+                }    
+            }
+            if(contor==2)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 2";
+                mesaj.text="Se interschimba elementul din prima pozitie cu cel din pozitia "+(pozMin+1);
+                poz1=vec.indexOf(pozMin+1);
+                const tickerMin2=new PIXI.Ticker;
+                tickerMin2.add(delta =>loop2(delta));
+                tickerMin2.start();
+                function loop2(delta){
+                    if(animale[poz].position.y>yMin && sus)
+                    {
+                        animale[poz].position.y-=yStep;
+                        animale[poz1].position.y-=yStep;
+                    }
+                    if(animale[poz].position.y<=yMin)
+                    {
+                        sus=false;
+                        var aux=vec[poz];
+                        vec[poz]=vec[poz1];
+                        vec[poz1]=aux;
+                    }
+                    if(animale[poz].position.y<yMax && !sus)
+                    {
+                        animale[poz].position.y+=yStep;
+                        animale[poz1].position.y+=yStep;
+                        animale[poz].position.x+=0.75*yStep*ratio*pozMin;
+                        animale[poz1].position.x-=0.75*yStep*ratio*pozMin;
+                    }
+                    if(animale[poz].position.y==yMax && !sus)
+                    {
+                        mesaj.text="Se cauta pozitia celui mai mic element."
+                        arrow.position.x=20+deltaX;
+                        sus=true;
+                        animale[0].tint=0xffff00;
+                        animale[poz].position.y=yMax;
+                        animale[poz1].position.y=yMax;
+                        tickerMin2.remove(loop2);
+                        tickerMin2.destroy();
+                    }
+                }
+            }
+            if(contor==3)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 3";
+                poz=vec.indexOf(2);
+                console.log("poz="+poz);
+                pozMin=vec[1]-1;
+                console.log("pozMin="+pozMin);
+                const tickerMin3=new PIXI.Ticker;
+                tickerMin3.add(delta =>loop3(delta));
+                tickerMin3.start();
+                function loop3(delta){
+                    if(arrow.position.x<=20+pozMin*deltaX)
+                        arrow.position.x+=1;
+                    else
+                    {
+                        mesaj.text="Cel mai mic element se afla in pozitia "+(pozMin+1);
+                        tickerMin3.remove(loop3);
+                        tickerMin3.destroy();
+                    }
+                }
+            }
+            if(contor==4)
+            { 
+                click.text="Pasul 4";
+                mesaj.text="Se interschimba elementul din a doua pozitie cu cel din pozitia "+(pozMin+1);
+                poz1=vec.indexOf(pozMin+1);
+                console.log("sus="+sus);
+                const tickerMin4=new PIXI.Ticker;
+                tickerMin4.add(delta =>loop4(delta));
+                tickerMin4.start();
+                function loop4(delta){
+                    if(animale[poz].position.y>yMin && sus)
+                    {
+                        animale[poz1].position.y-=yStep;
+                        animale[poz].position.y-=yStep;
+                    }
+                    if(animale[poz].position.y<=yMin)
+                    {
+                        sus=false;
+                        var aux=vec[poz1];
+                        vec[poz1]=vec[poz];
+                        vec[poz]=aux;
+                    }
+                    if(animale[poz].position.y<yMax && !sus)
+                    {
+                        animale[poz].position.y+=yStep;
+                        animale[poz1].position.y+=yStep;
+                        animale[poz].position.x+=0.75*yStep*ratio*(pozMin-1);
+                        animale[poz1].position.x-=0.75*yStep*ratio*(pozMin-1);
+                    }
+                    if(animale[poz].position.y==yMax && !sus)
+                    {
+                        mesaj.text="Se cauta pozitia celui mai mic element."
+                        arrow.position.x=20+2*deltaX;
+                        sus=true;
+                        animale[1].tint=0xffff00;
+                        animale[poz].position.y=yMax;
+                        animale[poz1].position.y=yMax;
+                        tickerMin4.remove(loop4);
+                        tickerMin4.destroy();
+                    }
+                }
+            }
+            if(contor==5)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 5";
+                poz=vec.indexOf(3);
+                console.log("poz="+poz);
+                pozMin=vec[2]-1;
+                console.log("pozMin="+pozMin);
+                const tickerMin3=new PIXI.Ticker;
+                tickerMin3.add(delta =>loop3(delta));
+                tickerMin3.start();
+                function loop3(delta){
+                    if(arrow.position.x<=20+pozMin*deltaX)
+                        arrow.position.x+=1;
+                    else
+                    {
+                        mesaj.text="Cel mai mic element se afla in pozitia "+(pozMin+1);
+                        tickerMin3.remove(loop3);
+                        tickerMin3.destroy();
+                    }
+                }
+            }
+            if(contor==6)
+            {
+                click.text="Pasul 6";
+                mesaj.text="Se interschimba elementul din a treia pozitie cu cel din pozitia "+(pozMin+1);
+                poz1=vec.indexOf(pozMin+1);
+                console.log("sus="+sus);
+                const tickerMin4=new PIXI.Ticker;
+                tickerMin4.add(delta =>loop4(delta));
+                tickerMin4.start();
+                function loop4(delta){
+                    if(animale[poz].position.y>yMin && sus)
+                    {
+                        animale[poz1].position.y-=yStep;
+                        animale[poz].position.y-=yStep;
+                    }
+                    if(animale[poz].position.y<=yMin)
+                    {
+                        sus=false;
+                        var aux=vec[poz1];
+                        vec[poz1]=vec[poz];
+                        vec[poz]=aux;
+                    }
+                    if(animale[poz].position.y<yMax && !sus)
+                    {
+                        animale[poz].position.y+=yStep;
+                        animale[poz1].position.y+=yStep;
+                        animale[poz].position.x+=0.75*yStep*ratio*(pozMin-2);
+                        animale[poz1].position.x-=0.75*yStep*ratio*(pozMin-2);
+                    }
+                    if(animale[poz].position.y==yMax && !sus)
+                    {
+                        mesaj.text="Se cauta pozitia celui mai mic element."
+                        arrow.position.x=20+3*deltaX;
+                        sus=true;
+                        animale[2].tint=0xffff00;
+                        animale[poz].position.y=yMax;
+                        animale[poz1].position.y=yMax;
+                        tickerMin4.remove(loop4);
+                        tickerMin4.destroy();
+                    }
+                }
+            }
+            if(contor==7)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 7";
+                poz=vec.indexOf(4);
+                console.log("poz="+poz);
+                pozMin=vec[3]-1;
+                console.log("pozMin="+pozMin);
+                const tickerMin3=new PIXI.Ticker;
+                tickerMin3.add(delta =>loop3(delta));
+                tickerMin3.start();
+                function loop3(delta){
+                    if(arrow.position.x<=20+pozMin*deltaX)
+                        arrow.position.x+=1;
+                    else
+                    {
+                        mesaj.text="Cel mai mic element se afla in pozitia "+(pozMin+1);
+                        tickerMin3.remove(loop3);
+                        tickerMin3.destroy();
+                    }
+                }
+            }
+            if(contor==8)
+            {
+                click.text="Pasul 8";
+                mesaj.text="Se interschimba elementul din a patra pozitie cu cel din pozitia "+(pozMin+1);
+                poz1=vec.indexOf(pozMin+1);
+                console.log("sus="+sus);
+                const tickerMin4=new PIXI.Ticker;
+                tickerMin4.add(delta =>loop4(delta));
+                tickerMin4.start();
+                function loop4(delta){
+                    if(animale[poz].position.y>yMin && sus)
+                    {
+                        animale[poz1].position.y-=yStep;
+                        animale[poz].position.y-=yStep;
+                    }
+                    if(animale[poz].position.y<=yMin)
+                    {
+                        sus=false;
+                        var aux=vec[poz1];
+                        vec[poz1]=vec[poz];
+                        vec[poz]=aux;
+                    }
+                    if(animale[poz].position.y<yMax && !sus)
+                    {
+                        animale[poz].position.y+=yStep;
+                        animale[poz1].position.y+=yStep;
+                        animale[poz].position.x+=0.75*yStep*ratio*(pozMin-3);
+                        animale[poz1].position.x-=0.75*yStep*ratio*(pozMin-3);
+                    }
+                    if(animale[poz].position.y==yMax && !sus)
+                    {
+                        mesaj.text="Se cauta pozitia celui mai mic element."
+                        arrow.position.x=20+4*deltaX;
+                        sus=true;
+                        animale[3].tint=0xffff00;
+                        animale[poz].position.y=yMax;
+                        animale[poz1].position.y=yMax;
+                        tickerMin4.remove(loop4);
+                        tickerMin4.destroy();
+                    }
+                }
+            }
+            if(contor==9)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 9";
+                poz=vec.indexOf(5);
+                console.log("poz="+poz);
+                pozMin=vec[4]-1;
+                console.log("pozMin="+pozMin);
+                const tickerMin3=new PIXI.Ticker;
+                tickerMin3.add(delta =>loop3(delta));
+                tickerMin3.start();
+                function loop3(delta){
+                    if(arrow.position.x<=20+pozMin*deltaX)
+                        arrow.position.x+=1;
+                    else
+                    {
+                        mesaj.text="Cel mai mic element se afla in pozitia "+(pozMin+1);
+                        tickerMin3.remove(loop3);
+                        tickerMin3.destroy();
+                    }
+                }
+            }
+            if(contor==10)
+            {
+                click.text="Pasul 10";
+                mesaj.text="Se interschimba elementul din a cincea pozitie cu cel din pozitia "+(pozMin+1);
+                poz1=vec.indexOf(pozMin+1);
+                console.log("sus="+sus);
+                const tickerMin4=new PIXI.Ticker;
+                tickerMin4.add(delta =>loop4(delta));
+                tickerMin4.start();
+                function loop4(delta){
+                    if(animale[poz].position.y>yMin && sus)
+                    {
+                        animale[poz1].position.y-=yStep;
+                        animale[poz].position.y-=yStep;
+                    }
+                    if(animale[poz].position.y<=yMin)
+                    {
+                        sus=false;
+                        var aux=vec[poz1];
+                        vec[poz1]=vec[poz];
+                        vec[poz]=aux;
+                    }
+                    if(animale[poz].position.y<yMax && !sus)
+                    {
+                        animale[poz].position.y+=yStep;
+                        animale[poz1].position.y+=yStep;
+                        animale[poz].position.x+=0.75*yStep*ratio*(pozMin-4);
+                        animale[poz1].position.x-=0.75*yStep*ratio*(pozMin-4);
+                    }
+                    if(animale[poz].position.y==yMax && !sus)
+                    {
+                        mesaj.text="Se cauta pozitia celui mai mic element."
+                        arrow.position.x=20+5*deltaX;
+                        sus=true;
+                        animale[4].tint=0xffff00;
+                        animale[poz].position.y=yMax;
+                        animale[poz1].position.y=yMax;
+                        tickerMin4.remove(loop4);
+                        tickerMin4.destroy();
+                    }
+                }
+            }
+            if(contor==11)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 11";
+                animale[5].tint=0xffff00;
+                mesaj.text="Multimea este sortata."
+                app.stage.removeChild(arrow);
+            }
+            contor++;
+        });
+	</script
+  </body>
+</html>

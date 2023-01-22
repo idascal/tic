@@ -1,0 +1,596 @@
+<!doctype html>
+<html>
+  <head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.1.0/pixi.min.js"></script>
+  </head>
+  <body>
+	<script>
+		var contor=0,contor1=0,n,i=0,i1,maxim,max_da=0;
+		var max_eq=0;
+		var j=0;
+		var vec=new Array();
+		let app = new PIXI.Application({ width: 660, height: 650 });
+		document.body.appendChild(app.view);
+		
+		var graphics = new PIXI.Graphics();
+
+		// set a fill and line style
+        graphics.beginFill(0xFFFF00);
+		
+        graphics.lineStyle(1, 0x0000ff, 1);
+            
+            // draw a shape
+        graphics.moveTo(10,30);
+        graphics.lineTo(180, 30);
+        graphics.lineTo(180, 600);
+        graphics.lineTo(10, 600);
+        graphics.lineTo(10, 30);
+        graphics.endFill();
+        var click = new PIXI.Text('Click aici!', { font: 'bold 16px Arial', fill: '#cc00ff'});
+        click.position.set(40,32);
+        graphics.addChild(click);
+		var i_val = new PIXI.Text(' ', { font: 'bold 8px Arial', fill: '#000000'});
+		i_val.x = 20;
+		i_val.y = 64;
+		var tab = new PIXI.Text('', { font: 'bold 8px Arial', fill: '#000000'});
+		tab.x = 20;
+		tab.y = 104;
+		graphics.addChild(tab);
+		app.stage.interactive = true;// This can't be forgotten 
+		app.stage.on("pointerdown", () => {
+            console.log("contor="+contor);
+			//START
+            let ctx=new PIXI.Graphics();
+            ctx.beginFill(0xffd900);
+            ctx.lineStyle(2,0x0000ff,0.5);
+            ctx.drawRoundedRect(300,10,100,30,15);
+            ctx.drawRect(348,40,4,10);
+            ctx.moveTo(340,50);
+		    ctx.lineTo(360,50);
+			ctx.lineTo(350,55);
+            //Citeste n
+			ctx.moveTo(280,55);
+			ctx.lineTo(420,55);
+			ctx.lineTo(400,80);
+			ctx.lineTo(300,80);
+			ctx.drawRect(348,80,4,10);
+			ctx.moveTo(340,90);
+			ctx.lineTo(360,90);
+			ctx.lineTo(350,95);
+			//i = 0
+			ctx.drawRect(320,95,60,25);
+			ctx.drawRect(348,120,4,10);
+			ctx.moveTo(340,130);
+			ctx.lineTo(360,130);
+			ctx.lineTo(350,135);
+			//Citeste vec[i]
+			ctx.moveTo(250,135);
+			ctx.lineTo(450,135);
+			ctx.lineTo(430,160);
+			ctx.lineTo(270,160);
+			ctx.drawRect(348,160,4,10);
+			ctx.moveTo(340,170);
+			ctx.lineTo(360,170);
+			ctx.lineTo(350,175);
+			//i = i + 1
+			ctx.drawRect(320,175,60,25);
+			ctx.drawRect(348,200,4,10);
+			ctx.moveTo(340,210);
+			ctx.lineTo(360,210);
+			ctx.lineTo(350,215);
+			//i < n
+			ctx.moveTo(350,215);
+			ctx.lineTo(300,235);
+			ctx.lineTo(350,255);
+			ctx.lineTo(400,235);
+			//DA
+			ctx.drawRect(200,232,124,4);
+			ctx.drawRect(200,124,4,106);
+			ctx.drawRect(200,123,150,4);
+			ctx.moveTo(190,170);
+			ctx.lineTo(214,170);
+			ctx.lineTo(202,160);
+			//NU
+			ctx.drawRect(348,255,4,10);
+			ctx.moveTo(340,265);
+			ctx.lineTo(360,265);
+			ctx.lineTo(350,270);
+			//maxim=vec[0]
+			ctx.drawRect(265,270,170,25);
+			ctx.drawRect(348,295,4,10);
+			ctx.moveTo(340,305);
+			ctx.lineTo(360,305);
+			ctx.lineTo(350,310);
+			//i=0
+			ctx.drawRect(320,310,60,25);
+			ctx.drawRect(348,335,4,10);
+			ctx.moveTo(340,345);
+			ctx.lineTo(360,345);
+			ctx.lineTo(350,350);
+			//maxim<vec[i]
+			ctx.moveTo(350,350);
+			ctx.lineTo(460,385);
+			ctx.lineTo(350,420);
+			ctx.lineTo(240,385);
+			//DA
+			ctx.drawRect(458,383,77,4);
+			ctx.drawRect(533,383,4,10);
+			ctx.moveTo(522,393);
+			ctx.lineTo(547,393);
+			ctx.lineTo(535,398);
+			ctx.drawRect(450,398,170,25);
+			ctx.drawRect(533,422,4,10);
+			ctx.drawRect(350,432,187,4);
+			ctx.moveTo(440,422);
+			ctx.lineTo(440,446);
+			ctx.lineTo(430,434)
+			//NU
+			ctx.drawRect(348,420,4,20);
+			ctx.moveTo(340,440);
+			ctx.lineTo(360,440);
+			ctx.lineTo(350,445);
+			//i = i + 1
+			ctx.drawRect(320,445,60,25);
+			ctx.drawRect(348,470,4,10);
+			ctx.moveTo(340,480);
+			ctx.lineTo(360,480);
+			ctx.lineTo(350,485);
+			//i < n
+			ctx.moveTo(350,485);
+			ctx.lineTo(300,505);
+			ctx.lineTo(350,525);
+			ctx.lineTo(400,505);
+			//DA
+			ctx.drawRect(398,503,240,4);
+			ctx.drawRect(633,337,4,167);
+			ctx.drawRect(352,337,286,4);
+			ctx.moveTo(623,400);
+			ctx.lineTo(645,400);
+			ctx.lineTo(635,390);
+			//NU
+			ctx.drawRect(348,525,4,10);
+			ctx.moveTo(340,535);
+			ctx.lineTo(364,535);
+			ctx.lineTo(350,540);
+			//Scrie  maxim
+			ctx.moveTo(240,540);
+			ctx.lineTo(460,540);
+			ctx.lineTo(480,565);
+			ctx.lineTo(220,565);
+			ctx.drawRect(348,565,4,10);
+			ctx.moveTo(340,575);
+			ctx.lineTo(360,575);
+			ctx.lineTo(350,580);
+			//STOP
+			ctx.drawRoundedRect(300,580,100,30,15);
+            app.stage.addChild(ctx);
+			app.stage.addChild(i_val);
+			if(contor==0)
+			{
+				var startTxt = new PIXI.Text('START', { font: 'bold 16px Arial', fill: '#cc00ff'});
+				startTxt.x = 310;
+				startTxt.y = 12;
+				app.stage.addChild(startTxt);
+			}
+			else
+			{
+				var startTxt = new PIXI.Text('START', { font: 'bold 16px Arial', fill: '#000000'});
+				startTxt.x = 310;
+				startTxt.y = 12;
+				app.stage.addChild(startTxt);
+			}
+			if(contor==1)
+			{
+				var citesteN = new PIXI.Text('Citeste n', { font: 'bold 16px Arial', fill: '#cc00ff'});
+				citesteN.x = 295;
+				citesteN.y = 52;
+				app.stage.addChild(citesteN);
+			}
+			else
+			{
+				var citesteN = new PIXI.Text('Citeste n', { font: 'bold 16px Arial', fill: '#000000'});
+				citesteN.x = 295;
+				citesteN.y = 52;
+				app.stage.addChild(citesteN);
+			}
+			if(contor==2)
+			{
+				n=prompt("Dati n=");
+				console.log(n);
+				var N = new PIXI.Text('n = ' +n, { font: 'bold 8px Arial', fill: '#000000'});
+				N.x = 100;
+				N.y = 64;
+				app.stage.addChild(N);
+			}
+			if(contor==3)
+			{
+				i=0;
+				var i_eq_0 = new PIXI.Text('i = 0', { font: 'bold 16px Arial', fill: '#cc00ff'});
+				i_eq_0.x = 325;
+				i_eq_0.y = 93;
+				app.stage.addChild(i_eq_0);
+			}
+			else
+			{
+				var i_eq_0 = new PIXI.Text('i = 0', { font: 'bold 16px Arial', fill: '#000000'});
+				i_eq_0.x = 325;
+				i_eq_0.y = 93;
+				app.stage.addChild(i_eq_0);
+			}
+			if(contor>=3)
+			{
+				if(i<=n)
+					i_val.text='i = '+i;
+				else
+				{
+					i1=i-1;
+					i_val.text='i = '+i1;
+				}
+			}
+			if(contor==4)
+			{
+				console.log("contor1="+contor1+"\n");
+				console.log("i="+i+"\n");
+				
+				if(contor1%4==0)
+				{
+					var citesteTab = new PIXI.Text('Citeste vec['+i+']', { font: 'bold 16px Arial', fill: '#cc00ff'});
+					citesteTab.x = 270;
+					citesteTab.y = 133;
+					app.stage.addChild(citesteTab);
+				}
+				else
+				{
+					if(i<=n)
+						i1=i;
+					else
+						i1=i-1;
+					var citesteTab = new PIXI.Text('Citeste vec['+i1+']', { font: 'bold 16px Arial', fill: '#000000'});
+					citesteTab.x = 270;
+					citesteTab.y = 133;
+					app.stage.addChild(citesteTab);
+				}
+				if(contor1%4==1)
+				{
+					vec[i]=parseInt(prompt("Dati vec["+i+"]="));
+                    const vtest=vec.slice(0,i);
+                    //alert(vtest);
+                    while(vtest.indexOf(vec[i])!=-1)
+                    {
+                        vec[i]=parseInt(prompt("Acest numar deja exista.\nDati alt vec["+i+"]="));
+                    }
+					tab.text=tab.text+"vec["+i+"]="+vec[i]+"\n";
+
+				}
+				if(contor1%4==2)
+				{
+					var increment = new PIXI.Text('i=i+1', { font: 'bold 16px Arial', fill: '#cc00ff'});
+					increment.x = 322;
+					increment.y = 172;
+					app.stage.addChild(increment);
+					i++;
+					i_val.text='i = '+i;
+				}
+				else
+				{
+					var increment = new PIXI.Text('i=i+1', { font: 'bold 16px Arial', fill: '#000000'});
+					increment.x = 322;
+					increment.y = 172;
+					app.stage.addChild(increment);
+				}
+				if(contor1%4==3)
+				{
+					var i_lt_n = new PIXI.Text('i < n', { font: 'bold 16px Arial', fill: '#cc00ff'});
+					var da = new PIXI.Text('DA', { font: 'bold 16px Arial', fill: '#cc00ff'});
+					var nu = new PIXI.Text('NU', { font: 'bold 16px Arial', fill: '#cc00ff'});
+					i_lt_n.x = 328;
+					i_lt_n.y = 220;
+					da.x=290;
+					da.y=200;
+					nu.x=290;
+					nu.y=240;
+					app.stage.addChild(i_lt_n);
+					if(i<n)
+					{
+						app.stage.addChild(da);
+					}
+					else
+					{
+						app.stage.addChild(nu);
+					}
+				}
+				else
+				{
+					var i_lt_n = new PIXI.Text('i < n', { font: 'bold 16px Arial', fill: '#000000'});
+					var da = new PIXI.Text('DA', { font: 'bold 16px Arial', fill: '#000000'});
+					i_lt_n.x = 328;
+					i_lt_n.y = 220;
+					da.x=290;
+					da.y=200;
+					app.stage.addChild(i_lt_n);
+					app.stage.addChild(da);
+				}
+				contor1++;
+				if(i<n)
+				{
+					contor--;
+				}
+				if(i==n)
+				{
+					contor--;
+					contor1=3;
+					i++;
+				}
+			}
+			else
+			{
+				var citesteTab = new PIXI.Text('Citeste vec[]', { font: 'bold 16px Arial', fill: '#000000'});
+				citesteTab.x = 270;
+				citesteTab.y = 133;
+				app.stage.addChild(citesteTab);
+				var increment = new PIXI.Text('i=i+1', { font: 'bold 16px Arial', fill: '#000000'});
+				increment.x = 322;
+				increment.y = 172;
+				app.stage.addChild(increment);
+				var i_lt_n = new PIXI.Text('i < n', { font: 'bold 16px Arial', fill: '#000000'});
+				i_lt_n.x = 328;
+				i_lt_n.y = 220;
+				app.stage.addChild(i_lt_n);
+				var nu = new PIXI.Text('NU', { font: 'bold 16px Arial', fill: '#000000'});
+				nu.x=290;
+				nu.y=240;
+				app.stage.addChild(nu);
+			}
+			if(contor==5)
+			{
+				var max_0 = new PIXI.Text('maxim=vec[0]', { font: 'bold 16px Arial', fill: '#cc00ff'});
+                maxim=vec[0];
+				max_0.x = 270;
+				max_0.y = 268;
+				app.stage.addChild(max_0);
+                tab.text=tab.text+"--------------\nmaxim="+maxim;
+			}
+			else
+			{
+				var max_0 = new PIXI.Text('maxim=vec[0]', { font: 'bold 16px Arial', fill: '#000000'});
+				max_0.x = 270;
+				max_0.y = 268;
+				app.stage.addChild(max_0);
+			}
+			if(contor==6)
+			{
+				var i_eq_1 = new PIXI.Text('i = 1', { font: 'bold 16px Arial', fill: '#cc00ff'});
+				i_eq_1.x = 325;
+				i_eq_1.y = 308;
+				app.stage.addChild(i_eq_1);
+				i=1;
+				contor1=0;
+			}
+			else
+			{
+				var i_eq_1 = new PIXI.Text('i = 1', { font: 'bold 16px Arial', fill: '#000000'});
+				i_eq_1.x = 325;
+				i_eq_1.y = 308;
+				app.stage.addChild(i_eq_1);
+			}
+			if(contor==7)
+			{
+				//var max_eq=0;
+				//var j=0;
+				console.log("contor1="+contor1+"\n");
+				console.log("i="+i+"\n");
+				console.log("max_da ="+max_da+"\n");
+				console.log("max_eq ="+max_eq+"\n");
+				if(contor1%3==0)
+				{
+					var maxm = new PIXI.Text('maxim<vec['+i+']', { font: 'bold 16px Arial', fill: '#cc00ff'});
+					var da = new PIXI.Text('DA', { font: 'bold 16px Arial', fill: '#cc00ff'});
+					var nu = new PIXI.Text('NU', { font: 'bold 16px Arial', fill: '#cc00ff'});
+					da.x=450;
+					da.y=350;
+					nu.x=290;
+					nu.y=410;
+					maxm.x = 265;
+					maxm.y = 367;
+					app.stage.addChild(maxm);
+					if(maxim<vec[i])
+					{
+						var maxi = new PIXI.Text('maxim=vec['+i+']', { font: 'bold 16px Arial', fill: '#000000'});
+						maxi.x = 455;
+						maxi.y = 396;
+						app.stage.addChild(maxi);
+						app.stage.addChild(da);
+						maxim=vec[i];
+						max_da=1;
+						max_eq=1;
+                        tab.text=tab.text+"\nmaxim="+maxim;
+					}
+					else if(maxim>vec[i])
+					{
+						var maxi = new PIXI.Text('maxim=vec['+i+']', { font: 'bold 16px Arial', fill: '#000000'});
+						maxi.x = 455;
+						maxi.y = 396;
+						app.stage.addChild(maxi);
+						app.stage.addChild(nu);
+						max_da=0;
+					}
+					else if(max_da==1 && max_eq==0)
+					{
+						var maxi = new PIXI.Text('maxim=vec['+i+']', { font: 'bold 16px Arial', fill: '#000000'});
+						maxi.x = 455;
+						maxi.y = 396;
+						app.stage.addChild(maxi);
+						max_eq=1;
+					}
+					else if(max_da==1 && max_eq==1)
+					{
+						var maxi = new PIXI.Text('maxim=vec['+i+']', { font: 'bold 16px Arial', fill: '#cc00ff'});
+						var maxm = new PIXI.Text('maxim<vec['+i+']', { font: 'bold 16px Arial', fill: '#000000'});
+						var da = new PIXI.Text('DA', { font: 'bold 16px Arial', fill: '#000000'});
+						da.x=450;
+						da.y=350;
+						maxi.x = 455;
+						maxi.y = 396;
+						maxm.x = 265;
+						maxm.y = 367;
+						app.stage.addChild(da);
+						app.stage.addChild(maxm);
+						app.stage.addChild(maxi);
+						max_eq=0;
+						max_da=0;
+					}
+				}
+				else
+				{
+					if(i<=n)
+						i1=i;
+					else
+						i1=i-1;
+					var maxm = new PIXI.Text('maxim<vec['+i1+']', { font: 'bold 16px Arial', fill: '#000000'});
+					maxm.x = 265;
+					maxm.y = 367;
+					app.stage.addChild(maxm);
+				}
+				if(contor1%3==1)
+				{
+					var increment1 = new PIXI.Text('i=i+1', { font: 'bold 16px Arial', fill: '#cc00ff'});
+					increment1.x = 322;
+					increment1.y = 443;
+					app.stage.addChild(increment1);
+					i++;
+					i_val.text='i = '+i;
+					var maxi = new PIXI.Text('maxim=vec['+i+']', { font: 'bold 16px Arial', fill: '#000000'});
+					maxi.x = 455;
+					maxi.y = 396;
+					app.stage.addChild(maxi);
+					var nu = new PIXI.Text('NU', { font: 'bold 16px Arial', fill: '#000000'});
+					nu.x=290;
+					nu.y=410;
+					app.stage.addChild(nu);
+				}
+				else
+				{
+					var increment1 = new PIXI.Text('i=i+1', { font: 'bold 16px Arial', fill: '#000000'});
+					increment1.x = 322;
+					increment1.y = 443;
+					app.stage.addChild(increment1);
+				}
+				if(contor1%3==2)
+				{
+					var i_lt_n = new PIXI.Text('i < n', { font: 'bold 16px Arial', fill: '#cc00ff'});
+					var da = new PIXI.Text('DA', { font: 'bold 16px Arial', fill: '#cc00ff'});
+					var nu = new PIXI.Text('NU', { font: 'bold 16px Arial', fill: '#cc00ff'});
+					i_lt_n.x = 328;
+					i_lt_n.y = 488;
+					da.x=390;
+					da.y=470;
+					nu.x=290;
+					nu.y=510;
+					app.stage.addChild(i_lt_n);
+					if(i<n)
+					{
+						app.stage.addChild(da);
+						var maxi = new PIXI.Text('maxim=vec['+i+']', { font: 'bold 16px Arial', fill: '#000000'});
+						maxi.x = 455;
+						maxi.y = 396;
+						app.stage.addChild(maxi);
+					}
+					else
+					{
+						app.stage.addChild(nu);
+						var maxi = new PIXI.Text('maxim=vec['+i+']', { font: 'bold 16px Arial', fill: '#000000'});
+						maxi.x = 455;
+						maxi.y = 396;
+						app.stage.addChild(maxi);
+					}
+				}
+				else
+				{
+					var i_lt_n = new PIXI.Text('i < n', { font: 'bold 16px Arial', fill: '#000000'});
+					var da = new PIXI.Text('DA', { font: 'bold 16px Arial', fill: '#000000'});
+					i_lt_n.x = 328;
+					i_lt_n.y = 488;
+					da.x=390;
+					da.y=470;
+					app.stage.addChild(i_lt_n);
+					app.stage.addChild(da);
+				}
+                if(max_da==0)
+				    contor1++;
+				if(i<n)
+				{
+					contor--;
+				}
+				if(i==n)
+				{
+					contor--;
+					contor1=2;
+					i++;
+				}
+			}
+			else
+			{
+				var maxm = new PIXI.Text('maxim<vec[]', { font: 'bold 16px Arial', fill: '#000000'});
+				maxm.x = 265;
+				maxm.y = 367;
+				app.stage.addChild(maxm);
+				var maxi = new PIXI.Text('maxim=vec[]', { font: 'bold 16px Arial', fill: '#000000'});
+				maxi.x = 455;
+				maxi.y = 396;
+				app.stage.addChild(maxi);
+				var increment1 = new PIXI.Text('i=i+1', { font: 'bold 16px Arial', fill: '#000000'});
+				increment1.x = 322;
+				increment1.y = 443;
+				app.stage.addChild(increment1);
+				var i_lt_n = new PIXI.Text('i < n', { font: 'bold 16px Arial', fill: '#000000'});
+				i_lt_n.x = 328;
+				i_lt_n.y = 488;
+				app.stage.addChild(i_lt_n);
+				var nu = new PIXI.Text('NU', { font: 'bold 16px Arial', fill: '#000000'});
+				nu.x=290;
+				nu.y=510;
+				app.stage.addChild(nu);
+			}
+            if(contor==8)
+            {
+                var scrie_max = new PIXI.Text('SCRIE: maxim='+maxim, { font: 'bold 16px Arial', fill: '#cc00ff'});
+				scrie_max.x = 240;
+				scrie_max.y = 538;
+				app.stage.addChild(scrie_max);
+				tab.text=tab.text+"\n--------------\nmaxim="+maxim;
+            }
+            else if(contor<8)
+            {
+				var scrie_max = new PIXI.Text('SCRIE: maxim=undefined', { font: 'bold 16px Arial', fill: '#000000'});
+				scrie_max.x = 240;
+				scrie_max.y = 538;
+				app.stage.addChild(scrie_max);
+            }
+            else
+            {
+                var scrie_max = new PIXI.Text('SCRIE: maxim='+maxim, { font: 'bold 16px Arial', fill: '#000000'});
+				scrie_max.x = 240;
+				scrie_max.y = 538;
+				app.stage.addChild(scrie_max);
+            }
+            if(contor==9)
+            {
+                var stop = new PIXI.Text('STOP', { font: 'bold 16px Arial', fill: '#cc00ff'});
+				stop.x = 310;
+				stop.y = 580;
+				app.stage.addChild(stop);
+            }
+            else
+            {
+				var stop = new PIXI.Text('STOP', { font: 'bold 16px Arial', fill: '#000000'});
+				stop.x = 310;
+				stop.y = 580;
+				app.stage.addChild(stop);
+            }
+			contor++;
+		})
+		
+		app.stage.addChild(graphics);
+	</script
+  </body>
+</html>

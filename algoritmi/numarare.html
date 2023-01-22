@@ -1,0 +1,778 @@
+<!doctype html>
+<html>
+  <head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.1.0/pixi.min.js"></script>
+  </head>
+  <body>
+	<script>
+        //  https://pixijs.io/examples/#/demos-basic/blendmodes.js
+        //  https://github.com/pixijs/pixijs/wiki/v5-Custom-Application-GameLoop
+        //  https://stackoverflow.com/questions/69518512/removing-a-specific-instance-of-a-function-from-ticker
+        //  https://www.html5gamedevs.com/topic/28098-simple-lines-with-pixijs/
+        class Arrow extends PIXI.Graphics {
+            constructor(startPoint) {
+                super();
+                var s = 4;
+                var c = "0xff0000";
+                this.lineStyle(s, c)
+                this.moveTo(startPoint[0], startPoint[1]);
+                this.lineTo(startPoint[0], startPoint[1]-40);
+                this.lineTo(startPoint[0]-15, startPoint[1]-25);
+                this.lineTo(startPoint[0]+15, startPoint[1]-25);
+                this.lineTo(startPoint[0], startPoint[1]-40);
+            }
+        }
+		var contor=0,nrAnimale,deltaX,poz,sus=true,yStep=0.2,rank,pozx;
+		var vec=new Array();
+        var ranking=new Array();
+        const animale=new Array();
+        var animaleCopy=new Array();
+        var width=window.innerWidth-25;
+        console.log("width="+width);
+        var height=window.innerHeight-25;
+        console.log("height="+height);
+        var images=new Array();
+        images.push('images/pisica.png');
+        images.push('images/caine.png');
+        images.push('images/leu.png');
+        images.push('images/vaca.png');
+        images.push('images/rinocer.png');
+        images.push('images/elefant.png');
+        nrAnimale=images.length;
+        deltaX=parseInt((width-40)/nrAnimale);
+        console.log("deltaX="+deltaX);
+        var ratio=deltaX/150;
+        console.log("ratio="+ratio);
+        var yMax=parseInt(0.67*height);
+        console.log("yMax="+yMax);
+        var yMin=yMax-200;
+        var fontSize=Math.floor(24*ratio);
+        console.log("fontSize="+fontSize);
+		let app = new PIXI.Application({ width: width, height: height });
+		document.body.appendChild(app.view);
+        for(i=0;i<nrAnimale;i++)
+        {
+            var texture = PIXI.Texture.from(images[i]);
+            var animal= new PIXI.Sprite(texture);
+            animal.position.y = yMax;
+            animal.scale.set(ratio,ratio);
+            animale.push(animal);
+        }
+        var slowMes = new PIXI.Text('INCET', { fontFamily: 'Arial', fontSize:14, fill: '#ff0000'});
+        slowMes.position.set(185,55);
+        var slow=new PIXI.Graphics();
+         // set a fill and line style
+        slow.beginFill(0xccffff);		
+        slow.lineStyle(1, 0xff0000, 1);
+        slow.drawCircle(215, 65, 35);
+        slow.endFill();
+        slow.addChild(slowMes);
+        app.stage.addChild(slow);
+        slow.interactive=true;
+        slow.on("click",function(){
+            yStep=0.5;
+            slow.clear();
+            slow.beginFill(0x00ff00);		
+            slow.lineStyle(1, 0xff0000, 1);
+            slow.drawCircle(215, 65, 35);
+            slow.endFill();
+            fast.clear();
+            fast.beginFill(0xccffff);		
+            fast.lineStyle(1, 0xff0000, 1);
+            fast.drawCircle(285, 65, 35);
+            fast.endFill();
+            accel.clear();
+            accel.beginFill(0xccffff);		
+            accel.lineStyle(1, 0xff0000, 1);
+            accel.drawCircle(355, 65, 35);
+            accel.endFill();
+        });
+        var fastMes = new PIXI.Text('REPEDE', { fontFamily: 'Arial', fontSize:14, fill: '#ff0000'});
+        fastMes.position.set(255,55);
+        var fast=new PIXI.Graphics();
+         // set a fill and line style
+        fast.beginFill(0xccffff);		
+        fast.lineStyle(1, 0xff0000, 1);
+        fast.drawCircle(285, 65, 35);
+        fast.endFill();
+        fast.addChild(fastMes);
+        app.stage.addChild(fast);
+        fast.interactive=true;
+        fast.on("click",function(){
+            yStep=1.25;
+            fast.clear();
+            fast.beginFill(0x00ff00);		
+            fast.lineStyle(1, 0xff0000, 1);
+            fast.drawCircle(285, 65, 35);
+            fast.endFill();
+            slow.clear();
+            slow.beginFill(0xccffff);		
+            slow.lineStyle(1, 0xff0000, 1);
+            slow.drawCircle(215, 65, 35);
+            slow.endFill();
+            accel.clear();
+            accel.beginFill(0xccffff);		
+            accel.lineStyle(1, 0xff0000, 1);
+            accel.drawCircle(355, 65, 35);
+            accel.endFill();
+        });
+        var accelMes = new PIXI.Text('FOARTE\nREPEDE', { fontFamily: 'Arial', fontSize:14, fill: '#ff0000'});
+        accelMes.position.set(325,50);
+        var accel=new PIXI.Graphics();
+         // set a fill and line style
+        accel.beginFill(0xccffff);		
+        accel.lineStyle(1, 0xff0000, 1);
+        accel.drawCircle(355, 65, 35);
+        accel.endFill();
+        accel.addChild(accelMes);
+        app.stage.addChild(accel);
+        accel.interactive=true;
+        accel.on("click",function(){
+            yStep=2;
+            accel.clear();
+            accel.beginFill(0x00ff00);		
+            accel.lineStyle(1, 0xff0000, 1);
+            accel.drawCircle(355, 65, 35);
+            accel.endFill();
+            fast.clear();
+            fast.beginFill(0xccffff);		
+            fast.lineStyle(1, 0xff0000, 1);
+            fast.drawCircle(285, 65, 35);
+            fast.endFill();
+            slow.clear();
+            slow.beginFill(0xccffff);		
+            slow.lineStyle(1, 0xff0000, 1);
+            slow.drawCircle(215, 65, 35);
+            slow.endFill();
+        });
+        var start = new PIXI.Graphics();
+		// set a fill and line style
+        start.beginFill(0xFFFF00);		
+        start.lineStyle(1, 0x0000ff, 1);       
+            // draw a shape
+        start.moveTo(10,30);
+        start.lineTo(180, 30);
+        start.lineTo(180, 100);
+        start.lineTo(10, 100);
+        start.lineTo(10, 30);
+        start.endFill();
+        var click = new PIXI.Text('START', { font: 'bold 16px Arial', fill: '#cc00ff'});
+        var mesaj= new PIXI.Text('Se adauga elementele la intamplare.', { fontFamily: 'Arial', fontSize:fontSize, fill: '#cc00ff'});
+        click.position.set(40,32);
+        mesaj.position.set(10,110);
+        start.addChild(click);
+        app.stage.addChild(start);
+        app.stage.addChild(mesaj);
+        start.interactive=true;
+        var arrow=new Arrow([95*ratio,yMax+117*ratio+40]);
+        start.on("click", function() {     
+            console.log('contor='+contor);
+            if(contor==0)
+            {
+                var i=0;
+                vec[i]=Math.floor((Math.random() * 6) + 1);
+                while(i<nrAnimale)
+                {
+                    var x=Math.floor((Math.random() * 6) + 1);
+                    var ok=1;
+                    for(j=0;j<=i;j++)
+                        if(vec[j]==x)
+                            ok=0;
+                    if(ok)
+                    {
+                        i++;
+                        vec[i]=x;
+                    }
+                    if(i==5 && !ok)
+                        i++;
+                }
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                    animale[j].position.x = (vec[j]-1)*deltaX+20;
+                    app.stage.addChild(animale[j]);
+                }
+            }
+            else if(contor==1)
+            {
+                click.text="Pasul 1";
+                mesaj.text="Se determina cate elemente sunt mai mici decat primul element."
+                poz=vec.indexOf(1);
+                ranking.push(poz);
+                console.log("poz="+poz);
+                rank=0;
+                app.stage.addChild(arrow);
+                const tickerMin1=new PIXI.Ticker;
+                tickerMin1.add(delta =>loop1(delta));
+                tickerMin1.start();
+                function loop1(delta){
+                    if(arrow.position.x<=20+5*deltaX){
+                        arrow.position.x+=1;
+                        if(arrow.position.x==20+deltaX){
+                            poz1=vec.indexOf(2);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat primul element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+2*deltaX){
+                            poz1=vec.indexOf(3);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat primul element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+3*deltaX){
+                            poz1=vec.indexOf(4);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat primul element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+4*deltaX){
+                            poz1=vec.indexOf(5);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat primul element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+5*deltaX){
+                            poz1=vec.indexOf(6);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat primul element este "+rank;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        mesaj.text="Numarul de elemente mai mici decat primul element este "+rank;
+                        let rect1=new PIXI.Graphics();
+                        rect1.beginFill(0xffd900);
+                        rect1.lineStyle(2,0x0000ff,0.5);
+                        rect1.drawRoundedRect(20+deltaX/2-20*ratio,350*ratio,40*ratio,40*ratio,10);
+                        var n1 = new PIXI.Text(''+rank, { fontFamily: 'Arial', fontSize:fontSize, fill: '#cc00ff'});
+                        n1.position.set(15+deltaX/2,360*ratio);
+                        rect1.addChild(n1);
+                        app.stage.addChild(rect1);
+                        tickerMin1.remove(loop1);
+                        tickerMin1.destroy();
+                    }
+                }    
+            }
+            if(contor==2)
+            {
+                arrow.position.x=parseInt(95*ratio)-40;
+                click.text="Pasul 2";
+                mesaj.text="Se determina cate elemente sunt mai mici decat al doilea element."
+                poz=vec.indexOf(2);
+                ranking.push(poz);
+                console.log("poz="+poz);
+                rank=0;
+                const tickerMin1=new PIXI.Ticker;
+                tickerMin1.add(delta =>loop1(delta));
+                tickerMin1.start();
+                function loop1(delta){
+                    if(arrow.position.x<=20+5*deltaX){
+                        arrow.position.x+=1;
+                        if(arrow.position.x==parseInt(95*ratio)){
+                            poz1=vec.indexOf(1);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al doilea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+2*deltaX){
+                            poz1=vec.indexOf(3);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al doilea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+3*deltaX){
+                            poz1=vec.indexOf(4);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al doilea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+4*deltaX){
+                            poz1=vec.indexOf(5);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al doilea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+5*deltaX){
+                            poz1=vec.indexOf(6);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al doilea element este "+rank;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        mesaj.text="Numarul de elemente mai mici decat al doilea element este "+rank;
+                        let rect1=new PIXI.Graphics();
+                        rect1.beginFill(0xffd900);
+                        rect1.lineStyle(2,0x0000ff,0.5);
+                        rect1.drawRoundedRect(20+deltaX+deltaX/2-20*ratio,350*ratio,40*ratio,40*ratio,10);
+                        var n1 = new PIXI.Text(''+rank, { fontFamily: 'Arial', fontSize:fontSize, fill: '#cc00ff'});
+                        n1.position.set(15+deltaX/2+deltaX,360*ratio);
+                        rect1.addChild(n1);
+                        app.stage.addChild(rect1);
+                        tickerMin1.remove(loop1);
+                        tickerMin1.destroy();
+                    }
+                }
+            }
+            if(contor==3)
+            {
+                arrow.position.x=parseInt(95*ratio)-40;
+                click.text="Pasul 3";
+                mesaj.text="Se determina cate elemente sunt mai mici decat al treilea element."
+                poz=vec.indexOf(3);
+                ranking.push(poz);
+                console.log("poz="+poz);
+                rank=0;
+                const tickerMin1=new PIXI.Ticker;
+                tickerMin1.add(delta =>loop1(delta));
+                tickerMin1.start();
+                function loop1(delta){
+                    if(arrow.position.x<=20+5*deltaX){
+                        arrow.position.x+=1;
+                        if(arrow.position.x==parseInt(95*ratio)){
+                            poz1=vec.indexOf(1);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al treilea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+deltaX){
+                            poz1=vec.indexOf(2);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al treilea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+3*deltaX){
+                            poz1=vec.indexOf(4);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al treilea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+4*deltaX){
+                            poz1=vec.indexOf(5);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al treilea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+5*deltaX){
+                            poz1=vec.indexOf(6);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al treilea element este "+rank;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        mesaj.text="Numarul de elemente mai mici decat al treilea element este "+rank;
+                        let rect1=new PIXI.Graphics();
+                        rect1.beginFill(0xffd900);
+                        rect1.lineStyle(2,0x0000ff,0.5);
+                        rect1.drawRoundedRect(20+2*deltaX+deltaX/2-20*ratio,350*ratio,40*ratio,40*ratio,10);
+                        var n1 = new PIXI.Text(''+rank, { fontFamily: 'Arial', fontSize:fontSize, fill: '#cc00ff'});
+                        n1.position.set(15+deltaX/2+2*deltaX,360*ratio);
+                        rect1.addChild(n1);
+                        app.stage.addChild(rect1);
+                        tickerMin1.remove(loop1);
+                        tickerMin1.destroy();
+                    }
+                }
+            }
+            if(contor==4)
+            { 
+                arrow.position.x=parseInt(95*ratio)-40;
+                click.text="Pasul 4";
+                mesaj.text="Se determina cate elemente sunt mai mici decat al patrulea element."
+                poz=vec.indexOf(4);
+                ranking.push(poz);
+                console.log("poz="+poz);
+                rank=0;
+                const tickerMin1=new PIXI.Ticker;
+                tickerMin1.add(delta =>loop1(delta));
+                tickerMin1.start();
+                function loop1(delta){
+                    if(arrow.position.x<=20+5*deltaX){
+                        arrow.position.x+=1;
+                        if(arrow.position.x==parseInt(95*ratio)){
+                            poz1=vec.indexOf(1);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al patrulea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+deltaX){
+                            poz1=vec.indexOf(2);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al patrulea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+2*deltaX){
+                            poz1=vec.indexOf(3);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al patrulea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+4*deltaX){
+                            poz1=vec.indexOf(5);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al patrulea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+5*deltaX){
+                            poz1=vec.indexOf(6);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al patrulea element este "+rank;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        mesaj.text="Numarul de elemente mai mici decat al patrulea element este "+rank;
+                        let rect1=new PIXI.Graphics();
+                        rect1.beginFill(0xffd900);
+                        rect1.lineStyle(2,0x0000ff,0.5);
+                        rect1.drawRoundedRect(20+3*deltaX+deltaX/2-20*ratio,350*ratio,40*ratio,40*ratio,10);
+                        var n1 = new PIXI.Text(''+rank, { fontFamily: 'Arial', fontSize:fontSize, fill: '#cc00ff'});
+                        n1.position.set(15+deltaX/2+3*deltaX,360*ratio);
+                        rect1.addChild(n1);
+                        app.stage.addChild(rect1);
+                        tickerMin1.remove(loop1);
+                        tickerMin1.destroy();
+                    }
+                }
+            }
+            if(contor==5)
+            {
+                arrow.position.x=parseInt(95*ratio)-40;
+                click.text="Pasul 5";
+                mesaj.text="Se determina cate elemente sunt mai mici decat al cincilea element."
+                poz=vec.indexOf(5);
+                ranking.push(poz);
+                console.log("poz="+poz);
+                rank=0;
+                const tickerMin1=new PIXI.Ticker;
+                tickerMin1.add(delta =>loop1(delta));
+                tickerMin1.start();
+                function loop1(delta){
+                    if(arrow.position.x<=20+5*deltaX){
+                        arrow.position.x+=1;
+                        if(arrow.position.x==parseInt(95*ratio)){
+                            poz1=vec.indexOf(1);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al cincilea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+deltaX){
+                            poz1=vec.indexOf(2);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al cincilea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+2*deltaX){
+                            poz1=vec.indexOf(3);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al cincilea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+3*deltaX){
+                            poz1=vec.indexOf(4);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al cincilea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+5*deltaX){
+                            poz1=vec.indexOf(6);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al cincilea element este "+rank;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        mesaj.text="Numarul de elemente mai mici decat al cincilea element este "+rank;
+                        let rect1=new PIXI.Graphics();
+                        rect1.beginFill(0xffd900);
+                        rect1.lineStyle(2,0x0000ff,0.5);
+                        rect1.drawRoundedRect(20+4*deltaX+deltaX/2-20*ratio,350*ratio,40*ratio,40*ratio,10);
+                        var n1 = new PIXI.Text(''+rank, { fontFamily: 'Arial', fontSize:fontSize, fill: '#cc00ff'});
+                        n1.position.set(15+deltaX/2+4*deltaX,360*ratio);
+                        rect1.addChild(n1);
+                        app.stage.addChild(rect1);
+                        tickerMin1.remove(loop1);
+                        tickerMin1.destroy();
+                    }
+                }
+            }
+            if(contor==6)
+            {
+                arrow.position.x=parseInt(95*ratio)-40;
+                click.text="Pasul 6";
+                mesaj.text="Se determina cate elemente sunt mai mici decat al saselea element."
+                poz=vec.indexOf(6);
+                ranking.push(poz);
+                console.log("poz="+poz);
+                rank=0;
+                const tickerMin1=new PIXI.Ticker;
+                tickerMin1.add(delta =>loop1(delta));
+                tickerMin1.start();
+                function loop1(delta){
+                    if(arrow.position.x<=20+5*deltaX){
+                        arrow.position.x+=1;
+                        if(arrow.position.x==parseInt(95*ratio)){
+                            poz1=vec.indexOf(1);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al saselea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+deltaX){
+                            poz1=vec.indexOf(2);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al saselea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+2*deltaX){
+                            poz1=vec.indexOf(3);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al saselea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+3*deltaX){
+                            poz1=vec.indexOf(4);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al saselea element este "+rank;
+                            }
+                        }
+                        if(arrow.position.x==20+4*deltaX){
+                            poz1=vec.indexOf(5);
+                            console.log("poz1="+poz1);
+                            if(poz1<poz){
+                                rank++;
+                                mesaj.text="Numarul de elemente mai mici decat al saselea element este "+rank;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        mesaj.text="Numarul de elemente mai mici decat al saselea element este "+rank;
+                        let rect1=new PIXI.Graphics();
+                        rect1.beginFill(0xffd900);
+                        rect1.lineStyle(2,0x0000ff,0.5);
+                        rect1.drawRoundedRect(20+5*deltaX+deltaX/2-20*ratio,350*ratio,40*ratio,40*ratio,10);
+                        var n1 = new PIXI.Text(''+rank, { fontFamily: 'Arial', fontSize:fontSize, fill: '#cc00ff'});
+                        n1.position.set(15+deltaX/2+5*deltaX,360*ratio);
+                        rect1.addChild(n1);
+                        app.stage.addChild(rect1);
+                        app.stage.removeChild(arrow);
+                        tickerMin1.remove(loop1);
+                        tickerMin1.destroy();
+                    }
+                }
+            }
+            if(contor==7)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(ranking[j]);
+                }
+                click.text="Pasul 7";
+                for(i=0;i<nrAnimale;i++)
+                {
+                    var texture = PIXI.Texture.from(images[i]);
+                    var animal= new PIXI.Sprite(texture);
+                    animal.position.y = yMax;
+                    animal.scale.set(ratio,ratio);
+                    animaleCopy.push(animal);
+                }
+                for(j=0;j<nrAnimale;j++){
+                    animaleCopy[j].position.x = (vec[j]-1)*deltaX+20;
+                    animaleCopy[j].position.y=yMax;
+                    app.stage.addChild(animaleCopy[j]);
+                }
+                poz=vec.indexOf(1);
+                pozx=ranking[0];
+                console.log("poz="+poz);
+                mesaj.text="Se copiaza primul element in pozitia "+(ranking[0]+1)+" in vectorul sortat"
+                const ticker=new PIXI.Ticker;
+                ticker.add(delta =>loop(delta));
+                ticker.start();
+                function loop(delta){
+                    if(animaleCopy[poz].position.y>yMin){
+                        animaleCopy[poz].position.y-=yStep;
+                        animaleCopy[poz].position.x+=0.75*pozx*yStep*ratio;
+                    }
+                    else{
+                        ticker.remove(loop);
+                        ticker.destroy();
+                        animaleCopy[poz].tint=0xffff00;
+                    }
+                }
+            }
+            if(contor==8)
+            {
+                click.text="Pasul 8";
+                poz=vec.indexOf(2);
+                pozx=ranking[1]-1;
+                console.log("poz="+poz);
+                mesaj.text="Se copiaza al doilea element in pozitia "+(ranking[1]+1)+" in vectorul sortat"
+                const ticker1=new PIXI.Ticker;
+                ticker1.add(delta =>loop1(delta));
+                ticker1.start();
+                function loop1(delta){
+                    if(animaleCopy[poz].position.y>yMin){
+                        animaleCopy[poz].position.y-=yStep;
+                        animaleCopy[poz].position.x+=0.75*pozx*yStep*ratio;
+                    }
+                    else{
+                        ticker1.remove(loop1);
+                        ticker1.destroy();
+                        animaleCopy[poz].tint=0xffff00;
+                    }
+                }
+            }
+            if(contor==9)
+            {
+                click.text="Pasul 9";
+                poz=vec.indexOf(3);
+                pozx=ranking[2]-2;
+                console.log("poz="+poz);
+                mesaj.text="Se copiaza al treilea element in pozitia "+(ranking[2]+1)+" in vectorul sortat"
+                const ticker1=new PIXI.Ticker;
+                ticker1.add(delta =>loop1(delta));
+                ticker1.start();
+                function loop1(delta){
+                    if(animaleCopy[poz].position.y>yMin){
+                        animaleCopy[poz].position.y-=yStep;
+                        animaleCopy[poz].position.x+=0.75*pozx*yStep*ratio;
+                    }
+                    else{
+                        ticker1.remove(loop1);
+                        ticker1.destroy();
+                        animaleCopy[poz].tint=0xffff00;
+                    }
+                }
+            }
+            if(contor==10)
+            {
+                click.text="Pasul 10";
+                poz=vec.indexOf(4);
+                pozx=ranking[3]-3;
+                console.log("poz="+poz);
+                mesaj.text="Se copiaza al patrulea element in pozitia "+(ranking[3]+1)+" in vectorul sortat"
+                const ticker1=new PIXI.Ticker;
+                ticker1.add(delta =>loop1(delta));
+                ticker1.start();
+                function loop1(delta){
+                    if(animaleCopy[poz].position.y>yMin){
+                        animaleCopy[poz].position.y-=yStep;
+                        animaleCopy[poz].position.x+=0.75*pozx*yStep*ratio;
+                    }
+                    else{
+                        ticker1.remove(loop1);
+                        ticker1.destroy();
+                        animaleCopy[poz].tint=0xffff00;
+                    }
+                }
+            }
+            if(contor==11)
+            {
+                click.text="Pasul 11";
+                poz=vec.indexOf(5);
+                pozx=ranking[4]-4;
+                console.log("poz="+poz);
+                mesaj.text="Se copiaza al cincilea element in pozitia "+(ranking[4]+1)+" in vectorul sortat"
+                const ticker1=new PIXI.Ticker;
+                ticker1.add(delta =>loop1(delta));
+                ticker1.start();
+                function loop1(delta){
+                    if(animaleCopy[poz].position.y>yMin){
+                        animaleCopy[poz].position.y-=yStep;
+                        animaleCopy[poz].position.x+=0.75*pozx*yStep*ratio;
+                    }
+                    else{
+                        ticker1.remove(loop1);
+                        ticker1.destroy();
+                        animaleCopy[poz].tint=0xffff00;
+                    }
+                }
+            }
+            if(contor==12)
+            {
+                click.text="Pasul 12";
+                poz=vec.indexOf(6);
+                pozx=ranking[5]-5;
+                console.log("poz="+poz);
+                mesaj.text="Se copiaza al saselea element in pozitia "+(ranking[5]+1)+" in vectorul sortat"
+                const ticker1=new PIXI.Ticker;
+                ticker1.add(delta =>loop1(delta));
+                ticker1.start();
+                function loop1(delta){
+                    if(animaleCopy[poz].position.y>yMin){
+                        animaleCopy[poz].position.y-=yStep;
+                        animaleCopy[poz].position.x+=0.75*pozx*yStep*ratio;
+                    }
+                    else{
+                        ticker1.remove(loop1);
+                        ticker1.destroy();
+                        animaleCopy[poz].tint=0xffff00;
+                        mesaj.text="Multimea este sortata."
+                    }
+                }               
+            }
+            contor++;
+        });
+	</script
+  </body>
+</html>

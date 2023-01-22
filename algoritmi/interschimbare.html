@@ -1,0 +1,1127 @@
+<!doctype html>
+<html>
+  <head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.1.0/pixi.min.js"></script>
+  </head>
+  <body>
+	<script>
+        //  https://pixijs.io/examples/#/demos-basic/blendmodes.js
+        //  https://github.com/pixijs/pixijs/wiki/v5-Custom-Application-GameLoop
+        //  https://stackoverflow.com/questions/69518512/removing-a-specific-instance-of-a-function-from-ticker
+		var contor=0,nrAnimale,deltaX,interschimba=false,sus=true,nrInterschimbari=0,yStep=0.2;
+		var vec=new Array();
+        const animale=new Array();
+        var width=window.innerWidth-25;
+        console.log("width="+width);
+        var height=window.innerHeight-25;
+        console.log("height="+height);
+        var images=new Array();
+        images.push('images/pisica.png');
+        images.push('images/caine.png');
+        images.push('images/leu.png');
+        images.push('images/vaca.png');
+        images.push('images/rinocer.png');
+        images.push('images/elefant.png');
+        nrAnimale=images.length;
+        deltaX=parseInt((width-40)/nrAnimale);
+        console.log("deltaX="+deltaX);
+        var ratio=deltaX/150;
+        console.log("ratio="+ratio);
+        var yMax=parseInt(0.67*height);
+        console.log("yMax="+yMax);
+        var yMin=yMax-200;
+        var fontSize=Math.floor(24*ratio);
+        console.log("fontSize="+fontSize);
+		let app = new PIXI.Application({ width: width, height: height });
+		document.body.appendChild(app.view);
+        for(i=0;i<nrAnimale;i++)
+        {
+            var texture = PIXI.Texture.from(images[i]);
+            var animal= new PIXI.Sprite(texture);
+            animal.position.y = yMax;
+            animal.scale.set(ratio,ratio);
+            animale.push(animal);
+        } 
+        var slowMes = new PIXI.Text('INCET', { fontFamily: 'Arial', fontSize:14, fill: '#ff0000'});
+        slowMes.position.set(185,55);
+        var slow=new PIXI.Graphics();
+         // set a fill and line style
+        slow.beginFill(0xccffff);		
+        slow.lineStyle(1, 0xff0000, 1);
+        slow.drawCircle(215, 65, 35);
+        slow.endFill();
+        slow.addChild(slowMes);
+        app.stage.addChild(slow);
+        slow.interactive=true;
+        slow.on("click",function(){
+            yStep=0.5;
+            slow.clear();
+            slow.beginFill(0x00ff00);		
+            slow.lineStyle(1, 0xff0000, 1);
+            slow.drawCircle(215, 65, 35);
+            slow.endFill();
+            fast.clear();
+            fast.beginFill(0xccffff);		
+            fast.lineStyle(1, 0xff0000, 1);
+            fast.drawCircle(285, 65, 35);
+            fast.endFill();
+            accel.clear();
+            accel.beginFill(0xccffff);		
+            accel.lineStyle(1, 0xff0000, 1);
+            accel.drawCircle(355, 65, 35);
+            accel.endFill();
+        });
+        var fastMes = new PIXI.Text('REPEDE', { fontFamily: 'Arial', fontSize:14, fill: '#ff0000'});
+        fastMes.position.set(255,55);
+        var fast=new PIXI.Graphics();
+         // set a fill and line style
+        fast.beginFill(0xccffff);		
+        fast.lineStyle(1, 0xff0000, 1);
+        fast.drawCircle(285, 65, 35);
+        fast.endFill();
+        fast.addChild(fastMes);
+        app.stage.addChild(fast);
+        fast.interactive=true;
+        fast.on("click",function(){
+            yStep=1.25;
+            fast.clear();
+            fast.beginFill(0x00ff00);		
+            fast.lineStyle(1, 0xff0000, 1);
+            fast.drawCircle(285, 65, 35);
+            fast.endFill();
+            slow.clear();
+            slow.beginFill(0xccffff);		
+            slow.lineStyle(1, 0xff0000, 1);
+            slow.drawCircle(215, 65, 35);
+            slow.endFill();
+            accel.clear();
+            accel.beginFill(0xccffff);		
+            accel.lineStyle(1, 0xff0000, 1);
+            accel.drawCircle(355, 65, 35);
+            accel.endFill();
+        });
+        var accelMes = new PIXI.Text('FOARTE\nREPEDE', { fontFamily: 'Arial', fontSize:14, fill: '#ff0000'});
+        accelMes.position.set(325,50);
+        var accel=new PIXI.Graphics();
+         // set a fill and line style
+        accel.beginFill(0xccffff);		
+        accel.lineStyle(1, 0xff0000, 1);
+        accel.drawCircle(355, 65, 35);
+        accel.endFill();
+        accel.addChild(accelMes);
+        app.stage.addChild(accel);
+        accel.interactive=true;
+        accel.on("click",function(){
+            yStep=2;
+            accel.clear();
+            accel.beginFill(0x00ff00);		
+            accel.lineStyle(1, 0xff0000, 1);
+            accel.drawCircle(355, 65, 35);
+            accel.endFill();
+            fast.clear();
+            fast.beginFill(0xccffff);		
+            fast.lineStyle(1, 0xff0000, 1);
+            fast.drawCircle(285, 65, 35);
+            fast.endFill();
+            slow.clear();
+            slow.beginFill(0xccffff);		
+            slow.lineStyle(1, 0xff0000, 1);
+            slow.drawCircle(215, 65, 35);
+            slow.endFill();
+        });
+        var start = new PIXI.Graphics();
+		// set a fill and line style
+        start.beginFill(0xFFFF00);		
+        start.lineStyle(1, 0x0000ff, 1);       
+            // draw a shape
+        start.moveTo(10,30);
+        start.lineTo(180, 30);
+        start.lineTo(180, 100);
+        start.lineTo(10, 100);
+        start.lineTo(10, 30);
+        start.endFill();
+        var click = new PIXI.Text('START', { font: 'bold 16px Arial', fill: '#cc00ff'});
+        var mesaj= new PIXI.Text('Se adauga elementele la intamplare.', { fontFamily: 'Arial', fontSize:fontSize, fill: '#cc00ff'});
+        click.position.set(40,32);
+        mesaj.position.set(10,110);
+        start.addChild(click);
+        app.stage.addChild(start);
+        app.stage.addChild(mesaj);
+        start.interactive=true;
+        start.on("click", function() {
+            console.log('contor='+contor);
+            if(contor==0)
+            {
+                var i=0;
+                vec[i]=Math.floor((Math.random() * 6) + 1);
+                while(i<nrAnimale)
+                {
+                    var x=Math.floor((Math.random() * 6) + 1);
+                    var ok=1;
+                    for(j=0;j<=i;j++)
+                        if(vec[j]==x)
+                            ok=0;
+                    if(ok)
+                    {
+                        i++;
+                        vec[i]=x;
+                    }
+                    if(i==5 && !ok)
+                        i++;
+                }
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                    animale[j].position.x = (vec[j]-1)*deltaX+20;
+                    app.stage.addChild(animale[j]);
+                }
+            }
+            else if(contor==1)
+            {
+                click.text="Pasul 1";
+                mesaj.text="Se compara primele doua elemente."
+                var poz1=vec.indexOf(1);
+                console.log("poz1="+poz1);
+                var poz2=vec.indexOf(2);
+                console.log("poz2="+poz2);
+                if(poz1>poz2)
+                    interschimba=true;
+                const ticker12=new PIXI.Ticker;
+                ticker12.add(delta =>loop12(delta));
+                ticker12.start();
+                function loop12(delta){
+                    if(animale[poz1].position.y>yMin && sus)
+                    {
+                        animale[poz1].position.y-=yStep;
+                        animale[poz2].position.y-=yStep;
+                    }
+                    if(animale[poz2].position.y<=yMin)
+                    {
+                        sus=false;
+                        if(interschimba)
+                        {
+                            mesaj.text="Nu sunt in ordine crescatoare deci se interschimba .";
+                            var aux=vec[poz1];
+                            vec[poz1]=vec[poz2];
+                            vec[poz2]=aux;
+                        }
+                        else
+                        {
+                            mesaj.text="Sunt in ordine crescatoare deci nu se interschimba .";
+                        }
+                    }
+                    if(animale[poz1].position.y<yMax && !sus)
+                    {
+                        animale[poz1].position.y+=yStep;
+                        animale[poz2].position.y+=yStep;
+                        if(interschimba)
+                        {
+                            animale[poz1].position.x+=0.75*yStep*ratio;
+                            animale[poz2].position.x-=0.75*yStep*ratio;
+                        }
+                    }
+                    if(animale[poz1].position.y>=yMax)
+                    {
+                        interschimba=false;
+                    }
+                    if(animale[poz1].position.y==yMax && !sus)
+                    {
+                        sus=true;
+                        animale[poz1].position.y=yMax;
+                        animale[poz2].position.y=yMax;
+                        ticker12.remove(loop12);
+                        ticker12.destroy();
+                    }
+                }    
+            }
+            if(contor==2)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 2";
+                mesaj.text="Se compara primul cu al treilea element."
+                var poz1=vec.indexOf(1);
+                console.log("poz1="+poz1);
+                var poz3=vec.indexOf(3);
+                console.log("poz3="+poz3);
+                console.log("sus="+sus);
+                if(poz1>poz3)
+                    interschimba=true;
+                const ticker13=new PIXI.Ticker;
+                ticker13.add(delta =>loop13(delta));
+                ticker13.start();
+                function loop13(delta){
+                    if(animale[poz1].position.y>yMin && sus)
+                    {
+                        animale[poz1].position.y-=yStep;
+                        animale[poz3].position.y-=yStep;
+                    }
+                    if(animale[poz3].position.y<=yMin)
+                    {
+                        sus=false;
+                        if(interschimba)
+                        {
+                            mesaj.text="Nu sunt in ordine crescatoare deci se interschimba .";
+                            var aux=vec[poz1];
+                            vec[poz1]=vec[poz3];
+                            vec[poz3]=aux;
+                        }
+                        else
+                        {
+                            mesaj.text="Sunt in ordine crescatoare deci nu se interschimba .";
+                        }
+                    }
+                    if(animale[poz1].position.y<yMax && !sus)
+                    {
+                        animale[poz1].position.y+=yStep;
+                        animale[poz3].position.y+=yStep;
+                        if(interschimba)
+                        {
+                            animale[poz1].position.x+=1.5*yStep*ratio;
+                            animale[poz3].position.x-=1.5*yStep*ratio;
+                        }
+                    }
+                    if(animale[poz1].position.y>=yMax)
+                    {
+                        interschimba=false;
+                    }
+                    if(animale[poz1].position.y==yMax && !sus)
+                    {
+                        sus=true;
+                        animale[poz1].position.y=yMax;
+                        animale[poz3].position.y=yMax;
+                        ticker13.remove(loop13);
+                        ticker13.destroy();
+                    }
+                }
+            }
+            if(contor==3)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 3";
+                mesaj.text="Se compara primul cu al patrulea element."
+                var poz1=vec.indexOf(1);
+                console.log("poz1="+poz1);
+                var poz4=vec.indexOf(4);
+                console.log("poz4="+poz4);
+                console.log("sus="+sus);
+                if(poz1>poz4)
+                    interschimba=true;
+                const ticker14=new PIXI.Ticker;
+                ticker14.add(delta =>loop14(delta));
+                ticker14.start();
+                function loop14(delta){
+                    if(animale[poz1].position.y>yMin && sus)
+                    {
+                        animale[poz1].position.y-=yStep;
+                        animale[poz4].position.y-=yStep;
+                    }
+                    if(animale[poz4].position.y<=yMin)
+                    {
+                        sus=false;
+                        if(interschimba)
+                        {
+                            mesaj.text="Nu sunt in ordine crescatoare deci se interschimba .";
+                            var aux=vec[poz1];
+                            vec[poz1]=vec[poz4];
+                            vec[poz4]=aux;
+                        }
+                        else
+                        {
+                            mesaj.text="Sunt in ordine crescatoare deci nu se interschimba .";
+                        }
+                    }
+                    if(animale[poz1].position.y<yMax && !sus)
+                    {
+                        animale[poz1].position.y+=yStep;
+                        animale[poz4].position.y+=yStep;
+                        if(interschimba)
+                        {
+                            animale[poz1].position.x+=2.25*yStep*ratio;
+                            animale[poz4].position.x-=2.25*yStep*ratio;
+                        }
+                    }
+                    if(animale[poz1].position.y>=yMax)
+                    {
+                        interschimba=false;
+                    }
+                    if(animale[poz1].position.y==yMax && !sus)
+                    {
+                        sus=true;
+                        animale[poz1].position.y=yMax;
+                        animale[poz4].position.y=yMax;
+                        ticker14.remove(loop14);
+                        ticker14.destroy();
+                    }
+                }
+            }
+            if(contor==4)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 4";
+                mesaj.text="Se compara primul cu al cincilea element."
+                var poz1=vec.indexOf(1);
+                console.log("poz1="+poz1);
+                var poz5=vec.indexOf(5);
+                console.log("poz5="+poz5);
+                console.log("sus="+sus);
+                if(poz1>poz5)
+                    interschimba=true;
+                const ticker15=new PIXI.Ticker;
+                ticker15.add(delta =>loop15(delta));
+                ticker15.start();
+                function loop15(delta){
+                    if(animale[poz1].position.y>yMin && sus)
+                    {
+                        animale[poz1].position.y-=yStep;
+                        animale[poz5].position.y-=yStep;
+                    }
+                    if(animale[poz5].position.y<=yMin)
+                    {
+                        sus=false;
+                        if(interschimba)
+                        {
+                            mesaj.text="Nu sunt in ordine crescatoare deci se interschimba .";
+                            var aux=vec[poz1];
+                            vec[poz1]=vec[poz5];
+                            vec[poz5]=aux;
+                        }
+                        else
+                        {
+                            mesaj.text="Sunt in ordine crescatoare deci nu se interschimba .";
+                        }
+                    }
+                    if(animale[poz1].position.y<yMax && !sus)
+                    {
+                        animale[poz1].position.y+=yStep;
+                        animale[poz5].position.y+=yStep;
+                        if(interschimba)
+                        {
+                            animale[poz1].position.x+=3*yStep*ratio;
+                            animale[poz5].position.x-=3*yStep*ratio;
+                        }
+                    }
+                    if(animale[poz1].position.y>=yMax)
+                    {
+                        interschimba=false;
+                    }
+                    if(animale[poz1].position.y==yMax && !sus)
+                    {
+                        sus=true;
+                        animale[poz1].position.y=yMax;
+                        animale[poz5].position.y=yMax;
+                        ticker15.remove(loop15);
+                        ticker15.destroy();
+                    }
+                }
+            }
+            if(contor==5)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 5";
+                mesaj.text="Se compara primul cu al saselea element."
+                var poz1=vec.indexOf(1);
+                console.log("poz1="+poz1);
+                var poz6=vec.indexOf(6);
+                console.log("poz6="+poz6);
+                console.log("sus="+sus);
+                if(poz1>poz6)
+                    interschimba=true;
+                const ticker16=new PIXI.Ticker;
+                ticker16.add(delta =>loop16(delta));
+                ticker16.start();
+                function loop16(delta){
+                    if(animale[poz1].position.y>yMin && sus)
+                    {
+                        animale[poz1].position.y-=yStep;
+                        animale[poz6].position.y-=yStep;
+                    }
+                    if(animale[poz6].position.y<=yMin)
+                    {
+                        sus=false;
+                        if(interschimba)
+                        {
+                            mesaj.text="Nu sunt in ordine crescatoare deci se interschimba .";
+                            var aux=vec[poz1];
+                            vec[poz1]=vec[poz6];
+                            vec[poz6]=aux;
+                        }
+                        else
+                        {
+                            mesaj.text="Sunt in ordine crescatoare deci nu se interschimba .";
+                        }
+                    }
+                    if(animale[poz1].position.y<yMax && !sus)
+                    {
+                        animale[poz1].position.y+=yStep;
+                        animale[poz6].position.y+=yStep;
+                        if(interschimba)
+                        {
+                            animale[poz1].position.x+=3.75*yStep*ratio;
+                            animale[poz6].position.x-=3.75*yStep*ratio;
+                        }
+                    }
+                    if(animale[poz1].position.y>=yMax)
+                    {
+                        interschimba=false;
+                    }
+                    if(animale[poz1].position.y==yMax && !sus)
+                    {
+                        sus=true;
+                        animale[poz1].position.y=yMax;
+                        animale[poz6].position.y=yMax;
+                        ticker16.remove(loop16);
+                        ticker16.destroy();
+                        animale[0].tint=0xffff00;
+                    }
+                }
+            }
+            if(contor==6)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 6";
+                mesaj.text="Se compara al doilea cu al treilea element."
+                var poz2=vec.indexOf(2);
+                console.log("poz2="+poz2);
+                var poz3=vec.indexOf(3);
+                console.log("poz3="+poz3);
+                if(poz2>poz3)
+                    interschimba=true;
+                const ticker23=new PIXI.Ticker;
+                ticker23.add(delta =>loop23(delta));
+                ticker23.start();
+                function loop23(delta){
+                    if(animale[poz2].position.y>yMin && sus)
+                    {
+                        animale[poz2].position.y-=yStep;
+                        animale[poz3].position.y-=yStep;
+                    }
+                    if(animale[poz3].position.y<=yMin)
+                    {
+                        sus=false;
+                        if(interschimba)
+                        {
+                            mesaj.text="Nu sunt in ordine crescatoare deci se interschimba .";
+                            var aux=vec[poz2];
+                            vec[poz2]=vec[poz3];
+                            vec[poz3]=aux;
+                        }
+                        else
+                        {
+                            mesaj.text="Sunt in ordine crescatoare deci nu se interschimba .";
+                        }
+                    }
+                    if(animale[poz2].position.y<yMax && !sus)
+                    {
+                        animale[poz2].position.y+=yStep;
+                        animale[poz3].position.y+=yStep;
+                        if(interschimba)
+                        {
+                            animale[poz2].position.x+=0.75*yStep*ratio;
+                            animale[poz3].position.x-=0.75*yStep*ratio;
+                        }
+                    }
+                    if(animale[poz2].position.y>=yMax)
+                    {
+                        interschimba=false;
+                    }
+                    if(animale[poz2].position.y==yMax && !sus)
+                    {
+                        sus=true;
+                        animale[poz2].position.y=yMax;
+                        animale[poz3].position.y=yMax;
+                        ticker23.remove(loop23);
+                        ticker23.destroy();
+                    }
+                }
+            }
+            if(contor==7)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 7";
+                mesaj.text="Se compara al doilea cu al patrulea element."
+                var poz2=vec.indexOf(2);
+                console.log("poz2="+poz2);
+                var poz4=vec.indexOf(4);
+                console.log("poz4="+poz4);
+                console.log("sus="+sus);
+                if(poz2>poz4)
+                    interschimba=true;
+                const ticker24=new PIXI.Ticker;
+                ticker24.add(delta =>loop24(delta));
+                ticker24.start();
+                function loop24(delta){
+                    if(animale[poz2].position.y>yMin && sus)
+                    {
+                        animale[poz2].position.y-=yStep;
+                        animale[poz4].position.y-=yStep;
+                    }
+                    if(animale[poz4].position.y<=yMin)
+                    {
+                        sus=false;
+                        if(interschimba)
+                        {
+                            mesaj.text="Nu sunt in ordine crescatoare deci se interschimba .";
+                            var aux=vec[poz2];
+                            vec[poz2]=vec[poz4];
+                            vec[poz4]=aux;
+                        }
+                        else
+                        {
+                            mesaj.text="Sunt in ordine crescatoare deci nu se interschimba .";
+                        }
+                    }
+                    if(animale[poz2].position.y<yMax && !sus)
+                    {
+                        animale[poz2].position.y+=yStep;
+                        animale[poz4].position.y+=yStep;
+                        if(interschimba)
+                        {
+                            animale[poz2].position.x+=1.5*yStep*ratio;
+                            animale[poz4].position.x-=1.5*yStep*ratio;
+                        }
+                    }
+                    if(animale[poz2].position.y>=yMax)
+                    {
+                        interschimba=false;
+                    }
+                    if(animale[poz2].position.y==yMax && !sus)
+                    {
+                        sus=true;
+                        animale[poz2].position.y=yMax;
+                        animale[poz4].position.y=yMax;
+                        ticker24.remove(loop24);
+                        ticker24.destroy();
+                    }
+                }
+            }
+            if(contor==8)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 8";
+                mesaj.text="Se compara al doilea cu al cincilea element."
+                var poz2=vec.indexOf(2);
+                console.log("poz2="+poz2);
+                var poz5=vec.indexOf(5);
+                console.log("poz5="+poz5);
+                console.log("sus="+sus);
+                if(poz2>poz5)
+                    interschimba=true;
+                const ticker25=new PIXI.Ticker;
+                ticker25.add(delta =>loop25(delta));
+                ticker25.start();
+                function loop25(delta){
+                    if(animale[poz2].position.y>yMin && sus)
+                    {
+                        animale[poz2].position.y-=yStep;
+                        animale[poz5].position.y-=yStep;
+                    }
+                    if(animale[poz5].position.y<=yMin)
+                    {
+                        sus=false;
+                        if(interschimba)
+                        {
+                            mesaj.text="Nu sunt in ordine crescatoare deci se interschimba .";
+                            var aux=vec[poz2];
+                            vec[poz2]=vec[poz5];
+                            vec[poz5]=aux;
+                        }
+                        else
+                        {
+                            mesaj.text="Sunt in ordine crescatoare deci nu se interschimba .";
+                        }
+                    }
+                    if(animale[poz2].position.y<yMax && !sus)
+                    {
+                        animale[poz2].position.y+=yStep;
+                        animale[poz5].position.y+=yStep;
+                        if(interschimba)
+                        {
+                            animale[poz2].position.x+=2.25*yStep*ratio;
+                            animale[poz5].position.x-=2.25*yStep*ratio;
+                        }
+                    }
+                    if(animale[poz2].position.y>=yMax)
+                    {
+                        interschimba=false;
+                    }
+                    if(animale[poz2].position.y==yMax && !sus)
+                    {
+                        sus=true;
+                        animale[poz2].position.y=yMax;
+                        animale[poz5].position.y=yMax;
+                        ticker25.remove(loop25);
+                        ticker25.destroy();
+                    }
+                }
+            }
+            if(contor==9)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 9";
+                mesaj.text="Se compara al doilea cu al saselea element."
+                var poz2=vec.indexOf(2);
+                console.log("poz2="+poz2);
+                var poz6=vec.indexOf(6);
+                console.log("poz6="+poz6);
+                console.log("sus="+sus);
+                if(poz2>poz6)
+                    interschimba=true;
+                const ticker26=new PIXI.Ticker;
+                ticker26.add(delta =>loop26(delta));
+                ticker26.start();
+                function loop26(delta){
+                    if(animale[poz2].position.y>yMin && sus)
+                    {
+                        animale[poz2].position.y-=yStep;
+                        animale[poz6].position.y-=yStep;
+                    }
+                    if(animale[poz6].position.y<=yMin)
+                    {
+                        sus=false;
+                        if(interschimba)
+                        {
+                            mesaj.text="Nu sunt in ordine crescatoare deci se interschimba .";
+                            var aux=vec[poz2];
+                            vec[poz2]=vec[poz6];
+                            vec[poz6]=aux;
+                        }
+                        else
+                        {
+                            mesaj.text="Sunt in ordine crescatoare deci nu se interschimba .";
+                        }
+                    }
+                    if(animale[poz2].position.y<yMax && !sus)
+                    {
+                        animale[poz2].position.y+=yStep;
+                        animale[poz6].position.y+=yStep;
+                        if(interschimba)
+                        {
+                            animale[poz2].position.x+=3*yStep*ratio;
+                            animale[poz6].position.x-=3*yStep*ratio;
+                        }
+                    }
+                    if(animale[poz2].position.y>=yMax)
+                    {
+                        interschimba=false;
+                    }
+                    if(animale[poz2].position.y==yMax && !sus)
+                    {
+                        sus=true;
+                        animale[poz2].position.y=yMax;
+                        animale[poz6].position.y=yMax;
+                        ticker26.remove(loop26);
+                        ticker26.destroy();
+                        animale[1].tint=0xffff00;
+                    }
+                }
+            }
+            if(contor==10)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 10";
+                mesaj.text="Se compara al treilea cu al patrulea element."
+                var poz3=vec.indexOf(3);
+                console.log("poz3="+poz3);
+                var poz4=vec.indexOf(4);
+                console.log("poz4="+poz4);
+                if(poz3>poz4)
+                    interschimba=true;
+                const ticker34=new PIXI.Ticker;
+                ticker34.add(delta =>loop34(delta));
+                ticker34.start();
+                function loop34(delta){
+                    if(animale[poz3].position.y>yMin && sus)
+                    {
+                        animale[poz3].position.y-=yStep;
+                        animale[poz4].position.y-=yStep;
+                    }
+                    if(animale[poz3].position.y<=yMin)
+                    {
+                        sus=false;
+                        if(interschimba)
+                        {
+                            mesaj.text="Nu sunt in ordine crescatoare deci se interschimba .";
+                            var aux=vec[poz3];
+                            vec[poz3]=vec[poz4];
+                            vec[poz4]=aux;
+                        }
+                        else
+                        {
+                            mesaj.text="Sunt in ordine crescatoare deci nu se interschimba .";
+                        }
+                    }
+                    if(animale[poz3].position.y<yMax && !sus)
+                    {
+                        animale[poz3].position.y+=yStep;
+                        animale[poz4].position.y+=yStep;
+                        if(interschimba)
+                        {
+                            animale[poz3].position.x+=0.75*yStep*ratio;
+                            animale[poz4].position.x-=0.75*yStep*ratio;
+                        }
+                    }
+                    if(animale[poz3].position.y>=yMax)
+                    {
+                        interschimba=false;
+                    }
+                    if(animale[poz3].position.y==yMax && !sus)
+                    {
+                        sus=true;
+                        animale[poz3].position.y=yMax;
+                        animale[poz4].position.y=yMax;
+                        ticker34.remove(loop34);
+                        ticker34.destroy();
+                    }
+                }
+            }
+            if(contor==11)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 11";
+                mesaj.text="Se compara al treilea cu al cincilea element."
+                var poz3=vec.indexOf(3);
+                console.log("poz3="+poz3);
+                var poz5=vec.indexOf(5);
+                console.log("poz5="+poz5);
+                console.log("sus="+sus);
+                if(poz3>poz5)
+                    interschimba=true;
+                const ticker35=new PIXI.Ticker;
+                ticker35.add(delta =>loop35(delta));
+                ticker35.start();
+                function loop35(delta){
+                    if(animale[poz3].position.y>yMin && sus)
+                    {
+                        animale[poz3].position.y-=yStep;
+                        animale[poz5].position.y-=yStep;
+                    }
+                    if(animale[poz3].position.y<=yMin)
+                    {
+                        sus=false;
+                        if(interschimba)
+                        {
+                            mesaj.text="Nu sunt in ordine crescatoare deci se interschimba .";
+                            var aux=vec[poz3];
+                            vec[poz3]=vec[poz5];
+                            vec[poz5]=aux;
+                        }
+                        else
+                        {
+                            mesaj.text="Sunt in ordine crescatoare deci nu se interschimba .";
+                        }
+                    }
+                    if(animale[poz3].position.y<yMax && !sus)
+                    {
+                        animale[poz3].position.y+=yStep;
+                        animale[poz5].position.y+=yStep;
+                        if(interschimba)
+                        {
+                            animale[poz3].position.x+=1.5*yStep*ratio;
+                            animale[poz5].position.x-=1.5*yStep*ratio;
+                        }
+                    }
+                    if(animale[poz3].position.y>=yMax)
+                    {
+                        interschimba=false;
+                    }
+                    if(animale[poz3].position.y==yMax && !sus)
+                    {
+                        sus=true;
+                        animale[poz3].position.y=yMax;
+                        animale[poz5].position.y=yMax;
+                        ticker35.remove(loop35);
+                        ticker35.destroy();
+                    }
+                }
+            }
+            if(contor==12)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 12";
+                mesaj.text="Se compara al treilea cu al saselea element."
+                var poz3=vec.indexOf(3);
+                console.log("poz3="+poz3);
+                var poz6=vec.indexOf(6);
+                console.log("poz6="+poz6);
+                console.log("sus="+sus);
+                if(poz3>poz6)
+                    interschimba=true;
+                const ticker36=new PIXI.Ticker;
+                ticker36.add(delta =>loop36(delta));
+                ticker36.start();
+                function loop36(delta){
+                    if(animale[poz3].position.y>yMin && sus)
+                    {
+                        animale[poz3].position.y-=yStep;
+                        animale[poz6].position.y-=yStep;
+                    }
+                    if(animale[poz6].position.y<=yMin)
+                    {
+                        sus=false;
+                        if(interschimba)
+                        {
+                            mesaj.text="Nu sunt in ordine crescatoare deci se interschimba .";
+                            var aux=vec[poz3];
+                            vec[poz3]=vec[poz6];
+                            vec[poz6]=aux;
+                        }
+                        else
+                        {
+                            mesaj.text="Sunt in ordine crescatoare deci nu se interschimba .";
+                        }
+                    }
+                    if(animale[poz3].position.y<yMax && !sus)
+                    {
+                        animale[poz3].position.y+=yStep;
+                        animale[poz6].position.y+=yStep;
+                        if(interschimba)
+                        {
+                            animale[poz3].position.x+=2.25*yStep*ratio;
+                            animale[poz6].position.x-=2.25*yStep*ratio;
+                        }
+                    }
+                    if(animale[poz3].position.y>=yMax)
+                    {
+                        interschimba=false;
+                    }
+                    if(animale[poz3].position.y==yMax && !sus)
+                    {
+                        sus=true;
+                        animale[poz3].position.y=yMax;
+                        animale[poz6].position.y=yMax;
+                        ticker36.remove(loop36);
+                        ticker36.destroy();
+                        animale[2].tint=0xffff00;
+
+                    }
+                }
+            }
+            if(contor==13)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 13";
+                mesaj.text="Se compara al patrulea cu al cincilea element."
+                var poz4=vec.indexOf(4);
+                console.log("poz1="+poz4);
+                var poz5=vec.indexOf(5);
+                console.log("poz5="+poz5);
+                if(poz4>poz5)
+                    interschimba=true;
+                const ticker45=new PIXI.Ticker;
+                ticker45.add(delta =>loop45(delta));
+                ticker45.start();
+                function loop45(delta){
+                    if(animale[poz4].position.y>yMin && sus)
+                    {
+                        animale[poz4].position.y-=yStep;
+                        animale[poz5].position.y-=yStep;
+                    }
+                    if(animale[poz4].position.y<=yMin)
+                    {
+                        sus=false;
+                        if(interschimba)
+                        {
+                            mesaj.text="Nu sunt in ordine crescatoare deci se interschimba .";
+                            var aux=vec[poz4];
+                            vec[poz4]=vec[poz5];
+                            vec[poz5]=aux;
+                        }
+                        else
+                        {
+                            mesaj.text="Sunt in ordine crescatoare deci nu se interschimba .";
+                        }
+                    }
+                    if(animale[poz4].position.y<yMax && !sus)
+                    {
+                        animale[poz4].position.y+=yStep;
+                        animale[poz5].position.y+=yStep;
+                        if(interschimba)
+                        {
+                            animale[poz4].position.x+=0.75*yStep*ratio;
+                            animale[poz5].position.x-=0.75*yStep*ratio;
+                        }
+                    }
+                    if(animale[poz4].position.y>=yMax)
+                    {
+                        interschimba=false;
+                    }
+                    if(animale[poz4].position.y==yMax && !sus)
+                    {
+                        sus=true;
+                        animale[poz4].position.y=yMax;
+                        animale[poz5].position.y=yMax;
+                        ticker45.remove(loop45);
+                        ticker45.destroy();
+                    }
+                }
+            }
+            if(contor==14)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 14";
+                mesaj.text="Se compara al patrulea cu al saselea element."
+                var poz4=vec.indexOf(4);
+                console.log("poz4="+poz4);
+                var poz6=vec.indexOf(6);
+                console.log("poz6="+poz6);
+                console.log("sus="+sus);
+                if(poz4>poz6)
+                    interschimba=true;
+                const ticker46=new PIXI.Ticker;
+                ticker46.add(delta =>loop46(delta));
+                ticker46.start();
+                function loop46(delta){
+                    if(animale[poz4].position.y>yMin && sus)
+                    {
+                        animale[poz4].position.y-=yStep;
+                        animale[poz6].position.y-=yStep;
+                    }
+                    if(animale[poz4].position.y<=yMin)
+                    {
+                        sus=false;
+                        if(interschimba)
+                        {
+                            mesaj.text="Nu sunt in ordine crescatoare deci se interschimba .";
+                            var aux=vec[poz4];
+                            vec[poz4]=vec[poz6];
+                            vec[poz6]=aux;
+                        }
+                        else
+                        {
+                            mesaj.text="Sunt in ordine crescatoare deci nu se interschimba .";
+                        }
+                    }
+                    if(animale[poz4].position.y<yMax && !sus)
+                    {
+                        animale[poz4].position.y+=yStep;
+                        animale[poz6].position.y+=yStep;
+                        if(interschimba)
+                        {
+                            animale[poz4].position.x+=1.5*yStep*ratio;
+                            animale[poz6].position.x-=1.5*yStep*ratio;
+                        }
+                    }
+                    if(animale[poz4].position.y>=yMax)
+                    {
+                        interschimba=false;
+                    }
+                    if(animale[poz4].position.y==yMax && !sus)
+                    {
+                        sus=true;
+                        animale[poz4].position.y=yMax;
+                        animale[poz6].position.y=yMax;
+                        ticker46.remove(loop46);
+                        ticker46.destroy();
+                        animale[3].tint=0xffff00;
+                    }
+                }
+            }
+            if(contor==15)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 15";
+                mesaj.text="Se compara al cincilea cu al saselea element."
+                var poz5=vec.indexOf(5);
+                console.log("poz5="+poz5);
+                var poz6=vec.indexOf(6);
+                console.log("poz6="+poz6);
+                if(poz5>poz6)
+                    interschimba=true;
+                const ticker56=new PIXI.Ticker;
+                ticker56.add(delta =>loop56(delta));
+                ticker56.start();
+                function loop56(delta){
+                    if(animale[poz5].position.y>yMin && sus)
+                    {
+                        animale[poz5].position.y-=yStep;
+                        animale[poz6].position.y-=yStep;
+                    }
+                    if(animale[poz5].position.y<=yMin)
+                    {
+                        sus=false;
+                        if(interschimba)
+                        {
+                            mesaj.text="Nu sunt in ordine crescatoare deci se interschimba .";
+                            var aux=vec[poz5];
+                            vec[poz5]=vec[poz6];
+                            vec[poz6]=aux;
+                        }
+                        else
+                        {
+                            mesaj.text="Sunt in ordine crescatoare deci nu se interschimba .";
+                        }
+                    }
+                    if(animale[poz5].position.y<yMax && !sus)
+                    {
+                        animale[poz5].position.y+=yStep;
+                        animale[poz6].position.y+=yStep;
+                        if(interschimba)
+                        {
+                            animale[poz5].position.x+=0.75*yStep*ratio;
+                            animale[poz6].position.x-=0.75*yStep*ratio;
+                        }
+                    }
+                    if(animale[poz5].position.y>=yMax)
+                    {
+                        interschimba=false;
+                    }
+                    if(animale[poz5].position.y==yMax && !sus)
+                    {
+                        sus=true;
+                        animale[poz5].position.y=yMax;
+                        animale[poz6].position.y=yMax;
+                        ticker56.remove(loop12);
+                        ticker56.destroy();
+                        animale[4].tint=0xffff00;
+                        animale[5].tint=0xffff00;
+                        mesaj.text=" Multimea este sortata.";
+                    }
+                }
+            }
+            contor++;
+        });
+	</script
+  </body>
+</html>

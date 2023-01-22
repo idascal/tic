@@ -1,0 +1,678 @@
+<!doctype html>
+<html>
+  <head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/7.1.0/pixi.min.js"></script>
+  </head>
+  <body>
+	<script>
+        //  https://pixijs.io/examples/#/demos-basic/blendmodes.js
+        //  https://github.com/pixijs/pixijs/wiki/v5-Custom-Application-GameLoop
+        //  https://stackoverflow.com/questions/69518512/removing-a-specific-instance-of-a-function-from-ticker
+		var contor=0,nrAnimale,deltaX,interschimba=false,sus=true;
+        var nrInterschimbari=0,yStep=0.2,poz,poz1,dreapta,nrPasi,i;
+		var vec=new Array();
+        const animale=new Array();
+        var pozitii=new Array();
+        var width=window.innerWidth-25;
+        console.log("width="+width);
+        var height=window.innerHeight-25;
+        console.log("height="+height);
+        var images=new Array();
+        images.push('images/pisica.png');
+        images.push('images/caine.png');
+        images.push('images/leu.png');
+        images.push('images/vaca.png');
+        images.push('images/rinocer.png');
+        images.push('images/elefant.png');
+        nrAnimale=images.length;
+        deltaX=parseInt((width-40)/nrAnimale);
+        console.log("deltaX="+deltaX);
+        var ratio=deltaX/150;
+        console.log("ratio="+ratio);
+        var yMax=parseInt(0.67*height);
+        console.log("yMax="+yMax);
+        var yMin=yMax-200;
+        var fontSize=Math.floor(24*ratio);
+        console.log("fontSize="+fontSize);
+		let app = new PIXI.Application({ width: width, height: height });
+		document.body.appendChild(app.view);
+        for(i=0;i<nrAnimale;i++)
+        {
+            var texture = PIXI.Texture.from(images[i]);
+            var animal= new PIXI.Sprite(texture);
+            animal.position.y = yMax;
+            animal.scale.set(ratio,ratio);
+            animale.push(animal);
+        } 
+        var slowMes = new PIXI.Text('INCET', { fontFamily: 'Arial', fontSize:14, fill: '#ff0000'});
+        slowMes.position.set(185,55);
+        var slow=new PIXI.Graphics();
+         // set a fill and line style
+        slow.beginFill(0xccffff);		
+        slow.lineStyle(1, 0xff0000, 1);
+        slow.drawCircle(215, 65, 35);
+        slow.endFill();
+        slow.addChild(slowMes);
+        app.stage.addChild(slow);
+        slow.interactive=true;
+        slow.on("click",function(){
+            yStep=0.5;
+            slow.clear();
+            slow.beginFill(0x00ff00);		
+            slow.lineStyle(1, 0xff0000, 1);
+            slow.drawCircle(215, 65, 35);
+            slow.endFill();
+            fast.clear();
+            fast.beginFill(0xccffff);		
+            fast.lineStyle(1, 0xff0000, 1);
+            fast.drawCircle(285, 65, 35);
+            fast.endFill();
+            accel.clear();
+            accel.beginFill(0xccffff);		
+            accel.lineStyle(1, 0xff0000, 1);
+            accel.drawCircle(355, 65, 35);
+            accel.endFill();
+        });
+        var fastMes = new PIXI.Text('REPEDE', { fontFamily: 'Arial', fontSize:14, fill: '#ff0000'});
+        fastMes.position.set(255,55);
+        var fast=new PIXI.Graphics();
+         // set a fill and line style
+        fast.beginFill(0xccffff);		
+        fast.lineStyle(1, 0xff0000, 1);
+        fast.drawCircle(285, 65, 35);
+        fast.endFill();
+        fast.addChild(fastMes);
+        app.stage.addChild(fast);
+        fast.interactive=true;
+        fast.on("click",function(){
+            yStep=1.25;
+            fast.clear();
+            fast.beginFill(0x00ff00);		
+            fast.lineStyle(1, 0xff0000, 1);
+            fast.drawCircle(285, 65, 35);
+            fast.endFill();
+            slow.clear();
+            slow.beginFill(0xccffff);		
+            slow.lineStyle(1, 0xff0000, 1);
+            slow.drawCircle(215, 65, 35);
+            slow.endFill();
+            accel.clear();
+            accel.beginFill(0xccffff);		
+            accel.lineStyle(1, 0xff0000, 1);
+            accel.drawCircle(355, 65, 35);
+            accel.endFill();
+        });
+        var accelMes = new PIXI.Text('FOARTE\nREPEDE', { fontFamily: 'Arial', fontSize:14, fill: '#ff0000'});
+        accelMes.position.set(325,50);
+        var accel=new PIXI.Graphics();
+         // set a fill and line style
+        accel.beginFill(0xccffff);		
+        accel.lineStyle(1, 0xff0000, 1);
+        accel.drawCircle(355, 65, 35);
+        accel.endFill();
+        accel.addChild(accelMes);
+        app.stage.addChild(accel);
+        accel.interactive=true;
+        accel.on("click",function(){
+            yStep=2;
+            accel.clear();
+            accel.beginFill(0x00ff00);		
+            accel.lineStyle(1, 0xff0000, 1);
+            accel.drawCircle(355, 65, 35);
+            accel.endFill();
+            fast.clear();
+            fast.beginFill(0xccffff);		
+            fast.lineStyle(1, 0xff0000, 1);
+            fast.drawCircle(285, 65, 35);
+            fast.endFill();
+            slow.clear();
+            slow.beginFill(0xccffff);		
+            slow.lineStyle(1, 0xff0000, 1);
+            slow.drawCircle(215, 65, 35);
+            slow.endFill();
+        });
+        var start = new PIXI.Graphics();
+		// set a fill and line style
+        start.beginFill(0xFFFF00);		
+        start.lineStyle(1, 0x0000ff, 1);       
+            // draw a shape
+        start.moveTo(10,30);
+        start.lineTo(180, 30);
+        start.lineTo(180, 100);
+        start.lineTo(10, 100);
+        start.lineTo(10, 30);
+        start.endFill();
+        var click = new PIXI.Text('START', { font: 'bold 16px Arial', fill: '#cc00ff'});
+        var mesaj= new PIXI.Text('Se adauga elementele la intamplare.', { fontFamily: 'Arial', fontSize:fontSize, fill: '#cc00ff'});
+        click.position.set(40,32);
+        mesaj.position.set(10,110);
+        start.addChild(click);
+        app.stage.addChild(start);
+        app.stage.addChild(mesaj);
+        start.interactive=true;
+        start.on("click", function() {
+            console.log('contor='+contor);
+            if(contor==0)
+            {
+                var i=0;
+                vec[i]=Math.floor((Math.random() * 6) + 1);
+                while(i<nrAnimale)
+                {
+                    var x=Math.floor((Math.random() * 6) + 1);
+                    var ok=1;
+                    for(j=0;j<=i;j++)
+                        if(vec[j]==x)
+                            ok=0;
+                    if(ok)
+                    {
+                        i++;
+                        vec[i]=x;
+                    }
+                    if(i==5 && !ok)
+                        i++;
+                }
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                    animale[j].position.x = (vec[j]-1)*deltaX+20;
+                    app.stage.addChild(animale[j]);
+                }
+            }
+            else if(contor==1)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(animale[j].position.x);
+                }
+                click.text="Pasul 1";
+                mesaj.text="Primul element se considera sortat."
+                poz=vec.indexOf(1);
+                animale[poz].tint=0xffff00;   
+            }
+            if(contor==2)
+            {
+                click.text="Pasul 2";
+                mesaj.text="Se cauta pozitia urmatorului element in zona sortata."
+                poz1=vec.indexOf(2);
+                console.log("poz="+poz);
+                console.log("poz1="+poz1);
+                console.log("sus="+sus);
+                if(poz1<poz){
+                    interschimba=true;
+                    var aux=vec[poz];
+                    vec[poz]=vec[poz1];
+                    vec[poz1]=aux;
+                    dreapta=false;
+                    xMax=animale[poz].position.x+deltaX;
+                }
+                else{
+                    interschimba=false;
+                }
+                const ticker13=new PIXI.Ticker;
+                ticker13.add(delta =>loop13(delta));
+                ticker13.start();
+                function loop13(delta){
+                    if(animale[poz1].position.y>yMin && sus){
+                        animale[poz1].position.y-=yStep;
+                    }
+                    if(animale[poz1].position.y<=yMin){
+                        sus=false;
+                        if(interschimba){
+                            dreapta=true;
+                        }
+                    }
+                    if(interschimba){
+                        if(animale[poz].position.x<xMax && dreapta){
+                            animale[poz].position.x+=1.5*yStep*ratio;
+                        }
+                        if(animale[poz].position.x>=xMax){
+                            mesaj.text="Se insereaza elementul in pozitia corespunzatoare."
+                            dreapta=false;
+                        }
+                        if(animale[poz1].position.y<=yMax && !sus && !dreapta){
+                            animale[poz1].position.y+=yStep;
+                            animale[poz1].position.x-=0.75*yStep*ratio;
+                        }
+                    }
+                    else{
+                        if(animale[poz1].position.y<=yMax && !sus){
+                            mesaj.text="Se insereaza elementul in pozitia corespunzatoare."
+                            animale[poz1].position.y+=yStep;
+                        }
+                    }
+                    if(animale[poz1].position.y>=yMax && !sus){
+                        sus=true;
+                        for(j=0;j<nrAnimale;j++)
+                        {
+                            console.log(animale[j].position.x);
+                        }
+                        animale[poz1].position.y=yMax;
+                        animale[poz].position.y=yMax;
+                        //animale[poz1].position.x=20;
+                        //animale[poz].position.x=176;
+                        animale[poz1].tint=0xffff00;
+                        ticker13.remove(loop13);
+                        ticker13.destroy();
+                    }
+                }
+            }
+            if(contor==3)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                interschimba=false;
+                sus=true;
+                click.text="Pasul 3";
+                mesaj.text="Se cauta pozitia urmatorului element in zona sortata."
+                for(i=1;i<=3;i++){
+                    poz=vec.indexOf(i);
+                    pozitii[i]=poz;
+                }
+                for(i=1;i<=3;i++){
+                    console.log("  poz"+i+"="+pozitii[i]);
+                }
+                console.log("sus="+sus);
+                nrPasi=0;
+                for(i=3;i>1;i--){
+                    console.log("--i="+i);
+                    if(pozitii[3]<pozitii[i-1]){
+                        nrPasi++;
+                        interschimba=true;
+                    }
+                    else{
+                        break;
+                    }
+                }
+                var nrPasi1=nrPasi;
+                console.log("nrPasi="+nrPasi);
+                xMax=animale[pozitii[3]].position.x;
+                i=0;
+                const ticker13=new PIXI.Ticker;
+                ticker13.add(delta =>loop13(delta));
+                ticker13.start();
+                function loop13(delta){
+                    if(animale[pozitii[3]].position.y>yMin && sus){
+                        animale[pozitii[3]].position.y-=yStep;
+                    }
+                    if(animale[pozitii[3]].position.y<=yMin){
+                        sus=false;
+                        if(interschimba){
+                            dreapta=true;
+                        }
+                    }
+                    if(interschimba){
+                        if(animale[pozitii[2-i]].position.x<xMax && dreapta && nrPasi>0){
+                            animale[pozitii[2-i]].position.x+=1.5*yStep*ratio;
+                        }
+                        if(animale[pozitii[2-i]].position.x>=xMax && nrPasi>0 ){
+                            mesaj.text="Se insereaza elementul in pozitia corespunzatoare."
+                            i++;
+                            nrPasi--;
+                            xMax=xMax-deltaX
+                            if(nrPasi==0){
+                                dreapta=false;
+                                i=0;
+                                console.log("---i="+i);
+                            }
+                        }
+                        if(animale[pozitii[3]].position.y<=yMax && !sus && !dreapta){
+                            animale[pozitii[3]].position.y+=yStep;
+                            animale[pozitii[3]].position.x-=0.75*yStep*ratio*nrPasi1;
+                        }
+                    }
+                    else{
+                        if(animale[pozitii[3]].position.y<=yMax && !sus){
+                            mesaj.text="Se insereaza elementul in pozitia corespunzatoare."
+                            animale[pozitii[3]].position.y+=yStep;
+                        }
+                    }
+                    if(animale[pozitii[3]].position.y>=yMax && !sus){
+                        sus=true;
+                        animale[pozitii[3]].tint=0xffff00;
+                        animale[pozitii[3]].position.y=yMax;
+                        for(j=0;j<nrAnimale;j++)
+                        {
+                            console.log(animale[j].position.x);
+                        }
+                        var aux=pozitii[3];
+                        for(i=3;i>1;i--){
+                            if(aux<pozitii[i-1]){
+                                pozitii[i]=pozitii[i-1];
+                            }
+                            else{
+                                break;
+                            }
+                        }
+                        pozitii[i]=aux;
+                        for(i=1;i<=3;i++)
+                        {
+                            console.log("pozit"+i+"="+pozitii[i]);
+                        }
+                        for(i=1;i<=3;i++)
+                        {
+                            vec[pozitii[i]]=i;
+                        }
+                        ticker13.remove(loop13);
+                        ticker13.destroy();
+                    }
+                }
+            }
+            if(contor==4)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                interschimba=false;
+                sus=true;
+                click.text="Pasul 4";
+                mesaj.text="Se cauta pozitia urmatorului element in zona sortata."
+                for(i=1;i<=4;i++){
+                    poz=vec.indexOf(i);
+                    pozitii[i]=poz;
+                }
+                for(i=1;i<=4;i++){
+                    console.log("  poz"+i+"="+pozitii[i]);
+                }
+                console.log("sus="+sus);
+                nrPasi=0;
+                xMax=animale[pozitii[4]].position.x;
+                for(i=4;i>1;i--){
+                    console.log("--i="+i);
+                    if(pozitii[4]<pozitii[i-1]){
+                        nrPasi++;
+                        interschimba=true;
+                    }
+                    else{
+                        break;
+                    }
+                }
+                var nrPasi1=nrPasi;
+                console.log("nrPasi="+nrPasi);
+                xMax=animale[pozitii[4]].position.x;
+                i=0;
+                const ticker13=new PIXI.Ticker;
+                ticker13.add(delta =>loop13(delta));
+                ticker13.start();
+                function loop13(delta){
+                    if(animale[pozitii[4]].position.y>yMin && sus){
+                        animale[pozitii[4]].position.y-=yStep;
+                    }
+                    if(animale[pozitii[4]].position.y<=yMin){
+                        sus=false;
+                        if(interschimba){
+                            dreapta=true;
+                        }
+                    }
+                    if(interschimba){
+                        if(animale[pozitii[3-i]].position.x<xMax && dreapta && nrPasi>0){
+                            animale[pozitii[3-i]].position.x+=1.5*yStep*ratio;
+                        }
+                        if(animale[pozitii[3-i]].position.x>=xMax && nrPasi>0 ){
+                            mesaj.text="Se insereaza elementul in pozitia corespunzatoare."
+                            i++;
+                            nrPasi--;
+                            xMax=xMax-deltaX;
+                            if(nrPasi==0){
+                                i=0;
+                                dreapta=false;
+                                console.log("---i="+i);
+                            }
+                        }
+                        if(animale[pozitii[4]].position.y<=yMax && !sus && !dreapta){
+                            animale[pozitii[4]].position.y+=yStep;
+                            animale[pozitii[4]].position.x-=0.75*yStep*ratio*nrPasi1;
+                        }
+                    }
+                    else{
+                        if(animale[pozitii[4]].position.y<=yMax && !sus){
+                            mesaj.text="Se insereaza elementul in pozitia corespunzatoare."
+                            animale[pozitii[4]].position.y+=yStep;
+                        }
+                    }
+                    if(animale[pozitii[4]].position.y>=yMax && !sus){
+                        sus=true;
+                        animale[pozitii[4]].position.y=yMax;
+                        animale[pozitii[4]].tint=0xffff00;
+                        for(j=0;j<nrAnimale;j++)
+                        {
+                            console.log(animale[j].position.x);
+                        }
+                        var aux=pozitii[4];
+                        for(i=4;i>1;i--){
+                            if(aux<pozitii[i-1]){
+                                pozitii[i]=pozitii[i-1];
+                            }
+                            else{
+                                break;
+                            }
+                        }
+                        pozitii[i]=aux;
+                        for(i=1;i<=4;i++)
+                        {
+                            console.log("pozit"+i+"="+pozitii[i]);
+                        }
+                        for(i=1;i<=4;i++)
+                        {
+                            vec[pozitii[i]]=i;
+                        }
+                        ticker13.remove(loop13);
+                        ticker13.destroy();
+                    }
+                }
+            }
+            if(contor==5)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                interschimba=false;
+                sus=true;
+                click.text="Pasul 5";
+                mesaj.text="Se cauta pozitia urmatorului element in zona sortata."
+                for(i=1;i<=5;i++){
+                    poz=vec.indexOf(i);
+                    pozitii[i]=poz;
+                }
+                for(i=1;i<=5;i++){
+                    console.log("  poz"+i+"="+pozitii[i]);
+                }
+                console.log("sus="+sus);
+                nrPasi=0;
+                xMax=animale[pozitii[5]].position.x;
+                for(i=5;i>1;i--){
+                    console.log("--i="+i);
+                    if(pozitii[5]<pozitii[i-1]){
+                        nrPasi++;
+                        interschimba=true;
+                    }
+                    else{
+                        break;
+                    }
+                }
+                var nrPasi1=nrPasi;
+                console.log("nrPasi="+nrPasi);
+                xMax=animale[pozitii[5]].position.x;
+                i=0;
+                const ticker13=new PIXI.Ticker;
+                ticker13.add(delta =>loop13(delta));
+                ticker13.start();
+                function loop13(delta){
+                    if(animale[pozitii[5]].position.y>yMin && sus){
+                        animale[pozitii[5]].position.y-=yStep;
+                    }
+                    if(animale[pozitii[5]].position.y<=yMin){
+                        sus=false;
+                        if(interschimba){
+                            dreapta=true;
+                        }
+                    }
+                    if(interschimba){
+                        if(animale[pozitii[4-i]].position.x<xMax && dreapta && nrPasi>0){
+                            animale[pozitii[4-i]].position.x+=1.5*yStep*ratio;
+                        }
+                        if(animale[pozitii[4-i]].position.x>=xMax && nrPasi>0 ){
+                            mesaj.text="Se insereaza elementul in pozitia corespunzatoare."
+                            i++;
+                            nrPasi--;
+                            xMax=xMax-deltaX;
+                            if(nrPasi==0){
+                                i=0;
+                                dreapta=false;
+                                console.log("---i="+i);
+                            }
+                        }
+                        if(animale[pozitii[5]].position.y<=yMax && !sus && !dreapta){
+                            animale[pozitii[5]].position.y+=yStep;
+                            animale[pozitii[5]].position.x-=0.75*yStep*ratio*nrPasi1;
+                        }
+                    }
+                    else{
+                        if(animale[pozitii[5]].position.y<=yMax && !sus){
+                            mesaj.text="Se insereaza elementul in pozitia corespunzatoare."
+                            animale[pozitii[5]].position.y+=yStep;
+                        }
+                    }
+                    if(animale[pozitii[5]].position.y>=yMax && !sus){
+                        sus=true;
+                        animale[pozitii[5]].position.y=yMax;
+                        animale[pozitii[5]].tint=0xffff00;
+                        for(j=0;j<nrAnimale;j++)
+                        {
+                            console.log(animale[j].position.x);
+                        }
+                        var aux=pozitii[5];
+                        for(i=5;i>1;i--){
+                            if(aux<pozitii[i-1]){
+                                pozitii[i]=pozitii[i-1];
+                            }
+                            else{
+                                break;
+                            }
+                        }
+                        pozitii[i]=aux;
+                        for(i=1;i<=5;i++)
+                        {
+                            console.log("pozit"+i+"="+pozitii[i]);
+                        }
+                        for(i=1;i<=5;i++)
+                        {
+                            vec[pozitii[i]]=i;
+                        }
+                        ticker13.remove(loop13);
+                        ticker13.destroy();
+                    }
+                }
+            }
+            if(contor==6)
+            {
+                for(j=0;j<nrAnimale;j++)
+                {
+                    console.log(vec[j]);
+                }
+                click.text="Pasul 6";
+                interschimba=false;
+                sus=true;
+                mesaj.text="Se cauta pozitia urmatorului element in zona sortata."
+                for(i=1;i<=6;i++){
+                    poz=vec.indexOf(i);
+                    pozitii[i]=poz;
+                }
+                for(i=1;i<=6;i++){
+                    console.log("  poz"+i+"="+pozitii[i]);
+                }
+                console.log("sus="+sus);
+                nrPasi=0;
+                xMax=animale[pozitii[6]].position.x;
+                for(i=6;i>1;i--){
+                    console.log("--i="+i);
+                    if(pozitii[6]<pozitii[i-1]){
+                        nrPasi++;
+                        interschimba=true;
+                    }
+                    else{
+                        break;
+                    }
+                }
+                var nrPasi1=nrPasi;
+                console.log("nrPasi="+nrPasi);
+                i=0;
+                const ticker13=new PIXI.Ticker;
+                ticker13.add(delta =>loop13(delta));
+                ticker13.start();
+                function loop13(delta){
+                    if(animale[pozitii[6]].position.y>yMin && sus){
+                        animale[pozitii[6]].position.y-=yStep;
+                    }
+                    if(animale[pozitii[6]].position.y<=yMin){
+                        sus=false;
+                        if(interschimba){
+                            dreapta=true;
+                        }
+                    }
+                    if(interschimba){
+                        if(animale[pozitii[5-i]].position.x<xMax && dreapta && nrPasi>0){
+                            animale[pozitii[5-i]].position.x+=1.5*yStep*ratio;
+                        }
+                        if(animale[pozitii[5-i]].position.x>=xMax && nrPasi>0 ){
+                            mesaj.text="Se insereaza elementul in pozitia corespunzatoare."
+                            i++;
+                            nrPasi--;
+                            xMax=xMax-deltaX;
+                            if(nrPasi==0){
+                                i=0;
+                                dreapta=false;
+                                console.log("---i="+i);
+                            }
+                        }
+                        if(animale[pozitii[6]].position.y<=yMax && !sus && !dreapta){
+                            animale[pozitii[6]].position.y+=yStep;
+                            animale[pozitii[6]].position.x-=0.75*yStep*ratio*nrPasi1;
+                        }
+                    }
+                    else{
+                        if(animale[pozitii[6]].position.y<=yMax && !sus){
+                            mesaj.text="Se insereaza elementul in pozitia corespunzatoare."
+                            animale[pozitii[6]].position.y+=yStep;
+                        }
+                    }
+                    if(animale[pozitii[6]].position.y>=yMax && !sus){
+                        sus=true;
+                        animale[pozitii[6]].position.y=yMax;
+                        animale[pozitii[6]].tint=0xffff00;
+                        for(j=0;j<nrAnimale;j++)
+                        {
+                            console.log(animale[j].position.x);
+                        }
+                        var aux=pozitii[6];
+                        for(i=6;i>1;i--){
+                            if(aux<pozitii[i-1]){
+                                pozitii[i]=pozitii[i-1];
+                            }
+                            else{
+                                break;
+                            }
+                        }
+                        pozitii[i]=aux;
+                        for(i=1;i<=6;i++)
+                        {
+                            console.log("pozit"+i+"="+pozitii[i]);
+                        }
+                        for(i=1;i<=6;i++)
+                        {
+                            vec[pozitii[i]]=i;
+                        }
+                        ticker13.remove(loop13);
+                        ticker13.destroy();
+                        mesaj.text=" Multimea este sortata.";
+                    }
+                }
+            }
+            contor++;
+        });
+	</script
+  </body>
+</html>
