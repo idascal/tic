@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Fisa_excel_7</title>
+
+        <meta charset="utf-8"> 
+
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+    <body>
+        <h4 style="font-size:15px;">Microsoft Office Excel. Teste şi aplicaţi</h4>
+        <PageTitle style="text-align:center">
+            <h1>
+                    F I Ş A Nr. 7 <br>
+                    Microsoft Office Excel - Liste (Baze de date) 
+            </h1>
+        </PageTitle></br>
+
+        <ol type="1">
+            <li>
+                Modificaţi numărul de foi de calcul prestabilit pentru agendele de lucru la patru foi de calcul. 
+                <b>Tools -> Options</b> 
+            </li>
+            <img src="img/7.1.png">
+
+            <li>
+                Creaţi o agendă de lucru nouă. <b>File -> New -> Blank workbook</b>
+            </li>
+            <li>
+                Setaţi prima foaie de calcul a agendei de lucru astfel: format A4; margini: sus 1.82, jos 1.85, stânga 1.65, 
+                dreapta 1.62; antet 1.09, subsol 1.05; orientare orizontală. 
+            </li>
+            <img src="img/7.2.png">
+
+            <li>
+                Realizaţi un antet care să conţină: aliniat la stânga <b>STATISTICĂ</b>, centrat <b>EXAMENE</b>, în dreapta <b>numărul paginii</b>.
+            </li>
+            <li>
+                Realizaţi un subsol care să conţină: în stânga <b>numele vostru</b>, centrat <b>numele foii de calcul</b>, în dreapta <b>data şi ora curentă</b>.
+            </li>
+            <img src="img/7.3.png">
+
+            <li>
+                În prima foaie de calcul creaţi o bază de date <b>STUDENT</b> care va conţine date referitoare la rezultatele activităţii studenţilor: <br>
+                <img src="img/7.4.png">
+                
+                <ul>
+                    <li>se va utiliza font Bookman Old Style, dimensiune 12, <blue>culoare albastru</blue>;</li>
+                    <li>fundalul tabelului va avea <yellow>culoarea galben</yellow>;</li>
+                    <li>aplicaţi tabelului un chenar de <green>culoare verde</green>, stilul liniei continuă, pentru partea exterioară şi de <blue>culoare albastră</blue> stilul liniei continuă, pentru partea interioară;</li>
+                
+                    <p><b>Format -> Cells…</b></p>
+                    <img src="img/7.5.png">
+
+                    <li> redenumiţi foaia de calcul <b>Sheet1</b> cu numele <b>STAT1</b>; <br>
+                        <b>Format -> Sheet -> Rename -></b> ”dublu clic” pe etichetă; 
+                    </li>
+                    <li>calculaţi media pentru fiecare student;</li>
+                    <li>
+                        câmpul se va completa selectiv, în funcţie de valoarea corespondentă din câmpul <b>Media</b> folosind 
+                        funcţia <b>if</b> conform relaţiei: <b>dacă media>=9 atunci Bursa este de 1200000 lei, altfel nu se acordă</b>; <br>
+                        <b>∑ ▼ -> More Functions…</b>
+                        <img src="img/7.6.png">
+                    </li>
+
+                    <li>
+                        pentru studenţii care primesc bursă aplicaţi un format condiţional astfel încât valorile care respectă
+                        condiţia să fie scrise cursiv cu <green>culoarea verde</green>; 
+                    </li>
+                    <li>
+                        în foia de calcul 4 să se ducă doar studenţii de la finanţe şi cei de la contabilitate şi să se reprezinte 
+                        grafic media acesor studenţi;
+                    </li>
+                    <li>
+                        sortaţi baza de date descrescător după <b>Media</b> şi alfabetic după câmpul <b>Student</b>; <br>
+                        <b>Data -> Sort</b>
+                    </li>
+                    <li>obţineţi media pentru fiecare secţie şi cumulate la nivel de facultate;</li>
+                    <li>
+                        să se caute în baza de date studenţii al căror nume începe cu litera C; <br>
+                        <b>Data -> Filter -> AutoFilter</b>
+                    </li>
+                    <li>să se afişeze câţi elevi nu primesc bursă de la secţia contabilitate;</li>
+                    <li>
+                        copiaţi baza de date <b>STUDENT</b> în foile de calcul <b>Sheet2</b>, <b>Sheet3</b>; <br>
+                        <b>Edit -> Move or Copy Sheet…</b>
+                    </li>
+                    <img src="img/7.7.png">
+
+                    <li>redenumiţi foaia de calcul <b>Sheet2</b> cu numele <b>STAT2</b>, <b>Sheet3</b> cu numele <b>STAT3</b></li>
+                    <li>
+                        în foaia de calcul <b>STAT2</b>:
+
+                        <ul>
+                            <li>sortaţi <i>alfabetic</i> după câmpul <b>Secţia</b> drept criteriu principal şi câmpul <b>Media</b> criteriu secundar;</li>
+                        </ul>
+                    </li>
+                    <li>
+                        în foaia de calcul <b>STAT3</b>:
+
+                        <ul>
+                            <li>sortaţi descrescător după câmpul <b>Media</b> drept criteriu principal şi câmpul <b>Student</b> criteriu secundar;</li>
+                            <li>filtraţi baza de date pentru studenţii cu <b>Media >=9</b></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+            <li>Salvaţi agenda de lucru cu numele <b>STATISTICA</b>. Închideţi agenda de lucru</li>
+        </ol>
+    </body>
+</html>

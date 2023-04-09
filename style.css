@@ -1,0 +1,158 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+div.center {
+    text-align: center;
+}
+body {
+    margin: 50;
+}
+
+:root {
+    --bar-width: 60px;
+    --bar-height: 8px;
+    --hamburger-gap: 6px;
+    --foreground: #333;
+    --background: yellow;
+    --hamburger-margin: 18px;
+    --animation-timing: 200ms ease-in-out;
+    --animation-timing-dropdown: 200ms ease-in-out;
+    --hamburger-height: calc( var(--bar-height) * 3 + var(--hamburger-gap) * 2 );
+    --menu-max-width: 10rem;
+    --text-size: 25px;
+    --background-color-dropdown-menu: #A00;
+}
+
+.hamburger-menu {
+    --x-width: calc(var(--hamburger-height) * 1.41421356237);
+    
+    display: flex;
+    flex-direction: column;
+    gap: var(--hamburger-gap);
+    width: max-content;
+    position: absolute;
+    top: var(--hamburger-margin);
+    left: var(--hamburger-margin);
+    z-index: 2;
+    cursor: pointer;
+}
+
+.hamburger-menu:has(input:checked) {
+    --foreground: white;
+    --background: #333;
+}
+
+.hamburger-menu:has(input:focus-visible)::before,
+.hamburger-menu:has(input:focus-visible)::after,
+.hamburger-menu input:focus-visible {
+    border: 1px solid var(--background);
+    box-shadow: 0 0 0 1px var(--foreground);
+}
+
+
+.hamburger-menu::before,
+.hamburger-menu::after,
+.hamburger-menu input {
+   content: "";
+   width: var(--bar-width); 
+   height: var(--bar-height);
+   background-color: var(--foreground);
+   border-radius: 99px;
+   transform-origin: left center;
+   transition: opacity var(--animation-timing), width var(--animation-timing), rotate var(--animation-timing), translate var(--animation-timing), 
+    background-color var(--animation-timing);
+}
+
+.hamburger-menu input {
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    pointer-events: none;
+}
+
+.hamburger-menu:has(input:checked)::before {
+    rotate: 45deg;
+    width: var(--x-width);
+    translate: 150 calc( var(--bar-height) / -2);
+}
+.hamburger-menu:has(input:checked)::after {
+    rotate: -45deg;
+    width: var(--x-width);
+    translate: 100 calc( var(--bar-height) / 2);
+}
+
+.hamburger-menu input:checked {
+    opacity: 0;
+    width: 0;
+}
+
+.sidebar {
+    transition: translate var(--animation-timing);
+    translate: -100%; 
+    padding: 0.5rem 1rem;
+    padding-top: calc(var(--hamburger-height) + var(--hamburger-margin) + 1rem);
+    background-color: var(--foreground);
+    color: var(--background);
+    max-width: var(--menu-max-width);
+    min-height: 90vh;
+    font-size: var(--text-size);
+}
+
+.hamburger-menu:has(input:checked) + .sidebar {
+    translate: 0;
+}
+
+
+.link {
+    background: none;
+    border: none;
+    text-decoration: none;
+    color: #777;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 0;
+}
+
+.dropdown.active > .link
+.link:hover {
+    color: black;
+}
+
+.dropdown {
+    position: relative;
+
+}
+.dropdown-menu {
+    position: absolute;
+    left: 0;
+    top: calc(100% + .25rem);
+    background-color: var(--background-color-dropdown-menu);
+    padding: 6rem;
+    border-radius: .25rem;
+    box-shadow: 0. 2px 5px 0 rgba(255, 255, 255, .1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-100px);
+    transition: opacity var(--animation-timing-dropdown), transform var(--animation-timing-dropdown);
+}
+
+.dropdown.active > .link + .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.information-grid {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 1rem;
+}
+.dropdown-links {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}

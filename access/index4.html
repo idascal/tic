@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FisaAccess4</title>
+
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>  
+        </br>
+       <div class="box">
+        <PageTitle style="text-align:center">
+            <h1>
+                    <u>F I Ş A Nr. 4<br></u>
+                    Crearea unei interogări
+            </h1>
+        </PageTitle></br>
+
+        <p>
+            Avem două tabele: <b>ANGAJATI</b> şi <b>COPII</b>. Cele două tabele sunt relaţionate: unei
+            linii din tabela ANGAJATI îi corespunde mai multe linii din tabela COPII. Se poate observa
+            în tabelul ANGAJATI că pentru Ionescu avem două înregistrări în tabela COPII
+        </p>
+
+        <table>
+            <tr>
+                <td><img src="img/4.1.png"></td>
+                <td>
+                    <p>
+                        Una dintre cele mai puternice operaţii în <bi>Access</bi> este aceea prin care reuşim să
+                        interogăm diferite obiecte. De exemplu, putem să interogăm ambele tabel în acelaşi timp şi să
+                        aflăm care este fiecare angajat, şi care este copilul fiecărui angajat.
+                    </p>
+                    <p>
+                        Din ribbon-ul<b>Create</b> alegeţi <bi>Query Design</bi>. Alegem ambele tabele, apăsăm <b>Add</b>, apoi <b>Close</b>
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+        <img src="img/4.2.png">
+
+        <p>Observăm că este evidenţiată şi relaţia dintre cele două tabele. În acest moment putem să vedem orice fel de informaţie stocată în aceste tabele.</p>
+
+        <table>
+            <tr>
+                <td><img src="img/4.3.png"></td>
+                <td>
+                    <p>
+                        Facem dublu-click pe
+                        coloana <bi>Nume</bi> din tabela
+                        ANGAJATI, şi ea este introdusă
+                        automat în această interogare.
+                        Mai adăugăm <bi>Salariu</bi> din
+                        tabela ANGAJATI şi <bi>Prenume</bi>
+                        din tabela COPII:
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+        <p>Apăsăm <b>Run</b>, din ribbon-ul contextual <b>Design</b> > <b>Result</b>.</p>
+
+        <table>
+            <tr>
+                <td><img src="img/4.4.png"></td>
+                <td>
+                    <p>
+                        Se vor afişa înregistrările găsite:
+                        Observăm că informaţiile despre
+                        Ionescu se repetă, pentru că el are doi copii.
+                    </p>
+                    <p>
+                        Ne întoarcem în <b>Design View</b>. <img src="img/1.4.png">
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="img/4.5.png"></td>
+                <td>
+                    <p>
+                        Ce este interesant, şi aici vedem cu adevărat puterea interogărilor, 
+                        este că vom putea să stabilim orice condiţii logice dorim, vom putea să 
+                        filtrăm tabelele din Access stabilind nişte condiţii logice.
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+        <p>
+            De exemplu, la angajaţi nu vrem decât acei angajaţi care au un salariu mai mare de
+            2000. În linia Criteria, corespunzătoare coloanei <bi>Salariu</bi> din interogare, introducem
+            condiţia: ‘>=<b>2000</b>’ .
+        </p>
+
+        <table>
+            <tr>
+                <td><img src="img/4.6.png"></td>
+                <td>
+                    <p>
+                        Apăsăm din nou <b>Run</b><img src="img/4.8.png"> şi observăm că
+                        singurul angajat care are salariul mai mare de
+                        2000, şi are şi copii, este Vasilescu.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="img/4.7.png"></td>
+                <td>
+                    <p>
+                        Ne întoarcem în modul <bi>Design View</bi><img src="img/1.4.png"> În acest moment putem să salvăm
+                        această interogare pentru a o refolosi mai târziu. Din <bi>Quick Access Toolbar</bi> apăsăm <bi>Save</bi> şi introducem
+                        numele interogării: <bi>‘1 Angajatiiplatiti bine cu copii’</bi>. Apăsăm<b>OK</b>.
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+        <p>
+            Închidem designerul de interogare, şi putem observa că în acest moment, în meniul din
+            partea stângă a ecranului avem două tabele şi o interogare cu numele menţionat mai sus.
+            Oricând interogarea poate fi modificată făcând click dreapta pe ea şi alegând <b>Design View</b>.
+        </p>
+
+        <img src="img/4.9.png">
+
+        <p>În baza noastră de date mai facem o interogare: toţi copii născuţi după o anumită dată (anul 2001)</p>
+       </div>
+    </body>
+</html>

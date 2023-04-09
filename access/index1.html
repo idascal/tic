@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>FisaAccess1</title>
+
+        <meta charset="utf-8"> 
+
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+        </br>
+        <div class="box">
+        <PageTitle style="text-align:center">
+            <h1>
+                    <u>F I Ş A Nr. 1<br></u>
+            </h1>
+        </PageTitle><br>
+
+        <ol type="A">   
+            <b><li>Crearea unei baze de date pornind de la zero</li></b>
+
+            <ol type="1">
+                <p>1. O să începem să creăm o bază de date nouă. Deschidem aplicaţia Microsoft Access 2007:</p>
+            </ol>
+
+            <p style="font-size: 25px;"><i><b>Dăm dublu clic pe pictograma sau START programs…….</b></i></p>
+
+            <ol>
+                <p>
+                    O să alegem <b>BlankDatabase</b>. <img src="img/1.1.png">Putem de asemenea să începem de la
+                    un anumit şablon (template) de bază de date, deja disponibil. Dăm un nume acestei baze
+                    de date, de exemplu <b>FIRMA.accdb</b>.
+                </p>
+                <p>
+                    Observaţi că şi extensia acestei baze de date s-a schimbat. Apăsăm <b>Create</b>, şi în
+                    acest moment putem să creăm componentele unei baze de date.<br>
+                    Observaţi că interfaţa Access porneşte deja cu un tabel nou.<br>
+                    O să stabilim câteva repere pentru a fi mai uşor de înţeles următoarele lecţii:
+                    <ul style="list-style-type:disc">
+                        <li>Orice coloană dintr-un tabel se numeşte <b><i>field</i></b>(câmp);</li>
+                        <li>Orice linie dintr-un tabel se numeşte <b><i>record</i></b> (înregistrare);</li>
+                        <li>Intersecţia dintre o linie şi o coloană se numeşte <b><i>value</i></b>(valoare).</li>
+                        <li>
+                            Cea mai importantă linie dintr-un tabel este acea linie care defineşte tabelul.
+                            Ea se numeşte <b><i>cap de tabel</i></b> (sau structura de bază). Acesta este primul
+                            lucru pe care îl creăm atunci când vrem să facem un tabel.
+                        </li>
+                        <li>Capul de tabel conţine definiţia coloanelor din tabelul respectiv</li>
+                    </ul>
+                </p>
+            </ol>
+
+            <b><li>Crearea unui tabel</li></b>
+
+            <ol>
+                <p>
+                    <b>2.</b> Vom crea un prim tabel numit <b>Clienti</b>. Observaţi că imediat după ce am
+                    început să creăm baza de date, <b>Access</b> se aşteaptă să creăm capul de tabel.
+                    Există două moduri de vizualizare ale unui tabel (din ribbon-ul contextual
+                </p>
+                <table>
+                    <tr>
+                        <td>
+                            <p>
+                               <b>Datasheet> Views): DatasheetViews</b>,<img src="img/1.2.png"> ce ne permite să creăm
+                                structura tabelului şi să introducem datele în acelaşi timp, şi
+                            </p>
+                        </td>
+                        <td>
+                            <img src="img/1.3.png">
+                        </td>
+                    </tr>
+                </table>
+                <p>
+                    <b>Design Views</b>.<img src="img/1.4.png">. <br>
+                    În momentul în care alegem să creăm un tabel în </br>
+                    <b>Design Views</b>, <img src="img/1.4.png">. <b></b> va cere imediat să
+                    introducem numele acestuia. Completăm numele <b>Clienti</b> şi dăm <b>OK</b>.<br>
+                 </p>
+                 <p>
+                    Completăm coloanele tabelului, specificând tipul de date pentru fiecare coloană în
+                    parte, astfel:
+                    <ul>
+                        <li><b>ID_CLIENT</b> coloană de tip <i><b>AutoNumber</b></i> (Numerotare automată 1,2,3,…..)</li>
+                        <li><b><i>Nume</i></b>, coloană de tip <i><b>Text</b></i> ;</li>
+                        <li><b><i>Oras</i></b>, coloană de tip <i><b>Text</b></i> ;</li>
+                        <li><b><i>Salariu</i></b>, coloană de tip <b><i>Number</i></b> (Număr)</li>
+                    </ul>
+                    (observăm că la tipul Number nişte subtipuri de date: alegem <b><i>Longinteger</i></b>- Întreg lung).
+                </p>
+            </ol>
+
+            <img src="img/1.5.png">
+            <p>
+                În acest moment putem vizualiza tabelul în modul <b>Datasheet View</b> <br>
+                <img src="img/1.2.png"> (ribon-ul contextual <b>Datasheet>Views</b>) pentru a putea introduce înregistrările.</br>
+                <img src="img/1.6.png">
+
+                <ul style="text-indent: 0px;">
+                    Apăsați <b>YES</b> dacă Access vă cere să salvați datele.
+                    Navigarea de la o valoare la alta se poate face apăsând tasta <b>Tab</b>
+                </ul>
+            </p>
+        </ol>
+        </div>
+    </body>
+</html>
