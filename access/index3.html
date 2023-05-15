@@ -1,112 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>FisaAccess3</title>
+        <title>FisaAccess4</title>
 
-        <meta charset="utf-8"> 
+        <meta charset="utf-8">
 
         <link rel="stylesheet" href="style.css">
-
     </head>
-    <body>
+    <body>  
         </br>
-        <div class="box">
+       <div class="box">
         <PageTitle style="text-align:center">
             <h1>
-                    <u>F I Ş A Nr. 3<br></u>
-                    Crearea relaţiilor
+                    <u>F I Ş A Nr. 4<br></u>
+                    Crearea unei interogări
             </h1>
-        </PageTitle><br>
+        </PageTitle></br>
 
         <p>
-            Să presupunem că avem o tabelă unde ţinem datele despre copii angajaţilor. Din
-            ribbon-ul <bi>Create</bi> creăm un nou tabel <bi>(Table)</bi>.
-        </p>
-        <p>
-            Mergem în modul de vizualizare <bi>Design View</bi>,<img src="img/1.4.png"> pentru a realiza
-            structura tabelului. În acest moment introducem numele noului tabel: <b>COPII</b>. Apăsăm <b>OK</b>
+            Avem două tabele: <b>ANGAJATI</b> şi <b>COPII</b>. Cele două tabele sunt relaţionate: unei
+            linii din tabela ANGAJATI îi corespunde mai multe linii din tabela COPII. Se poate observa
+            în tabelul ANGAJATI că pentru Ionescu avem două înregistrări în tabela COPII
         </p>
 
         <table>
             <tr>
-                <td><img src="img/3.1.png"></td>
+                <td><img src="img/4.1.png"></td>
                 <td>
                     <p>
-                        Structura tabelului va fi următoarea: 
-                        <ul>
-                            <li><b>ID_COPIL</b>, de tip <bi>Autonumber</bi>; </li>
-                            <li><b>Prenume</b>, de tip <bi>Text</bi>;</li>
-                            <li><b>DataN</b>, de tip <bi>Date/Time</bi>.</li>
-                        </ul>
+                        Una dintre cele mai puternice operaţii în <bi>Access</bi> este aceea prin care reuşim să
+                        interogăm diferite obiecte. De exemplu, putem să interogăm ambele tabel în acelaşi timp şi să
+                        aflăm care este fiecare angajat, şi care este copilul fiecărui angajat.
+                    </p>
+                    <p>
+                        Din ribbon-ul<b>Create</b> alegeţi <bi>Query Design</bi>. Alegem ambele tabele, apăsăm <b>Add</b>, apoi <b>Close</b>
                     </p>
                 </td>
             </tr>
         </table>
 
-        <p>Salvăm modificările şi mergem în modul DatasheetView.<img src="img/1.2.png"> Introduceţi o serie de date ca în imaginea de mai jos.</p>
+        <img src="img/4.2.png">
+
+        <p>Observăm că este evidenţiată şi relaţia dintre cele două tabele. În acest moment putem să vedem orice fel de informaţie stocată în aceste tabele.</p>
 
         <table>
             <tr>
-                <td><img src="img/3.2.png"></td>
+                <td><img src="img/4.3.png"></td>
                 <td>
                     <p>
-                        Acum avem două tabele: <br>
-                        <b>ANGAJAŢI</b> şi <b>COPII</b>. Aşa cum în viaţa reală există o legătură între angajaţi şi
-                        copii lor, aşa şi în <bi>Access</bi> trebuie să avem acea relaţionare între cele două tabele, intre cele două entităţi separate.
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td  colspan="2">
-                    <p>Observăm ca deocamdată cele două tabele sunt complet independente şi nu există nimic comun acestora.</p>
-                </td>
-            </tr>
-        </table>
-
-        <p>În tabela COPII mergeţi in modul <bi>Design View</bi>. <img src="img/1.4.png"></p>
-        <p>Adăugăm o nouă coloană imediat după coloana <b>ID_COPIL</b>: facem click dreapta pe linia <bi>Prenume</bi> şi alegem <bi>Insert rows</bi>.</p>
-        <p>Introducem numele ID_Parinte şi ca tip alegem acelaşi ca şi PrimaryKey-ul din ANGAJATI – ID_CLIENT (<b>Number</b>).</p>
-
-        <img src="img/3.3.png">
-
-        <p>Salvăm şi revenim în modul <bi>DatasheetView</bi>. <img src="img/1.2.png"></p>
-
-        <table>
-            <tr>
-                <td><img src="img/3.4.png"></td>
-                <td>
-                    Pentru a stabili exact relaţia, adică pentru a specifica faptul că datele din coloana ID_CLIENT din ANGAJATI este replicată în
-                    ID_Parinte din COPII, mergem în <bi>DatabaseTools>Relationships</bi>. Selectăm ambele tabele şi apăsăm <b>Add</b>, apoi <b>Close</b>. 
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <p>
-                        Cele două tabele nu sunt încă relaţionate. Tragem (Drag&Drop) coloana ID_CLIENT din ANGAJATI peste coloana ID_Parinte din COPII. 
-                        În fereastra deschisă bifăm checkbox-ul<b>EnforceReferentialIntegrity</b>. Apăsăm <b>Create</b>.
+                        Facem dublu-click pe
+                        coloana <bi>Nume</bi> din tabela
+                        ANGAJATI, şi ea este introdusă
+                        automat în această interogare.
+                        Mai adăugăm <bi>Salariu</bi> din
+                        tabela ANGAJATI şi <bi>Prenume</bi>
+                        din tabela COPII:
                     </p>
                 </td>
             </tr>
         </table>
 
-        <img src="img/3.5.png">
+        <p>Apăsăm <b>Run</b>, din ribbon-ul contextual <b>Design</b> > <b>Result</b>.</p>
 
-        <p style="text-indent: 0;"><tot>Atenţie !</tot> Este obligatoriu să închidem tabelele înainte de a face această operaţie de relaţionare.</p>
-
-        <p>Observăm că apare relaţia ‘1 la n’ (<b>‘1 la ∞’</b>).</p>
-
-        <img src="img/3.6.png">
+        <table>
+            <tr>
+                <td><img src="img/4.4.png"></td>
+                <td>
+                    <p>
+                        Se vor afişa înregistrările găsite:
+                        Observăm că informaţiile despre
+                        Ionescu se repetă, pentru că el are doi copii.
+                    </p>
+                    <p>
+                        Ne întoarcem în <b>Design View</b>. <img src="img/1.4.png">
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="img/4.5.png"></td>
+                <td>
+                    <p>
+                        Ce este interesant, şi aici vedem cu adevărat puterea interogărilor, 
+                        este că vom putea să stabilim orice condiţii logice dorim, vom putea să 
+                        filtrăm tabelele din Access stabilind nişte condiţii logice.
+                    </p>
+                </td>
+            </tr>
+        </table>
 
         <p>
-            Deschidem tabela <b>COPII</b>. Coloana <bi>ID_Parinte</bi> stochează ID-ul corespunzător părintelui. De exemplu, dacă în prima linie scriem <b>1</b>, 
-            stabilim că părintele lui Gigel este Ionescu, care are ID_CLIENT 1 în tabela <b>ANGAJATI</b>.
-        </p>
-        <p>
-            Tot în coloana ID_Parinte introducem 1 şi pentru linia 3 (Mirela). Asta înseamnă
-            că părintele Ionescu are doi copii: Mirela şi Gigel. Introducem 3 în coloana ID_Parinte din  rândul 2 (Vasilescu are un singur copil, Anuta)
+            De exemplu, la angajaţi nu vrem decât acei angajaţi care au un salariu mai mare de
+            2000. În linia Criteria, corespunzătoare coloanei <bi>Salariu</bi> din interogare, introducem
+            condiţia: ‘>=<b>2000</b>’ .
         </p>
 
-        <img src="img/3.7.png">
-        </div>
+        <table>
+            <tr>
+                <td><img src="img/4.6.png"></td>
+                <td>
+                    <p>
+                        Apăsăm din nou <b>Run</b><img src="img/4.8.png"> şi observăm că
+                        singurul angajat care are salariul mai mare de
+                        2000, şi are şi copii, este Vasilescu.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td><img src="img/4.7.png"></td>
+                <td>
+                    <p>
+                        Ne întoarcem în modul <bi>Design View</bi><img src="img/1.4.png"> În acest moment putem să salvăm
+                        această interogare pentru a o refolosi mai târziu. Din <bi>Quick Access Toolbar</bi> apăsăm <bi>Save</bi> şi introducem
+                        numele interogării: <bi>‘1 Angajatiiplatiti bine cu copii’</bi>. Apăsăm<b>OK</b>.
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+        <p>
+            Închidem designerul de interogare, şi putem observa că în acest moment, în meniul din
+            partea stângă a ecranului avem două tabele şi o interogare cu numele menţionat mai sus.
+            Oricând interogarea poate fi modificată făcând click dreapta pe ea şi alegând <b>Design View</b>.
+        </p>
+
+        <img src="img/4.9.png">
+
+        <p>În baza noastră de date mai facem o interogare: toţi copii născuţi după o anumită dată (anul 2001)</p>
+       </div>
     </body>
 </html>

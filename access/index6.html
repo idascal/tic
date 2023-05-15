@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>FisaAccess6</title>
+        <title>FisaAccess7</title>
 
             <meta charset="utf-8"> 
 
@@ -12,124 +12,33 @@
             <div class="box">
                 <PageTitle style="text-align:center">
                     <h1>
-                            <u>F I Ş A Nr. 6<br></u>
-                            Crearea unui formular
+                            <u>F I Ş A Nr. 7<br></u>
                     </h1>
-                </PageTitle></br>
+                </PageTitle><br>
 
-                <table>
-                    <tr>
-                        <td><img src="img/6.1.png"></td>
-                        <td>
-                            <p>
-                                <b>Formularele</b> reprezintă <b>ferestre</b> ce permit <b>adăugare</b>, <b>modificarea</b>,
-                                <b>ştergerea</b> datelor dintr-o bază de date. Formularele sunt special create astfel
-                                încât să permită cât mai facil şi rapid operaţiile de mai sus.
-                            </p>
-                            <p>
-                                Din ribbon-ul <b>Create</b> alegeţi <bi>More Forms>FormWizard</bi> pentru
-                                crearea unui formular.
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>
-                                În fereastra de wizard deschisă alegem
-                                câmpurile <b>Salariu</b>, <b>Oras</b> şi <b>Nume</b> din tabela
-                                ANGAJATI, iar din tabela COPII, alegem <b>ID_Parinte</b>, <b>Prenume</b> şi <b>DataN</b>. Vom putea să modificăm datele
-                                din două tabel în acelaşi timp. Apăsăm <b>Next</b>.
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Access</b> şi-a dat seama că am ales date din
-                                două tabele şi acum trebuie să alegem care dintre
-                                ele este <bi>Parent</bi>. Alegem tabela ANGAJATI şi apăsăm <b>Next</b>.
-                            </p>   
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/6.2.png"></td>
-                        <td><img src="img/6.3.png"></td>
-                    </tr>
-                    <tr>
-                        <td><p>Ca layout alegem modul <b>Tabular</b>. Dăm <b>Next</b>.</p></td>
-                        <td><p>Alegem un stil de formatare şi apăsăm <b>Next</b>.</p></td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/6.4.png"></td>
-                        <td><img src="img/6.5.png"></td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/6.6.png"></td>
-                        <td>
-                            <p>
-                                În final, completăm numele pentru formular şi subformular:
-                                <ul>
-                                    <li><i>Formde input Angajati-COPII</i></li>
-                                    <li><i>COPII Subform</i></li>
-                                </ul>
-
-                                Apăsăm <b>Finish</b>.
-                            </p>
-                            <p>
-                                Observaţi că avem o singură fereastră de unde
-                                am putea modifica şi angajaţi (partea de sus) şi copiii
-                                angajaţilor (partea de jos, în funcţie de părintele
-                                selectat).
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/6.7.png"></td>
-                        <td>
-                            <p>
-                                Există două modalităţi de navigare :
-
-                                <ul>
-                                    <li>
-                                        Navigarea de
-                                        jos, care ne permite să
-                                        navigăm între liniile
-                                        din <bi>parent</bi>– ANGAJATI;
-                                    </li>
-                                    <li>
-                                        Navigarea din
-                                        tabela <bi>child</bi> – COPII
-                                        care ne permite să
-                                        navigăm între copii
-                                        angajatului respectiv.
-                                    </li>
-                                </ul>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/6.8.png"></td>
-                        <td>
-                            <p>Dacă vrem să trecem la următorul angajat, apăsăm butonaşul <b>Next Record</b>,.<img src="img/6.9.png"> din partea de jos.</p>
-                        </td>
-                    </tr>
-                </table>
-
-                <p>Observăm că acum este afişat angajatul Popescu care nu are nici un copil.</p>
-                <p>
-                    Cu acest instrument putem să facem orice operaţie de modificare fără a mai fi nevoie să
-                    deschidem ambele tabele. De exemplu, revenind la primul angajat, Ionescu, apăsăm <b>New Record</b> 
-                    <img src="img/6.10.png">în tabela <bi>child</bi> (COPII).Introducem prenumele
-                    Ionica şi data naşterii.
-                </p>
-                <img src="img/6.11.png">
-
-                <p>
-                    În acest moment nu numai că a fost introdus în tabel copilul <i>Ionica</i>, dar el a fost asignat
-                    angajatului <i>Ionescu</i>. Dacă deschideţi tabela COPII observaţi noua înregistrare pentru <i>Ionica</i>, care
-                    are deja la <i>Parinte_ID</i> valoarea <b>1</b> (care îl reprezintă pe angajatul <i>Ionescu</i>).
-                </p>
-                <img src="img/6.12.png">
-
-                <p>În acest Formular nu se pot face numai adăugări de linii noi, dar și modificări, sortări, filtrări, s.a.m.d.</p>
+                <ol>
+                    <li>
+                        Realizati un tabel cu structura: Cod material,Denumire material, UM, Tip, Cantitate, Data primirii, Pret 
+                        unitar, Valoare, Stoc(daca mai este sau nu), Furnizori.
+                    </li>
+                    <li>Pentru fiecare camp adaugat alegeti tipul de date corespunzator.</li>
+                    <li>
+                        Pentru 2 campuri la alegere adaugati si o descriere in care specificati informatii suplimentare referitoare 
+                        la campurile date. 
+                    </li>
+                    <li>Dupa realizarea structurii tabelului, adaugati 5 inregistrari in tabel.</li>
+                    <li>Sortati crescator inregistrarile dupa campul Denumire material.</li>
+                    <li>Colorati fundalul tabelului cu o anumita nuanta la alegere.</li>
+                    <li>Subliniati inregistrarile din tabel. </li>
+                    <li>Modificati stilul de afisare a datelor in Bold.</li>
+                    <li>Redenumiti coloana Data primirii cu Data livrarii. </li>
+                    <li>Adaugati un nou camp in table in care treceti adresa de contact a furnizorului (adresa de e-mail) </li>
+                    <li>Liniile de pe orizontala ale tabelului sa nu mai apara. </li>
+                    <li>Pentru font alegeti tipul Arial.</li>
+                    <li>Stergeti inregistrarea a doua. </li>
+                    <li>Ascundeti coloana Cod material. </li>
+                    <li>Stergeti coloana Data livrarii. </li>
+                </ol>
             </div>
     </body>
 </html>

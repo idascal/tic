@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Fisa Access 2</title>
+
+        <meta charset="utf-8"> 
+
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+        <br>
+        <div class="box">
+        <PageTitle style="text-align:center">
+            <h1>
+                    <u>F I &#350; A Nr. 2<br></u>
+                    Crearea rela&#355;iilor &#238;ntre tabele.
+            </h1>
+        </PageTitle><br>
+            <a href="https://support.microsoft.com/ro-ro/office/ghid-pentru-rela%C8%9Biile-%C3%AEntre-tabele-30446197-4fbe-457b-b992-2f6fb812b58f">1. Crearea rela&#355;iilor &#238;ntre tabele</a><br>
+            <a href="https://support.microsoft.com/ro-ro/office/video-%C3%AEncepe%C8%9Bi-lucrul-cu-rela%C8%9Biile-%C3%AEntre-tabele-728d53ff-f332-4ac6-9382-574ee271500a">2. Crearea rela&#355;iilor &#238;ntre tabele</a>
+            <ul>Exist&#259; trei tipuri de rela&#355;ii între tabele:
+                <li><b>Unu-la-unu.</b> Fiecare element din fiecare tabel apare o singur&#259; dat&#259;. 
+                    De exemplu, fiecare angajat poate avea o singur&#259; mașin&#259; de firm&#259; de utilizat.</li>
+                <li><b>Unu-la-mai-mul&#355;i.</b> Când un element dintr-un tabel poate avea o rela&#355;ie cu mai multe elemente din alt tabel.
+                     De exemplu, fiecare comand&#259; de achizi&#355;ie poate include mai multe produse.</li>
+                <li><b>Mai mul&#355;i-la-mai-mul&#355;i.</b> C&#226;nd unul sau mai multe elemente dintr-un tabel pot avea o rela&#355;ie cu unul sau mai multe elemente din alt tabel. De exemplu, fiecare comand&#259; poate avea mai multe produse &#351;i fiecare produs poate ap&#259;rea în mai multe comenzi.</li>
+            </ul>
+            <p>
+                Cre&#259;m o nou&#259; baz&#259; de date goal&#259; :<br> <img src="img/access2_1.png"> <br> pe care o denumim <bi>Firma</bi> <br> <img src="img/access2_2.png"><br> Baza de date va con&#355;ine un tabel <bi>Angajati</bi> cu urm&#259;toarele c&#226;mpuri: 
+            <table> 
+                <tr><td><img src="img/access2_4.png"></td><td> C&#226;mpul ID_Angajat este cheie primar&#259;</td></tr> 
+            <table> 
+                &#351;i c&#226;teva &#238;nregistr&#259;ri:
+                <br><img src="img/access2_5_1.png">
+            </p>
+        <p>
+            S&#259; presupunem c&#259; avem un tabel unde &#355;inem datele despre copii angaja&#355;ilor. Din
+            ribbon-ul <bi>Create</bi> cre&#259;m un nou tabel <bi>(Table)</bi>.
+        </p>
+        <p>
+            Mergem &#238;n modul de vizualizare <bi>Design View</bi>,<img src="img/1.4.png"> pentru a realiza
+            structura tabelului. &#206;n acest moment introducem numele noului tabel: <b>COPII</b>. Ap&#259;s&#259;m <b>OK</b>
+        </p>
+
+        <table>
+            <tr>
+                <td><img src="img/access2_5.png"></td>
+                <td>
+                    <p>
+                         
+                        <ul>Structura tabelului va fi urm&#259;toarea:
+                            <li><b>ID_Copil</b>, de tip <bi>Autonumber</bi>, este cheie primar&#259;; </li>
+                            <li><b>ID_Angajat</b>, de tip <bi>Number</bi>; </li>
+                            <li><b>Prenume</b>, de tip <bi>Short Text</bi>;</li>
+                            <li><b>DataN</b>, de tip <bi>Date/Time</bi>.</li>
+                        </ul>
+                    </p>
+                </td>
+            </tr>
+        </table>
+
+        <p>Salv&#259;m modific&#259;rile &#351;i mergem &#238;n modul DatasheetView.<img src="img/1.2.png"> Introduce&#355;i o serie de date ca &#238;n imaginea de mai jos.</p>
+
+        <table>
+            <tr>
+                <td><img src="img/access2_5_2.png"></td>
+                <td>
+                    <p>
+                        Acum avem dou&#259; tabele: <br>
+                        <b>ANGAJA&#354;I</b> &#351;i <b>COPII</b>. A&#351;a cum &#238;n via&#355;a real&#259; exist&#259; o leg&#259;tur&#259; &#238;ntre angaja&#355;i &#351;i  copii lor, a&#351;a &#351;i &#238;n <bi>Access</bi> trebuie s&#259; avem acea rela&#355;ionare &#238;ntre cele dou&#259; tabele, &#238;ntre cele dou&#259; entit&#259;&#355;i separate.
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td  colspan="2">
+                    <p>Observ&#259;m c&#259; deocamdat&#259; cele dou&#259; tabele sunt complet independente &#351;i nu exist&#259; nimic comun acestora.</p>
+                </td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td colspan="2">
+                    Pentru a stabili exact rela&#355;ia, adic&#259; pentru a specifica faptul c&#259; datele din c&#226;mpul ID_Angajat din ANGAJATI
+                     este replicat&#259; &#238;n ID_Angajat din COPII, mergem &#238;n <bi>DatabaseTools --> Relationships</bi>. 
+                     <br><img src="img/access2_6.png"><br>Select&#259;m ambele tabele &#351;i ap&#259;s&#259;m <b>Add</b>, apoi <b>Close</b>.<br><img src="img/access2_7.png"> 
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        Cele dou&#259; tabele nu sunt &#238;nc&#259; rela&#355;ionate.<br><img src="img/access2_8.png"><br> Tragem (Drag&Drop) coloana ID_Angajat din ANGAJATI peste coloana ID_Angajat din COPII. <br> &#206;n fereastra deschis&#259; bif&#259;m checkbox-ul <b>EnforceReferentialIntegrity</b>.<br>
+                         Ap&#259;s&#259;m <b>Create</b>.<br> <img src="img/access2_9.png">
+                    </p>
+                </td>
+                <td></td>
+            </tr>
+        </table>
+
+        <p style="text-indent: 0;"><tot>Aten&#355;ie !</tot> Este obligatoriu s&#259; &#238;nchidem tabelele &#238;nainte de a face aceast&#259; opera&#355;ie de rela&#355;ionare.</p>
+
+        <p>Observ&#259;m c&#259; apare rela&#355;ia '1 la n' (<b>'1 la ∞'</b>).</p>
+
+        <img src="img/access2_10.png">C&#226;mpul ID_Angajat din tabelul <bi>Copii</bi> este cheie extern&#259;
+
+        <p>
+            Deschidem tabelul <b>COPII</b>. Coloana <bi>ID_Angajat</bi> stocheaz&#259; ID-ul corespunz&#259;tor p&#259;rintelui. De exemplu, dac&#259; &#238;n prima linie scriem <b>1</b>, stabilim c&#259; p&#259;rintele lui Dorel este Ionescu, care are ID_Angajat 1 &#238;n tabelul <b>ANGAJATI</b>.
+        </p>
+
+        </div>
+    </body>
+</html>

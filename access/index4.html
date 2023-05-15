@@ -1,131 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>FisaAccess4</title>
+        <title>FisaAccess6</title>
 
-        <meta charset="utf-8">
+            <meta charset="utf-8"> 
 
-        <link rel="stylesheet" href="style.css">
+            <link rel="stylesheet" href="style.css">
     </head>
-    <body>  
+    <body>
         </br>
-       <div class="box">
-        <PageTitle style="text-align:center">
-            <h1>
-                    <u>F I Ş A Nr. 4<br></u>
-                    Crearea unei interogări
-            </h1>
-        </PageTitle></br>
+            <div class="box">
+                <PageTitle style="text-align:center">
+                    <h1>
+                            <u>F I Ş A Nr. 6<br></u>
+                            Crearea unui formular
+                    </h1>
+                </PageTitle></br>
 
-        <p>
-            Avem două tabele: <b>ANGAJATI</b> şi <b>COPII</b>. Cele două tabele sunt relaţionate: unei
-            linii din tabela ANGAJATI îi corespunde mai multe linii din tabela COPII. Se poate observa
-            în tabelul ANGAJATI că pentru Ionescu avem două înregistrări în tabela COPII
-        </p>
+                <table>
+                    <tr>
+                        <td><img src="img/6.1.png"></td>
+                        <td>
+                            <p>
+                                <b>Formularele</b> reprezintă <b>ferestre</b> ce permit <b>adăugare</b>, <b>modificarea</b>,
+                                <b>ştergerea</b> datelor dintr-o bază de date. Formularele sunt special create astfel
+                                încât să permită cât mai facil şi rapid operaţiile de mai sus.
+                            </p>
+                            <p>
+                                Din ribbon-ul <b>Create</b> alegeţi <bi>More Forms>FormWizard</bi> pentru
+                                crearea unui formular.
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                În fereastra de wizard deschisă alegem
+                                câmpurile <b>Salariu</b>, <b>Oras</b> şi <b>Nume</b> din tabela
+                                ANGAJATI, iar din tabela COPII, alegem <b>ID_Parinte</b>, <b>Prenume</b> şi <b>DataN</b>. Vom putea să modificăm datele
+                                din două tabel în acelaşi timp. Apăsăm <b>Next</b>.
+                            </p>
+                        </td>
+                        <td>
+                            <p>
+                                <b>Access</b> şi-a dat seama că am ales date din
+                                două tabele şi acum trebuie să alegem care dintre
+                                ele este <bi>Parent</bi>. Alegem tabela ANGAJATI şi apăsăm <b>Next</b>.
+                            </p>   
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/6.2.png"></td>
+                        <td><img src="img/6.3.png"></td>
+                    </tr>
+                    <tr>
+                        <td><p>Ca layout alegem modul <b>Tabular</b>. Dăm <b>Next</b>.</p></td>
+                        <td><p>Alegem un stil de formatare şi apăsăm <b>Next</b>.</p></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/6.4.png"></td>
+                        <td><img src="img/6.5.png"></td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/6.6.png"></td>
+                        <td>
+                            <p>
+                                În final, completăm numele pentru formular şi subformular:
+                                <ul>
+                                    <li><i>Formde input Angajati-COPII</i></li>
+                                    <li><i>COPII Subform</i></li>
+                                </ul>
 
-        <table>
-            <tr>
-                <td><img src="img/4.1.png"></td>
-                <td>
-                    <p>
-                        Una dintre cele mai puternice operaţii în <bi>Access</bi> este aceea prin care reuşim să
-                        interogăm diferite obiecte. De exemplu, putem să interogăm ambele tabel în acelaşi timp şi să
-                        aflăm care este fiecare angajat, şi care este copilul fiecărui angajat.
-                    </p>
-                    <p>
-                        Din ribbon-ul<b>Create</b> alegeţi <bi>Query Design</bi>. Alegem ambele tabele, apăsăm <b>Add</b>, apoi <b>Close</b>
-                    </p>
-                </td>
-            </tr>
-        </table>
+                                Apăsăm <b>Finish</b>.
+                            </p>
+                            <p>
+                                Observaţi că avem o singură fereastră de unde
+                                am putea modifica şi angajaţi (partea de sus) şi copiii
+                                angajaţilor (partea de jos, în funcţie de părintele
+                                selectat).
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/6.7.png"></td>
+                        <td>
+                            <p>
+                                Există două modalităţi de navigare :
 
-        <img src="img/4.2.png">
+                                <ul>
+                                    <li>
+                                        Navigarea de
+                                        jos, care ne permite să
+                                        navigăm între liniile
+                                        din <bi>parent</bi>– ANGAJATI;
+                                    </li>
+                                    <li>
+                                        Navigarea din
+                                        tabela <bi>child</bi> – COPII
+                                        care ne permite să
+                                        navigăm între copii
+                                        angajatului respectiv.
+                                    </li>
+                                </ul>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="img/6.8.png"></td>
+                        <td>
+                            <p>Dacă vrem să trecem la următorul angajat, apăsăm butonaşul <b>Next Record</b>,.<img src="img/6.9.png"> din partea de jos.</p>
+                        </td>
+                    </tr>
+                </table>
 
-        <p>Observăm că este evidenţiată şi relaţia dintre cele două tabele. În acest moment putem să vedem orice fel de informaţie stocată în aceste tabele.</p>
+                <p>Observăm că acum este afişat angajatul Popescu care nu are nici un copil.</p>
+                <p>
+                    Cu acest instrument putem să facem orice operaţie de modificare fără a mai fi nevoie să
+                    deschidem ambele tabele. De exemplu, revenind la primul angajat, Ionescu, apăsăm <b>New Record</b> 
+                    <img src="img/6.10.png">în tabela <bi>child</bi> (COPII).Introducem prenumele
+                    Ionica şi data naşterii.
+                </p>
+                <img src="img/6.11.png">
 
-        <table>
-            <tr>
-                <td><img src="img/4.3.png"></td>
-                <td>
-                    <p>
-                        Facem dublu-click pe
-                        coloana <bi>Nume</bi> din tabela
-                        ANGAJATI, şi ea este introdusă
-                        automat în această interogare.
-                        Mai adăugăm <bi>Salariu</bi> din
-                        tabela ANGAJATI şi <bi>Prenume</bi>
-                        din tabela COPII:
-                    </p>
-                </td>
-            </tr>
-        </table>
+                <p>
+                    În acest moment nu numai că a fost introdus în tabel copilul <i>Ionica</i>, dar el a fost asignat
+                    angajatului <i>Ionescu</i>. Dacă deschideţi tabela COPII observaţi noua înregistrare pentru <i>Ionica</i>, care
+                    are deja la <i>Parinte_ID</i> valoarea <b>1</b> (care îl reprezintă pe angajatul <i>Ionescu</i>).
+                </p>
+                <img src="img/6.12.png">
 
-        <p>Apăsăm <b>Run</b>, din ribbon-ul contextual <b>Design</b> > <b>Result</b>.</p>
-
-        <table>
-            <tr>
-                <td><img src="img/4.4.png"></td>
-                <td>
-                    <p>
-                        Se vor afişa înregistrările găsite:
-                        Observăm că informaţiile despre
-                        Ionescu se repetă, pentru că el are doi copii.
-                    </p>
-                    <p>
-                        Ne întoarcem în <b>Design View</b>. <img src="img/1.4.png">
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="img/4.5.png"></td>
-                <td>
-                    <p>
-                        Ce este interesant, şi aici vedem cu adevărat puterea interogărilor, 
-                        este că vom putea să stabilim orice condiţii logice dorim, vom putea să 
-                        filtrăm tabelele din Access stabilind nişte condiţii logice.
-                    </p>
-                </td>
-            </tr>
-        </table>
-
-        <p>
-            De exemplu, la angajaţi nu vrem decât acei angajaţi care au un salariu mai mare de
-            2000. În linia Criteria, corespunzătoare coloanei <bi>Salariu</bi> din interogare, introducem
-            condiţia: ‘>=<b>2000</b>’ .
-        </p>
-
-        <table>
-            <tr>
-                <td><img src="img/4.6.png"></td>
-                <td>
-                    <p>
-                        Apăsăm din nou <b>Run</b><img src="img/4.8.png"> şi observăm că
-                        singurul angajat care are salariul mai mare de
-                        2000, şi are şi copii, este Vasilescu.
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="img/4.7.png"></td>
-                <td>
-                    <p>
-                        Ne întoarcem în modul <bi>Design View</bi><img src="img/1.4.png"> În acest moment putem să salvăm
-                        această interogare pentru a o refolosi mai târziu. Din <bi>Quick Access Toolbar</bi> apăsăm <bi>Save</bi> şi introducem
-                        numele interogării: <bi>‘1 Angajatiiplatiti bine cu copii’</bi>. Apăsăm<b>OK</b>.
-                    </p>
-                </td>
-            </tr>
-        </table>
-
-        <p>
-            Închidem designerul de interogare, şi putem observa că în acest moment, în meniul din
-            partea stângă a ecranului avem două tabele şi o interogare cu numele menţionat mai sus.
-            Oricând interogarea poate fi modificată făcând click dreapta pe ea şi alegând <b>Design View</b>.
-        </p>
-
-        <img src="img/4.9.png">
-
-        <p>În baza noastră de date mai facem o interogare: toţi copii născuţi după o anumită dată (anul 2001)</p>
-       </div>
+                <p>În acest Formular nu se pot face numai adăugări de linii noi, dar și modificări, sortări, filtrări, s.a.m.d.</p>
+            </div>
     </body>
 </html>
