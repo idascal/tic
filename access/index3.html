@@ -1,131 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
     <head>
-        <title>FisaAccess4</title>
+        <title>Fisa Access 3</title>
 
         <meta charset="utf-8">
 
         <link rel="stylesheet" href="style.css">
     </head>
     <body>  
-        </br>
+        <br>
        <div class="box">
         <PageTitle style="text-align:center">
             <h1>
-                    <u>F I Ş A Nr. 4<br></u>
-                    Crearea unei interogări
+                    <u>F I &#350; A Nr. 3<br></u>
+                    Crearea unei interog&#259;ri
             </h1>
-        </PageTitle></br>
+        </PageTitle><br>
+           <p>Interog&#259;rile reprezint&#259; obiectele prin care se extrag informa&#355;ii dintr-o baz&#259; de date. O interogare ac&#355;ioneaz&#259; fie asupra unui tabel, fie asupra mai multor tabele corelate prin rela&#355;ii.<br>
+               C&#226;teva dintre cele mai importante caracteristici ale unei interog&#259;ri sunt:<br>
 
+- Tabelele &#351;i rela&#355;iile care stau la baza unei interog&#259;ri reprezint&#259; subschema interog&#259;rii.<br>
+
+- Extragerea de informa&#355;ii din interog&#259;ri se face prin opera&#355;ii de algebr&#259; rela&#355;ional&#259; pe mul&#355;imi.<br>
+
+O interogare (query) este o defini&#355;ie a datelor care se extrag: care c&#226;mpuri, din care tabele, criteriile de selec&#355;ie, ordinea de sortare. Structura unei interog&#259;ri indic&#259; datele care se vor extrage</p>
+           <p>Cre&#259;m o nou&#259; baz&#259; de date goal&#259; :<br> <img src="img/access2_1.png"> <br> pe care o denumim <bi>Magazin</bi> <br> <img src="img/access3_1.png"><br> Baza de date va con&#355;ine un tabel <bi>Clienti</bi> cu urm&#259;toarele c&#226;mpuri:
+           <table> 
+                <tr><td><img src="img/access3_2.png"></td><td> C&#226;mpul ID_Client este cheie primar&#259;</td></tr> 
+            <table>
+             &#351;i c&#226;teva &#238;nregistr&#259;ri: <br><img src="img/access3_3.png">   
+           </p>
+        <p>Din ribbon-ul <bi>Create</bi> cre&#259;m un nou tabel <bi>Table</bi> .<img src="img/access3_4.png"> pe care il salv&#259;m <img src="img/access3_5.png"> cu numele <bi>Comenzi</bi><img src="img/access3_6.png"><br>
+        Acest tabel va con&#355;ine urm&#259;toarele c&#226;mpuri:
+            <table> 
+                <tr><td><img src="img/access3_7.png"></td><td> C&#226;mpul ID_Comanda este cheie primar&#259;</td></tr> 
+            <table>
+             &#351;i c&#226;teva &#238;nregistr&#259;ri: <br><img src="img/access3_8.png"> 
+        </p>           
+          <p>Pentru a stabili exact rela&#355;ia, adic&#259; pentru a specifica faptul c&#259; datele din c&#226;mpul ID_Client din <bi>Clienti</bi> este replicat&#259; &#238;n ID_Client din <bi>Comenzi</bi>, mergem &#238;n <bi>DatabaseTools --> Relationships</bi>. 
+                     <br><img src="img/access2_6.png"><br>Select&#259;m ambele tabele &#351;i ap&#259;s&#259;m <b>Add</b>, apoi <b>Close</b>.<br><img src="img/access3_9.png"> 
+        </p>
         <p>
-            Avem două tabele: <b>ANGAJATI</b> şi <b>COPII</b>. Cele două tabele sunt relaţionate: unei
-            linii din tabela ANGAJATI îi corespunde mai multe linii din tabela COPII. Se poate observa
-            în tabelul ANGAJATI că pentru Ionescu avem două înregistrări în tabela COPII
+             Cele dou&#259; tabele nu sunt &#238;nc&#259; rela&#355;ionate. Tragem (Drag&Drop) coloana ID_Client din <bi>Clienti</bi> peste coloana ID_Cient din <bi>Comenzi</bi>. <br> &#206;n fereastra deschis&#259; bif&#259;m checkbox-ul <b>Enforce Referential Integrity</b>.<br>
+            Ap&#259;s&#259;m <b>Create</b>.<br> <img src="img/access3_10.png">
+        </p>
+          <p><tot>Aten&#355;ie !</tot> Este obligatoriu s&#259; &#238;nchidem tabelele &#238;nainte de a face aceast&#259; opera&#355;ie de rela&#355;ionare.</p>
+
+        <p>Observ&#259;m c&#259; apare rela&#355;ia '1 la n' (<b>'1 la ∞'</b>).</p>
+        <table>
+            <tr>
+                <td><img src="img/access3_11.png"></td><td>C&#226;mpul ID_Client din tabelul <bi>Comenzi</bi> este cheie extern&#259;</td> 
+            </tr>
+        </table>        
+        <p>
+            Avem dou&#259; tabele: <bi>Clienti</bi> &#351;i <bi>Comenzi</bi>. Cele dou&#259; tabele sunt rela&#355;ionate: unei
+            &#238;nregistr&#259;ri din tabelul <bi>Clienti</bi> poate s&#259; îi corespund&#259; mai multe &#238;nregistr&#259;ri din tabelul <bi>Comenzi</bi>.
         </p>
 
-        <table>
-            <tr>
-                <td><img src="img/4.1.png"></td>
-                <td>
-                    <p>
-                        Una dintre cele mai puternice operaţii în <bi>Access</bi> este aceea prin care reuşim să
-                        interogăm diferite obiecte. De exemplu, putem să interogăm ambele tabel în acelaşi timp şi să
-                        aflăm care este fiecare angajat, şi care este copilul fiecărui angajat.
-                    </p>
-                    <p>
-                        Din ribbon-ul<b>Create</b> alegeţi <bi>Query Design</bi>. Alegem ambele tabele, apăsăm <b>Add</b>, apoi <b>Close</b>
-                    </p>
-                </td>
-            </tr>
-        </table>
-
-        <img src="img/4.2.png">
-
-        <p>Observăm că este evidenţiată şi relaţia dintre cele două tabele. În acest moment putem să vedem orice fel de informaţie stocată în aceste tabele.</p>
-
-        <table>
-            <tr>
-                <td><img src="img/4.3.png"></td>
-                <td>
-                    <p>
-                        Facem dublu-click pe
-                        coloana <bi>Nume</bi> din tabela
-                        ANGAJATI, şi ea este introdusă
-                        automat în această interogare.
-                        Mai adăugăm <bi>Salariu</bi> din
-                        tabela ANGAJATI şi <bi>Prenume</bi>
-                        din tabela COPII:
-                    </p>
-                </td>
-            </tr>
-        </table>
-
-        <p>Apăsăm <b>Run</b>, din ribbon-ul contextual <b>Design</b> > <b>Result</b>.</p>
-
-        <table>
-            <tr>
-                <td><img src="img/4.4.png"></td>
-                <td>
-                    <p>
-                        Se vor afişa înregistrările găsite:
-                        Observăm că informaţiile despre
-                        Ionescu se repetă, pentru că el are doi copii.
-                    </p>
-                    <p>
-                        Ne întoarcem în <b>Design View</b>. <img src="img/1.4.png">
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="img/4.5.png"></td>
-                <td>
-                    <p>
-                        Ce este interesant, şi aici vedem cu adevărat puterea interogărilor, 
-                        este că vom putea să stabilim orice condiţii logice dorim, vom putea să 
-                        filtrăm tabelele din Access stabilind nişte condiţii logice.
-                    </p>
-                </td>
-            </tr>
-        </table>
-
         <p>
-            De exemplu, la angajaţi nu vrem decât acei angajaţi care au un salariu mai mare de
-            2000. În linia Criteria, corespunzătoare coloanei <bi>Salariu</bi> din interogare, introducem
-            condiţia: ‘>=<b>2000</b>’ .
+            Una dintre cele mai puternice opera&#355;ii în <bi>Access</bi> este aceea prin care reu&#351;im s&#259; interog&#259;m diferite obiecte. De exemplu, putem s&#259; interog&#259;m doar tabelul <bi>Clienti</bi> &#351;i s&#259; afl&#259;m date despre fiecare client.
         </p>
-
-        <table>
-            <tr>
-                <td><img src="img/4.6.png"></td>
-                <td>
-                    <p>
-                        Apăsăm din nou <b>Run</b><img src="img/4.8.png"> şi observăm că
-                        singurul angajat care are salariul mai mare de
-                        2000, şi are şi copii, este Vasilescu.
-                    </p>
-                </td>
-            </tr>
-            <tr>
-                <td><img src="img/4.7.png"></td>
-                <td>
-                    <p>
-                        Ne întoarcem în modul <bi>Design View</bi><img src="img/1.4.png"> În acest moment putem să salvăm
-                        această interogare pentru a o refolosi mai târziu. Din <bi>Quick Access Toolbar</bi> apăsăm <bi>Save</bi> şi introducem
-                        numele interogării: <bi>‘1 Angajatiiplatiti bine cu copii’</bi>. Apăsăm<b>OK</b>.
-                    </p>
-                </td>
-            </tr>
-        </table>
-
         <p>
-            Închidem designerul de interogare, şi putem observa că în acest moment, în meniul din
-            partea stângă a ecranului avem două tabele şi o interogare cu numele menţionat mai sus.
-            Oricând interogarea poate fi modificată făcând click dreapta pe ea şi alegând <b>Design View</b>.
+            Din ribbon-ul <b>Create</b> alege&#355;i <bi>Query Wizard</bi>:.
         </p>
+        <img src="img/access3_12.png">
+        <p> Select&#259;m <bi>Simple Query Wizard</bi> &#351;i apoi click pe <i>OK</i></p><img src="img/access3_13.png">
+        <p>Select&#259;m c&#226;mpurile care dorim s&#259; apar&#259; in interogare &#351;i apoi click pe <i>Next</i>: </p><img src="img/access3_14.png">
+        <p>D&#259;m numele <bi>Clienti Query</bi> interog&#259;rii &#351;i apoi click pe <i>Finish</i>: </p><img src="img/access3_15.png">
+        <p>Ob&#355;inem urm&#259;toarea interogare:</p><img src="img/access3_16.png">
+        <p>Pentru a crea o interogare pentru tabelul <bi>Comenzi</bi> alegem c&#226;mpurile pe care le dorim:</p><img src="img/access3_17.png">
+        <p>Ob&#355;inem urm&#259;toarea interogare:</p><img src="img/access3_18.png">
+        <p>
+            Pentru a crea o interogare care s&#259; con&#355;in&#259; c&#226;mpuri din ambele tabele din ribbon-ul <b>Create</b> alege&#355;i <bi>Query Design</bi>:.
+        </p><img src="img/access3_20.png">
+        <p>
+            Select&#259;m ambele tabele &#351;i ap&#259;s&#259;m <b>Add</b>, apoi <b>Close</b>.
+        </p><img src="img/access3_21.png">
+        <p>Select&#259;m din ambele tabele c&#226;mpurile care dorim sa apar&#259; in interogare:</p><img src="img/access3_22.png">
 
-        <img src="img/4.9.png">
-
-        <p>În baza noastră de date mai facem o interogare: toţi copii născuţi după o anumită dată (anul 2001)</p>
-       </div>
+        <p>Dupa ce am selectat c&#226;mpurile dorite:<br><img src="img/access3_23.png"> <br>Ap&#259;s&#259;m <img src="img/access3_24.png">, din ribbon-ul contextual <b>Design</b> &#351;i ob&#355;inem:</p><img src="img/access3_25.png">
+        <p>Se salveaz&#259; interogarea d&#226;nd click dreapta:</p><img src="img/access3_26.png">
+        <p>&#351;i i se d&#259; un nume:</p><img src="img/access3_27.png">
+        <p>La final baza de date va avea urm&#259;toarea structur&#259;:</p><img src="img/access3_28.png">
+        
     </body>
 </html>

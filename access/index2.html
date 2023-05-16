@@ -82,15 +82,14 @@
         <table>
             <tr>
                 <td colspan="2">
-                    Pentru a stabili exact rela&#355;ia, adic&#259; pentru a specifica faptul c&#259; datele din c&#226;mpul ID_Angajat din ANGAJATI
-                     este replicat&#259; &#238;n ID_Angajat din COPII, mergem &#238;n <bi>DatabaseTools --> Relationships</bi>. 
+                    Pentru a stabili exact rela&#355;ia, adic&#259; pentru a specifica faptul c&#259; datele din c&#226;mpul ID_Angajat din ANGAJATI este replicat&#259; &#238;n ID_Angajat din COPII, mergem &#238;n <bi>DatabaseTools --> Relationships</bi>. 
                      <br><img src="img/access2_6.png"><br>Select&#259;m ambele tabele &#351;i ap&#259;s&#259;m <b>Add</b>, apoi <b>Close</b>.<br><img src="img/access2_7.png"> 
                 </td>
             </tr>
             <tr>
                 <td>
                     <p>
-                        Cele dou&#259; tabele nu sunt &#238;nc&#259; rela&#355;ionate.<br><img src="img/access2_8.png"><br> Tragem (Drag&Drop) coloana ID_Angajat din ANGAJATI peste coloana ID_Angajat din COPII. <br> &#206;n fereastra deschis&#259; bif&#259;m checkbox-ul <b>EnforceReferentialIntegrity</b>.<br>
+                        Cele dou&#259; tabele nu sunt &#238;nc&#259; rela&#355;ionate.<br><img src="img/access2_8.png"><br> Tragem (Drag&Drop) coloana ID_Angajat din ANGAJATI peste coloana ID_Angajat din COPII. <br> &#206;n fereastra deschis&#259; bif&#259;m checkbox-ul <b>Enforce Referential Integrity</b>.<br>
                          Ap&#259;s&#259;m <b>Create</b>.<br> <img src="img/access2_9.png">
                     </p>
                 </td>
@@ -98,12 +97,14 @@
             </tr>
         </table>
 
-        <p style="text-indent: 0;"><tot>Aten&#355;ie !</tot> Este obligatoriu s&#259; &#238;nchidem tabelele &#238;nainte de a face aceast&#259; opera&#355;ie de rela&#355;ionare.</p>
+        <p><tot>Aten&#355;ie !</tot> Este obligatoriu s&#259; &#238;nchidem tabelele &#238;nainte de a face aceast&#259; opera&#355;ie de rela&#355;ionare.</p>
 
         <p>Observ&#259;m c&#259; apare rela&#355;ia '1 la n' (<b>'1 la ∞'</b>).</p>
-
-        <img src="img/access2_10.png">C&#226;mpul ID_Angajat din tabelul <bi>Copii</bi> este cheie extern&#259;
-
+        <table>
+            <tr>
+                <td><img src="img/access2_10.png"></td><td>C&#226;mpul ID_Angajat din tabelul <bi>Copii</bi> este cheie extern&#259;</td>
+            </tr>
+        </table>
         <p>
             Deschidem tabelul <b>COPII</b>. Coloana <bi>ID_Angajat</bi> stocheaz&#259; ID-ul corespunz&#259;tor p&#259;rintelui. De exemplu, dac&#259; &#238;n prima linie scriem <b>1</b>, stabilim c&#259; p&#259;rintele lui Dorel este Ionescu, care are ID_Angajat 1 &#238;n tabelul <b>ANGAJATI</b>.
         </p>
