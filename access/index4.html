@@ -1,135 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>FisaAccess6</title>
+        <title>Fisa Access 4</title>
 
             <meta charset="utf-8"> 
 
             <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        </br>
-            <div class="box">
-                <PageTitle style="text-align:center">
-                    <h1>
-                            <u>F I Ş A Nr. 6<br></u>
-                            Crearea unui formular
-                    </h1>
-                </PageTitle></br>
+        <br>
+        <div class="box">
+            <PageTitle style="text-align:center">
+                <h1>
+                    <u>F I &#350; A Nr. 4<br></u>
+                        Crearea unui formular
+                </h1>
+            </PageTitle><br>
+            <p> 
+                    <b>Formularele</b> reprezintă <b>ferestre</b> ce permit <b>adăugarea</b>, <b>modificarea</b>, &#351;i <b>ştergerea</b> datelor dintr-o bază de date. Formularele sunt special create astfel
+                    încât să permită, cât mai facil şi rapid, realizarea operaţiilor de mai sus.
+            </p>
+            <p>Cre&#259;m o nou&#259; baz&#259; de date numit&#259; <bi>Scoala</bi>: <br>
+                <img src="img/access4_1.png">
+            </p>
+            <br> Baza de date va con&#355;ine un tabel <bi>Clase</bi> cu urm&#259;toarele c&#226;mpuri:
+           <table> 
+                <tr><td><img src="img/access4_2.png"></td><td> C&#226;mpul ID_Clasa este cheie primar&#259;</td></tr> 
+            <table> &#351;i c&#226;teva &#238;nregistr&#259;ri: <br><img src="img/access4_3.png">   
+        <p>Din ribbon-ul <bi>Create</bi> cre&#259;m un nou tabel <bi>Table</bi> .<img src="img/access3_4.png"> pe care il salv&#259;m <img src="img/access3_5.png"> cu numele <bi>Elevi</bi><br>
+        Acest tabel va con&#355;ine urm&#259;toarele c&#226;mpuri:
+            <table> 
+                <tr><td><img src="img/access4_4.png"></td><td> C&#226;mpul ID_Elev este cheie primar&#259;</td>
+                </tr> 
+            <table>
+             &#351;i c&#226;teva &#238;nregistr&#259;ri: <br><img src="img/access4_5.png"> 
+        </p>           
+          <p>Pentru a stabili exact rela&#355;ia, adic&#259; pentru a specifica faptul c&#259; datele din c&#226;mpul ID_Clasa din <bi>Clase</bi> este replicat&#259; &#238;n ID_Clasa din <bi>Elevi</bi>, mergem &#238;n <bi>DatabaseTools --> Relationships</bi>. 
+                     <br><img src="img/access2_6.png"><br>Select&#259;m ambele tabele &#351;i ap&#259;s&#259;m <b>Add</b>, apoi <b>Close</b>.<br><img src="img/access4_6.png"> 
+        </p>
+        <p>
+             Cele dou&#259; tabele nu sunt &#238;nc&#259; rela&#355;ionate. Tragem (Drag&Drop) coloana ID_Clasa din <bi>Clase</bi> peste coloana ID_Clasa din <bi>Elevi</bi>. <br> &#206;n fereastra deschis&#259; bif&#259;m checkbox-ul <b>Enforce Referential Integrity</b>.<br>
+            Ap&#259;s&#259;m <b>Create</b>.<br> <img src="img/access4_7.png">
+        </p>
+          <p><tot>Aten&#355;ie !</tot> Este obligatoriu s&#259; &#238;nchidem tabelele &#238;nainte de a face aceast&#259; opera&#355;ie de rela&#355;ionare.</p>
 
-                <table>
-                    <tr>
-                        <td><img src="img/6.1.png"></td>
-                        <td>
-                            <p>
-                                <b>Formularele</b> reprezintă <b>ferestre</b> ce permit <b>adăugare</b>, <b>modificarea</b>,
-                                <b>ştergerea</b> datelor dintr-o bază de date. Formularele sunt special create astfel
-                                încât să permită cât mai facil şi rapid operaţiile de mai sus.
-                            </p>
-                            <p>
-                                Din ribbon-ul <b>Create</b> alegeţi <bi>More Forms>FormWizard</bi> pentru
-                                crearea unui formular.
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <p>
-                                În fereastra de wizard deschisă alegem
-                                câmpurile <b>Salariu</b>, <b>Oras</b> şi <b>Nume</b> din tabela
-                                ANGAJATI, iar din tabela COPII, alegem <b>ID_Parinte</b>, <b>Prenume</b> şi <b>DataN</b>. Vom putea să modificăm datele
-                                din două tabel în acelaşi timp. Apăsăm <b>Next</b>.
-                            </p>
-                        </td>
-                        <td>
-                            <p>
-                                <b>Access</b> şi-a dat seama că am ales date din
-                                două tabele şi acum trebuie să alegem care dintre
-                                ele este <bi>Parent</bi>. Alegem tabela ANGAJATI şi apăsăm <b>Next</b>.
-                            </p>   
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/6.2.png"></td>
-                        <td><img src="img/6.3.png"></td>
-                    </tr>
-                    <tr>
-                        <td><p>Ca layout alegem modul <b>Tabular</b>. Dăm <b>Next</b>.</p></td>
-                        <td><p>Alegem un stil de formatare şi apăsăm <b>Next</b>.</p></td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/6.4.png"></td>
-                        <td><img src="img/6.5.png"></td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/6.6.png"></td>
-                        <td>
-                            <p>
-                                În final, completăm numele pentru formular şi subformular:
-                                <ul>
-                                    <li><i>Formde input Angajati-COPII</i></li>
-                                    <li><i>COPII Subform</i></li>
-                                </ul>
-
-                                Apăsăm <b>Finish</b>.
-                            </p>
-                            <p>
-                                Observaţi că avem o singură fereastră de unde
-                                am putea modifica şi angajaţi (partea de sus) şi copiii
-                                angajaţilor (partea de jos, în funcţie de părintele
-                                selectat).
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/6.7.png"></td>
-                        <td>
-                            <p>
-                                Există două modalităţi de navigare :
-
-                                <ul>
-                                    <li>
-                                        Navigarea de
-                                        jos, care ne permite să
-                                        navigăm între liniile
-                                        din <bi>parent</bi>– ANGAJATI;
-                                    </li>
-                                    <li>
-                                        Navigarea din
-                                        tabela <bi>child</bi> – COPII
-                                        care ne permite să
-                                        navigăm între copii
-                                        angajatului respectiv.
-                                    </li>
-                                </ul>
-                            </p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="img/6.8.png"></td>
-                        <td>
-                            <p>Dacă vrem să trecem la următorul angajat, apăsăm butonaşul <b>Next Record</b>,.<img src="img/6.9.png"> din partea de jos.</p>
-                        </td>
-                    </tr>
-                </table>
-
-                <p>Observăm că acum este afişat angajatul Popescu care nu are nici un copil.</p>
-                <p>
-                    Cu acest instrument putem să facem orice operaţie de modificare fără a mai fi nevoie să
-                    deschidem ambele tabele. De exemplu, revenind la primul angajat, Ionescu, apăsăm <b>New Record</b> 
-                    <img src="img/6.10.png">în tabela <bi>child</bi> (COPII).Introducem prenumele
-                    Ionica şi data naşterii.
-                </p>
-                <img src="img/6.11.png">
-
-                <p>
-                    În acest moment nu numai că a fost introdus în tabel copilul <i>Ionica</i>, dar el a fost asignat
-                    angajatului <i>Ionescu</i>. Dacă deschideţi tabela COPII observaţi noua înregistrare pentru <i>Ionica</i>, care
-                    are deja la <i>Parinte_ID</i> valoarea <b>1</b> (care îl reprezintă pe angajatul <i>Ionescu</i>).
-                </p>
-                <img src="img/6.12.png">
-
-                <p>În acest Formular nu se pot face numai adăugări de linii noi, dar și modificări, sortări, filtrări, s.a.m.d.</p>
-            </div>
+        <p>Observ&#259;m c&#259; apare rela&#355;ia '1 la n' (<b>'1 la ∞'</b>).</p>
+        <table>
+            <tr>
+                <td><img src="img/access4_8.png"></td><td>C&#226;mpul ID_Clasa din tabelul <bi>Elevi</bi> este cheie extern&#259;</td> 
+            </tr>
+        </table>        
+        <p>
+            Avem dou&#259; tabele: <bi>Clase</bi> &#351;i <bi>Elevi</bi>. Cele dou&#259; tabele sunt rela&#355;ionate: unei
+            &#238;nregistr&#259;ri din tabelul <bi>Clase</bi> pot s&#259; îi corespund&#259; mai multe &#238;nregistr&#259;ri din tabelul <bi>Elevi</bi>.
+        </p>   
+        <p>
+            Select&#259;m tabelul <bi>Clase</bi>.<br><img src="img/access4_8_1.png"><br>
+            Din ribbon-ul <b>Create</b> alegeţi <bi>Form</bi> pentru crearea unui formular.
+        </p>
+        <img src="img/access4_9.png">
+        
+        <p>Ob&#355;inem urm&#259;torul formular care con&#355;ine toate c&#226;mpurile din ambele tabele:</p>
+        <img src="img/access4_10.png">
+        <p>
+            Pentru a salva acest formular se d&#259; click dreapta si <i>Save</i>:<br><img src="img/access4_11.png">.<br> Apoi se d&#259; un nume formularului:<br><img src="img/access4_12.png">
+        </p>
+        <p>
+            Cu acest instrument putem să facem orice operaţie de modificare fără a mai fi nevoie să deschidem ambele tabele. De exemplu, revenind la clasa IX B, apăsăm <b>New Record</b> <img src="img/6.10.png">în tabelul <bi>Elevi</bi>. Introducem Nume, Prenume şi data naşterii.
+        </p>
+        <img src="img/access4_10_1.png">
+        <p>
+            În acest moment nu numai că a fost introdus în tabel elevul <i>Preda</i>, dar el a fost asignat clasei <i>IX B</i>. Dacă deschideţi tabelul <bi>Elevi</bi> observaţi noua înregistrare pentru <i>Preda</i>, care are deja la <i>ID_Clasa</i> valoarea <b>1</b> (care reprezintă clasa <i>IX B</i>).
+        </p>
+        <img src="img/access4_10_3.png">
+        <p>În acest Formular nu se pot face numai adăugări de linii noi, dar și                 modificări, sortări, filtrări, s.a.m.d.
+        </p>
+        <p>
+            Similar cre&#259;m un formular pentru tabelul <bi>Elevi</bi> cu ajutorul &#259;ruia putem vizualiza sau insera noi inregistr&#259;ri: 
+        </p><img src="img/access4_13.png">
+        </div>
     </body>
 </html>

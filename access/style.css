@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@font-face {
+    font-family: 'Capiten';
+    src: url("CapitenRegular-w18E3.otf") format("opentype");
+}
 
 :root {
     --label-width: 500px;
     --label-height: 200px;
     --label-radius: 200px;
-    --lable-transition: 300ms;
+    --label-transition: 300ms;
 
     --primary-color: rgb(28, 28, 28);
     --secondary-color: rgb(232, 232, 232);
@@ -42,7 +46,7 @@ ol {
 p {
     font-weight: 400;
     text-indent: 45px;
-
+    font-family: 'Poppins',sans-serif;
 }
 
 red {
@@ -51,6 +55,7 @@ red {
 
 blue {
     color: blue;
+    
 }
 
 green {
@@ -72,7 +77,10 @@ bi {
     font-weight: bold;
     font-style: italic;
 }
-
+ 
 B {
     font-weight: bolder;
+}
+h1 {
+    font-family: 'Capiten', fantasy;
 }
