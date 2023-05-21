@@ -82,5 +82,8 @@ B {
     font-weight: bolder;
 }
 h1 {
-    font-family: 'Capiten', fantasy;
+    font-family: 'Capiten',papyrus, fantasy;
+    border: 15px solid transparent;
+    padding: 15px;
+    border-image: url(img/border.png) 30 stretch;
 }
