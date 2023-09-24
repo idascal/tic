@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+    --label-width: 500px;
+    --label-height: 200px;
+    --label-radius: 200px;
+    --lable-transition: 300ms;
+
+    --primary-color: rgb(28, 28, 28);
+    --secondary-color: rgb(232, 232, 232);
+}
+
+body {
+    font-size:20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-indent: 45px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: center;
+    align-items: center
+}
+
+h1{
+    text-align: center;
+}
+
+li {
+    text-indent: 0px;
+    font-weight: 400;
+}
+
+ol {
+    font-weight: bold;
+}
+
+p {
+    font-weight: 400;
+    text-indent: 45px;
+
+}
+
+red {
+    color: red;
+}
+
+blue {
+    color: blue;
+}
+
+green {
+    color: rgb(0, 205, 0);
+}
+
+yellow{
+    color: yellow;
+}
+
+tot{
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline solid black;
+    text-underline-position: below;
+}
+
+bi {
+    font-weight: bold;
+    font-style: italic;
+}
+
+i1{
+    font-weight: 300;
+    font-style: italic;
+}
+
+B {
+    font-weight: bolder;
+}
