@@ -14,6 +14,41 @@
                 font-family: colibri;
                 font-size: 20pt;
             }
+            tr, th, td {
+              border: 1.5px solid black;
+              text-align: center;
+            }
+            table {
+                border: 2.5px solid black;
+                margin-left:auto;
+                margin-right:auto;
+                width: 95%;
+            }
+            table, th, td {
+                border-collapse: collapse;
+            }
+
+            red {
+                color: red;
+            }
+
+            blue {
+                color: blue;
+            }
+
+            green {
+                color: rgb(0, 205, 0);
+            }
+            .B {
+                border :5px solid rgb(10, 240, 22);
+                text-align: center;
+                border-collapse: collapse;
+                border-style: double;
+            }
+            .B tr td{
+                border: 1px solid rgb(0,0,0);
+                
+            }
         </style>
 
         <meta charset="utf-8"> 
@@ -113,21 +148,280 @@
                     <li>Celule(Cells): dimensiunea(Size) celulelor, alinierea pe verticală textului în celulă(Vertical alignment). Se mai pot seta op&#355;iuni(Options) din caseta Op&#355;iuni celula(Cell Options).<br><img src="imagini/tabel_5_27.png"></li>
                 </ul>
             </p>
-            <li class="titlu" id="f5_11">11.  APLICA&#354;IE:</li>
-                <ol style="list-style: a"> 
-                    <li> Lansa&#355;i procesorul de text Microsoft Word</li>
-                    <li>Pentru margini alege&#355;i formatarea predefinit&#259; <b>Moderate</b> din list&#259;</li>
-                    <li>Insera&#355;i antetul &#351;i subsolul care au fost  salva&#355;i &#238;n galerie la Fisa 1;
-                    <li> Scrie&#355;i titlul ECUA&#354;IA DE GRADUL AL DOILEA cu font <B>CASTELLAR</B>, m&#259;rime <b>18</b>, culoare <b>ro&#351;ie</b>(red), subliniat cu linie punctat&#259;, centrat </li>
-                    <li>Scrie&#355;i folmula de calcul a r&#259;d&#259;cinilor ecua&#355;iei de gradul doi</li>
-                    <li>Sub ecua&#355;ie scrie&#355;i textul: PROGRAM DE VACAN&#354;&#258; cu font <B>ALGERIAN</B>, m&#259;rime <b>18</b>, culoare <b>albastr&#259;</b>(blue), aliniat la dreapta.</li>                
-                    <li>Sub acest text insera&#355;i o imagine de vacan&#355;&#259; &#351;i ad&#259;uga&#355;i acesteia o bordur&#259; de tip linie &#238;ntrerupt&#259; de culoare verde de grosime 6 pt &#351;i efect de tip Umbrire(Shadow).</li>
-                    <li>&#206;n urm&#259;toarea pagin&#259; insera&#355;i imaginea &#351;i textul urm&#259;tor cu caractere Courier New  m&#259;rimea 12.<br><img src="imagini/turing.png"></li>
-                    <li>Insera&#355;i o imagine Clip Art la alegere.</li>
-                    <li>&#206;n urm&#259;toarea pagin&#259; realiza&#355;i organigrama de mai jos:<br><img src="imagini/fisa6_1.png">.</li>
-                    <li>Insera&#355;i o imagine de fundal(Watermark) la alegere.</li>
-                    <li>Insera&#355;i un chenar la pagin&#259; la alegere.</li>
-                    <li>Insera&#355;i numere de pagin&#259;.</li>
+            <li class="titlu" id="f5_11">11.  APLICA&#354;II:</li>
+                <ol type="A">
+                    <li>
+                        <ol style="list-style: a"> 
+                            <li> Lansa&#355;i procesorul de text Microsoft Word;</li>
+                            <li>Pentru margini alege&#355;i formatarea predefinit&#259; <b>Narrow</b> din list&#259;;</li>
+                            <li>Insera&#355;i antetul &#351;i subsolul care au fost  salva&#355;i &#238;n galerie la Fisa 1;</li>
+                            <li>Introduce&#355;i titlul &bdquo;Note elevi&rdquo; aldin (&#238;ngro&#351;at), aliniat la centru, m&#259;rime 20;</li>
+                            <li>S&#259; se creeze un tabel de forma urm&#259;toare. Textul tabelului este scris cu Courier New de 12 pct, <b>Bold</b>, aliniat ca &#238;n tabelul de mai jos:
+                                <table>
+                                    <tr>
+                                        <th>
+                                            NR.<br>
+                                            CRT.
+                                        </th>
+                                        <th>NUMELE &#350;I PRENUMELE</th>
+                                        <th>NOTA 1</th>
+                                        <th>NOTA 2</th>
+                                        <th>NOTA 3</th>
+                                        <th>
+                                            MEDIA <br>
+                                            GENERAL&#258;
+                                         </th>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align: left;">1</th>
+                                        <th style="text-align: left;">Antonescu Andreea</th>
+                                        <th>8</th>
+                                        <th>9</th>
+                                        <th>9</th>
+                                        <th style="text-align: right;">Medie</th>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align: left;">2</th>
+                                        <th style="text-align: left;">Ionescu Margareta</th>
+                                        <th>9</th>
+                                        <th>9</th>
+                                        <th>10</th>
+                                        <th>Medie</th>
+                                    </tr>
+                                    <tr>
+                                        <th style="text-align: left;">3</th>
+                                        <th style="text-align: left;">Popescu Tudor</th>
+                                        <th>7</th>
+                                        <th>8</th>
+                                        <th>8</th>
+                                        <th style="text-align: left;">Medie</th>
+                                    </tr>
+                                 </table>
+                            </li>
+                            <li>L&#259;&#355;imile coloanelor tabelului sunt urm&#259;toarele:
+                                <ul>
+                                    <li>prima coloan&#259;: 1,4 cm</li>
+                                    <li>a doua coloan&#259;: 8,6 cm</li>
+                                    <li>celelalte coloane: 2,5 cm</li>
+                                 </ul>
+                            </li>
+                            <li>Insera&#355;i un r&#226;nd la sf&#226;r&#351;itul tabelului &#238;n care uni&#355;i primele cinci celule  &#351;i  scrie&#355;i &bdquo;MEDIA GRUPEI&rdquo; aliniat la centru;</li>                
+                            <li>Insera&#355;i un r&#226;nd la sf&#226;r&#351;itul tabelului &#238;n care v&#259; scrie&#355;i numele. Numele va fi scris cu Arial Narrow de 10 pct, <b>Bold</b>, <red>culoare ro&#351;ie</red>, aliniat &#238;n st&#226;nga jos</li>
+                            <li>In&#259;l&#355;imea r&#226;ndurilor introduse: 1,8 cm</li>
+                            <li>Mai introduce&#355;i un r&#226;nd la &#238;nceputul tabelului. Uni&#355;i celulele acestui r&#226;nd &#351;i scrie&#355;i textul: &bdquo;TABEL MEDII TIC 9X&rdquo;;</li>
+                            <li>Aplica&#355;i r&#226;ndului introdus la punctul anterior o culoare de umplere la alegere;</li>
+                            <li>Calcula&#355;i media general&#259; pentru fiecare elev &#238;n parte folosind func&#355;ia AVERAGE(LEFT);</li>
+                            <li>Calcula&#355;i media general&#259; pentru grupa de elevi folosind func&#355;ia AVERAGE(ABOVE);</li>
+                            <li>Orienta&#355;i textul NR.CRT. pe vertical&#259;;</li>
+                            <li>Aplica&#355;i tabelului:<br>
+                                <ul>
+                                    <li>bordur&#259; exterioar&#259; dubl&#259; de <green>culoare verde</green> &#351;i grosime 1 pct.</li>
+                                    <li>bordur&#259; interioar&#259; cu linie punctat&#259; de <red>culoare ro&#351;ie</red> &#351;i grosime 2 pct.</li>
+                                </ul>
+                            </li>
+                            <li>Sorta&#355;i &#238;nregistr&#259;rile dup&#259; coloana Medie general&#259;;</li>
+                            <li>Realiza&#355;i urm&#259;torul tabel:
+                                <table>
+                                    <tr style="height: 40px; width: 120px;">
+                                        <td rowspan="2" colspan="3"></td>
+                                        <td rowspan="2" colspan="3"></td>
+                                        <td rowspan="2" colspan="3"></td>
+                                        <td colspan="3"></td>
+                                        <td rowspan="2" colspan="3"></td>
+                                    </tr>
+                                    <tr style="height: 40px; width: 120px;">
+                                    </tr>
+                                    <tr style="height: 40px; width: 120px;">
+                                        <td rowspan="2" colspan="3"></td>
+                                        <td rowspan="2" colspan="3"></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td rowspan="2" colspan="3"></td>
+                                        <td rowspan="2" colspan="3"></td>
+                                    </tr>
+                                   <tr style="height: 40px; width: 120px;">
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="height: 40px; width: 120px;">
+                                        <td colspan="3"></td>
+                                        <td colspan="2"></td>
+                                        <td></td>
+                                        <td colspan="3"></td>
+                                        <td colspan="3"></td>
+                                    </tr>
+                                    <tr style="height: 40px; width: 120px;">
+                                        <td colspan="3"></td>
+                                        <td colspan="3" rowspan="3"></td>
+                                        <td colspan="3" rowspan="3"></td>
+                                        <td colspan="2" rowspan="3"></td>
+                                        <td rowspan="3"></td>
+                                        <td colspan="3" rowspan="3"></td>
+                                    </tr>
+                                    <tr style="height: 40px; width: 120px;">
+                                        <td colspan="2"></td>
+                                        <td></td>
+
+                                    </tr>
+                                    <tr style="height: 40px; width: 120px;">
+                                        <td colspan="3"></td>
+                                    </tr>
+                                    <tr style="height: 40px; width: 120px;">
+                                        <td rowspan="2" colspan="3"></td>
+                                        <td rowspan="2" colspan="3"></td>
+                                        <td rowspan="2" colspan="3"></td>
+                                        <td rowspan="2" colspan="3"></td>
+                                        <td rowspan="1" colspan="2"></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr style="height: 40px; width: 120px;">
+                                       <td></td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <li>Insera&#355;i o imagine de fundal(Watermark) la alegere;</li>
+                            <li>Insera&#355;i un chenar la pagin&#259; la alegere;</li>
+                            <li>Salva&#355;i documentul cu numele &bdquo;Tabele_Word_A.docx&rdquo;.</li>
+                        </ol>
+                    </li><br><HR COLOR="#FF0000" SIZE="5%"><br>
+                    <li>
+                        <ol style="list-style: a"> 
+                            <li> Lansa&#355;i procesorul de text Microsoft Word</li>
+                            <li>Pentru margini alege&#355;i formatarea predefinit&#259; <b>Narrow</b> din list&#259;</li>
+                            <li>Insera&#355;i antetul &#351;i subsolul care au fost  salva&#355;i &#238;n galerie la Fisa 1;</li>
+                            <li>introduce&#355;i titlul &bdquo;Fi&#351;&#259; de observa&#355;ii&rdquo; aldin (&#238;ngro&#351;at), aliniat la centru, m&#259;rime 20;</li>
+                            <li>introduce&#355;i un tabel cu 9 r&#226;nduri (linii) &#351;i 5 coloane &#351;i introduce&#355;i datele ca &#238;n tabelul de mai jos:
+                                <table class="B">
+                                    <tr>
+                                        <td>Nr.crt.</td>
+                                        <td>Factorul de vegeta&#355;ie</td>
+                                        <td>Num&#259;rul vasului</td>
+                                        <td>Data</td>
+                                        <td>Observații</td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">1.</td>
+                                        <td rowspan="2">Lumina</td>
+                                        <td>1.</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2.</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">2.</td>
+                                        <td rowspan="2">Apa</td>
+                                        <td>1.</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2.</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">3.</td>
+                                        <td rowspan="2">Hrana</td>
+                                        <td>1.</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2.</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td rowspan="2">4.</td>
+                                        <td rowspan="2">C&#259;ldura</td>
+                                        <td>1.</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2.</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <li>Aplica&#355;i tabelului o bordur&#259; exterioar&#259; dubl&#259; de grosime 1 pct., culoare verde;</li>
+                            <li>Alinia&#355;i textul &#351;i &#238;mbina&#355;i celulele ca &#238;n tabelul de mai sus;</li>                
+                            <li>Formata&#355;i coloana &bdquo;Data&rdquo; s&#259; aib&#259; o l&#259;&#355;ime 2.5 cm;</li>
+                            <li>L&#259;sa&#355;i 2 r&#226;nduri libere &#351;i indroduce&#355;i tabelul de mai jos:
+                                <table class="B">
+                                    <tr>
+                                        <td><b>Nr.crt</b></td>
+                                        <td><b>Nume &#351;i prenume</b></td>
+                                        <td><b>Abs_mod_1</b></td>
+                                        <td><b>Abs_mod_2</b></td>
+                                        <td><b>Abs_mod_3</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>1.</td>
+                                        <td>Popescu Mirela</td>
+                                        <td>13</td>
+                                        <td>21</td>
+                                        <td>11</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2.</td>
+                                        <td>Apostol Ion</td>
+                                        <td>9</td>
+                                        <td>10</td>
+                                        <td>21</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3.</td>
+                                        <td>Nae Eh</td>
+                                        <td>16</td>
+                                        <td>8</td>
+                                        <td>2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4.</td>
+                                        <td>Cristea Silvia</td>
+                                        <td>2</td>
+                                        <td>5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5.</td>
+                                        <td>Barbu George</td>
+                                        <td>32</td>
+                                        <td>23</td>
+                                        <td>21</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6.</td>
+                                        <td>Cristea Vasile</td>
+                                        <td>14</td>
+                                        <td>14</td>
+                                        <td>21</td>
+                                    </tr>
+                                </table>
+                            </li>
+                            <li>Format&#259;ri: textul din tabel s&#259; fie scris cu Arial Narrow, 12pct, Bold, aliniat la centru pe orizontal&#259; &#351;i vertical&#259;;</li>
+                            <li>Insera&#355;i, dup&#259; coloana Abs_mod_3, coloana Abs_total;</li>
+                            <li>Aplica&#355;i coloanei Abs_total o culoare de umplere, la alegere;</li>
+                            <li>&#238;n&#259;l&#355;imea liniilor tabelului: 0.82 cm;</li>
+                            <li>L&#259;&#355;imea coloanelor: Nr.crt 1,8 cm, Nume &#351;i prenume 6.2 cm, Abs_mod_1, Abs_mod_2, Abs_mod_3 și Abs_total 2.5 cm;</li>
+                            <li>Insera&#355;i o linie desupra capului de tabel, uni&#355;i toate celulele &#351;i scrie&#355;i urm&#259;torul text: &bdquo;TABEL ABSENȚE&rdquo;. Acest text va fi aliniat la dreapta pe orizontal&#259; &#351;i jos pe vertical&#259;; </li>
+                            <li>Calcula&#355;i absen&#355;ele totale de pe coloana Abs_total folosind func&#355;ia SUM(LEFT);</li>
+                            <li>Aplica&#355;i tabelului o bordur&#259; punctat&#259; de grosime 3 pct. &#351;i culoare albastr&#259;;</li>
+                            <li>Insera&#355;i, la sf&#226;r&#351;itul tabelului copiat, 2 r&#226;nduri noi &#351;i completa&#355;i-le cu date;</li>
+                            <li>Sorta&#355;i elevii descresc&#259;tor dup&#259; coloana Abs_total;</li>
+                            <li>Copia&#355;i tabelul &#351;i converti&#355;i-l la text</li>
+                            <li>Insera&#355;i o imagine de fundal(Watermark) la alegere.</li>
+                            <li>Insera&#355;i un chenar la pagin&#259; la alegere.</li>
+                            <li>Salva&#355;i documentul cu numele &bdquo;Tabele_Word_B.docx&rdquo;.</li>
+                        </ol>   
+                    </li>
                 </ol>
         </ol>
     </body>
