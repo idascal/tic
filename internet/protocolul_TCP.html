@@ -1,0 +1,66 @@
+<hml>
+    <head>
+        
+    </head>
+    <body>
+        <h1 align="center">Protocolul TCP/IP </h1>
+        <h3 align="center"><i><u>Defini&#355;ia protocolului TCP/IP</u></i> </h3>
+        <p align="justify"> TCP/IP (Transmission Control Protocol/Internet Protocol) este cel mai utilizat protocol folosit &#238;n re&#355;elele locale c&#226;t &#351;i pe Internet datorit&#259; disponibilit&#259;&#355;ii &#351;i flexibilit&#259;&#355;i lui av&#226;nd cel mai mare grad de corec&#355;ie al erorilor. <br>
+          TCP/IP permite comunicarea &#238;ntre calculatoarele din &#238;ntreaga lume indiferent de sistemul de operare instalat. </p>
+        <h3 align="center"><i><u>Istoric</u></i> </h3>
+        <p align="justify">&#206;n anii 1960, guvernul SUA finan&#355;eaz&#259; proiectarea &#351;i dezvoltarea procotolului TCP/IP. <br>
+          Departamentul Ap&#259;r&#259;rii al SUA dorea un protocol de re&#355;ea care s&#259; mearg&#259; indiferent de condi&#355;iile de pe re&#355;ea. At&#226;t timp c&#226;t conexiunea fizic&#259; &#238;ntre calculatoare este func&#355;ional&#259; &#351;i conexiunea logic&#259; a lor s&#259; fie func&#355;ional&#259;, chiar dac&#259; alte calculatoare din re&#355;ea se opresc brusc. <br>
+        </p>
+        <h3 align="center"><i><u>Cum func&#355;ioneaz&#259;&#8230; </u></i></h3>
+        <p align="justify">  Protocolul TCP/IP este compus din patru niveluri: Aplica&#355;ie, Transport, Re&#355;ea &#351;i Acces la re&#355;ea. </p>
+        <p><i><b><u>Nivelul Aplica&#355;ie</u> </b></i></p>
+        <p align="justify">  Nivelul Aplica&#355;ie se ocup&#259; cu protocoalele de nivel &#238;nalt, codificarea, &#351;i controlul dialogului, &#238;mpachetarea datelor &#351;i trimiterea lor la urm&#259;toarele niveluri.
+        <p align="center"><img width="300" height="159" src="nivele_TCP.png"></p>
+        <p>Nivelul Aplica&#355;ie con&#355;ine urm&#259;toarele protocoale de nivel &#238;nalt: </p>
+        <ul>
+          <li>Transfer de fi&#351;iere: TFTP, FTP &#351;i NFS </li>
+          <li>E-mail: SMTP </li>
+          <li>Remote: telnet, rlogin </li>
+          <li>Managementul de re&#355;ele: SNMP </li>
+          <li>Managementul de nume: DNS </li>
+          <li>HTTP </li>
+        </ul>
+        <p><b><i><u>Nivelul Transport</u></i></b></p>
+        <p align="justify"> Nivelul Transport asigur&#259; conexiunea logic&#259; dintre calculatorul surs&#259; &#351;i calculatorul destina&#355;ie, fluxul de date &#351;i corec&#355;ia erorilor. </p>
+        <p align="justify">Nivelul transport include protocoale TCP &#351;i UDP. <br><br>
+          TCP (Trasmission Control Protocol) este un protocol orientat pe conexiune care permite ca un flux de octe&#355;i trimi&#351;i de la un calculator s&#259; ajung&#259; f&#259;r&#259; erori pe orice alt calculator din Internet. Dac&#259; pe calculatorul destina&#355;ie un pachet ajunge cu erori, TCP cere retrimiterea acelui pachet. <br>
+          TCP fragmenteaz&#259; fluxul de octe&#355;i &#238;n mesaje discrete &#351;i paseaz&#259; fiecare mesaj nivelului Re&#355;ea. <br>
+          TCP trateaz&#259; totodat&#259; controlul fluxului pentru a se asigura c&#259;, calculatorul surs&#259; nu inund&#259; calculatorul destina&#355;ie cu mai multe pachete dec&#226;t poate acesta s&#259; prelucreze. <br>
+          Toate aceste lucruri sunt realizate prin utilizarea secven&#355;elor de num&#259;r, sliding windows &#351;i acknowledgments. <br><br>
+          UDP (User Datagram Protocol) este un protocol nesigur, destinat pentru aplica&#355;ii care trebuie s&#259; interogheze rapid, far&#259; retrimiterea pachetelor eronate. <br>
+        UDP este folosit in aplica&#355;iile de transmisii video sau audio &#351;i aplica&#355;ii client-server. <br>
+          Exemple de aplica&#355;ii care folosesc procolul UDP: </p>
+        <ul>
+          <li>DNS (DOMAIN NAME SERVER) </li>
+          <li>TFTP (TRIVIAL FILE TRANSFER PROTOCOL) </li>
+          <li>IPTV (TV prin Internet) </li>
+          <li>VOIP (Telefonie prin Internet) </li>
+        </ul>
+        <p><b><i><u>Nivelul Re&#355;ea</u> </i></b></p>
+        <p align="justify"> Scopul nivelul re&#355;ea este de a g&#259;si cel mai optim traseu prin care poate trimite pachetele. <br>
+        <p align="justify">Protocoalele care lucreaz&#259; la nivelul Re&#355;ea din modelul TCP/IP sunt: </p>
+        <ul>
+          <li>IP (Internet Protocol) </li>
+          <li>ICMP (Internet Control Message Protocol) </li>
+          <li>ARP (Address Resolution Protocol) </li>
+          <li>RARP (Reverse Address Resolution Protocol) </li>
+        </ul>
+        <p align="justify">IP caut&#259; cea mai bun&#259; cale de a trimite pachetele. <br>
+          ICMP ofer&#259; capabilit&#259;&#355;i de control &#351;i &#238;n schimbul de mesaje. <br>
+          ARP determin&#259; adresa MAC pentru adresele IP <br>
+          RARP determin&#259; adresa IP pentru o adres&#259; MAC cunoscut&#259;. <br>
+          Problemele majore se refer&#259; la dirijarea pachetelor &#351;i evitarea congestiei &#238;n re&#355;ea. </p>
+        <p><b><i><u>Nivelul Acces la Re&#355;ea</u></i></b></p>
+        <p align="justify">  Nivelul Acces la Re&#355;ea se ocup&#259; cu toate problemele legate de transmiterea efectiv&#259; a unui pachet IP pe o leg&#259;tur&#259; fizic&#259;, incluz&#226;nd &#351;i aspectele legate de tehnologii &#351;i de medii de transmisie. </p>
+        <p align="justify">Drivere, modemuri, pl&#259;ci de re&#355;ea, &#351;i alte componente se g&#259;sesc &#238;n nivelul Acces la re&#355;ea. <br>
+          Nivelul de acces la re&#355;ea define&#351;te procedurile folosite pentru interogarea cu echipamentele de re&#355;ea &#351;i de acces la mediu de transmisie. Protocolul standard, cum ar fi Serial Line Internet Protocol (SLIP) &#351;i punct-la-punct Protocol (PPP) trebuie s&#259; asigure accesul la re&#355;ea prin intermediul unui modem de conectare. Multe protocoale sunt necesare pentru a determina elementele de hardware &#351;i software, precum &#351;i specifica&#355;iile de transmitere la acest nivel. </p>
+        <p><b><i><u>Cum se formeaz&#259; un pachet TCP/IP</u></i></b></p>
+        <p align="center"><img src="formare_pachet.png"></p>
+        
+    </body>
+</hml>
