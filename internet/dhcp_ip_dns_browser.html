@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="carddeckslideshow.css" />
+
+        <style>
+
+        .stackcontainer{
+        margin: 100px 0 10px 0;
+        }
+
+        #demo1{
+            width: 80%; 
+            height: 60%;
+            margin-left: 20px;
+        }
+
+        #demo1 h4{
+            margin: 0;
+            text-align: center;
+        }
+
+
+        </style>
+
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+
+        <script src="carddeckslideshow.js">
+
+        /*
+        * Card Deck Slideshow (c) Dynamic Drive (www.dynamicdrive.com)
+        * Last updated: May 2nd, 13'
+        * Visit http://www.dynamicdrive.com/ for this script and 100s more.
+        */
+
+        </script>
+
+        <script>
+
+        var demo1 = new carddeckslideshow({
+            id: 'demo1',
+            autoplay: true,
+            cycles: 2,
+            persist: false
+        })
+
+        </script>
+    </head>
+    <body>
+        <div id="demo1" class="stackcontainer">
+
+            <div class="inner">
+                <div>
+                    <h4>Adresa IP</h4><br>
+                    <b>IP (Internet Protocol)</b>  este un protocol care asigură un serviciu de transmitere a datelor, fără conexiune permanentă. Acesta identifică fiecare interfaţă logică a echipamentelor conectate printr-un număr numit "adresă IP". Versiunea standard folosită în majoritatea cazurilor este IPv4. În IPv4, standardul curent pentru comunicarea în Internet, adresa IP este reprezentată pe 32 de biţi (de ex. 192.168.0.1). Alocarea adreselor IP nu este arbitrară; ea este realizată de către organizaţii însărcinate cu distribuirea de spaţii de adrese.<br>
+                    Protocolul Internet este protocolul care definește și permite interconectarea la nivelul Retea al modelului TCP. Utilizează un sistem de adresare logic și efectuează rutarea, care este redirecționarea pachetelor de la o gazdă sursă la următorul router care este cu un salt mai aproape de gazda destinație dorită pe o altă rețea.<br>
+                    IPv4 este un protocol fără conexiune și funcționează pe un model de livrare cu cel mai mic efort, prin faptul că nu garantează livrarea și nici nu asigură o secvențiere adecvată sau evitarea livrării duble. Aceste aspecte, inclusiv integritatea datelor, sunt abordate de un protocol de transport de nivel superior, cum ar fi Transmission Control Protocol (TCP).<br>
+                    Adresele IPv4 pot fi reprezentate în orice notație care exprimă o valoare întreagă de 32 de biți. Ele sunt cel mai adesea scrise în notație punct-zecimală, care constă din patru octeți ai adresei exprimate individual în numere zecimale și separate prin puncte.<br>
+                    De exemplu, adresa IP 172.16.254.1 reprezintă numărul zecimal de 32 de biți 2886794753, care în format hexazecimal este 0xAC10FE01.
+                </div>
+            </div>
+
+            <div class="inner">
+                <img src="coconut.jpg" />
+            </div>
+
+            <div class="inner">
+                <div>
+                    <h4>DHCP (Dynamic Host Configuration Protocol)</h4><br>
+                    <b>DHCP (Dynamic Host Configuration Protocol)</b> este un protocol TCP/IP care dă posibilitatea unei reţele private, conectate la internet, să aloce o adresă IP unui calculator gazdă care urmează a se conecta la acea reţea. DHCP este un mediu client server, urmaş al protocolului BOOTP, utilizat pentru alocarea dinamică a adreselor de IP, serverelor DNS (Domain Name Service), WINS (Windows Internet Name Service ) şi a default gateway.<br>
+                    <b>DHCP</b> a fost proiectat şi dezvoltat de Internet Engeneering Task Force (IETF). Microsoft a fost prima firmă care a introdus în 1994 DHCP, odată cu lansarea lui Windows NT Server 3.5.<br>
+                    <b>DHCP</b> este complet definit de următoarele Request For Comments:
+                    <ul>
+                        <li>RFC 1533: DHCP options and BOOTP Vendor extension</li>
+                        <li>RFC 1534: Interoperation between DHCP and BOOTP</li>
+                        <li> RFC 1541: DHCP</li>
+                    </ul>
+                    <b>Functionare</b> <br>
+                    Clienţii DHCP caută în reţea servere DHCP, de la care încearcă să obţină, pe o durată limitată de timp, o identitate (adresă IP, mască de reţea, adresă pentru default gateway). Procesul se desfăşoară în patru paşi :
+                    <ul>
+                        <li><b><i>Discover</i></b> - clientul caută un server disponibil pentru a-şi transmite mesajul</li>
+                        <li><b><i>Offer</i></b> - oferta DHCP către client</li>
+                        <li><b><i>Request</i></b> - cererea adresată de client serverului DHCP ales</li>
+                        <li><b><i>Acknowledgment</i></b> - serverul transmite clientului pachetul de date solicitat.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="inner">
+                <img src="forest.jpg" />
+            </div>
+
+            <div class="inner">
+                <div>
+                Ontario is a province located in the central part of Canada, the largest by population and second largest, after Quebec in total area. Toronto, the capital of Ontario, is the centre of Canada's financial services and banking industry.
+                </div>
+            </div>
+
+        </div>
+
+        <div style="margin-top:1em; margin-left:100px">
+        <a href="javascript:demo1.navigate('prev')">&#206;napoi</a> / <a href="javascript:demo1.navigate('next')">&#206;nainte</a> 
+        </div>
+    </body>
+</html>
