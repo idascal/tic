@@ -3,17 +3,21 @@
     <head>
         <title>Fisa Excel 2</title>
         <style>
-        .titlu {
-            padding: 8px;
-            margin: 25px;
+            .titlu {
+                padding: 8px;
+                margin: 25px;
 
-            /* other styling */
-            background-color: #33475b;
-            border-radius: 10px;
-            color: white;
-            font-family: colibri;
-            font-size: 20px;
-        }
+                /* other styling */
+                background-color: #33475b;
+                border-radius: 10px;
+                color: white;
+                font-family: colibri;
+                font-size: 20px;
+            }
+            table,tr,td{
+                border: 1px solid ;
+                border-collapse: collapse;
+            }
         </style>
     </head>
     <body>    
@@ -30,15 +34,37 @@
                 <li>Valorile celulelor dependente: dac&#259; o celul&#259; con&#355;ine o formul&#259;, aceasta poate folosi valorile celulelor dependente pentru a calcula rezultatul.</li>
             </ul>
         </p>
-        <p class="titlu" id="f1_1"><b>1. Formatarea celulelor &#238;n conformitate cu tipul datelor ce le vor conţine</b></p> 
+        <p class="titlu" id="f2_1"><b>1. Formatarea celulelor &#238;n conformitate cu tipul datelor ce le vor conţine</b></p> 
 		      Se selecteaz&#259; celula → Click dreapta <br><img src="img/formatare_celula_1.png"> → Clic pe Formatare Celule(Format Cells) <br><img src="img/formatare_celula_2.png"><br>Datele au un format implicit ce poate fi schimbat prin opţiunea de formatare, selectând opţiunea corespunz&#259;toare tipului de dat&#259;, conform listei de categorii din aplicaţie. <br><br><img src="img/formatare_celula_3.png"> <br>
               Exist&#259;  mai multe moduri de afişare a datelor introduse &#238;n celul&#259;:
-                <table border="1px">
-                    <tr><td>General</td><td>33.8</td><td>Excel afişează conţinutul aşa cum este scris de către utilizator</td></tr>
-                    <tr><td>Number</td><td>2300.45 <font color="red">(-230.33)</font></td><td>Formatul prestabilit Number are două zecimale. Numerele negative apar scrise în culoare roşie,<br> între paranteze, precedate de minus</td></tr>
+                <table>
+                    <tr><td>General</td><td>33.8</td><td>Excel afişează conţinutul aşa cum este scris de către utilizator</td>
+                    </tr>
+                    <tr><td>Number</td><td>2300.45 <font color="red">(-230.33)</font></td><td>Formatul prestabilit Number are două zecimale. Numerele negative apar scrise în culoare roşie,<br> între paranteze, precedate de minus</td>
+                    </tr>
+                    <tr><td>Currency</td><td>$33,800.45</td><td>Formatul prestabilit are două zecimale şi simbolul dolarului. Numerele negative apar scrise în culoare roşie, în paranteze.</td>
+                    </tr>
+                    <tr><td>Accounting</td><td>$ 33,800.45</td><td>Format util pentru a integra simbolul dolarului şi zecimalele în coloană / celulă.</td>
+                    </tr>
+                    <tr><td>Date</td><td>11/21</td><td>Formatul Date prestabilit conţine luna şi ziua separate de un slash; separatorul poate fi modificat după dorinţă.</td>
+                    </tr>
+                    <tr><td>Time</td><td>11:21</td><td>Formatul Time prestabilit conţine ora şi minutele separate prin „:”.</td>
+                    </tr>
+                    <tr><td>Precentage</td><td>35.55%</td><td>Formatul prestabilit conţine două zecimale.</td>
+                    </tr>
+                    <tr><td>Fraction</td><td>2/7</td><td>Formatul prestabilit poate reprezenta cel mult o cifră pe fiecare parte a barei.</td>
+                    </tr>
+                    <tr><td>Scientific</td><td>4.54E+06</td><td>Formatul prestabilit conţine două zecimale.</td>
+                    </tr>
+                    <tr><td>Text</td><td>234FG655</td><td>Afişează în celulă atât text cât şi numere</td>
+                    </tr>
+                    <tr><td>Special</td><td>03210</td><td>Este prevăzut pentru afişarea codurilor poştale, nr. de telefon, precum şi a CNP.</td>
+                    </tr>
+                    <tr><td>Custom</td><td>03.210</td><td>Acesta este folosit pentru a crea propriul format numeric.</td>
+                    </tr>
                 </table>
     
-        <p class="titlu" id="f1_2"><b>2. &#206;nchiderea aplica&#355;iei</b></p>
+        <p class="titlu" id="f2_2"><b>2. &#206;nchiderea aplica&#355;iei</b></p>
 		              <b>Fi&#351;ier(File) → Ie&#351;ire(Close)</b> sau clic pe butonul X din fereastra deschis&#259; (dreapta sus)
         <p class="titlu" id="f1_3"><b>3. Crearea unui document nou pornind de la un &#351;ablon gol</b></p> 
 			         Clic pe <u>File</u> → clic pe <u>New</u>  → clic <img src="img/blank_1.png"><br>
