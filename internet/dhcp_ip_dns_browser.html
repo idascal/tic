@@ -3,22 +3,29 @@
         <link rel="stylesheet" href="carddeckslideshow.css" />
 
         <style>
-
-        .stackcontainer{
-        margin: 100px 0 10px 0;
-        }
-
-        #demo1{
-            width: 80%; 
-            height: 70%;
-            margin-left: 20px;
-        }
-
-        #demo1 h4{
-            margin: 0;
-            text-align: center;
-        }
-
+            .stackcontainer{
+            margin: 0 0 10px 0;
+            }
+            #demo1{
+                width: 98%; 
+                height: 85%;
+                margin-left: 5px;
+            }
+            #demo1 h4{
+                margin: 0;
+                text-align: center;
+            }
+            h1{
+                text-align: center;
+            }
+            .previous {
+              background-color: yellow;
+              color: black;
+            }
+            .next {
+              background-color: lawngreen;
+              color: black;
+            }
 
         </style>
 
@@ -38,14 +45,15 @@
 
         var demo1 = new carddeckslideshow({
             id: 'demo1',
-            autoplay: true,
-            cycles: 2,
+            autoplay: false,
+            cycles: 20,
             persist: false
         })
 
         </script>
     </head>
     <body>
+        <h1>Adresa IP, DHCP, DNS, Browser </h1>
         <div id="demo1" class="stackcontainer">
             <div class="inner">
                 <div>
@@ -85,23 +93,44 @@
                     <h4>Domain Name Server (DNS)</h4><br>   
                     - Un server de nume domeniu, Domain Name Server (DNS), este un program software, care ascult&#259; cereri pe un port standard (53) &#351;i care ruleaz&#259; pe un calculator conectat permanent (de obicei) la Internet.<br>
                     - <a href="https://en.wikipedia.org/wiki/Domain_Name_System">DNS (Domain Name System)</a> este un serviciu de registru Internet distribuit. DNS translateaz&#259; ("mapeaz&#259;") numele de domeniu (sau nume ale ma&#351;inilor de calcul) &#238;n adrese IP &#351;i adresa IP &#238;n nume. Translatarea numelui &#238;n adresa IP se nume&#351;te "rezolvarea numelui de domeniu".<br>
-                    - <b>Maparea</b> este o simpl&#259; asociere &#238;ntre dou&#259; elemente, &#238;n acest caz un nume de ma&#351;in&#259;, ca ftp.linux.org, &#351;i IP -ul ma&#351;inii (sau adresa) 199.249.150.4. Un calculator se identific&#259; printr-o adres&#259;, unic&#259; &#238;n Internet, numit&#259; adresa IP a calculatorului respectiv. Totodat&#259; calculatorul poate avea asociat &#351;i un nume. Astfel, adresa IP este utilizat&#259; la nivelul programelor de prelucrare &#238;n reţea. &#238;n schimb, la nivelul utilizatorilor cu acces la mediul Internet, identificarea calculatoarelor se face printr-un nume de calculator host gestionat de sistemul DNS.<br>
-                    - Sistemul de nume din Internet este structurat pe domenii &#351;i subdomenii. Considerând un server de nume (name server) admin.rdslink.ro, domeniul cel mai larg este ro, care include domeniul rdslink.ro, iar admin este un computer din cadrul domeniului rdslink.ro. Deci luând de la dreapta la stânga un nume, pe cea mai din dreapta poziţie se afl&#259; domeniul cel mai general, dup&#259; care urmeaz&#259;, &#238;n ordinea subordon&#259;rii, restul subdomeniilor. Pe cea mai din stânga poziţie se afl&#259; numele computerului.<br>
-                    - &#206;n Internet exist&#259; domenii dedicate (standardizate). Iat&#259; câteva dintre ele: com desemneaz&#259; domeniul comercial, edu desemneaz&#259; domeniul educaţional, gov - domeniul guvernamental, mil - domeniul militar, org - alte organizaţii, net - resurse de reţea, int - resurse internaţionale, etc.
-                    Extinderea Internet-ului &#238;n diferite ţ&#259;ri a dus la crearea de domenii pentru fiecare ţar&#259;: ro - România, fr - Franţa, it - Italia, uk - Marea Britanie, us - USA, etc.
+                    - <b>Maparea</b> este o simpl&#259; asociere &#238;ntre dou&#259; elemente, &#238;n acest caz un nume de ma&#351;in&#259;, ca ftp.linux.org, &#351;i IP -ul ma&#351;inii (sau adresa) 199.249.150.4. Un calculator se identific&#259; printr-o adres&#259;, unic&#259; &#238;n Internet, numit&#259; adresa IP a calculatorului respectiv. Totodat&#259; calculatorul poate avea asociat &#351;i un nume. Astfel, adresa IP este utilizat&#259; la nivelul programelor de prelucrare &#238;n re&#355;ea. &#238;n schimb, la nivelul utilizatorilor cu acces la mediul Internet, identificarea calculatoarelor se face printr-un nume de calculator host gestionat de sistemul DNS.<br>
+                    - Sistemul de nume din Internet este structurat pe domenii &#351;i subdomenii. Considerând un server de nume (name server) admin.rdslink.ro, domeniul cel mai larg este ro, care include domeniul rdslink.ro, iar admin este un computer din cadrul domeniului rdslink.ro. Deci luând de la dreapta la stânga un nume, pe cea mai din dreapta pozi&#355;ie se afl&#259; domeniul cel mai general, dup&#259; care urmeaz&#259;, &#238;n ordinea subordon&#259;rii, restul subdomeniilor. Pe cea mai din stânga pozi&#355;ie se afl&#259; numele computerului.<br>
+                    - &#206;n Internet exist&#259; domenii dedicate (standardizate). Iat&#259; câteva dintre ele: com desemneaz&#259; domeniul comercial, edu desemneaz&#259; domeniul educa&#355;ional, gov - domeniul guvernamental, mil - domeniul militar, org - alte organiza&#355;ii, net - resurse de re&#355;ea, int - resurse interna&#355;ionale, etc.
+                    Extinderea Internet-ului &#238;n diferite &#355;&#259;ri a dus la crearea de domenii pentru fiecare &#355;ar&#259;: ro - România, fr - Fran&#355;a, it - Italia, uk - Marea Britanie, us - USA, etc.
                 </div>
             </div>
             
             <div class="inner">
                 <div>
-                Ontario is a province located in the central part of Canada, the largest by population and second largest, after Quebec in total area. Toronto, the capital of Ontario, is the centre of Canada's financial services and banking industry.
+                    <h4>Browser</h4>
+                    - Un <b>browser</b> este o aplica&#355;ie software care permite utilizatorilor s&#259; afi&#351;eze texte, grafic&#259;, video, muzic&#259; &#351;i alte informa&#355;ii localizate pe o pagin&#259; din World Wide Web, dar &#351;i s&#259; comunice cu ofertantul de informa&#355;ii sau cu al&#355;i utilizatori. Browserul este un program de navigare &#238;n web. &#206;n componen&#355;a unui browser intr&#259; un set de programe care permit afi&#351;area &#351;i manevrarea informa&#355;iilor bazate pe text, imagini &#351;i sunet, precum &#351;i rularea unor programe pe care site-urile web &#351;i documentele pot s&#259; le includ&#259; sau apeleze (applet-uri, scripturi). Fiecare browser are o caset&#259; de text &#238;n care utilizatorul poate s&#259; scrie adresa documentului sau a site-ului dorit, adres&#259; care este unic&#259; <b>(Uniform Resource Locator sau URL)</b>. Dac&#259; utilizatorul nu cunoa&#351;te adresa exact&#259;, el poate introduce drept "cheie de c&#259;utare" o parte de text pe care documentul ar trebui s&#259; &#238;l con&#355;in&#259;. Browserul transmite acest text unor aplica&#355;ii speciale din web, numite motoare de c&#259;utare.<br>
+                    - <b>Func&#355;ii</b> accesate cu ajutorul unui browser:
+                    <ul>
+                        <li>Navigarea printre documentele html din www sau din alte servicii, ori de pe propriul calculator; vizualizarea acestora.</li>
+                        <li>Urm&#259;rirea conexiunilor dintre documentele html.</li>
+                        <li>Copierea informa&#355;iilor &#238;n calculatorul propriu.</li>
+                        <li>Utilizarea unor proceduri de c&#259;utare a informa&#355;iei.</li>
+                        <li>G&#259;sirea rapid&#259; a informa&#355;iilor cu ajutorul "semnelor de carte" &#351;i a istoricului.</li>
+                        <li>Accesarea altor servicii de informare &#351;i servicii Internet: po&#351;ta electronic&#259;, serviciul de &#351;tiri, serviciul ftp (transferul de fi&#351;iere), etc.</li>
+                    </ul>
+                    - <b>Elemente</b> specifice unui browser:       
+                    <ul>
+                        <li><b>Desc&#259;rcare</b> (Download) reprezint&#259; copierea unui fi&#351;ier &#238;n calculatorul utilizatorului.</li>
+                        <li><b>Directorul cache</b> &#238;n care browserul p&#259;streaz&#259; informa&#355;ia primit&#259; din web.</li>
+                        <li><b>Re&#238;mprosp&#259;tarea paginii web</b>: pagina va fi &#238;nc&#259;rcat&#259; din nou din re&#355;ea, chiar dac&#259; exist&#259; deja &#238;n directorul cache.</li>
+                        <li><b>Imaginile in-line</b> sunt acele imagini incluse &#238;ntr-o pagin&#259; web, care nu pot fi modificate, redimensionate sau deplasate.</li>
+                        <li><b>Istoricul (History)</b> reprezint&#259; lista paginilor accesate &#238;ntr-o sesiune (cea actual&#259; sau mai multe sesiuni anterioare).</li>
+                        <li><b>"Semnul de carte"</b> sau "pagina favorit&#259;": utilizatorul poate asocia unei anumite pagini o denumire preferat&#259;, cu ajutorul c&#259;reia poate &#238;nc&#259;rca acea pagin&#259;, &#238;n locul URL al paginii respective.</li>
+                        <li><b>Aplica&#355;ie ajut&#259;toare</b> - reprezint&#259; un soft prin intermediul c&#259;ruia utilizatorul poate afi&#351;a anumite formate de fi&#351;iere (ex. fi&#351;iere audio).</li>
+                        <li><b>Plug-in</b> soft ce m&#259;re&#351;te func&#355;ionalitatea browserului (ex. afi&#351;area 3-D).</li>
+                    </ul>
                 </div>
             </div>
 
         </div>
 
         <div style="margin-top:1em; margin-left:100px">
-        <a href="javascript:demo1.navigate('prev')">&#206;napoi</a> / <a href="javascript:demo1.navigate('next')">&#206;nainte</a> 
+        <a href="javascript:demo1.navigate('prev')" class="previous">&laquo; &#206;napoi</a> / <a href="javascript:demo1.navigate('next')" class="next"> &#206;nainte &raquo;</a> 
         </div>
     </body>
 </html>
