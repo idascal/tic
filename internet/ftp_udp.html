@@ -11,22 +11,13 @@
                 <h1 align="center">FTP</h1>
             </div>
             <h3><strong>Ce este FTP? </strong></h3>
-                <p align="justify">Protocolul transfer de fi&#351;iere (<em><strong>FTP - File Transfer Protocol</strong></em>) serve&#351;te la conectarea a dou&#259; ma&#351;ini &#238;n vederea transferului de fi&#351;iere &#238;ntre ele prin Internet. Persoanele utilizeaz&#259; de obicei FTP pentru a face fi&#351;ierele disponibile pentru desc&#259;rcare, dar exist&#259; &#351;i posibilitatea de a utiliza FTP pentru a &#238;nc&#259;rca pagini Web, pentru a construi un site Web sau pentru a &#238;nc&#259;rca fotografii digitale de pe un site de partajare a imaginilor. <br>
+                <p align="justify">Protocolul transfer de fi&#351;iere (<em><strong>FTP - File Transfer Protocol</strong></em>) serve&#351;te la conectarea a dou&#259; ma&#351;ini &#238;n vederea transferului de fi&#351;iere &#238;ntre ele printr-o re&#355;ea bazat&#259; pe TCP, cum ar fi Internetul. Persoanele utilizeaz&#259; de obicei FTP pentru a face fi&#351;ierele disponibile pentru desc&#259;rcare, dar exist&#259; &#351;i posibilitatea de a utiliza FTP pentru a &#238;nc&#259;rca pagini Web, pentru a construi un site Web sau pentru a &#238;nc&#259;rca fotografii digitale de pe un site de partajare a imaginilor. <br>
                  In cazul FTP conexiunea este temporar&#259; &#351;i serve&#351;te pentru a copia (download, get) sau a trimite (upload, put) fi&#351;iere. Dup&#259; terminarea transferului (sau transferurilor), utilizatorul opre&#351;te sesiunea FTP.<br>
-                TCP creeaz&#259; o linie de comunica&#351;ie sigur&#259; pentru a asigura transmiterea fiabil&#259; a tuturor datelor. Odat&#259; ce un mesaj este trimis, se verific&#259; dac&#259; toate datele au fost transferate.<br>
-                Conexiunea dintre emi&#351;&#259;tor &#351;i destinatar este men&#351;inut&#259; pn&#259; cnd transferul este reu&#351;it. De fiecare dat&#259; cnd este trimis un pachet de date, acesta necesit&#259; o confirmare din partea receptorului. Deci, dac&#259; nu se prime&#351;te nicio confirmare, datele sunt retrimise.<br>
-                Activa&#351;i TCP pentru urm&#259;toarele activit&#259;&#351;i:
-                <ul>
-                    <li>E-mail &#351;i mesaje text;</li>
-                    <li>Transmitere con&#351;inut pre&#238;nregistrat de pe site-uri precum Netflix, Hulu sau HBO Max;</li>
-                    <li>Transferarea fi&#351;ierelor &#238;ntre aplica&#351;ii &#351;i dispozitive;</li>
-                    <li>Navigare general&#259; pe web;</li>
-                    <li>Administrarea de la distan&#351;&#259; a dispozitivului sau a re&#351;elei.</li>
-                </ul>
+                Unul dintre principalele motive pentru care companiile au nevoie de FTP este capacitatea sa de a efectua transferuri de fi&#351;iere mari. Atunci c&#226;nd trimite&#355;i un fi&#351;ier relativ mic, cum ar fi un document Word, majoritatea metodelor vor func&#355;iona, dar cu FTP, pute&#355;i trimite sute de gigaocte&#355;i simultan.     
                 </p>
             <h3>Desf&#259;&#351;urarea unei sesiuni </h3>
                 <ul>
-                    <li>Sesiunea este ini&#351;&#355;ializat&#259; de programul FTP client, c&#259;ruia i se comunic&#259; adresa la care trebuie s&#259; se conecteze (ftp.netscape.com).</li> 
+                    <li>Sesiunea este ini&#355;ializat&#259; de programul FTP client, c&#259;ruia i se comunic&#259; adresa la care trebuie s&#259; se conecteze (ftp.netscape.com).</li> 
                     <li>Dup&#259; stabilirea leg&#259;turii, serverul cere numele utilizatorului (username, login, login name) &#351;i parola (password). </li>
                     <li>Odat&#259; identificat utilizatorul, acesta dispune de un set de comenzi care &#238;i permit s&#259; exploreze sistemul de fi&#351;iere ale serverului &#351;i s&#259; copieze fi&#351;ierele dorite. </li>
                     <li>Dup&#259; localizarea fi&#351;ierului, utilizatorul trece &#238;n mod binar (bin) &#351;i d&#259; comanda de copiere (get fis.txt). </li>
@@ -80,8 +71,7 @@
                   <tr>
                     <td width="19%" valign="middle" align="center">rmdir <em>director</em></td>
                     <td width="81%"><div align="justify">&#350;terge directorul specificat de pe calculatorul la distan&#355;&#259;. Trebuie s&#259; existe
-                      dreptul de modificare / &#351;tergere a directorului respectiv, &#238;n func&#355;ie de sistemul de
-                    operare al calculatorului la distan&#355;&#259;.</div></td>
+                      dreptul de modificare / &#351;tergere a directorului respectiv, &#238;n func&#355;ie de sistemul de operare al calculatorului la distan&#355;&#259;.</div></td>
                   </tr>
                   <tr>
                     <td width="19%" valign="middle" align="center">delete file</td>
@@ -92,13 +82,11 @@
                 <table border="1" width="100%">
                   <tr>
                     <td width="19%" valign="middle" align="center">get fisier1 [fisier2]</td>
-                    <td width="81%"><div align="justify">Transfer&#259; fi&#351;ierul <em>fi&#351;ier1</em> de pe calculatorul la distan&#355;&#259; pe calculatorul local. Dac&#259; <em>fi&#351;ier2</em> lipse&#351;te, acest fi&#351;ier va fi plasat cu numele fi&#351;ier1 pe calculatorul
-                      local, altfel va fi plasat cu numele fi&#351;ier2. Transferul se realizeaz&#259;
-                    utiliz&#226;nd modul de transfer activ (binar sau text).</div></td>
+                    <td width="81%"><div align="justify">Transfer&#259; fi&#351;ierul <em>fisier1</em> de pe calculatorul la distan&#355;&#259; pe calculatorul local. Dac&#259; <em>fisier2</em> lipse&#351;te, acest fi&#351;ier va fi plasat cu numele <em>fisier1</em> pe calculatorul local, altfel va fi plasat cu numele <em>fisier2</em>. Transferul se realizeaz&#259; utiliz&#226;nd modul de transfer activ (binar sau text).</div></td>
                   </tr>
                   <tr>
                     <td width="19%" valign="middle" align="center">put fisier1 [fisier2]</td>
-                    <td width="81%"><div align="justify">Transfera fi&#351;ierul <em>fi&#351;ier1 </em>specificat de pe calculatorul local pe calculatorul la distan&#355;&#259;. Dac&#259; <em>fi&#351;ier2 </em>lipse&#351;te, fi&#351;ierul transferat va fi plasat cu numele fi&#351;ier1 pe calculatorul la distan&#355;&#259;, altfel va fi plasat cu numele fi&#351;ier2. Transferul se realizeaz&#259; utiliz&#226;nd modul de transfer activ (binar sau text).</div></td>
+                    <td width="81%"><div align="justify">Transfera fi&#351;ierul <em>fisier1</em> specificat de pe calculatorul local pe calculatorul la distan&#355;&#259;. Dac&#259; <em>fisier2 </em>lipse&#351;te, fi&#351;ierul transferat va fi plasat cu numele <em>fisier1</em> pe calculatorul la distan&#355;&#259;, altfel va fi plasat cu numele <em>fisier2</em>. Transferul se realizeaz&#259; utiliz&#226;nd modul de transfer activ (binar sau text).</div></td>
                   </tr>
                   <tr>
                     <td width="19%" valign="middle" align="center">mget nume*</td>
@@ -112,16 +100,29 @@
                   </tr>
                 </table>
             <div class="titlu">
+                <h1 align="center">TCP</h1>
+            </div>
+                <p>TCP creeaz&#259; o linie de comunica&#355;ie sigur&#259; pentru a asigura transmiterea fiabil&#259; a tuturor datelor. Odat&#259; ce un mesaj este trimis, se verific&#259; dac&#259; toate datele au fost transferate.<br>
+                Conexiunea dintre emi&#355;&#259;tor &#351;i destinatar este men&#355;inut&#259; p&#226;n&#259; c&#226;nd transferul este reu&#351;it. De fiecare dat&#259; c&#226;nd este trimis un pachet de date, acesta necesit&#259; o confirmare din partea receptorului. Deci, dac&#259; nu se prime&#351;te nicio confirmare, datele sunt retrimise.</p>
+                Activa&#355;i TCP pentru urm&#259;toarele activit&#259;&#355;i:
+                <ul>
+                    <li>E-mail &#351;i mesaje text;</li>
+                    <li>Transmitere con&#355;inut pre&#238;nregistrat de pe site-uri precum Netflix, Hulu sau HBO Max;</li>
+                    <li>Transferarea fi&#351;ierelor &#238;ntre aplica&#355;ii &#351;i dispozitive;</li>
+                    <li>Navigare general&#259; pe web;</li>
+                    <li>Administrarea de la distan&#355;&#259; a dispozitivului sau a re&#355;elei.</li>
+                </ul>
+            <div class="titlu">
                 <h1 align="center">UDP</h1>
             </div>
-            <p align="justify">UDP(User Datagram Protocol) nu stabile&#351;te o conexiune la trimiterea datelor. Trimite pachete independente de date, numite datagrame, f&#259;r&#259; s&#259; confirme primirea sau s&#259; verifice erorile. Aceasta &#238;nseamn&#259; c&#259; unele sau toate datele se pot pierde &#238;n timpul transmisiei. Avantajul folosirii acestui protocol este reprezentat de latenta scazut&#259; (delay) &#351;i permite fluiditatea aplicatiei f&#259;r&#259; intarzieri.
+            <p align="justify">UDP(User Datagram Protocol) nu stabile&#351;te o conexiune la trimiterea datelor. Trimite pachete independente de date, numite datagrame, f&#259;r&#259; s&#259; confirme primirea sau s&#259; verifice erorile. Aceasta &#238;nseamn&#259; c&#259; unele sau toate datele se pot pierde &#238;n timpul transmisiei. Avantajul folosirii acestui protocol este reprezentat de laten&#355;a scazut&#259; (delay) &#351;i permite fluiditatea aplica&#355;iei f&#259;r&#259; int&#226;rzieri.
             </p>
-            Activa&#351;i UDP pentru urm&#259;toarele activit&#259;&#351;i:
+            Activa&#355;i UDP pentru urm&#259;toarele activit&#259;&#355;i:
                 <ul>
                     <li>Jocuri online;</li>
                     <li>Multicasting;</li>
-                    <li>Video chat(conferin&#351;&#259;);</li>
-                    <li>VoIP (apel vocal &#238;n aplica&#351;ie);</li>
+                    <li>Video chat(conferin&#355;&#259;);</li>
+                    <li>VoIP (apel vocal &#238;n aplica&#355;ie);</li>
                     <li>Domain Name Systems (care traduce numele de domenii &#238;n adrese IP).</li>
                 </ul>
         </div>        
