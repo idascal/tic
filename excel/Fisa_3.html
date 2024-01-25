@@ -49,15 +49,104 @@
                     <li><b><i>Exemplu:</i></b> Dacă introducem in celula <b>C1</b> formula =<b>A1-B1</b> , după apăsarea tastei Enter în celula C1 va fi afişat rezultatul <b>9</b> ca diferenţă intre numărul 23 din celula A1 şi numărul 14 din celula B1, adică 23-14=9</li>
                 </ol>
                 <img src="img/4.1.png">
-             <p class="titlu" id="f3_3"><b>3. Introducerea formulelor din libr&#259;ria de func&#355;ii.</b></p>
+             <p class="titlu" id="f3_3"><b>3. Introducerea funcţiilor din libr&#259;ria de func&#355;ii.</b></p>
                 <ol type="a">
                     <li>Daţi clic pe celula în care vreţi sa introduceţi formula.</li>
                     <li>In fila Formule (Formulas), &#238;n grupul Librarie formule(Function Library) daţi clic pe AutoSum, alegeţi o formulă din listă, stabiliţi argumentele funcţiei (Function Arguments) şi daţi OK.<br><img src="img/4.3.png"></li>
                     <li><b><i>Exemplu:</i></b> Dacă introducem in celula E2 funcţia AVERAGE (media) si alegem ca argument al funcţiei intervalul (A2:D2) , în celula E2 va fi afişată media notelor de la A2 la D2.<br><img src="img/4.3_1.png"> <br><img src="img/4.3_2.png"></li>
                 </ol>
+                <p> Unele dintre cele mai folosite <em>func&#355;ii </em> sunt cele <em>pentru </em><em>calcule matematice elementare </em>: </p>
+                  <table cellspacing="0" cellpadding="0">
+                    <tr bgcolor="#CCCCCC">
+                      <td width="143" valign="top"><h3>Sintaxa </h3></td>
+                      <td width="382" valign="top"><h3>Valoarea returnat&#259;</h3></td>
+                    </tr>
+                    <tr bgcolor="#CCFF99">
+                      <td width="143" valign="top"><p>ABS(n) </p></td>
+                      <td width="382" valign="top"><p>Valoarea absolut&#259; (modulul) lui n </p></td>
+                    </tr>
+                    <tr>
+                      <td width="143" valign="top"><p>EXP(n) </p></td>
+                      <td width="382" valign="top"><p>e<sup>n </sup>(e=2,718282) </p></td>
+                    </tr>
+                    <tr bgcolor="#CCFF99">
+                      <td width="143" valign="top"><p>INT(n) </p></td>
+                      <td width="382" valign="top"><p>Partea &icirc;ntreag&#259; a lui n </p></td>
+                    </tr>
+                    <tr>
+                      <td width="143" valign="top"><p>SQRT(n) </p></td>
+                      <td width="382" valign="top"><p>Radical din n (n&gt;0) </p></td>
+                    </tr>
+                    <tr bgcolor="#CCFF99">
+                      <td width="143" valign="top"><p>LOG(n) </p></td>
+                      <td width="382" valign="top"><p>Logaritm &icirc;n baza 10 din n </p></td>
+                    </tr>
+                    <tr>
+                      <td width="143" valign="top"><p>LG(n) </p></td>
+                      <td width="382" valign="top"><p>Logaritm natural din n </p></td>
+                    </tr>
+                    <tr bgcolor="#CCFF99">
+                      <td width="143" valign="top"><p>ROUND(n1;n2) </p></td>
+                      <td width="382" valign="top"><p>Rotunjire a valorii numerice n1 la un num&#259;r cu n2 zecimale </p></td>
+                    </tr>
+                  </table>
+                  <p><em>Iat&#259; c&acirc;teva exemple: </em></p>
+                  <p>= ABS(-91) --&gt; func&#355;ia returneaz&#259; valoarea 91 </p>
+                  <p>= EXP(LN(48)) --&gt; func&#355;ia returneaz&#259; valoarea 48 </p>
+                  <p>= SQRT(INT(12.34) + ROUND(3.78)) --&gt; func&#355;ia returneaz&#259; valoarea 4 = radical (12 + 4) </p>
+                  <p>O  alt&#259; categorie de <em>func&#355;ii </em> o constituie cele <em>cu caracter statistic</em>, cele mai importante fiind prezentate &icirc;n tabelul al&#259;turat: </p>
+                  <table cellspacing="0" cellpadding="0">
+                    <tr bgcolor="#CCCCCC">
+                      <td width="164" valign="top"><h3>Sintaxa </h3></td>
+                      <td width="367" valign="top"><h3>Valoarea returnat&#259;</h3></td>
+                    </tr>
+                    <tr>
+                      <td width="164" valign="top"><p>COUNT(n1;n2;...) </p></td>
+                      <td width="367" valign="top"><p>Num&#259;rul de valori con&#355;inute &icirc;n celulele domeniului respectiv, adic&#259; num&#259;rul de celule</p></td>
+                    </tr>
+                     <tr bgcolor="#66FF99">
+                      <td width="164" valign="top"><p>SUM(n1;n2;...) </p></td>
+                      <td width="367" valign="top"><p>Suma valorilor din celulele domeniului </p></td>
+                    </tr>
+                    <tr>
+                      <td width="164" valign="top"><p>AVERAGE(n1;n2;...) </p></td>
+                      <td width="367" valign="top"><p>Media aritmetic&#259; a valorilor din celulele domeniului </p></td>
+                    </tr>
+                    <tr bgcolor="#66FF99">
+                      <td width="164" valign="top"><p>MAX(n1;n2;...) </p></td>
+                      <td width="367" valign="top"><p>Valoarea maxim&#259; dintre valorile din celulele domeniului </p></td>
+                    </tr>
+                    <tr>
+                      <td width="164" valign="top"><p>MIN(n1;n2;...) </p></td>
+                      <td width="367" valign="top"><p>Valoarea minim&#259; dintre valorile din celulele domeniului </p></td>
+                    </tr>
+                    <tr bgcolor="#66FF99">
+                      <td width="164" valign="top"><p>STDEV(n1;n2;...) </p></td>
+                      <td width="367" valign="top"><p>Devia&#355;ia standard a valorilor din celulele domeniului </p></td>
+                    </tr>
+                  </table>
+                  <p><em>Exemple: </em></p>
+                  <ol>
+                    <li> = COUNT (C3:D49) </li>
+                    <li> = SUM (C7:G14;C46;T58) </li>
+                    <li> = AVERAGE (B2:C5) </li>
+                    <li> = MAX (SUM (B2:J30); SUM (AS2:AT30); SUM (BC2:BP70)) </li>
+                    <li> = MIN (AVERAGE (B2:P30); AVERAGE (AB2:AP30); AVERAGE (BB2:BP30)) </li>
+                  </ol>
+                
+                  <p><em>Iat&#259; ce se ob&#355;ine dup&#259; editarea func&#355;iilor enun&#355;ate &icirc;n exemple: </em></p>
+                  <ol>
+                    <li> Func&#355;ia COUNT ( ) va returna num&#259;rul de valori con&#355;inute &icirc;n blocul C3:D49. </li>
+                    <li> A doua func&#355;ie va calcula suma valorilor con&#355;inute &icirc;n blocul de celule C7:G14 precum &#351;i &icirc;n c&#259;su&#355;ele C46 &#351;i T58. </li>
+                    <li> A treia func&#355;ie va returna media aritmetic&#259; a valorilor con&#355;inute &icirc;n celule blocului B2:C5. </li>
+                    <li> Se calculeaz&#259; maximul sumelor valorilor con&#355;inute &icirc;n trei blocuri de celule. </li>
+                    <li> Se ob&#355;ine minimul valorilor medii aflate &icirc;n blocurile enun&#355;ate. </li>
+                  </ol>
             <p class="titlu" id="f3_4"><b>4. Copierea unei funcţii sau formule.</b></p>  
-                <p>Se selectează celula care conţine funcţia (formula) → Se poziţionează pointerul mouse-ului în colţul dreapta jos al celulei până când pointerul se transformă într-o cruce neagră +→ se apasă butonul stâng şi cu el ţinut apăsat ne deplasăm pe rândul de celule unde dorim să copiem funcţia (formula). </p>
-        
+                <p>Se selectează celula care conţine funcţia (formula) → Se poziţionează pointerul mouse-ului în colţul dreapta jos al celulei până când 
+                    pointerul se transformă într-o cruce neagră +→ se apasă butonul stâng şi cu el ţinut apăsat ne deplasăm pe rândul de celule unde 
+                    dorim să copiem funcţia (formula). </p>
+                
             <p class="titlu" id="f3_5"><b>5. APLICA&#354;IE:</b>
             <ol type="a">
                 <li>Descarca&#355;i fi&#351;a de lucru <a href="fisa_excel_functii.xlsx" rel="noopener" target="_blank"> funcții în excel</a></li>
