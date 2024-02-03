@@ -18,7 +18,7 @@
 
         <ol type="1">
             <li>Deschide&#355;i aplica&#355;ia Microsof Excel</li>
-            <li>
+            <li id="f6_1">
                 Modificaţi numărul de foi de calcul prestabilit pentru agendele de lucru la patru foi de calcul. 
                 <u>File -> Options</u> 
             </li>
@@ -57,7 +57,7 @@
                         câmpul <u>Bursa</u> se va completa selectiv, în funcţie de valoarea corespondentă din câmpul <b>Media</b>  conform relaţiei: <i>dacă media>=9 atunci "Bursa este de 1200 lei", altfel "nu se acordă"</i>;
                     </li>
 
-                    <li>
+                    <li id="f6_2">
                         pentru elevii care primesc bursă aplicaţi un format condiţional astfel încât valorile care respectă condiţia să fie scrise cursiv cu <green>culoarea verde</green>;<br>
                         <h3>EXEMPLU:</h3>
                         <ul>
@@ -79,59 +79,29 @@
             <li>copiaţi tabelul <u>ELEVI</u> în foile de calcul <i>STAT2</i>, <i>STAT3</i> și <i>STAT4</i>;</li>
             <li>în foaia de calcul <i>STAT2</i> sortaţi datele descrescător după medie;</li>
             <li>să se afişeze câţi elevi nu primesc bursă în celula <i>J13</i> folosind funcţia <a href="https://support.microsoft.com/ro-ro/office/countif-funcția-countif-e0de10c6-f885-4e71-abb4-1f464816df34"><i>COUNTIF</i></a>;</li>
-            <li>filtraţi tabelul pentru elevii cu <i>Media >=9</i>;
+            <li id="f6_3">filtraţi tabelul pentru elevii cu <i>Media &ge; 8</i>;
                 <h3>EXEMPLU:</h3>
-                        <ul>
-                            <li>Selectați celulele pe care doriți să le filtrați.;</li>
-                            <li>În fila <i>Acasă(Home)</i>, în grupul <i>Editare(Editing)</i>, faceți clic pe <i>Sortare & Filtrare(Sort & Filter)</i>:</li>
-                            <img src="img/filtrare_1.png">
-                            <li>În fereastra <i>Regulă nouă de formatare(New Formatting Rule)</i>, selectați <i>Folosiți o formulă pentru a determina ce celule să formatați(Use a formula to determine which cells to format)</i>;</li>
-                            <li>Introduceți formula în caseta corespunzătoare;</li>
-                            <li>Faceți clic pe butonul <i>Format...</i> pentru a alege formatul personalizat:</li>
-                            <img src="img/formatare_conditionata_2.png">
-                            <li>Comutați între filele <i>Font, Chenar(Border) și Umplere(Fill)</i> și jucați-vă cu diferite opțiuni, cum ar fi stilul fontului, culoarea modelului și efectele de umplere:</li>
-                            <img src="img/formatare_conditionata_3.png">
-                            <li>Asigurați-vă că secțiunea <i>Previzualizare(Preview)</i> afișează formatul dorit și, dacă o face, faceți clic pe butonul OK pentru a salva regula.</li>
-                            <img src="img/formatare_conditionata_4.png">
-                        </ul>
+                    <ul>
+                        <li>Selectați celulele pe care doriți să le filtrați;</li>
+                        <li>În fila <i>Acasă(Home)</i>, în grupul <i>Editare(Editing)</i>, faceți clic pe <i>Sortare & Filtrare(Sort &amp; Filter)</i>:</li>
+                        <img src="img/filtrare_1.png">
+                        <li>Click pe  <i>Filtrare(Filter)</i>:</li>
+                        <img src="img/filtrare_2.png">
+                        <li>Faceți clic pe s&#259;geata care apare în cloana <i>Media anuala 2022</i>(cerculeţul roșu):</li>
+                        <img src="img/filtrare_3.png">
+                        <li>Faceți clic pe <i>Filtrare numere(Number Filters)</i> -> <i>Mai mare sau egal cu(Greater Than Or Equal To)</i>:</li>
+                        <img src="img/filtrare_4.png">
+                        <li>Scrieți valoarea dorit&#259;( 8 ) în c&#259;suța corespunz&#259;toare:</li>
+                        <img src="img/filtrare_5.png">
+                        <li>Faceți clic pe butonul OK:</li>
+                        <img src="img/filtrare_6.png">
+                    </ul>
             </li>
-            
-            
-            <li>
-                în foia de calcul 4 să se ducă doar studenţii de la finanţe şi cei de la contabilitate şi să se reprezinte grafic media acesor studenţi;
-            </li>
-                    <li>
-                         şi alfabetic după câmpul <b>Student</b>; <br>
-                        <b>Data -> Sort</b>
-                    </li>
-                    <li>obţineţi media pentru fiecare secţie şi cumulate la nivel de facultate;</li>
-                    <li>
-                        să se caute în baza de date studenţii al căror nume începe cu litera C; <br>
-                        <b>Data -> Filter -> AutoFilter</b>
-                    </li>
-                     de la secţia contabilitate;</li>
-                
-
-                     <b>Sheet3</b> cu numele <b>STAT3</b></li>
-                    <li>
-                        :
-
-                        <ul>
-                            <li>sortaţi <i>alfabetic</i> după câmpul <b>Secţia</b> drept criteriu principal şi câmpul <b>Media</b> criteriu secundar;</li>
-                        </ul>
-                    </li>
-                    <li>
-                        în foaia de calcul <b>STAT3</b>:
-
-                        <ul>
-                            <li>sortaţi descrescător după câmpul <b>Media</b> drept criteriu principal şi câmpul <b>Student</b> criteriu secundar;</li>
-                            
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-
-            <li>Salvaţi agenda de lucru cu numele <b>STATISTICA</b>. Închideţi agenda de lucru</li>
+            <li>în foaia de calcul <i>STAT3</i> sortaţi datele crescător după <i>Cod</i>;</li>
+            <li>filtraţi tabelul pentru elevii cu <i>Cod &le; 1060</i>;
+            <li>în foaia de calcul <i>STAT4</i> sortaţi datele descrescător după <i>Nume si prenume</i>;</li>
+            <li>filtraţi tabelul pentru elevii al c&#259;ror nume cu începe cu litera <i>B</i>;
+            <li>Salvaţi agenda de lucru cu numele <b>STATISTIC&#258;</b>. Închideţi agenda de lucru.</li>
         </ol>
     </body>
 </html>
