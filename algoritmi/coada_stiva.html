@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <title>Coada si stiva</title>
+        <style>
+            .code_cpp{
+                background-color: yellow;
+                display: inline;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                padding-right: 5px;
+                border: 1px solid red;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>COADA.</h1>
+        <p><strong>Coada</strong> (queue) este o structură de date abstractă în care operația de adăugare se realizează la un capăt, iar cea de eliminare se realizează la celălalt capăt. </p>
+        <p>În timpul operațiilor cu coada avem acces la un singur element, cel aflat la <strong>începutul cozii</strong> &#8211; elementul care urmează să se elimine.</p>
+
+        <h2>Operații cu coada</h2>
+        <p>Cu o coadă se pot face următoarele operații:</p>
+        <ul>
+            <li>inițializarea cozii &#8211; crearea unei cozi vide;</li>
+            <li>verificarea faptului că o coadă este sau nu vidă;</li>
+            <li>adăugarea unui nou element în coadă. Operația se numește <strong>push</strong>;</li>
+            <li>eliminarea unui element din coadă. Operația se numește <strong>pop</strong>;</li>
+            <li>identificarea valorii elementului de la începutul cozii &#8211; accesul la acel element Operația se numește <strong>front</strong>.</li>
+        </ul>
+        <p>Operațiile cu coada sunt similare cu modul în care funcționează coada la casa de bilete a unui cinematograf. Spectatorii vin și se așează în ordine la coadă, ordinea în care cumpără biletele este aceea în care au sosit.</p>
+        <p>Deoarece operațiile de eliminare se fac în aceeași ordine ca cele de adăugare, coada este o structură de date de tip  <strong><span class="caps">FIFO</span></strong> &#8211; First In First Out.</p>
+        <h2>Modalități de implementare a cozii</h2>
+        <ul>
+            <li>implementare statică, prin intermediul tablourilor;</li>
+            <li>implementare dinamică, prin intermediul listelor alocate dinamic(folosind pointeri);</li>
+            <li>folosirea containerului <code>queue</code> din <span class="caps">STL</span>.</li>
+        </ul>
+        
+        <h3>Implementarea statică a cozii</h3>
+        <p>Vom folosi un tablou unidimensional alocat static <code>Q</code> și două variabile simple prin care identificăm începutul (<code>st</code>) și sfârșitul cozii (<code>dr</code>). Numele variabilelor provine de la <strong>stânga</strong> și <strong>dreapta</strong>, deoarece adăugarea unui element în coadă se face adăugând un element în tabloul suport <code>Q</code>, iar eliminare se face mărind variabila <code>st</code> &#8211; ignorând elementele din față, fără a le șterge efectiv.</p>
+        <p>În continuare considerăm o coadă cu elemente întregi.</p>
+        <p><strong>Declarații</strong></p>
+        <pre class="code_cpp">const int DIM = 1000;
+
+int Q[DIM], st, dr;</pre>
+        <p><strong>Inițializarea cozii</strong> &#8211; crearea unei cozi vide</p>
+        <pre class="code_cpp">st = 1 , dr = 0;</pre>
+        <p><strong>Verificarea faptului că este vidă coada</strong></p>
+        <pre class="code_cpp">st &gt; dr // coadă vidă
+
+st &lt;= dr // coadă nevidă</pre>
+        <p><strong>Adăugarea unui element &#8211; <span class="caps">PUSH</span></strong></p>
+        <pre class="code_cpp">Q[++dr] = _VALOARE ;</pre>
+        <p><strong>Eliminarea unui element &#8211; <span class="caps">POP</span></strong></p>
+        <pre class="code_cpp">st ++;</pre>
+        <p><strong>Identificarea valorii de la începutul cozii &#8211; <span class="caps">TOP</span></strong></p>
+        <pre class="code_cpp">Q[st]</pre>
+        <br><br>
+        <img src="images/coada.png">
+    </body>
+</html>
