@@ -52,10 +52,53 @@ st &lt; dr // coadă nevidă</pre>
         <pre class="code_cpp">Q[dr++] = VALOARE ;</pre>
         <p><strong>Eliminarea unui element &#8211; <span class="caps">POP</span></strong></p>
         <pre class="code_cpp">st++;</pre>
-        <p><strong>Identificarea valorii de la începutul cozii &#8211; <span class="caps">TOP</span></strong></p>
+        <p><strong>Identificarea valorii de la începutul cozii &#8211; <span class="caps">FRONT</span></strong></p>
         <pre class="code_cpp">Q[st]</pre>
         <br><br>
         <a href="coada/vizualizare_coada.html">Animație implementare coadă cu vectori.</a>
         <img src="images/coada.png">
+        
+        <h1>STIVA.</h1>
+        <p><strong>Stiva</strong> (stack) este o structură de date liniară abstractă, pentru care sunt definite operațiile de adăugare și eliminare a unui element. Aceste operații se realizează la un singur capăt al structurii, numit <strong>vârful stivei</strong>.</p>
+        <p>În timpul operațiilor cu stiva avem acces numai la elementul din vârful stivei.</p>
+        <h2>Operații cu stiva</h2>
+        <p>Cu o stivă se pot face următoarele operații:</p>
+        <ul>
+            <li>inițializarea stivei &#8211; crearea unei stive vide;</li>
+            <li>verificarea faptului că o stivă este sau nu vidă;</li>
+            <li>adăugarea unui nou element pe stivă &#8211; elementul devine <em>vârful stivei</em>.<br> Operația se numește <strong>push</strong>;</li>
+            <li>eliminarea unui element de pe stivă &#8211; se va elimina <em>vârful stivei</em>. Un nou element devine vârf al stivei, sau ea devine vidă. <br>Operația se numește <strong>pop</strong>;</li>
+            <li>identificarea valorii elementului din vârful stivei &#8211; accesul la acel element.<br> Operația se numește <strong>top</strong>.</li>
+        </ul>
+        <p>Imaginați-vă o stivă de lăzi într-un depozit. Dacă adăugăm încă o ladă, o vom plasa în vârful stivei. Dacă luăm o ladă, o vom lua pe cea din vârful stivei &#8211; altfel s-ar răsturna stiva!!</p>
+        <p>Deoarece operațiile cu elementele stivei se fac la același capăt, spunem că stiva este o structură de date de tip <strong><span class="caps">LIFO</span></strong> &#8211; Last In First Out (ultimul intrat, primul ieșit).</p>
+        <h2>Modalități de implementare a stivei</h2>
+        <p>Stiva poate fi implementată în limbajul C++ în mai multe moduri:</p>
+        <ul>
+            <li>implementare statică, prin intermediul tablourilor;</li>
+            <li>implementare dinamică, prin intermediul listelor alocate dinamic;</li>
+            <li>folosirea containerului <code>stack</code> din <span class="caps">STL</span>.</li>
+        </ul>
+        <h3>Implementarea statică a stivei</h3>
+        <p>Vom folosi un tablou alocat static și o variabilă simplă prin care identificăm vârful stivei. În continuare considerăm o stivă cu elemente întregi.</p>
+        <p><strong>Declarații</strong></p>
+        <pre class="code_cpp">const int DIM = 100;
+
+int S[DIM], vf;</pre>
+        <p><strong>Inițializarea stivei</strong> &#8211; crearea unei stive vide</p>
+        <pre class="code_cpp">vf = 0;</pre>
+        <p><strong>Verificarea faptului că stiva este vidă</strong></p>
+        <pre class="code_cpp">vf == 0 // stivă vidă
+
+vf &gt; 0 // stivă nevidă</pre>
+        <p><strong>Adăugarea unui element &#8211; <span class="caps">PUSH</span></strong></p>
+        <pre class="code_cpp">S[vf++] = VALOARE ;</pre>
+        <p><strong>Eliminarea unui element &#8211; <span class="caps">POP</span></strong></p>
+        <pre class="code_cpp">vf --;</pre>
+        <p><strong>Identificarea valorii din vârful stivei &#8211; <span class="caps">TOP</span></strong></p>
+        <pre class="code_cpp">S[vf-1]</pre>
+        <br><br>
+        <a href="stiva/vizualizare_stiva.html">Animație implementare stivă cu vectori.</a>
+        <img src="images/stiva.png">
     </body>
 </html>

@@ -81,7 +81,7 @@ StackArray.prototype.addControls =  function()
 	this.popButton.onclick = this.popCallback.bind(this);
 	this.controls.push(this.popButton);
 	
-	this.clearButton = addControlToAlgorithmBar("Button", "Clear Stack");
+	this.clearButton = addControlToAlgorithmBar("Button", "Goleste stiva");
 	this.clearButton.onclick = this.clearCallback.bind(this);
 	this.controls.push(this.clearButton);
 	
@@ -201,7 +201,7 @@ StackArray.prototype.push = function(elemToPush)
 	
 	this.cmd("SetText", this.leftoverLabelID, "");
 	
-	this.cmd("CreateLabel", labPushID, "Pushing Value: ", PUSH_LABEL_X, PUSH_LABEL_Y);
+	this.cmd("CreateLabel", labPushID, "Value inserata: ", PUSH_LABEL_X, PUSH_LABEL_Y);
 	this.cmd("CreateLabel", labPushValID,elemToPush, PUSH_ELEMENT_X, PUSH_ELEMENT_Y);
 	
 	this.cmd("Step");			
@@ -243,7 +243,7 @@ StackArray.prototype.pop = function(ignored)
 	this.cmd("SetText", this.leftoverLabelID, "");
 
 	
-	this.cmd("CreateLabel", labPopID, "Popped Value: ", PUSH_LABEL_X, PUSH_LABEL_Y);
+	this.cmd("CreateLabel", labPopID, "Valoare eliminata: ", PUSH_LABEL_X, PUSH_LABEL_Y);
 	
 	
 	this.cmd("SetHighlight", this.topID, 1);
@@ -269,7 +269,7 @@ StackArray.prototype.pop = function(ignored)
 	this.cmd("Delete", labPopValID)
 	this.cmd("Delete", labPopID);
 	this.cmd("Delete", this.highlight1ID);
-	this.cmd("SetText", this.leftoverLabelID, "Popped Value: " + this.arrayData[this.top]);
+	this.cmd("SetText", this.leftoverLabelID, "Valoare eliminata: " + this.arrayData[this.top]);
 
 
 	
