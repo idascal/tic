@@ -325,7 +325,7 @@ function initCanvas()
 	midLevel = document.createElement("tr");
 	bottomLevel = document.createElement("td");
 	bottomLevel.align = "center";
-	var txtNode = document.createTextNode("Viteza Animatie"); 
+	var txtNode = document.createTextNode(""); //("Viteza Animatie"); 
 	midLevel.appendChild(bottomLevel);
 	bottomLevel.appendChild(txtNode);
 	newTable.appendChild(midLevel);	

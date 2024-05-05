@@ -43,7 +43,7 @@ var PUSH_LABEL_Y = 30;
 var PUSH_ELEMENT_X = 120;
 var PUSH_ELEMENT_Y = 30;
 
-var SIZE = 30;
+var SIZE = 15;
 
 function StackArray(am, w, h)
 {
@@ -201,7 +201,7 @@ StackArray.prototype.push = function(elemToPush)
 	
 	this.cmd("SetText", this.leftoverLabelID, "");
 	
-	this.cmd("CreateLabel", labPushID, "Value inserata: ", PUSH_LABEL_X, PUSH_LABEL_Y);
+	this.cmd("CreateLabel", labPushID, "Valoare inserata: ", PUSH_LABEL_X, PUSH_LABEL_Y);
 	this.cmd("CreateLabel", labPushValID,elemToPush, PUSH_ELEMENT_X, PUSH_ELEMENT_Y);
 	
 	this.cmd("Step");			

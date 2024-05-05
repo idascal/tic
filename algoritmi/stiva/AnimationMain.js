@@ -325,7 +325,7 @@ function initCanvas()
 	midLevel = document.createElement("tr");
 	bottomLevel = document.createElement("td");
 	bottomLevel.align = "center";
-	var txtNode = document.createTextNode("Animation Speed"); 
+	var txtNode = document.createTextNode("");  //("Animation Speed"); 
 	midLevel.appendChild(bottomLevel);
 	bottomLevel.appendChild(txtNode);
 	newTable.appendChild(midLevel);	
