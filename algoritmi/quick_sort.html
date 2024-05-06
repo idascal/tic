@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quick Sort</title>
+        <style>
+            pre code {
+                background-color: yellow;
+                border: 1px solid red;
+                display: block;
+                padding: 20px;
+            }
+            span{
+                color:red;
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Quick Sort. (Sortare rapid&#259;)</h1>
+        <p><strong>QuickSort</strong> sau <strong>Sortarea rapidă</strong> este o metodă eficientă de sortare a unui tablou, descoperită în 1960 de programatorul britanic <strong>C.A.R. Hoare</strong>. Pentru un set de <span>n</span> valori oarecare algoritmul efectuează <span>O(n log n) </span> comparații, dar în cazul cel mai nefavorabil se efectuează <span> O(n<sup>2</sup>) </span> comparații.</p>
+        <p>Algoritmul este de tip <i>divide et impera</i>; el sortează o secvență a tabloului (inițial întreg tabloul), astfel:</p>
+        <ul>
+            <li>se alege un element special al listei, numit <strong>pivot</strong>.Există mai multe versiuni diferite de QuickSort care aleg pivotul în moduri diferite:
+                <ul>
+                    <li>Se alege întotdeauna primul element ca pivot;</li>
+                    <li>Se alege întotdeauna ultimul element ca pivot;</li>
+                    <li>Se alege un element aleatoriu ca pivot.</li>
+                    <li>Se alege elementul din mijloc ca pivot.</li>
+                </ul>
+            </li>
+            <li>se ordonează elementele listei, astfel încât toate elementele din stânga pivotului să fie mai mici sau egale cu acesta, și toate elementele din dreapta pivotului să fie mai mari sau egale cu acesta;</li>
+            <li>se continuă recursiv cu secvența din stânga pivotului și cu cea din dreapta lui.</li>
+        </ul>
+        Avantajele Quick Sort:
+        <ul>
+            <li>Este un algoritm de împărțire și cucerire care face mai ușoară rezolvarea problemelor.</li>
+            <li>Este eficient pe seturi mari de date.</li>
+            <li>Cel mai bun scenariu pentru sortarea rapidă apare atunci când pivotul ales la fiecare pas împarte vectorul în jumătăți aproximativ egale</li>
+            <li>Performanța medie a algoritmului Quicksort este de obicei foarte bună în practică, ceea ce îl face unul dintre cei mai rapizi algoritmi de sortare.</li>
+        </ul>
+        Dezavantajele Quick Sort:
+        <ul>
+            <li>Are o complexitate de timp în cel mai rău caz de <span> O(n<sup>2</sup>) </span>, care apare atunci când pivotul este ales prost.</li>
+            <li>Nu este eficient pe seturi mici de date.</li>
+        </ul>
+
+        <pre><code>
+        #include &lt;iostream&gt;
+        using namespace std;
+        
+        int partitionare(int v[],int st,int dr)
+        {
+            //alegem ca pivot elemntul din dreapta
+            int pivot=v[dr];
+            // i este indicele celui mai mic element
+            //si va indica pozitia corecta a pivotului
+            int i=st-1,aux;
+
+            for(int j=st; j &le; dr; j++)
+            {
+                //Daca elementul curent este mai mic decat pivotul
+                if(v[j] &lt; pivot)
+                {
+                    //Incrementeaza indicele celui mai mic element
+                    i++;
+                    aux=v[i];
+                    v[i]=v[j];
+                    v[j]=aux;
+                }
+            }
+            aux=v[i+1];
+            v[i+1]=v[dr];
+            v[dr]=aux;
+            return i+1;
+        }
+
+        // Implementarea functiei Quicksort
+
+        void quickSort(int v[],int st,int dr)
+        {
+            // daca st mai mic decat dr
+            if(st &lt; dr)
+            {
+                // pi este indicele pivotului
+
+                int pi=partitionare(v,st,dr);
+
+                // Apel recursiv
+                // Elementele mai mici decat pivotul merg in stanga
+                // iar cele mai mari decat pivotul merg in dreapta
+                quickSort(v,st,pi-1);
+                quickSort(v,pi+1,dr);
+            }
+        }
+
+
+        int main()
+        {
+            int v[]= {10,7,8,9,1,5,3,12,11,55};
+            int n=sizeof(v)/sizeof(v[0]);
+            // Apel functie
+            quickSort(v,0,n-1);
+            cout<<"Vectorul sortat este\n";
+            for(int i=0; i &lt; n; i++)
+            {
+                cout&lt;&lt;v[i]&lt;&lt;" ";
+            }
+            return 0;
+        }
+        </code>
+        </pre>
+    </body>
+</html>
