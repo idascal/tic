@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Merge Sort</title>
+        <style>
+            pre code {
+                background-color: yellow;
+                border: 1px solid red;
+                display: block;
+                padding: 20px;
+            }
+            span{
+                color:red;
+                font-style: italic;
+            }
+            h1{
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Merge Sort. (Sortare prin interclasare)</h1>
+        <p><strong>MergeSort</strong> sau <strong>Sortarea prin interclasare</strong> este o metodă eficientă de sortare a elementelor unui tablou, bazată pe următoarea idee: dacă prima jumătate a tabloului are elementele sortate și a doua jumătate are de asemenea elementele sortate, prin <u><i>interclasare</i></u> se va obține tabloul sortat.</p>
+        <p>Algoritmul este de tip <i>divide et impera</i>; se sortează o secvență delimitată de indicii <span>st</span> și <span>dr</span>:</p>
+        <ul>
+            <li>dacă <span>st &ge; dr</span>, problema este elementară, secvența fiind deja sortată</li>
+            <li>dacă <span>st &lt; dr</span>:
+                <ul>
+                    <li>se împarte problema în subprobleme, identificând mijlocul secvenței, <span>mij = (st + dr) / 2</span>;</li>
+                    <li>se rezolvă subproblemele, sortând secvența delimitată de <span>st</span> și <span>mij</span>, respectiv secvența delimitată de <span>mij+1</span> și <span>dr</span> &#8211; apeluri recursive;</li>
+                    <li>se combină soluțiile, interclasând cele două secvențe; în acest fel, secvența delimitată de <span>st</span> și <span>dr</span> este sortată.</li>
+                </ul>
+            </li>
+        </ul>
+        Avantajele Merge Sort:
+        <ul>
+            <li>Este un algoritm de împărțire și cucerire care face mai ușoară rezolvarea problemelor.</li>
+            <li>Este eficient pe seturi mari de date.</li>
+            <li>Complexitatea sortării prin interclasare este <span>O(n log n) </span>.</li>
+        </ul>
+        Dezavantajele Merge Sort:
+        <ul>
+            <li>Algoritmul de sortare prin interclasare consumă însă de două ori mai multă memorie decât alţi algoritmi, deoarece necesită spaţiu suplimentar pentru tabloul auxiliar .</li>
+            <li>Nu este eficient pe seturi mici de date.</li>
+        </ul>
+
+        <pre><code>
+        #include &lt;iostream&gt;
+        using namespace std;
+        int v[1000],n;
+        
+        void interclasare(int st,int mij,int dr)
+        {
+            int aux[1000];
+            int i=st;
+            int k=1;
+            int j=mij+1;
+            while(i&lt;=mij && j&lt;=dr)
+                if (v[i]&lt;v[j])
+                    aux[k++]=v[i++];
+                else
+                    aux[k++]=v[j++];
+            while (i&lt;=mij)
+                aux[k++]=v[i++];
+            while (j&lt;=dr)
+                aux[k++]=v[j++];
+            int t=st;
+            for (k=1; k&lt;=(dr-st)+1; k++)
+                v[t++]=aux[k];
+        }
+
+        // Implementarea functiei Mergesort
+
+        void mergeSort(int st,int dr)
+        {
+            if (st&lt;dr)
+            {
+                int mij=(st+dr)/2;
+                mergeSort(st,mij);
+                mergeSort(mij+1,dr);
+                interclasare(st,mij,dr);
+            }
+        }
+
+
+        int main()
+        {
+            int v[]= {10,7,8,9,1,5,3,12,11,55};
+            int n=sizeof(v)/sizeof(v[0]);
+            // Apel functie
+            mergeSort(0,n-1);
+            cout&lt;&lt;"Vectorul sortat este\n";
+            for(int i=0; i &lt; n; i++)
+            {
+                cout&lt;&lt;v[i]&lt;&lt;" ";
+            }
+            return 0;
+        }
+        </code>
+        </pre>
+    </body>
+</html>
