@@ -18,22 +18,60 @@
         <p>A. Instalarea librăriilor în CodeBlocks: </p>
         <ol>Se parcurg următorii paşi:
             <li>Se descarcă fişierele necesare de <a href="https://github.com/IoanDascal/SDL_BGI" target="_blank">aici.</a> </li>
-            <li>Se decomprimă:<br><img src="decomprimare.png"></li>
-            <li>Se copiază folderul <span>SDL2-2.30.3</span> din folderul decomprimat<br><img src="copiere.png"> <br> în <span>directorul C:</span><br><img src="copiere_destinatie.png"> </li>
+            <li>Se decomprimă:<br><img src="decomprimare.png"></li><br>
+            <li>Se copiază folderul <span>SDL2-2.30.3</span> din folderul decomprimat<br><img src="copiere.png"> <br> în <span>directorul C:</span><br><img src="copiere_destinatie.png"> </li><br>
             <li>Se copiază fişierul <span>C:\SDL2-2.30.3\SDL_bgi.dll</span> în <span>C:\Program Files\CodeBlocks\MinGW\bin</span></li>
         </ol>
         <p>B. Crearea unui proiect în CodeBlocks:</p>
         <ul>Se parcurg următorii paşi:
             <li>Se creează un proiect nou: <br><img src="proiect_nou.png"></li>
-            <li>Se alege <span>SDL2 project</span>: <br><img src="aleg_SDL2.png"></li>
-            <li>Click <span>NEXT:</span><br><img src="aleg_SDL2_next.png"></li>
-            <li>Se dă un titlu aplicaţiei:<br><img src="aleg_titlu_SDL2_next.png"> </li>
-            <li>Se selectează locaţia SDL2:<br><img src="aleg_locatie_SDL2_next.png"></li>
-            <li>Se selectează doar configuraţia <span>Release:</span><br> <img src="aleg_RELEASE_SDL2_finish.png"></li>
-            <li>Click pe <span>FINISH</span>.</li>
-            <li>Se fac următoarele setări pentru compilator:<br><img src="setari_compilator_1.png"><br><img src="setari_compilator_2.png"><br><img src="setari_compilator_3.png"><br><img src="setari_compilator_4.png"></li>
+            <li>Se alege <span>SDL2 project</span>: <br><img src="aleg_SDL2.png"></li><br>
+            <li>Click <span>NEXT:</span><br><img src="aleg_SDL2_next.png"></li><br>
+            <li>Se dă un titlu aplicaţiei:<br><img src="aleg_titlu_SDL2_next.png"> </li><br>
+            <li>Se selectează locaţia SDL2:<br><img src="aleg_locatie_SDL2_next.png"></li><br>
+            <li>Se selectează doar configuraţia <span>Release:</span><br> <img src="aleg_RELEASE_SDL2_finish.png"></li><br>
+            <li>Click pe <span>FINISH</span>.</li><br>
+            <li>Se fac următoarele setări pentru compilator:<br><img src="setari_compilator_1.png"><br><img src="setari_compilator_2.png"><br><img src="setari_compilator_3.png"><br><img src="setari_compilator_4.png"></li><br>
             <li>Se editează programul de test:<br><img src="program_test.png"></li>
         </ul>
+        <p>Program cu animaţie:</p>
+        <code>
+            <pre>
+            #include &lt;graphics.h&gt;
+            #include &lt;conio.h&gt;
+
+            int main(int argc,char* argv[])
+            {
+                initwindow(800,600);
+                settextstyle(DEFAULT_FONT,HORIZ_DIR,2);
+                outtextxy(25,240,(char*)"Apasa orice tasta pentru animatie:");
+                int i=0,j=3;
+                getevent();
+
+                while( i &lt;= 420)
+                {
+                    setcolor(j);
+                    rectangle(50+i,275,150+i,400);
+                    rectangle(150+i,350,200+i,400);
+                    circle(75+i,410,10);
+                    circle(175+i,410,10);
+
+                    delay(50);
+                    j++;
+                    if ( j == 15 )
+                        j = 2;
+                    i = i + 10;
+
+                    refresh();
+                    cleardevice();// clear screen
+                }
+
+                getch();
+                closegraph();
+                return 0;
+            }
+            </pre>
+        </code>
         
     </body>
 </html>
