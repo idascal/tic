@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -10,10 +7,6 @@
         <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1,initial-scale=1">
         <link rel="stylesheet" href="https://cdn.hackerearth.com/static/base/base_common_combined.fd68a2581441.css"/>    
         <link rel="stylesheet" href="https://cdn.hackerearth.com/static/css/font-awesome-4.7.0/css/font-awesome.min.269550530cc1.css"/>
-
-        <!-- Make the static variable available for all js files -->
-        
-
         <!-- Store CSRF_COOKIE -->
         <script>
             var CSRF_COOKIE_USED = "True";
@@ -22,70 +15,66 @@
         <link rel="stylesheet" href="https://cdn.hackerearth.com/static/problems/visualizer/JSAV.7722b5261838.css"/>
         <link rel="stylesheet" href="https://cdn.hackerearth.com/static/problems/visualizer/odsaAV-min.f59df422de76.css"/>
         <link rel="stylesheet" href="https://cdn.hackerearth.com/static/problems/visualizer/odsaStyle-min.0ddc3a3f99a8.css"/>
-        <link rel="stylesheet" href="https://cdn.hackerearth.com/static/problems/visualizer/quick-sort.d41d8cd98f00.css"/>
         <link rel="stylesheet" href="https://cdn.hackerearth.com/static/problems/visualizer/visualizer.cf455921e4d6.css"/>
     </head>
     <body >            
     <!-- This is the center page which has a fixed width of 1100px -->
     
         <script type="text/javascript">
-
-            var QS_AV_C1 = 'Done sorting!'
-            var QS_AV_C2 = 'Select the pivot.'
-            var QS_AV_C3 = 'Move the pivot to the end.'
-            var QS_AV_C4 = 'Partition the subarray.'
-            var QS_AV_C5 = 'When the right bound crosses the left bound, all elements to the left of the left bound are less than the pivot and all elements to the right are greater than or equal to the pivot.'
-            var QS_AV_C6 = 'Move the pivot to its final location.'
-            var QS_AV_C7 = 'Left sublist contains a single element which means it is sorted.'
-            var QS_AV_C8 = 'Call quicksort on the left sublist.'
-            var QS_AV_C9 = 'Right sublist contains a single element which means it is sorted.'
-            var QS_AV_C10 = 'Call quicksort on the right sublist.'
-            var QS_AV_C11 = 'Move the left bound to the right until it reaches a value greater than or equal to the pivot.'
-            var QS_AV_C12 = 'Step right.'
-            var QS_AV_C13 = 'That is as far as we go this round.'
-            var QS_AV_C14 = 'Move the right bound to the left until it crosses the left bound or finds a value less than the pivot.'
-            var QS_AV_C15 = 'Step left.'
-            var QS_AV_C16 = 'Swap the selected values.'
-            var QS_AV_C17 = 'Bounds have crossed.'
-            var QS_AV_C18 = 'Here is a visualization of the entire Quicksort process.'
+            var QS_AV_C1 = 'Este gata sortarea'
+            var QS_AV_C2 = 'Se selecteaz&#259; pivotul.'
+            var QS_AV_C3 = 'Se mut&#259; pivotul la sf&#226;r&#351;it.'
+            var QS_AV_C4 = 'Se parti&#355;ioneaz&#259; subvectorul.'
+            var QS_AV_C5 = 'C&#226;nd limita din dreapta dep&#259;&#351;e&#351;te limita din st&#226;nga, toate elementele din st&#226;nga limitei din st&#226;nga sunt mai mici dec&#226;t pivotul &#351;i toate elementele din dreapta sunt mai mari sau egale cu pivotul.'
+            var QS_AV_C6 = 'Se mut&#259; pivotul &#238;n pozi&#355;ia final&#259;.'
+            var QS_AV_C7 = 'Subvectorul din st&#226;nga con&#355;ine un singur element, deci este sortat.'
+            var QS_AV_C8 = 'Apeleaz&#259; func&#355;ia quicksort pentru subvectorul din st&#226;nga.'
+            var QS_AV_C9 = 'Subvectorul din dreapta con&#355;ine un singur element, deci este sortat.'
+            var QS_AV_C10 = 'Apeleaz&#259; func&#355;ia quicksort pentru subvectorul din dreapta.'
+            var QS_AV_C11 = 'Muta&#355;i limita din st&#226;nga spre dreapta p&#226;n&#259; c&#226;nd atinge o valoare mai mare sau egal&#259; cu pivotul.'
+            var QS_AV_C12 = 'Pas spre dreapta.'
+            var QS_AV_C13 = 'Sa g&#259;sit o valoare mai mare sau egal&#259; cu pivotul.'
+            var QS_AV_C14 = 'Mutați limita din dreapta spre st&#226;nga p&#226;n&#259; c&#226;nd trece de limita st&#226;ng&#259; sau g&#259;se&#351;te o valoare mai mic&#259; dec&#226;t pivotul.'
+            var QS_AV_C15 = 'Pas spre st&#226;nga.'
+            var QS_AV_C16 = 'Interschimb&#259; valorile selectate.'
+            var QS_AV_C17 = 'Limitele s-au dep&#259;&#351;it.'
+            var QS_AV_C18 = 'Aceasta este o vizualizare a sort&#259;rii Quicksort.'
         </script>
-        <div class="right-section">
-            
-            <div class="right-section-content darker regular tutorial">
-                
+        <div class="right-section">           
+            <div class="right-section-content darker regular tutorial">       
                 <div id="container" class="medium-margin">
                     <form id="ssperform">
                         <div class="legend">
-                            <div class="regular dark legend-text caps weight-600 larger">Inputs</div>
+                            <div class="regular dark legend-text caps weight-600 larger">Intrare</div>
                             <div class="margin-bottom-15">
-                                <label id="arraysizeLabel" for="arraysize" class="dark large label weight-600">Array size: </label>
+                                <label id="arraysizeLabel" for="arraysize" class="dark large label weight-600">M&#259;rime vector : </label>
                                 <select id="arraysize" class="nice-select dark"></select>
                             </div>
                             
                             <div>
-                                <label for="jsavsettings-layout" class="dark large label weight-600">Array layout:</label>
+                                <label for="jsavsettings-layout" class="dark large label weight-600">Aspect vector:</label>
                                 <select id="jsavsettings-layout" class="nice-select dark">
-                                    <option value="bar">Bar</option>
-                                    <option value="array">Array</option>
+                                    <option value="bar">Dreptunghiuri</option>
+                                    <option value="array">Vector</option>
                                 </select>
                             </div>
                             
                             <div class="wrapper">
-                                <span class="dark large label weight-600">Array Values <span class="light small">(optional):</span></span>
+                                <span class="dark large label weight-600">Valori &#238;n vector: <span class="light small">(optional):</span></span>
                                 <input type="text" name="arrayValues" id="arrayValues" />
                             </div>
                             <div class="wrapper">
                                 <div class="label float-lef"></div>
                                 <div class="less-margin-2 inline-block">
-                                    <input id="run" type="button" name="run" value="Run" class="button btn-blue btn-small">
-                                    <input id="reset" type="button" name="reset" value="Reset" class="button reset-button hidden">
+                                    <input id="run" type="button" name="run" value="Simulare" class="button btn-blue btn-small">
+                                    <input id="reset" type="button" name="reset" value="Resetare" class="button reset-button hidden">
                                 </div>
                             </div>
 
                         </div>
                     </form>
                     <div class="standard-margin legend-av" id="av-output">
-                        <div class="legend-text caps weight-600">Visualize</div>
+                        <div class="legend-text caps weight-600">Vizualizare</div>
                         <div class="avcontainer">
                         </div>
                         <!--avcontainer-->
@@ -101,45 +90,19 @@
                 
             </div>
         </div>
-
-        
-
         <!-- All the scripts go here -->
-        <script>
-            
-            var CURRENT_PATH = "https://www.hackerearth.com/practice/algorithms/sorting/quick-sort/visualize/";
+        <script>         
             var HISTORY = '';
             var DEFAULT_REAL_NUMBER_PRECISION = 2;
             var DECIMAL_PRECISION_ERROR_TEXT = "Only {decimal_limit} decimal places allowed";
             var SOMETHING_WENT_WRONG_ERROR_TEXT = "Something went wrong. Please try again later.";
-
             // Make code constants available globally in JS
             var MAP_LANG_TO_NAME = {"BASH": "Bash", "BEFUNGE": "Befunge"};
         </script>
-
-
-        
-
-
-<script type="text/javascript" src="https://cdn.hackerearth.com/static/js/alljs.4b9c2cf26ef1.js" crossorigin="anonymous" ></script>
+        <script type="text/javascript" src="https://cdn.hackerearth.com/static/js/alljs.4b9c2cf26ef1.js" crossorigin="anonymous" ></script>
         <script type="text/javascript" src="https://cdn.hackerearth.com/static/base/base1.0.1.2a146214f85d.js" crossorigin="anonymous" ></script>
         <script type="text/javascript" src="https://cdn.hackerearth.com/static/bigpipe/bigpipe.65dadf156b10.js" crossorigin="anonymous" ></script>
-        
-
-
-
-
-
-
-
-
-
-        
-
-        
-
-        <script type="text/javascript">
-            
+        <script type="text/javascript">       
             $(document).ready(function(){
                 //mixpanel delegate links custom method
                 mixpanel.delegate_links = function (parent, selector, event_name, properties) {
@@ -162,41 +125,38 @@
                         mixpanel.track(event_name, properties, callback);
                     });
                 };
+            });           
+        </script>   
+        <script type="text/javascript" src="https://cdn.hackerearth.com/static/problems/visualizer/jquery.transit.839e1a26ca64.js" crossorigin="anonymous" ></script>
+        <script type="text/javascript" src="https://cdn.hackerearth.com/static/problems/visualizer/raphael.b18c039d9b1e.js" crossorigin="anonymous" ></script>
+        <script type="text/javascript" src="JSAV_min.js" ></script>
+        <script type="text/javascript" src="https://cdn.hackerearth.com/static/problems/visualizer/odsaUtils.d2dc8f0aa612.js" crossorigin="anonymous" ></script>
+        <script type="text/javascript" src="https://cdn.hackerearth.com/static/problems/visualizer/odsaAV.c4ef9bb3b7d4.js" crossorigin="anonymous" ></script>
+        <script type="text/javascript" src="quick_sort_alg.js" ></script>
+        <script type="text/javascript" src="https://cdn.hackerearth.com/static/problems/problem_topic.019e7b6e4cfa.js" crossorigin="anonymous" ></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                mixpanel.track('Visit', {'name': 'Practice visualize page'});
+                $(".left-nav-link").each(function() {
+                    var p_url = $(this).attr('href');
+                    $(this).attr('href', p_url + 'visualize/');
+                });
+                $('#run').on('click', function() {
+                    $('.legend-av').addClass('legend');
+                    $('.controler-container .jsavoutput').addClass('jsavoutput-container');
+                    var target_offset = $('#av-output').offset(),
+                    target_top = target_offset.top - 20;
+
+                    $('html, body').animate({scrollTop:target_top}, 500);
+                    $('#reset').removeClass('hidden');
+                });
+
+                $('#reset').on('click', function() {
+                    $('.legend-av').removeClass('legend');
+                    $('.controler-container .jsavoutput').removeClass('jsavoutput-container');
+                });
             });
-            
         </script>
-
-        
-<script type="text/javascript" src="https://cdn.hackerearth.com/static/problems/visualizer/jquery.transit.839e1a26ca64.js" crossorigin="anonymous" ></script>
-<script type="text/javascript" src="https://cdn.hackerearth.com/static/problems/visualizer/raphael.b18c039d9b1e.js" crossorigin="anonymous" ></script>
-<script type="text/javascript" src="https://cdn.hackerearth.com/static/problems/visualizer/JSAV-min.06bf2590c25a.js" crossorigin="anonymous" ></script>
-<script type="text/javascript" src="https://cdn.hackerearth.com/static/problems/visualizer/odsaUtils.d2dc8f0aa612.js" crossorigin="anonymous" ></script>
-<script type="text/javascript" src="https://cdn.hackerearth.com/static/problems/visualizer/odsaAV.c4ef9bb3b7d4.js" crossorigin="anonymous" ></script>
-<script type="text/javascript" src="https://cdn.hackerearth.com/static/problems/visualizer/quick-sort.f4eeee27f2dd.js" crossorigin="anonymous" ></script>
-<script type="text/javascript" src="https://cdn.hackerearth.com/static/problems/problem_topic.019e7b6e4cfa.js" crossorigin="anonymous" ></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        mixpanel.track('Visit', {'name': 'Practice visualize page'});
-        $(".left-nav-link").each(function() {
-            var p_url = $(this).attr('href');
-            $(this).attr('href', p_url + 'visualize/');
-        });
-        $('#run').on('click', function() {
-            $('.legend-av').addClass('legend');
-            $('.controler-container .jsavoutput').addClass('jsavoutput-container');
-            var target_offset = $('#av-output').offset(),
-            target_top = target_offset.top - 20;
-
-            $('html, body').animate({scrollTop:target_top}, 500);
-            $('#reset').removeClass('hidden');
-        });
-
-        $('#reset').on('click', function() {
-            $('.legend-av').removeClass('legend');
-            $('.controler-container .jsavoutput').removeClass('jsavoutput-container');
-        });
-    });
-</script>
         
         <!-- mixpanel analytics start -->
         <script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);mixpanel.init("4c30b8635363027dfb780d5a61785112");
