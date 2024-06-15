@@ -540,6 +540,20 @@
             }
             contor++;
         });
-	</script
+      </script>
+      <p>Pentru fiecare secvență <code>i ... n-1</code> se determină explicit minimul și se interschimbă cu <code>X[i]</code>.</p>
+
+<pre>int n, X[100];
+//citire X[] cu n elemente
+for(int i = 0 ; i &lt; n - 1 ; i ++)
+{
+    int p = i;
+    for(int j = i + 1 ; j &lt; n ; j ++)
+        if(X[j] &lt; X[p])
+            p= j;
+    int aux = X[i];
+    X[i] = X[p];
+    X[p] = aux;
+}</pre>
   </body>
 </html>

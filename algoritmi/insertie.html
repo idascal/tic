@@ -673,6 +673,18 @@
             }
             contor++;
         });
-	</script
+      </script>
+      <p>În secvența următoare considerăm că tabloul are elementele indexate de la <code>0</code> la <code>n-1</code>:</p>
+
+<pre>int n, X[100];
+//citire X[] cu n elemente
+for(int i = 1 ; i &lt; n ; i ++)
+{
+    int x = a[i];
+    int p = i - 1;
+    while(p &gt;= 0 &amp;&amp; a[p] &gt; x)
+        a[p + 1] = a[p], p --;
+    a[p + 1] = x;
+}</pre>
   </body>
 </html>
