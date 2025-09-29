@@ -50,7 +50,7 @@
 <body>
 
     <h1>Creați o bază de date numită CLASA. <br>
-        Apoi creați următorul tabel:</h1>
+        Apoi creați următorul tabel numit Elevi:</h1>
 
     <table>
         <thead>
@@ -159,7 +159,15 @@
         <li>Cel mai bun elev (media maximă):</li>
         <li>Numărul de elevi pe fiecare clasă:</li>
     </ol>
-    
-
+    <p>COUNT în SQL – descriere<br>
+COUNT este o funcție agregată folosită pentru a număra rândurile dintr-un set de rezultate.</p>
+    <p>Funcționalitate:<br>
+Returnează numărul de rânduri care îndeplinesc o condiție specificată.
+Poate număra toate rândurile sau doar rândurile în care o coloană nu este NULL.</p>
+    <p>Sintaxă generală:<br>
+    COUNT(*)          -- Numără toate rândurile (inclusiv cele cu valori NULL)<br>
+COUNT(nume_coloana) -- Numără rândurile unde coloana specificată NU este NULL<br>
+COUNT(DISTINCT nume_coloana) -- Numără valorile distincte, fără duplicate și fără NULL-uri
+</p>
 </body>
 </html>
