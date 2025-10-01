@@ -167,8 +167,25 @@ Returnează numărul de rânduri care îndeplinesc o condiție specificată.<br>
 Poate număra toate rândurile sau doar rândurile în care o coloană nu este NULL.</p>
     <p>Sintaxă generală:<br>
     COUNT(*)          -- Numără toate rândurile (inclusiv cele cu valori NULL)<br>
-COUNT(nume_coloana) -- Numără rândurile unde coloana specificată NU este NULL<br>
-COUNT(DISTINCT nume_coloana) -- Numără valorile distincte, fără duplicate și fără NULL-uri
+    COUNT(nume_coloana) -- Numără rândurile unde coloana specificată NU este NULL<br>
+    COUNT(DISTINCT nume_coloana) -- Numără valorile distincte, fără duplicate și fără NULL-uri
+    </p>
+    <h2>ORDER BY în SQL</h2>
+    <p>Descriere:<br>
+    ORDER BY este o clauză SQL folosită pentru a sorta rezultatele unui SELECT în ordine crescătoare (ASC)<br>
+        sau descrescătoare (DESC), pe baza uneia sau mai multor coloane.</p>
+    <p>Sintaxă generală:<br>
+    SELECT column1, column2 FROM table_name ORDER BY column1 [ASC|DESC], column2 [ASC|DESC];
+    </p>
+    <p>Exemple:<br>
+    -- Sortează după nume în ordine alfabetică (implicit ASC)<br>
+SELECT * FROM Employees ORDER BY LastName;<br>
+
+-- Sortează după salariu descrescător<br>
+SELECT * FROM Employees ORDER BY Salary DESC;<br>
+
+-- Sortează după departament (ASC), apoi salariu (DESC)<br>
+SELECT * FROM Employees ORDER BY Department ASC, Salary DESC;
 </p>
 </body>
 </html>
