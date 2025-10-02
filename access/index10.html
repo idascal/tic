@@ -187,5 +187,58 @@ SELECT * FROM Employees ORDER BY Salary DESC;<br>
 -- Sortează după departament (ASC), apoi salariu (DESC)<br>
 SELECT * FROM Employees ORDER BY Department ASC, Salary DESC;
 </p>
+    <h2>Clauza  TOP în SQL Server</h2>
+    <p>Clauza TOP este folosită pentru a limita câte rânduri returnează o interogare. E utilă mai ales când vrei doar primele câteva rezultate.</p>
+    <p>Exemplu:<br>
+        SELECT TOP 5 * FROM Angajati ORDER BY Salariu DESC;
+    </p>
+    <p>Ce face această interogare:<br>
+       Selectează primele 5 rânduri din tabelul Angajati in ordinea descrescătoare a salariului.</p>
+    <h2>GROUP BY în SQL Server</h2>
+    <p>Clauza GROUP BY permite să grupezi rânduri care au valori comune în una sau mai multe coloane,<br>
+        pentru a aplica funcții agregate (sume, medii, număr, etc.) pe fiecare grup în parte.</p>
+    <p><ul>Practic:
+  <li>Se face mai întâi filtrarea (prin <code>WHERE</code>)</li>
+  <li>apoi se grupează rândurile pe baza coloanelor specificate</li>
+  <li>apoi se aplică funcțiile agregate (ex. <code>SUM</code>, <code>COUNT</code>, <code>AVG</code>) pe fiecare grup</li>
+  <li>Poți folosi <code>HAVING</code> pentru a filtra rezultatele după ce s-au grupat</li>
+</ul>
+    <ul> Reguli importante:
+  <li>Toate coloanele care apar în <code>SELECT</code> și nu sunt într-o funcție agregată trebuie să fie incluse în <code>GROUP BY</code>.</li>
+  <li>Coloanele din <code>GROUP BY</code> pot fi mai multe (ex. <code>GROUP BY col1, col2</code>).</li>
+  <li><code>GROUP BY</code> vine după <code>WHERE</code>, dar înainte de <code>HAVING</code> și <code>ORDER BY</code>.</li>
+</ul>
+</p>
+    <p>Sintaxă generală:<br>
+    SELECT coloana1, coloana2, FUNC_AGR(coloana3) AS Alias<br>
+FROM NumeTabel<br>
+WHERE <condiție opțională><br>
+GROUP BY coloana1, coloana2<br>
+HAVING <condiție pe grupuri>   -- opțional<br>
+ORDER BY coloana1, Alias        -- opțional<br>
+    <ul>
+        <li>FUNC_AGR poate fi SUM(), COUNT(), AVG(), MIN(), MAX(), etc.</li>
+        <li>HAVING se folosește pentru a filtra după ce s-au creat grupurile (ex. afișează doar grupurile care au SUM > 1000)</li>
+    </ul>
+</p>
+    <p>Exemplul 1 — total pe categorie<br>
+Avem un tabel Produse cu coloanele: Categorie, Pret.<br>
+Vrem să vedem suma prețurilor pe fiecare categorie:<br>
+    SELECT Categorie, SUM(Pret) AS TotalPret FROM Produse GROUP BY Categorie;
+</p>
+    <p>Exemplul 2 — număr pe grup + filtrare cu HAVING<br>
+Tabel Comenzi, coloane: ClientID, ValoareComanda.<br>
+Vrem să aflăm câți clienți au făcut comenzi și doar pe cei care au peste 3 comenzi:<br>
+SELECT ClientID, COUNT(*) AS NumarComenzi FROM Comenzi GROUP BY ClientID HAVING COUNT(*) > 3;<br>
+<ul>Aici:
+<li>COUNT(*) numără comenzile per client,</li>
+<li>HAVING filtrează doar acei clienți cu NumarComenzi > 3.</li>
+</ul>
+    </p>
+    <p>Exemplul 3 — grupare pe mai multe coloane<br>
+Tabel Vanzari cu coloanele: Regiune, An, SumaVanzare.<br>
+Vrem totalul vânzărilor pentru fiecare regiune în fiecare an:<br>
+    SELECT Regiune, An, SUM(SumaVanzare) AS TotalVanzari FROM Vanzari GROUP BY Regiune, An;
+</p>
 </body>
 </html>
