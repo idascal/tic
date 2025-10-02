@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Fișă de lucru WinForms C#</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    pre {
+      background-color: #f4f4f4;
+      border: 1px solid #ccc;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Fișă de lucru: WinForms C# – Buton, Etichetă și Câmp de Text</h1>
+
+  <div class="section">
+    <h2>Obiectiv</h2>
+    <p>
+      Să creezi o aplicație WinForms simplă în C# care să permită utilizatorului să introducă un text și, atunci când apasă un buton, să afișeze textul într‑o etichetă (sau să afișeze un mesaj de eroare, dacă textul este gol).
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Cerințe funcționale</h2>
+    <ul>
+      <li>Fereastra (Form) va conține:</li>
+      <ul>
+        <li>O etichetă (<code>Label</code>) — inițial afișează un text de tip „Introduceți textul:”</li>
+        <li>Un câmp de text (<code>TextBox</code>) — pentru ca utilizatorul să introducă un text</li>
+        <li>Un buton (<code>Button</code>) — când este apăsat, va prelua textul din <code>TextBox</code> și va afișa rezultatul într‑o etichetă</li>
+      </ul>
+      <li>Când utilizatorul introduce un text și apasă butonul:</li>
+      <ul>
+        <li>Eticheta va fi actualizată să arate: <strong>„Ai introdus: &lt;textul introdus&gt;”</strong></li>
+        <li>Dacă câmpul de text este gol, la apăsarea butonului va afișa: <strong>„Textul este gol!”</strong></li>
+      </ul>
+      <li>(Opțional) Poți adăuga validare — de ex. să nu accepte doar spații goale sau valori numerice, după cerință.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Pași de implementare sugerați</h2>
+    <ol>
+      <li>Creează un proiect nou Windows Forms App (Framework sau .NET Core) în Visual Studio.</li>
+      <li>În designer adaugă:
+        <ul>
+          <li>Un <code>Label</code> cu text „Introduceți textul:”</li>
+          <li>Un <code>TextBox</code></li>
+          <li>Un <code>Button</code> cu text „Afișează”</li>
+        </ul>
+      </li>
+      <li>Fă dublu‑clic pe buton pentru a genera metoda de eveniment <code>button1_Click</code>.</li>
+      <li>În handler, scrie logica:
+        <ul>
+          <li>Citește <code>textBox1.Text</code></li>
+          <li>Dacă e gol => afișează „Textul este gol!”</li>
+          <li>Altfel => afișează „Ai introdus: &lt;textul&gt;”</li>
+        </ul>
+      </li>
+      <li>Testează aplicația: introdu text, apasă butonul, vezi dacă eticheta se schimbă corespunzător; testează și când textul e gol.</li>
+    </ol>
+  </div>
+
+  <div class="section">
+    <h2>Exemplu de cod (C#)</h2>
+    <pre>
+using System;
+using System.Windows.Forms;
+
+namespace FisaWinForms
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string input = textBox1.Text.Trim();
+
+            if (string.IsNullOrEmpty(input))
+            {
+                label1.Text = "Textul este gol!";
+            }
+            else
+            {
+                label1.Text = $"Ai introdus: {input}";
+            }
+        }
+    }
+}
+    </pre>
+  </div>
+
+</body>
+</html>
