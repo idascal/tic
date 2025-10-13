@@ -46,7 +46,7 @@ h1 {
 }
 
 .hamburger-menu:has(input:checked) {
-    --foreground: white;
+    --foreground: blue;
     --background: #333;
 }
 
