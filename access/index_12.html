@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <title>Tabel Angajați</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 30px;
+      background: #f7f8fa;
+      color: #222;
+    }
+    section { 
+        margin-bottom: 25px; 
+        padding: 15px; 
+        background: #fff; 
+        border-radius: 8px; 
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1); 
+    }
+    ol { margin-left: 25px; }
+    h1 {
+      text-align: center;
+      color: red;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 20px auto;
+      background: white;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    th {
+      background-color: #e3eefc;
+      color: #003366;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    caption {
+      caption-side: top;
+      text-align: left;
+      padding: 10px;
+      font-weight: bold;
+      font-size: 1.2em;
+      color: #003366;
+    }
+      
+    .table-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 16px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    th, td {
+      padding: 10px 12px;
+      border: 1px solid #e0e0e0;
+      text-align: left;
+      vertical-align: middle;
+        background: #f0f4f8;
+      font-weight: 600;
+    }
+    tr:nth-child(even) td { background: #fafafa; }
+    .salariu { text-align: right; font-family: monospace; }
+    .stare-activ { color: #0b6b0b; font-weight: 600; }
+    .stare-concediu { color: #a07b00; font-weight: 600; }
+    .stare-plecat { color: #a20000; font-weight: 600; }
+    @media (max-width:720px) {
+      th, td { padding: 8px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+    <h1>Crearea și relaționarea tabelelor în SQL Server</h1>
+    <p>Creati baza de date "Resurse_umane" si tabelele "Departamente" și "Angajati"</p>
+    <h3>Departamente - Baza de date Resurse Umane</h3>
+    <div class="table-wrap" role="region" aria-label="Tabel angajați">
+  <table>
+    <thead>
+      <tr>
+        <th>ID Departament</th>
+        <th>Nume Departament</th>
+        <th>Descriere</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>IT</td>
+        <td>Departament Tehnologia Informatiei – dezvoltare si suport tehnic</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>HR</td>
+        <td>Resurse Umane – recrutare, training, evaluare personal</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Financiar</td>
+        <td>Contabilitate, buget si raportare financiara</td>
+      </tr>
+    </tbody>
+  </table>
+    </div>
+    <h3>Angajati - Baza de date Resurse Umane</h3>
+  <div class="table-wrap" role="region" aria-label="Tabel angajați">
+    <table>
+      <thead>
+        <tr>
+          <th>ID_Angajat</th>
+          <th>Prenume</th>
+          <th>Nume</th>
+          <th>Email</th>
+          <th>Telefon</th>
+          <th>Funcție</th>
+            <th>Salariu (RON)</th>
+          <th>Data_angajare</th>
+            <th>Stare</th>
+          <th>ID_Departament</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Maria</td>
+          <td>Popescu</td>
+          <td>maria.popescu@example.com</td>
+            <td>0722334455</td>
+          <td>Dezvoltator</td>
+          <td class="salariu">4500.00</td>
+            <td>2021-05-10</td>
+          <td><span class="stare-plecat">Plecat</span></td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Andrei</td>
+            <td>Ionescu</td>
+          <td>andrei.ionescu@example.com</td>
+            <td>0733123456</td>
+          <td>Recrutor</td>
+          <td class="salariu">3800.00</td>
+            <td>2022-01-15</td>
+          <td><span class="stare-activ">Activ</span></td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Elena</td>
+            <td>Dumitrescu</td>
+            <td>elena.dumitrescu@example.com</td>
+          <td>0744778899</td>
+          <td>Contabil</td>
+          <td class="salariu">4200.00</td>
+            <td>2020-09-01</td>
+          <td><span class="stare-concediu">Concediu</span></td>
+          <td>3</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+    <h2>Interog&#259;ri</h2>
+    <ol>
+        <li>Inserați încă 10 înregistr&#259;ri în fiecare tabel.</li>
+        <li>Afișează lista completă a angajaților împreună cu departamentele din care fac parte.</li>
+        <li>Calculează salariul mediu pentru fiecare departament.</li>
+        <li>Afișează angajații angajați după 1 ianuarie 2022.</li>
+        <li>Afișează numărul de angajați activi din fiecare departament.</li>
+        <li>Identifică angajații cu cel mai mare salariu din fiecare departament.</li>
+    </ol>
+    <h1>Întrebări despre SQL</h1>
+
+  <section>
+    <h2>A. Întrebări teoretice (de bază)</h2>
+    <ol>
+      <li>Ce înseamnă SQL și care este scopul său principal?</li>
+      <li>Care este diferența dintre o bază de date și un tabel?</li>
+      <li>Ce reprezintă o cheie primară (<code>PRIMARY KEY</code>) într-un tabel?</li>
+      <li>Ce este o cheie străină (<code>FOREIGN KEY</code>) și la ce se folosește?</li>
+      <li>Ce înseamnă o constrângere (<em>constraint</em>) în SQL?</li>
+      <li>Ce face instrucțiunea <code>SELECT</code>?</li>
+      <li>Care este diferența dintre <code>DELETE</code>, <code>TRUNCATE</code> și <code>DROP</code>?</li>
+      <li>Ce face comanda <code>WHERE</code> într-o interogare SQL?</li>
+      <li>Cum putem sorta rezultatele unei interogări?</li>
+      <li>Ce înseamnă <code>NULL</code> într-o bază de date SQL?</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>B. Întrebări aplicative (cu exemple de cod)</h2>
+    <ol>
+      <li>Scrie o interogare care afișează toate coloanele din tabelul <code>Angajati</code>.</li>
+      <li>Cum selectezi doar coloanele <code>Nume</code> și <code>Salariu</code> din tabelul <code>Angajati</code>?</li>
+      <li>Scrie o interogare care afișează toți angajații cu salariul mai mare de 4000.</li>
+      <li>Cum obții lista tuturor departamentelor distincte din tabelul <code>Angajati</code>?</li>
+      <li>Scrie o interogare care calculează salariul mediu al angajaților.</li>
+      <li>Cum poți combina datele din tabelele <code>Angajati</code> și <code>Departamente</code> folosind <code>JOIN</code>?</li>
+      <li>Cum selectezi angajații care nu aparțin niciunui departament (<code>LEFT JOIN</code> cu <code>IS NULL</code>)?</li>
+      <li>Scrie o interogare care afișează angajații ordonați descrescător după salariu.</li>
+      <li>Cum actualizezi salariul unui angajat folosind <code>UPDATE</code>?</li>
+      <li>Cum ștergi un angajat din baza de date?</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>C. Întrebări de gândire / avansate</h2>
+    <ol>
+      <li>Ce face o subinterogare (subquery) și când este utilă?</li>
+      <li>Ce tip de relație există între tabelele <code>Angajati</code> și <code>Departamente</code>?</li>
+      <li>Cum ai obține numărul total de angajați din fiecare departament?</li>
+      <li>Cum poți limita rezultatele unei interogări la primele 5 rânduri?</li>
+      <li>Ce înseamnă <code>GROUP BY</code> și cum diferă de <code>ORDER BY</code>?</li>
+      <li>Ce face funcția <code>COUNT()</code>? Dar <code>SUM()</code> și <code>AVG()</code>?</li>
+      <li>Cum poți crea o bază de date nouă în SQL Server?</li>
+      <li>Care este diferența între <code>INNER JOIN</code> și <code>FULL JOIN</code>?</li>
+      <li>Ce avantaje are normalizarea bazei de date?</li>
+      <li>Ce este o tranzacție și cum o controlezi în SQL Server (<code>BEGIN TRAN</code>, <code>COMMIT</code>, <code>ROLLBACK</code>)?</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>D. Întrebări deschise</h2>
+    <ol>
+      <li>Explică, în propriile cuvinte, de ce este importantă integritatea datelor.</li>
+      <li>Cum poate SQL fi folosit împreună cu aplicațiile web?</li>
+      <li>Ce provocări pot apărea atunci când mai mulți utilizatori accesează aceeași bază de date?</li>
+      <li>Dă un exemplu concret de situație în care ai folosi o subinterogare.</li>
+      <li>Care sunt diferențele dintre SQL Server, MySQL și Oracle?</li>
+    </ol>
+  </section>
+</body>
+</html>
