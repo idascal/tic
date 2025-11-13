@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Structura tabel elevi</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      margin: 40px;
+    }
+
+    h2 {
+      color: #2c3e50;
+    }
+
+    ul {
+      list-style-type: "• "; /* custom bullet symbol */
+      background-color: #ffffff;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 20px 40px;
+      max-width: 600px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+
+    li::marker {
+      color: #0078d7; /* blue bullets */
+      font-size: 1.2em;
+    }
+      em {
+          color: red;
+      }
+      table {
+      width: 70%;
+      border-style: solid;
+      border-collapse: collapse;
+      margin: 0 auto;
+      background-color: #ffffff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+      th, td {
+      border: 1px solid #ccc;
+      text-align: center;
+      padding: 8px 12px;
+    }
+  </style>
+</head>
+<body>
+    <h1>FI&#350;A DE LUCRU </h1>
+    <p>Crea&#355;i o bază de date cu numele “Concurs” con&#355;inând: </p>
+  <ul>Tabelul “REZULTAT” cu următoarele câmpuri: <br>
+      <em>Se impune condiția ca toate câmpurile să fie completate (DEFAULT NOT NULL)</em>
+    <li>ID_elev – de tip întreg, cheie primară, completare automată începând de la 1.</li>
+    <li>Nume – de tip șir de caractere</li>
+    <li>Prenume – de tip șir de caractere</li>
+    <li>Clasa – de tip întreg, alegem  valori doar din următoarea listă de valori: 9, 10, 11, 12</li>
+    <li>Varsta – de tip întreg, alegem valori doar din  următoarea listă de valori: 15, 16, 17, 18</li>
+    <li>Punctaj – de tip întreg – punctajul trebuie să fie cuprins între 10 și 100 de puncte</li>
+  </ul>
+    <table>
+    <caption>Tabel Rezultat</caption>
+    <thead>
+      <tr>
+        <th>Nume</th>
+        <th>Prenume</th>
+        <th>Clasa</th>
+        <th>Varsta</th>
+        <th>Punctaj</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Popescu</td><td>Andrei</td><td>9</td><td>15</td><td>75</td></tr>
+      <tr><td>Ionescu</td><td>Maria</td><td>9</td><td>15</td><td>83</td></tr>
+      <tr><td>Dumitrescu</td><td>Radu</td><td>10</td><td>16</td><td>98</td></tr>
+      <tr><td>Georgescu</td><td>Ioana</td><td>11</td><td>17</td><td>87</td></tr>
+      <tr><td>Stan</td><td>Mihai</td><td>12</td><td>18</td><td>35</td></tr>
+      <tr><td>Rusu</td><td>Elena</td><td>11</td><td>17</td><td>54</td></tr>
+      <tr><td>Marinescu</td><td>Cristian</td><td>10</td><td>16</td><td>60</td></tr>
+      <tr><td>Dobre</td><td>Alexandra</td><td>11</td><td>17</td><td>51</td></tr>
+      <tr><td>Matei</td><td>Vlad</td><td>10</td><td>16</td><td>55</td></tr>
+      <tr><td>Iliescu</td><td>Gabriela</td><td>11</td><td>17</td><td>25</td></tr>
+      <tr><td>Toma</td><td>Ștefan</td><td>12</td><td>18</td><td>81</td></tr>
+      <tr><td>Enache</td><td>Ana</td><td>12</td><td>18</td><td>45</td></tr>
+    </tbody>
+  </table>
+    
+    <h2>Funcții de grup (Aggregate Functions)</h2>
+  <ol>
+    <li><strong>COUNT()</strong> – numără înregistrările grupului</li>
+    <li><strong>SUM()</strong> – însumează valorile pentru grup</li>
+    <li><strong>AVG()</strong> – calculează media valorilor articolelor din grup</li>
+    <li><strong>MIN()</strong> – extrage valoarea minimă din grup</li>
+    <li><strong>MAX()</strong> – extrage valoarea maximă din grup</li>
+  </ol>
+    <ol><u><strong>Cerin&#355;e:</strong></u> 
+  
+  <li>Adăugați înregistrări în tabel astfel încât:
+    <ul>
+      <li>2 elevi să fie în clasa a 9-a</li>
+      <li>3 elevi să fie în clasa a 10-a</li>
+      <li>4 elevi să fie în clasa a 11-a</li>
+      <li>3 elevi să fie în clasa a 12-a</li>
+    </ul>
+  </li>
+  <li>Creați o interogare care afișează numele elevilor care au punctajul peste 60</li>
+  <li>Creați o interogare care afișează punctajul maxim pentru fiecare clasă în parte</li>
+  <li>Creați o interogare care afișează punctajul minim pentru fiecare clasă.</li>
+  <li>Creați o interogare care calculează punctajul total pentru fiecare clasă.</li>
+  <li>Creați o interogare care calculează punctajul mediu pentru fiecare clasă.</li>
+  <li>Creați o interogare care afișează câți elevi au participat la olimpiadă din fiecare clasă.</li>
+  <li>Creați o interogare care afișează toate câmpurile din tabel.</li>
+  <li>Creați o interogare care afișează toate câmpurile din tabel, grupate după câmpul <em>clasa</em> și sortate ascendent după câmpul <em>Nume</em>.</li>
+</ol>
+</body>
+</html>
