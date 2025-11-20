@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<title>Fișă de lucru – Baze de date Farmacie</title>
+<style>
+    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+    h1, h2, h3 { color: #2a4d69; }
+    table { border-collapse: collapse; width: 80%; margin-bottom: 20px; }
+    table, th, td { border: 1px solid #555; }
+    th, td { padding: 10px; text-align: left; }
+    .section { margin-bottom: 30px; }
+</style>
+</head>
+<body>
+
+<h1>Fișă de lucru – Baze de date SQL Server</h1>
+<h2>Tema: Gestionarea unei farmacii – Tabele relaționate</h2>
+
+<div class="section">
+    <h2>1. Obiective</h2>
+    <ul>
+        <li>Crearea unei baze de date în SQL Server pentru o farmacie.</li>
+        <li>Definirea a două tabele relaționate printr-o cheie străină.</li>
+        <li>Realizarea de interogări de tip SELECT, JOIN, INSERT, UPDATE, DELETE.</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>2. Structura bazei de date</h2>
+
+    <h3>A. Tabelul: <i>Medicamente</i></h3>
+    <p>Conține lista medicamentelor din farmacie.</p>
+    <table>
+        <tr>
+            <th>Coloana</th>
+            <th>Tip de date</th>
+            <th>Descriere</th>
+        </tr>
+        <tr>
+            <td>MedicamentID</td>
+            <td>INT (PK, IDENTITY)</td>
+            <td>Cheie primară, autoincrement</td>
+        </tr>
+        <tr>
+            <td>Nume</td>
+            <td>VARCHAR(100)</td>
+            <td>Denumirea medicamentului</td>
+        </tr>
+        <tr>
+            <td>Producator</td>
+            <td>VARCHAR(100)</td>
+            <td>Numele producătorului</td>
+        </tr>
+        <tr>
+            <td>Pret</td>
+            <td>DECIMAL(10,2)</td>
+            <td>Prețul per unitate</td>
+        </tr>
+        <tr>
+            <td>Stoc</td>
+            <td>INT</td>
+            <td>Cantitatea disponibilă</td>
+        </tr>
+    </table>
+    <table border="1" cellspacing="0" cellpadding="8">
+    <tr>
+        <th>MedicamentID</th>
+        <th>Nume</th>
+        <th>Producător</th>
+        <th>Preț (lei)</th>
+        <th>Stoc </th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Paracetamol 500 mg</td>
+        <td>Terapia</td>
+        <td>12.50</td>
+        <td>100</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Nurofen Forte 400 mg</td>
+        <td>Reckitt Benckiser</td>
+        <td>25.00</td>
+        <td>50</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>No-Spa 40 mg</td>
+        <td>Sanofi</td>
+        <td>18.00</td>
+        <td>75</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Ibuprofen 200 mg</td>
+        <td>Zentiva</td>
+        <td>9.80</td>
+        <td>120</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Aspirin Cardio 100 mg</td>
+        <td>Bayer</td>
+        <td>15.50</td>
+        <td>75</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Ospen 1500</td>
+        <td>Sandoz</td>
+        <td>32.00</td>
+        <td>110</td>
+    </tr>
+</table>
+
+    <h3>B. Tabelul: <i>Retete</i></h3>
+    <p>Conține informații despre rețetele eliberate pentru pacienți.</p>
+    <table>
+        <tr>
+            <th>Coloana</th>
+            <th>Tip de date</th>
+            <th>Descriere</th>
+        </tr>
+        <tr>
+            <td>RetetaID</td>
+            <td>INT (PK, IDENTITY)</td>
+            <td>Cheie primară</td>
+        </tr>
+        <tr>
+            <td>Pacient</td>
+            <td>VARCHAR(100)</td>
+            <td>Numele pacientului</td>
+        </tr>
+        <tr>
+            <td>MedicID</td>
+            <td>INT (FK)</td>
+            <td>Referință către Medicamente.MedicamentID</td>
+        </tr>
+        <tr>
+            <td>Cantitate</td>
+            <td>INT</td>
+            <td>Cantitatea prescrisă</td>
+        </tr>
+        <tr>
+            <td>DataEliberare</td>
+            <td>DATE</td>
+            <td>Data eliberării</td>
+        </tr>
+    </table>
+    <table border="1" cellspacing="0" cellpadding="8">
+    <tr>
+        <th>RetetaID</th>
+        <th>Pacient</th>
+        <th>MedicID</th>
+        <th>Cantitate</th>
+        <th>Data Eliberare</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Ion Popescu</td>
+        <td>1</td>
+        <td>2</td>
+        <td>2025-01-10</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Maria Ionescu</td>
+        <td>2</td>
+        <td>1</td>
+        <td>2025-01-12</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Ion Ionescu</td>
+        <td>3</td>
+        <td>2</td>
+        <td>2024-06-23</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Mircea Eliade</td>
+        <td>5</td>
+        <td>3</td>
+        <td>2024-09-13</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Marin Preda</td>
+        <td>6</td>
+        <td>2</td>
+        <td>2025-01-25</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Maria Prodan</td>
+        <td>4</td>
+        <td>2</td>
+        <td>2025-05-25</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>Marcel Pavel</td>
+        <td>6</td>
+        <td>3</td>
+        <td>2024-11-21</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>Marius Meda</td>
+        <td>1</td>
+        <td>4</td>
+        <td>2025-10-15</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>Sarin Galan</td>
+        <td>2</td>
+        <td>2</td>
+        <td>2024-08-01</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>Andrea Tolan</td>
+        <td>5</td>
+        <td>5</td>
+        <td>2025-11-08</td>
+    </tr>
+</table>
+
+</div>
+
+<div class="section">
+    <h2>3. Relația dintre tabele</h2>
+    <pre>
+Medicamente (1) ───────── (∞) Retete
+      MedicamentID  <─── FK ─── MedicID
+    </pre>
+</div>
+
+<div class="section">
+    <h2>4. Exerciții practice</h2>
+
+    <h3>A. Inserare date</h3>
+    <ul>
+        <li>Adaugă cel puțin 3 medicamente.</li>
+        <li>Adaugă 2 rețete care folosesc medicamentele create anterior.</li>
+    </ul>
+
+    <h3>B. Interogări recomandate</h3>
+    <ul>
+        <li>Afișează toate medicamentele.</li>
+        <li>Afișează rețetele împreună cu numele medicamentului (JOIN).</li>
+        <li>Afișează medicamentele cu stoc mai mic decât 50.</li>
+        <li>Modifică prețul unui medicament.</li>
+        <li>Șterge o rețetă existentă.</li>
+    </ul>
+</div>
+
+<div class="section">
+    <h2>5. Sarcină finală</h2>
+    <p>Creează o interogare care să afișeze:</p>
+    <ul>
+        <li>Numele pacientului</li>
+        <li>Denumirea medicamentului</li>
+        <li>Valoarea totală a rețetei (Cantitate × Preț)</li>
+    </ul>
+</div>
+
+</body>
+</html>
