@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Fișă de lucru</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+            text-transform: uppercase;
+        }
+        ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>FISA DE LUCRU</h1>
+
+    <p>Creati o baza de date cu numele “PERSOANE” continand:</p>
+
+    <p>Tabelul “Elevi” cu urmatoarele atribute:</p>
+
+    <ul>
+        <li><strong>ID</strong> – de tip intreg cu incrementare automata</li>
+        <li><strong>Nume_elev</strong> – de tip sir de caractere</li>
+        <li><strong>Clasa</strong> - de tip  sir de caractere; introducem următoarea listă de valori:
+            <ul>
+                <li>a 9-a</li>
+                <li>a 10-a</li>
+                <li>a 11-a</li>
+                <li>a 12-a</li>
+            </ul>
+        </li>
+        <li><strong>Abs sem1</strong> – de tip intreg</li>
+        <li><strong>Abs sem2</strong> – de tip intreg</li>
+        <li><strong>Localitate</strong> – de tip  sir de caractere</li>
+    </ul>
+    <table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NumeElev</th>
+            <th>Clasa</th>
+            <th>AbsSem1</th>
+            <th>AbsSem2</th>
+            <th>Localitate</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Popescu Andrei</td>
+            <td>a 9-a</td>
+            <td>3</td>
+            <td>2</td>
+            <td>Cluj</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Ionescu Maria</td>
+            <td>a 10-a</td>
+            <td>1</td>
+            <td>0</td>
+            <td>Bucuresti</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Georgescu Vlad</td>
+            <td>a 12-a</td>
+            <td>5</td>
+            <td>4</td>
+            <td>Iasi</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Nistor Ana</td>
+            <td>a 11-a</td>
+            <td>0</td>
+            <td>1</td>
+            <td>Arad</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Stan Mihai</td>
+            <td>a 12-a</td>
+            <td>2</td>
+            <td>3</td>
+            <td>Timisoara</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Radu Teodora</td>
+            <td>a 9-a</td>
+            <td>4</td>
+            <td>1</td>
+            <td>Pitesti</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>Miron Alina</td>
+            <td>a 11-a</td>
+            <td>3</td>
+            <td>3</td>
+            <td>Sibiu</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Tudor Cristian</td>
+            <td>a 10-a</td>
+            <td>2</td>
+            <td>0</td>
+            <td>Craiova</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>Dima Ioana</td>
+            <td>a 12-a</td>
+            <td>6</td>
+            <td>2</td>
+            <td>Oradea</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>Baciu Stefan</td>
+            <td>a 11-a</td>
+            <td>0</td>
+            <td>0</td>
+            <td>Brasov</td>
+        </tr>
+    </tbody>
+</table>
+<h3>Cerinte:</h3>
+    <ol>
+        <li>Interogare: sortarea în ordine crescătoare după Clasa</li>
+        <li>Interogare: sortarea în ordine descrescătoare după NumeElev</li>
+        <li>Interogare: NumeElev, Clasa, AbsSem1, AbsSem2</li>
+        <li>Interogare: elevii din clasa a 12-a</li>
+        <li>Interogare: elevii filtrati după localitatea introdusă de utilizator</li>
+        <li>Interogare: numele elevilor + suma absențelor</li>
+        <li>Interogare: sortarea în ordine crescătoare după AbsSem2</li>
+    </ol>
+
+</body>
+</html>
