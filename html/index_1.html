@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fișă – Principalele taguri HTML</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f7f7f7;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        code {
+            background: #eee;
+            padding: 3px 6px;
+            border-radius: 4px;
+        }
+        pre {
+            background: #eee;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        .box {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .desc {
+            color: #555;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Principalele taguri HTML – Descriere + Exemplu</h1>
+<p>Mai jos sunt prezentate cele mai folosite elemente HTML, fiecare cu o scurtă descriere și un exemplu.</p>
+
+<!-- Structura -->
+<div class="box">
+    <h2>Structura de bază</h2>
+
+<p><code>&lt;!DOCTYPE html&gt;</code> – <span class="desc">Indică tipul documentului (HTML5).</span></p>
+<pre>&lt;!DOCTYPE html&gt;</pre>
+
+<p><code>&lt;html&gt;</code> – <span class="desc">Elementul-rădăcină care conține toată pagina.</span></p>
+<pre>&lt;html lang="ro"&gt;&lt;/html&gt;</pre>
+
+<p><code>&lt;head&gt;</code> – <span class="desc">Include metadate, titlu, linkuri CSS/js.</span></p>
+<pre>&lt;head&gt;
+  &lt;title&gt;Titlul paginii&lt;/title&gt;
+&lt;/head&gt;</pre>
+
+<p><code>&lt;body&gt;</code> – <span class="desc">Conținutul vizibil al paginii.</span></p>
+<pre>&lt;body&gt;
+  Conținutul paginii
+&lt;/body&gt;</pre>
+</div>
+
+<!-- Text -->
+<div class="box">
+    <h2>Text și titluri</h2>
+
+<p><code>&lt;h1&gt; ... &lt;h6&gt;</code> – <span class="desc">Titluri de diferite niveluri.</span></p>
+<pre>&lt;h1&gt;Titlu principal&lt;/h1&gt;</pre>
+
+<p><code>&lt;p&gt;</code> – <span class="desc">Paragraf de text.</span></p>
+<pre>&lt;p&gt;Acesta este un paragraf.&lt;/p&gt;</pre>
+
+<p><code>&lt;strong&gt;</code> – <span class="desc">Text cu accent puternic (semnificație importantă).</span></p>
+<pre>&lt;strong&gt;Important!&lt;/strong&gt;</pre>
+
+<p><code>&lt;em&gt;</code> – <span class="desc">Text evidențiat (de obicei italic).</span></p>
+<pre>&lt;em&gt;Accentuat&lt;/em&gt;</pre>
+
+<p><code>&lt;br&gt;</code> – <span class="desc">Introduce o linie nouă.</span></p>
+<pre>Salut&lt;br&gt;World</pre>
+</div>
+
+<!-- Linkuri & imagini -->
+<div class="box">
+    <h2>Linkuri și imagini</h2>
+
+<p><code>&lt;a&gt;</code> – <span class="desc">Creează un hyperlink.</span></p>
+<pre>&lt;a href="https://exemplu.com"&gt;Vizitează site-ul&lt;/a&gt;</pre>
+
+<p><code>&lt;img&gt;</code> – <span class="desc">Afișează o imagine.</span></p>
+<pre>&lt;img src="imagine.jpg" alt="Descriere imagine"&gt;</pre>
+</div>
+
+<!-- Liste -->
+<div class="box">
+    <h2>Liste</h2>
+
+<p><code>&lt;ul&gt;</code> – <span class="desc">Listă neordonată (cu buline).</span></p>
+<p><code>&lt;ol&gt;</code> – <span class="desc">Listă ordonată (numerotată).</span></p>
+<p><code>&lt;li&gt;</code> – <span class="desc">Element al listei.</span></p>
+
+<pre>&lt;ul&gt;
+  &lt;li&gt;Primul&lt;/li&gt;
+  &lt;li&gt;Al doilea&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Pasul 1&lt;/li&gt;
+  &lt;li&gt;Pasul 2&lt;/li&gt;
+&lt;/ol&gt;</pre>
+</div>
+
+<!-- Div & span -->
+<div class="box">
+    <h2>Structuri de layout</h2>
+
+<p><code>&lt;div&gt;</code> – <span class="desc">Container pe bloc, folosit pentru structurare.</span></p>
+<pre>&lt;div class="container"&gt;Acesta este un div&lt;/div&gt;</pre>
+
+<p><code>&lt;span&gt;</code> – <span class="desc">Container inline pentru text.</span></p>
+<pre>&lt;span style="color:red"&gt;Text roșu&lt;/span&gt;</pre>
+</div>
+
+<!-- Tabele -->
+<div class="box">
+    <h2>Tabele</h2>
+
+<p><code>&lt;table&gt;</code> – <span class="desc">Creează un tabel.</span></p>
+<p><code>&lt;tr&gt;</code> – <span class="desc">Rând din tabel.</span></p>
+<p><code>&lt;td&gt;</code> – <span class="desc">Celulă de date.</span></p>
+<p><code>&lt;th&gt;</code> – <span class="desc">Celulă de antet.</span></p>
+
+<pre>&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Nume&lt;/th&gt;
+    &lt;th&gt;Vârstă&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Ana&lt;/td&gt;
+    &lt;td&gt;25&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;</pre>
+</div>
+
+<!-- Formulare -->
+<div class="box">
+    <h2>Formulare</h2>
+
+<p><code>&lt;form&gt;</code> – <span class="desc">Defineste un formular de input.</span></p>
+<p><code>&lt;label&gt;</code> – <span class="desc">Etichetă pentru un câmp de input.</span></p>
+<p><code>&lt;input&gt;</code> – <span class="desc">Câmp de introducere a datelor.</span></p>
+<p><code>&lt;button&gt;</code> – <span class="desc">Buton interactiv.</span></p>
+
+<pre>&lt;form action="/trimite" method="post"&gt;
+  &lt;label for="email"&gt;Email:&lt;/label&gt;
+  &lt;input id="email" type="email"&gt;
+  &lt;button&gt;Trimite&lt;/button&gt;
+&lt;/form&gt;</pre>
+</div>
+
+<!-- Multimedia -->
+<div class="box">
+    <h2>Multimedia</h2>
+
+<p><code>&lt;video&gt;</code> – <span class="desc">Afișează un video cu controale.</span></p>
+<pre>&lt;video controls&gt;
+  &lt;source src="clip.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</pre>
+
+<p><code>&lt;audio&gt;</code> – <span class="desc">Afișează un player audio.</span></p>
+<pre>&lt;audio controls&gt;
+  &lt;source src="sunet.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</pre>
+</div>
+
+</body>
+</html>
