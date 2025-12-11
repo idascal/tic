@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Fișa de lucru - Baza de date BIBLIOTECA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .table-block {
+            background: white;
+            padding: 15px;
+            margin: 20px auto;
+            border-radius: 10px;
+            width: 80%;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            border: 1px solid #555;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Fișa de lucru</h1>
+<h2>Baza de date: BIBLIOTECA</h2>
+
+<div class="table-block">
+    <h3>Tabelul: CARTI</h3>
+    <table>
+        <tr>
+            <th>Nume câmp</th>
+            <th>Tip</th>
+            <th>Descriere</th>
+        </tr>
+        <tr>
+            <td>idCarte</td>
+            <td>Autonumerotare</td>
+            <td>Cheie primară</td>
+        </tr>
+        <tr>
+            <td>Titlu</td>
+            <td>Text</td>
+            <td>Titlul cărții</td>
+        </tr>
+        <tr>
+            <td>Gen</td>
+            <td>Text</td>
+            <td>Genul literar</td>
+        </tr>
+        <tr>
+            <td>Autor</td>
+            <td>Text</td>
+            <td>Numele autorului</td>
+        </tr>
+        <tr>
+            <td>Anul aparitiei</td>
+            <td>Număr</td>
+            <td>Anul în care a fost publicată cartea</td>
+        </tr>
+    </table>
+</div>
+
+<div class="table-block">
+    <h3>Tabelul: MEMBRI</h3>
+    <table>
+        <tr>
+            <th>Nume câmp</th>
+            <th>Tip</th>
+            <th>Descriere</th>
+        </tr>
+        <tr>
+            <td>idMembru</td>
+            <td>Autonumerotare</td>
+            <td>Cheie primară</td>
+        </tr>
+        <tr>
+            <td>Nume si prenume</td>
+            <td>Text</td>
+            <td>Numele complet al membrului</td>
+        </tr>
+        <tr>
+            <td>Localitate</td>
+            <td>Text</td>
+            <td>Localitatea membrului</td>
+        </tr>
+        <tr>
+            <td>Telefon</td>
+            <td>Text</td>
+            <td>Numărul de telefon</td>
+        </tr>
+    </table>
+</div>
+
+<div class="table-block">
+    <h3>Tabelul: IMPRUMUTURI</h3>
+    <table>
+        <tr>
+            <th>Nume câmp</th>
+            <th>Tip</th>
+            <th>Descriere</th>
+        </tr>
+        <tr>
+            <td>idImp</td>
+            <td>Autonumerotare</td>
+            <td>Cheie primară</td>
+        </tr>
+        <tr>
+            <td>idMembru</td>
+            <td>Număr</td>
+            <td>ID din tabelul MEMBRII</td>
+        </tr>
+        <tr>
+            <td>idCarte</td>
+            <td>Număr</td>
+            <td>ID din tabelul CARTI</td>
+        </tr>
+        <tr>
+            <td>Data_imprumut</td>
+            <td>Dată</td>
+            <td>Data la care s-a făcut împrumutul</td>
+        </tr>
+        <tr>
+            <td>Restituit</td>
+            <td>Da/Nu</td>
+            <td>Statusul returnării</td>
+        </tr>
+    </table>
+</div>
+<ol>Creeați următoarele interogări:
+    <li>Inserați minim cinci înregistrări în tabelul CARTI.</li>
+    <li>Inserați minim cinci înregistrări în tabelul MEMBRI.</li>
+    <li>Inserați minim zece înregistrări în tabelul IMPRUMUTURI.</li>
+    <li>Afișează toate cărțile din bibliotecă</li>
+    <li>Afișează toate cărțile publicate după anul 2000</li>
+    <li>Afișează toți membrii ordonați alfabetic</li>
+    <li>Afișează toate împrumuturile care nu au fost restituite</li>
+    <li>Afișează titlul cărților împrumutate și numele membrilor</li>
+    <li>Afișează împrumuturile făcute într-o anumită zi</li>
+    <li>Numărul total de cărți din bibliotecă</li>
+    <li>Numărul total de împrumuturi nerestituite</li>
+    <li>Afișează toate împrumuturile pentru un anumit membru</li>
+    <li>Afișează autorii și numărul de cărți scrise</li>
+</ol>
+</body>
+</html>
