@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="ro">
+    <head>
+        <style>
+            pre code {
+                background-color: yellow;
+                border: 1px solid red;
+                display: block;
+                padding: 5px;
+            }
+        </style>
+        <meta charset="UTF-8" />
+        <title>Rezolvare.</title>
+    </head>
+    <body>
+        <ol>
+        <li>
+        <p>	 În fişierul “vector.txt”  pe primul rând se află un număr natural n(n&lt;1000), iar pe a doua linie se găsesc 
+            n numere naturale despărţite printr-un spaţiu, cu cel mult 5 cifre fiecare. Se consideră că n reprezintă dimensiunea 
+            unui vector iar cele n elemente de pe al doilea rând sunt elementele vectorului. Să se determine suma elementelor  
+            vectorului care sunt  palindrom. (Se numeşte palindrom un număr care citit de la stânga la dreapta şi de la dreapta                                                                                   
+            la stânga este acelaşi). Suma rezultată (sau un mesaj corespunzător, dacă nu există niciun palindrom) se va afişa în 
+            fişierul “suma.txt”.
+        </p>
+        <pre><code>
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+ifstream f ("vector.txt");
+ofstream g ("suma.txt");
+
+int main()
+{
+    int n, x, s=0, ok=0, aux;
+    f&gt;&gt;n;
+    int v[n];
+    for(int i=0; i&lt; n; i++)
+    {
+        f&gt;&gt;v[i];
+        int ogl=0;
+        aux=v[i];
+        while (aux&gt;0)
+        {
+            ogl=ogl*10+aux%10;
+            aux/=10;
+        }
+        if (v[i]==ogl)
+        {
+            s+=v[i];
+            ok=1;
+        }
+    }
+    if(ok==1)
+    {
+        g&lt;&lt;s;
+    }
+    else
+    {
+        g&lt;&lt;"nu exista";
+    }
+    f.close();
+    g.close();
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	 În fişierul “vector.txt”, pe primul rând se află un număr natural n(n&lt;1000), iar pe a doua linie se găsesc 
+            n numere naturale, cu cel mult 6 cifre fiecare, despărţite printr-un spaţiu. Se consideră că n reprezintă dimensiunea 
+            unui vector iar cele n elemente de pe al doilea rând sunt elementele vectorului; citirea lor se face folosind un subprogram. 
+            Afişaţi pe ecran câte elemente din vector au exact p divizori proprii, unde p este un număr natural citit de la tastatură.
+        </p>
+        <pre><code>
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+ifstream fin ("vector.txt");
+
+void citire(int v[], int n)
+{
+    for(int i = 1;i&lt;=n;i++)
+        fin&gt;&gt;v[i];
+}
+
+int main()
+{
+    int n, p;
+    fin&gt;&gt;n;
+    int v[n+1];
+    cin&gt;&gt;p;
+    int c=0, r=0;
+    citire(v,n);
+    for(int i=1;i&lt;=n;i++)
+    {
+        c=0;
+        for(int j=2;j&lt;=v[i]/2;j++)
+            if(v[i]%j==0)
+                c++;
+        if(c==p)
+            r++;
+    }
+    cout&lt;&lt;r;
+    fin.close();
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	Se citeşte din fişierul “vector.txt” un vector de numere naturale, n se află pe primul rând(n&lt;1000), 
+            iar cele n elemente ale vectorului se află pe al doilea rând. Afişaţi câte numere perfecte sunt în vector. 
+            Un număr este perfect dacă este egal cu suma divizorilor săi mai mici decât el (ex: 6=1+2+3) – se va folosi 
+            un subprogram care verifică această proprietate. Afişarea se face în fişierul “solutie.out”.
+        </p>
+        <pre><code>
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+ifstream fin ("vector.txt");
+ofstream gout("solutie.out");
+
+int perfect(int nr)
+{
+    int s=0;
+    for(int i=1;i&lt;nr;i++)
+        if(nr%i==0)
+            s+=i;
+    if(s==nr)
+        return 1;
+    return 0;
+}
+
+int main()
+{
+    int n, r=0;
+    fin&gt;&gt;n;
+    int v[n+1];
+    for(int i = 1;i&lt;=n;i++)
+    {
+        fin&gt;&gt;v[i];
+        if(perfect(v[i]))
+            r++;
+    }
+    gout&lt;&lt;r;
+    fin.close();
+    gout.close();
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	Se citeşte din fişierul “vector.txt” un vector de numere întregi (cu cel mult 5 cifre fiecare) astfel:  n(n&lt;1000) 
+            se află pe primul rând iar cele n elemente ale vectorului se află pe al doilea rând. Citirea se face folosind un subprogram. 
+            Să se scrie un program care calculează şi afişează maximul dintre elementele pare ale vectorului sau afişează un mesaj 
+            în cazul în care nu există numere pare în vector. Afişarea se face în fişierul “solutie.out”.
+        </p>
+        <pre><code>
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+
+ifstream fin ("vector.txt");
+ofstream gout("solutie.out");
+
+void citire(int v[], int n)
+{
+    for(int i = 1;i&lt;=n;i++)
+        fin&gt;&gt;v[i];
+}
+
+int main()
+{
+    int n, maxi=1;
+    fin&gt;&gt;n;
+    int v[n+1];
+    citire(v,n);
+    for(int i = 1;i&lt;=n;i++)
+    {
+        if(maxi%2==1 && v[i]%2==0)
+            maxi=v[i];
+        if(v[i]%2==0 && maxi&lt;v[i])
+            maxi=v[i];
+    }
+    if(maxi==1)
+        gout&lt;&lt;"nu exista";
+    else
+        gout&lt;&lt;maxi;
+    fin.close();
+    gout.close();
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	Se consideră o matrice cu n linii şi m coloane cu elemente  de tip real (n, m şi matricea se citesc de la tastatură, 
+            1≤n≤50, 1≤m≤50). Afişaţi pe ecran: matricea(fiecare linie pe câte un rând, iar elementele de pe fiecare rând despărţite de 
+            câte un spaţiu) şi maximul de pe fiecare coloană a  matricei, maximele se scriu pe acelaşi rând, despărţite de căte un spaţiu.<br>
+            Exemplu:<br>
+            n=3, m=4 şi matricea:<br>
+            -1.6 &nbsp; 18 &nbsp;  2.1 &nbsp; 0.3<br>
+             141 &nbsp; 3  &nbsp;  0.9 &nbsp; 0.5<br>  
+             200&nbsp; 0.22&nbsp; 14&nbsp;   1000<br><br> 
+            Se va afişa pe ecran:<br>
+            -1.6 &nbsp; 18 &nbsp;  2.1 &nbsp; 0.3<br>
+             141 &nbsp; 3  &nbsp;  0.9 &nbsp; 0.5  <br>
+             200&nbsp; 0.22 &nbsp; 14 &nbsp;  1000<br>
+            200&nbsp; 18 &nbsp;14 &nbsp; 1000
+        </p>
+        <pre><code>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    float a[51][51], maxi;
+    int i, j, n, m;
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i = 1;i&lt;=n;i++)
+        for(j=1;j&lt;=m;j++)
+            cin&gt;&gt;n&gt;&gt;a[i][j];
+    for(int i = 1;i&lt;=n;i++ , cout&lt;&lt;endl)
+        for(j=1;j&lt;=m;j++)
+            cout&lt;&lt;a[i][j]&lt;&lt;' ';
+    for(j=1;j&lt;=m;j++)
+    {
+        maxi=a[1][j];
+        for(int i = 2;i&lt;=n;i++)
+            if(maxi&lt;a[i][j])
+                maxi=a[i][j];}
+        cout&lt;&lt;maxi&lt;&lt;' ';
+    }
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	În fişierul „Matrice.in” pe primul rând se găsesc două numere naturale n şi m (1≤n≤50, 1≤m≤50), despărţite printr-un 
+            spaţiu, care reprezintă numărul de linii, respectiv de coloane ale unei matrici de numere reale. Apoi pe următoarele n linii 
+            se găsesc, pe fiecare linie câte m numere reale, despărţite printr-un spaţiu, care reprezintă elementele matricei. 
+            Să se construiască o matrice B cu 2 coloane care să conţină indicii elementelor subunitare pozitive ale matricei A. 
+            Afişaţi pe ecran cele 2 matrici: cea iniţială şi matricea nou formată B, în caz că se formează o astfel de matrice, 
+            sau tipăriţi un mesaj în caz contrar.
+        </p>
+        <pre><code>
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+using namespace std;
+ifstream fin("Matrice.in");
+int main()
+{
+    float a[51][51];
+    int i, j, n, m,k, b[2501][2];
+    fin&gt;&gt;n&gt;&gt;m;
+    for(int i = 1;i&lt;=n;i++)
+        for(j=1;j&lt;=m;j++)
+            fin&gt;&gt;a[i][j];
+    for(int i = 1;i&lt;=n;i++ , cout&lt;&lt;endl)
+        for(j=1;j&lt;=m;j++)
+            cout&lt;&lt;a[i][j]&lt;&lt;' ';
+    cout&lt;&lt;endl;
+    k=1;
+    for(i=1;i&lt;=n;i++)
+        for(j=1;j&lt;=m;j++)
+            if(a[i][j]&gt;0 && a[i][j]&lt;1)
+            {
+                b[k][0]=i;
+                b[k][1]=j;
+                k++;
+            }
+    for(i=1;i&lt;k;i++)
+        cout&lt;&lt;b[0]&lt;&lt;' '&lt;&lt;b[1]&lt;&lt;endl;
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>		Se consideră o matrice cu n linii şi m coloane de numere întregi (n, m şi matricea se citesc de la tastatură, 
+            1≤n≤50, 1≤m≤50). Să se afişeze pe ecran suma elementelor pare de pe fiecare linie, fiecare dintre cele n sume, se scrie 
+            pe câte un rând nou, astfel: ”Pe linia …. suma este…..”/sau mesajul ”Pe linia ….nu exista numere pare”
+        </p>
+        <pre><code>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int a[51][51];
+    int i, j, n, m,suma,ok;
+    cin&gt;&gt;n&gt;&gt;m;
+    for(int i = 1;i&lt;=n;i++)
+        for(j=1;j&lt;=m;j++)
+            cin&gt;&gt;a[i][j];
+    for(i=1;i&lt;=n;i++)
+    {
+        ok=0;
+        suma=0;
+        for(j=1;j&lt;=m;j++)
+            if(a[i][j] % 2 == 0)
+            {
+                ok=1;
+                suma+=a[i][j];
+            }
+        if(ok)
+            cout&lt;&lt;"Pe linia "&lt;&lt;i&lt;&lt;" suma este "&lt;&lt;suma&lt;&lt;endl;
+        else
+            cout&lt;&lt;"Pe linia "&lt;&lt;i&lt;&lt;" nu exista numere pare"&lt;&lt;endl;
+    }
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	În fişierul „Matrice.in” pe primul rând se găsesc două numere naturale n şi m (1≤n≤50,
+            1≤m≤50), despărţite printr-un spaţiu, care reprezintă numărul de linii, respectiv de coloane a
+            unei matrici de numere întregi (cu cel mult 9 cifre fiecare). Apoi, pe următoarele n linii se găsesc,
+            pe fiecare linie câte m numere întregi, despărţite printr-un spaţiu, care reprezintă elementele
+            matricei. Să se afişeze numărul elementelor impare de pe fiecare coloană. Tipărirea se face în
+            fişierul „Impar.out”, pe fiecare rând câte un număr.<br>
+            Exemplu:<br>
+            n=3, m=4Matrice,in :<br>
+            3 &nbsp; 4<br>
+            16 &nbsp; 18 &nbsp;  21 &nbsp; 3<br>
+             141 &nbsp; 3  &nbsp;  19 &nbsp; 5<br>  
+             200&nbsp; 22&nbsp; 14 &nbsp;   10<br><br> 
+            Impar.out:<br>
+            1<br>
+            1 <br>
+            2<br>
+            2
+        </p>
+        <pre><code>
+#include &lt;fstream&gt;
+using namespace std;
+
+int main()
+{
+    int mat[51][51];
+    int i, j, n, m,k_imp;
+    fin&gt;&gt;n&gt;&gt;m;
+    for(int i = 1;i&lt;=n;i++)
+        for(j=1;j&lt;=m;j++)
+            fin&gt;&gt;mat[i][j];
+    for(i=1;i&lt;=n;i++)
+    {
+        k_imp=0;
+        for(j=1;j&lt;=m;j++)
+            if(mat[j][i] % 2)
+            {
+                k_imp++;
+            }
+        fout&lt;&lt;k_imp&lt;&lt;endl;
+    }
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	Să se construiască un tablou pătratic de dimensiune n x n (1≤ n≤50) cu primele n2
+            numere pare începând cu 2.(n se citeşte de la tastatură). Tabloul se va afişa pe ecran, fiecare linie pe câte un
+            rând nou, iar elementele de pe fiecare rând se scriu separate de câte un spaţiu<br>
+            Exemplu:<br>
+            Pentru n=4 se va  afişa pe ecran :<br>
+            2 &nbsp;  4 &nbsp; 6 &nbsp; 8<br>
+            10 &nbsp; 12 &nbsp;  14 &nbsp; 16<br>
+            18 &nbsp; 20 &nbsp; 22 &nbsp; 24<br>  
+            26 &nbsp; 28 &nbsp; 30 &nbsp; 32<br><br> 
+        </p>
+        <pre><code>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    int mat[51][51];
+    int i, j, n, c=2,k=1;
+    cin&gt;&gt;n;
+    for(int i = 1;i&lt;=n;i++)
+        for(j=1;j&lt;=n;j++)
+        {
+            mat[i][j]=c*k;
+            k++;
+        }
+    for(i=1;i&lt;=n;i++)
+    {
+        for(j=1;j&lt;=n;j++)
+            cout&lt;&lt;mat[i][j]&lt;&lt;;
+        fout&lt;&lt;endl;
+    }
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	Se citeşte de la tastatură un vector de n  numere reale (se dă n natural, 1≤n≤100). Scrieţi 
+            programul care afişează vectorul citit, valoarea elementului minim din vector precum şi poziţiile 
+            pe care acesta apare în vector. Pentru citirea, afişarea elementelor vectorului precum şi pentru 
+            determinarea minimului din vector se vor folosi subprograme. 
+        </p>
+        <pre><code>
+#include &lt;iostream&gt;
+using namespace std;
+
+void citire(int n,int a[])
+{
+    int i;
+    for (i=1; i&lt;=n; i++)
+        cin&gt;&gt;a[i];
+
+}
+void afisare(int n,int a[])
+{
+    int i;
+    for (i=1; i&lt;=n; i++)
+        cout&lt;&lt;a[i]&lt;&lt;" ";
+}
+void mini(int n,int a[])
+{
+    int i,c=a[1];
+    for (i=1; i&lt;=n; i++)
+    {
+        if(a[i]&lt;=c)
+        {
+            c=a[i];
+        }
+    }
+    cout&lt;&lt;endl;
+    cout&lt;&lt;c&lt;&lt;endl;
+    for (i=1; i&lt;=n; i++)
+    {
+        if(a[i]==c)
+            cout&lt;&lt;i&lt;&lt;" ";
+    }
+}
+
+int main()
+{
+    int a[100],n;
+    cin&gt;&gt;n;
+    citire(n,a);
+    afisare(n,a);
+    mini(n,a);
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	În fişierul „numere.in” pe prima linie este un număr natural n (1≤n≤50), iar pe următoarea linie 
+            se găsesc n numere naturale de maxim 9 cifre fiecare, despărţite printr-un spaţiu. Să se scrie un 
+            program care să calculeze cel mai mare divizor comun al celor n numere de pe linia a doua a 
+            fişierului. Rezultatul se va afişa în fişierul „cmmdc.out”. <br>
+            Exemplu:<br>
+            Pentru numere.in :<br>
+            5<br>
+            16 &nbsp; 18 &nbsp;  210 &nbsp; 14 &nbsp; 30<br>  
+            cmmdc.out  :<br>
+            2<br>  
+        </p>
+        <pre><code>
+#include &lt;fstream&gt;
+using namespace std;
+
+int cmmdc(int a,int b)
+{
+    int r;
+    while(b!=0)
+    {
+        r=a%b;
+        a=b;
+        b=r;
+
+    }
+    return a;
+}
+
+int main()
+{
+    ifstream f("numere.in");
+    ofstream g("cmmdc.out");
+    int n,c,d;
+    f&gt;&gt;n;
+    f&gt;&gt;c;
+    for (int i=1; i&lt;n; i++)
+    {
+        f&gt;&gt;d;
+        c=cmmdc(c,d);
+    }
+    g&lt;&lt;c;
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	Creaţi fişierul „trei.out" care să conţină pe prima linie toate numerele de trei cifre divizibile cu 
+            suma cifrelor lor.   
+        </p>
+        <pre><code>
+#include &lt;fstream&gt;
+using namespace std;
+
+ofstream g("trei.out");
+int main()
+{
+    int n,a,b,c,s;
+    for (int n=100; n&lt;=999; n++)
+    {
+        a=n/100;
+        b=(n/10)%10;
+        c=n%10;
+        s=a+b+c;
+        if (n%s==0)
+            g&lt;&lt;n&lt;&lt;endl;
+    }
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	În fişierul „graf.in" pe primul rând se găseşte  numărul de vârfuri n (1≤n≤50)  al unui graf 
+            neorientat, apoi pe următoarele n rânduri se află matricea de adiacenţă a acestui graf neorientat. 
+            Să se determine gradul fiecărui vârf. Afişarea se face pe ecran, fiecare grad se scrie pe câte un 
+            rând nou.   
+        </p>
+        <pre><code>
+#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+ifstream f("graf.in");
+
+int main()
+{
+    int n,a,c=0;
+    f&gt;&gt;n;
+    for(int i=1; i&lt;=n; i++)
+    {
+        for(int j=0; j&lt;n; j++)
+        {
+            f&gt;&gt;a;
+            if(a==1)
+            {
+                c++;
+            }
+        }
+        cout&lt;&lt;i&lt;&lt; " "&lt;&lt;c&lt;&lt;endl;
+        c=0;
+    }
+    f.close();
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	În fişierul „graf.in" pe primul rând se găseşte n(n≤50), numărul de vârfuri al unui graf 
+            neorientat, apoi pe următoarele n rânduri  matricea de adiacenţă a acestui  graf neorientat. Să se 
+            scrie muchiile grafului în fişierul “muchii.txt” (pe fiecare rând se vor scrie extremităţile unei 
+            muchii separate printr-un spaţiu).   
+        </p>
+        <pre><code>
+#include &lt;fstream&gt;
+using namespace std;
+
+ifstream f("graf.in");
+ofstream g("muchii.txt");
+int main()
+{
+    int n,a[50][50];
+    f&gt;&gt;n;
+    for(int i=1; i&lt;=n; i++)
+    {
+        for(int j=1; j&lt;=n; j++)
+        {
+            f&gt;&gt;a[i][j];
+        }
+    }
+    for(int i=1; i&lt;=n; i++)
+    {
+        for(int j=1; j&lt;=n; j++)
+        {
+            if(a[i][j]==1)
+            {
+                g&lt;&lt;i&lt;&lt;" "&lt;&lt;j&lt;&lt;endl;
+            }
+        }
+    }
+    f.close();
+    g.close();
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	În fişierul „graf.in" se găseşte n, (n≤50),  numărul de vârfuri al unui graf neorientat, apoi pe 
+            următoarele n rânduri  matricea de adiacenţă a acestui graf neorientat. Să se afişeze maximul 
+            gradelor  vârfurilor din graf. Afişarea se face pe ecran.   
+        </p>
+        <pre><code>
+#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+ifstream f("graf.in");
+
+int main()
+{
+    int n, a,c,m=0;
+    f&gt;&gt;n;
+    for(int i=0; i&lt;n; i++)
+    {
+        c=0;
+        for(int j=0; j&lt;n; j++)
+        {
+            f&gt;&gt;a;
+            if(a==1)
+            {
+                c++;
+            }
+        }
+        if(c&gt;m)
+        {
+            m=c;
+        }
+    }
+    cout&lt;&lt;m;
+    f.close();
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	Să se verifice dacă un graf neorientat cu n vârfuri este un graf complet (n≤50). Numărul de 
+            vârfuri şi matricea de adiacenţă a grafului se găsesc în fişierul text „adiacent.txt”. Mesajul se 
+            va afişa în fişierul text „complet.txt”.   
+        </p>
+        <pre><code>
+#include &lt;fstream&gt;
+using namespace std;
+
+ifstream f("adiacent.txt");
+ofstream g("complet.txt");
+int main()
+{
+    int n,x,total=0;
+    f&gt;&gt;n;
+    for (int i=1; i&lt;=n*n; i++)
+    {
+        f&gt;&gt;x;
+        if(x==1)
+        {
+            total++;
+        }
+    }
+    total/=2;
+    if(total==(n*(n-1))/2)
+        g&lt;&lt;"graful e complet";
+    else
+        g&lt;&lt;"graful nu e complet";
+    f.close();
+    g.close();
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+    </ol>   
+    </body>
+</html>
