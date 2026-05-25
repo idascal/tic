@@ -678,6 +678,254 @@ int main()
         </code>
         </pre>
         </li>
+        <li>
+        <p>	În fişierul „matrice.in” se găseşte pe primul rând un număr natural n, (n≤50), iar pe fiecare din
+            următoarele n rânduri, câte n numere întregi(cu cel mult 9 cifre fiecare) despărţite de câte un
+            spaţiu, care reprezintă dimensiunea, respectiv elementele unei matrici pătratice de dimensiune
+            n*n. Să se verifice dacă matricea este simetrică faţă de diagonala principală, tipărindu-se pe
+            ecran un mesaj corespunzător.  
+        </p>
+        <pre><code>
+#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+ifstream f("adiacent.txt");
+int main()
+{
+    int n,ok=1;
+    fin&gt;&gt;n;
+    long long a[n][n];
+    for(int i=0; i&lt;n; i++)
+    {
+        for(int j=0; j&lt;n; j++)
+        {
+            fin&gt;&gt;a[i][j];
+        }
+    }
+    for(int i=0; i&lt;n; i++)
+    {
+        for(int j=0; j&lt;n; j++)
+        {
+            if(a[i][j]!=a[j][i])
+                ok=0;
+        }
+    }
+    if(ok==1)
+        cout&lt;&lt;"Simetrica";
+    else
+        cout&lt;&lt;"Nu";
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	Se citeşte de la tastatură un şir de caractere s, de lungime cel mult 100 de caractere, ce reprezintă
+            un cuvânt din dicţionarul limbii române. Să se scrie pe ecran acest cuvânt în limba “păsărească”,
+            adică șirul obținut prin inserarea în şirul inițial după fiecare vocală subşirul format din litera
+            “p” şi vocala respectivă.<br>
+            Exemplu: dacă şirul s este “acoperire” va rezultă noul şir s: ”apacopopeperipirepe”.  
+        </p>
+        <pre><code>
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+int main()
+{
+    char s[101], a[303]= {0};
+    cin.getline(s, 101);
+    int j = 0;
+    for (int i=0; i&lt;strlen(s); i++)
+    {
+        a[j++] = s[i];
+        if (strchr("aeiouAEIOU", s[i]))
+        {
+            a[j++] = 'p';
+            a[j++] = s[i];
+        }
+    }
+    strcpy(s,a);
+    cout &lt;&lt; s;
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	Se citesc de la tastatură n, (n≤50), număr natural şi apoi n şiruri de caractere, cu cel mult 30 de
+            caractere fiecare, ce reprezintă nume de persoane. Să se scrie în fişierul „litera.txt” toate numele
+            de persoane, fiecare pe un rând, care încep cu o anumită literă, citită de la tastatură.
+        </p>
+        <pre><code>
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+using namespace std;
+ofstream fout("litera.txt");
+int main()
+{
+    int n,i;
+    cin&gt;&gt;n;
+    char s[n][31],k;
+    cin.get();
+    for(i=0; i&lt;n; i++)
+    {
+        cin.getline(s[i],31);
+    }
+    cin&gt;&gt;k;
+    for(i=0; i&lt;n; i++)
+    {
+        if(s[i][0]==k)
+            fout&lt;&lt; s[i]&lt;&lt; endl;
+    }
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	Se citeşte de la tastatura un număr natural n, (n≤50), apoi se citesc de la tastatură n şiruri de
+            caractere, cu cel mult 30 de caractere fiecare. Să se scrie în fişierul „litere.txt” toate şirurile,
+            fiecare pe un rând, care încep şi se termină cu acelaşi caracter sau se dă un mesaj sugestiv în
+            cazul în care nu există astfel de șiruri.
+        </p>
+        <pre><code>
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+
+using namespace std;
+ofstream fout("litera.txt");
+int main()
+{
+    int n,i,ok=0;
+    cin&gt;&gt;n;
+    char s[31],k;
+    cin.get();
+    for(i=0; i&lt;n; i++)
+    {
+        cin.getline(s,31);
+        k=strlen(s);
+        if(s[0]==s[k-1])
+        {
+            fout&lt;&lt;s&lt;&lt;endl;
+            ok=1;
+        }
+    }
+    if(ok==0)
+        fout&lt;&lt;"Nu exista";
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	Se citeşte de la tastatură un şir de caractere s ce reprezintă un cuvânt din dicţionarul limbii
+            române, cu cel mult 30 de caractere, litere mici ale alfabetului englez. Afişaţi pe ecran toate
+            sufixele şirului s.<br>
+            Ex: dacă şirul s este “vara” se vor afişa a ra ara vara
+        </p>
+        <pre><code>
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+    char s[31], aux[31];
+    cin.get(s, 31);
+    for(int i = strlen(s) - 1; i &gt;= 0; i--)
+    {
+        strcpy(aux, s + i);
+        cout &lt;&lt; aux&lt;&lt;" ";
+    }
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	Se citeşte de la tastatură un şir de caractere s ce reprezintă un cuvânt din dicţionarul limbii
+            române, cu cel mult 30 de caractere, litere mici ale alfabetului englez. Afişaţi pe ecran toate
+            prefixele şirului s.<br>
+            Ex: dacă şirul s este “vara” se vor afişa v va var vara
+        </p>
+        <pre><code>
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+    int n = 1;
+    char s[31], aux[31];
+    cin.get(s, 31);
+    while(n &lt;= strlen(s))
+    {
+        strncpy(aux, s, n);
+        cout &lt;&lt; aux&lt;&lt;" ";
+        n++;
+    }
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	Se citeşte de la tastatură un şir de caractere, cu cel mult 30 de caractere, litere mici ale alfabetului
+            englez, ce reprezintă un cuvânt, care are cel puţin o vocală şi cel puţin o consoană. Afişaţi pe
+            ecran şirul obţinut prin ştergerea vocalelor din şir.
+        </p>
+        <pre><code>
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+    char s[31];
+    cin.get(s, 31);
+    for(int i = 0; i &lt; strlen(s); i++)
+        if(strchr("aeiou", s[i]) != NULL)
+            strcpy(s + i, s + i + 1);
+    cout &lt;&lt; s;
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	Se citeşte de la tastatură un şir de caractere s ce reprezintă un cuvânt, cu cel mult 30 de litere ale
+            alfabetului englez. Afişaţi pe ecran cuvântul obţinut prin transformarea literelor mari în mici şi
+            a celor mici în litere mari.
+        </p>
+        <pre><code>
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int main()
+{
+    char s[31];
+    cin.get(s, 31);
+    for(int i = 0; i &lt; strlen(s); i++)
+        if(islower (s[i]))
+            s[i] = toupper(s[i]);
+        else
+            s[i] = tolower(s[i]);
+    cout &lt;&lt; s;
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
     </ol>   
     </body>
 </html>
