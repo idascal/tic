@@ -926,6 +926,111 @@ int main()
         </code>
         </pre>
         </li>
+        <li>
+        <p>	Se citeşte de la tastatură un număr natural n(n≤20), apoi se citesc n cuvinte de la tastatură, cu
+            cel mult 30 de caractere fiecare, litere mici ale alfabetului englez. Să se afişeze pe ecran
+            cuvintele care sunt palindrom (un cuvânt care citit de la sfârşit la început este acelaşi cu cuvântul
+            iniţial; exemplu: “cojoc”).
+        </p>
+        <pre><code>
+#include &lt;cstring&gt;
+#include &lt;iostream&gt;
+
+using namespace std;
+
+int palindrom(char s[])
+{
+    int i = 0, j = 0;
+    while (s[j] != '\0')
+        j++;
+    j--;
+    while (i &lt; j)
+    {
+        if (s[i] != s[j])
+            return 0;
+        i++;
+        j--;
+    }
+    return 1;
+}
+int main()
+{
+    int n,i;
+    char cuv[31];
+    cin&gt;&gt;n;
+    for(i=1;i&lt;=n;i++)
+    {
+        cin&gt;&gt;cuv;
+        if(palindrom(cuv)==1)
+            cout&lt;&lt;cuv&lt;&lt;" ";
+    }
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
+        <li>
+        <p>	Scrieţi definiţia completă a subprogramului ordonare, care primeşte prin intermediul
+            parametrului n un număr natural nenul (n≤1000), ce reprezintă numărul efectiv de elemente ale
+            unui vector v şi prin intermediul parametrului v un tablou unidimensional cu cel mult 1000 de
+            numere întregi care pot avea maxim 9 cifre şi ordonează crescător elementele tabloului v.
+            În fişierul „Numere.in” pe prima linie se găseşte n, iar pe următoarele n rânduri se găsesc n
+            numere întregi cu cel mult 9 cifre fiecare. Se cere să se tipărească pe ecran numerele în ordine
+            descrescătoare, pe acelaşi rând, despărţite printr-un spaţiu <br>
+            Exemplu:<br>
+            Pentru<br>
+            Numere.in :<br>
+            6
+            15
+            100
+            4
+            3
+            -32
+            18<br>  
+            Se va tipări pe ecran:<br>
+            100 18 15 4 3 -32<br>  
+        </p>
+        <pre><code>
+#include &lt;fstream&gt;
+#include &lt;iostream&gt;
+using namespace std;
+
+ifstream f("numere.in");
+
+void ordonare(int v[],int n)
+{
+    int m;
+    for(int i=1; i&lt;n; i++)
+    {
+        for(int j=i+1; j&lt;=n; j++)
+            if(v[i]&gt;v[j])
+            {
+                m=v[i];
+                v[i]=v[j];
+                v[j]=m;
+            }
+    }
+}
+
+int main()
+{
+    
+    int n;
+    fin&gt;&gt;n;
+    for(int i=1; i&lt;=n; i++)
+    {
+        fin&gt;&gt;v[i];
+    }
+    ordonare(v,n);
+    for(int i=n; i&lt;=1; i--)
+    {
+        cout&lt;&lt;v[i]&lt;&lt;" ";
+    }
+    return 0;
+}
+        </code>
+        </pre>
+        </li>
     </ol>   
     </body>
 </html>
