@@ -48,48 +48,36 @@
         <pre><code>
         #include &lt;iostream&gt;
         using namespace std;
-        int v[1000],n;
+        int tmp[1000];
         
-        void interclasare(int st,int mij,int dr)
+        void MergeSort(int v[], int st, int dr)
         {
-            int aux[1000];
-            int i=st;
-            int k=1;
-            int j=mij+1;
+            int mij = (st + dr) / 2;
+		    MergeSort(v, st , mij);
+		    MergeSort(v, mij + 1 , dr);
+		    //Interclasare
+		    int i = st, j = mij + 1, k = 0;
             while(i&lt;=mij && j&lt;=dr)
                 if (v[i]&lt;v[j])
-                    aux[k++]=v[i++];
+                    tmp[k++]=v[i++];
                 else
-                    aux[k++]=v[j++];
+                    tmp[k++]=v[j++];
             while (i&lt;=mij)
-                aux[k++]=v[i++];
+                tmp[k++]=v[i++];
             while (j&lt;=dr)
-                aux[k++]=v[j++];
-            int t=st;
-            for (k=1; k&lt;=(dr-st)+1; k++)
-                v[t++]=aux[k];
+                tmp[k++]=v[j++];
+            for (i=st,j=1; i&lt;=dr;i++, j++)
+                v[i]=tmp[j];
         }
-
-        // Implementarea functiei Mergesort
-
-        void mergeSort(int st,int dr)
-        {
-            if (st&lt;dr)
-            {
-                int mij=(st+dr)/2;
-                mergeSort(st,mij);
-                mergeSort(mij+1,dr);
-                interclasare(st,mij,dr);
-            }
-        }
-
-
         int main()
         {
-            int v[]= {10,7,8,9,1,5,3,12,11,55};
-            int n=sizeof(v)/sizeof(v[0]);
+            int v[1000];
+            int n,i;
+            cin&gt;&gt;n;
+            for(i=0;i<n;i++)
+                cin&gt;&gt;v[i];
             // Apel functie
-            mergeSort(0,n-1);
+            MergeSort(v,0,n-1);
             cout&lt;&lt;"Vectorul sortat este\n";
             for(int i=0; i &lt; n; i++)
             {
