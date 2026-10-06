@@ -20,8 +20,10 @@
   <li>Pe formularul principal (<code>Form1</code>), adaugă următoarele controale din <strong>Toolbox</strong>:
     <ul>
       <li><strong>Button</strong> (<code>Name</code>: <code>btnIncarca</code>, <code>Text</code>: "Încarcă fișier")</li>
+      <li><strong>Button</strong> (<code>Name</code>: <code>btnSalveaza</code>, <code>Text</code>: "Salvează date in fișier")</li>
       <li><strong>DataGridView</strong> (<code>Name</code>: <code>dataGridView1</code>)</li>
       <li><strong>OpenFileDialog</strong> (<code>Name</code>: <code>openFileDialog1</code>)</li>
+        <li><strong>SaveFileDialog</strong> (<code>Name</code>: <code>saveFileDialog1</code>)</li>
     </ul>
   </li>
 </ol>
@@ -128,5 +130,53 @@ Radu,Andrei,40,Timisoara
   <li><strong><code>linie.Split(separator)</code>:</strong> Împarte linia citită după caracterul specificat (implicit virgulă <code>,</code>, dar poate fi modificat în <code>;</code> sau <code>\t</code> pentru tab-uri).</li>
   <li><strong><code>dataGridView1.DataSource</code>:</strong> Leagă <code>DataTable</code>-ul direct de interfață, completând automat celulele.</li>
 </ul>
+        <h3>Salvarea datelor din DataGridView in fișier"</h3>
+        <pre><code>
+private void btnSalveaza_Click(object sender, EventArgs e)
+{
+    using (SaveFileDialog dialog = new SaveFileDialog())
+    {
+        dialog.Filter = "Fișiere text (*.txt)|*.txt";
+        dialog.Title = "Salvează datele";
+
+        if (dialog.ShowDialog() == DialogResult.OK)
+        {
+            using (StreamWriter sw = new StreamWriter(dialog.FileName, false, Encoding.UTF8))
+            {
+                // Coloane
+                for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                {
+                    sw.Write(dataGridView1.Columns[i].HeaderText);
+
+                    if (i < dataGridView1.Columns.Count - 1)
+                        sw.Write(";");
+                }
+
+                sw.WriteLine();
+
+                // Rânduri
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (row.IsNewRow)
+                        continue;
+
+                    for (int i = 0; i < dataGridView1.Columns.Count; i++)
+                    {
+                        sw.Write(row.Cells[i].Value?.ToString() ?? "");
+
+                        if (i < dataGridView1.Columns.Count - 1)
+                            sw.Write(";");
+                    }
+
+                    sw.WriteLine();
+                }
+            }
+
+            MessageBox.Show("Datele au fost salvate!");
+        }
+    }
+}
+
+        </code></pre>
     </body>
 </html>
