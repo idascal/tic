@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Title</title>
+        <style>
+            .title {
+                color: green;
+            }
+        </style>
+        
+    </head>
+    <body>
+        <h1 class="title">Citire din fisier CSV sau TXT si memorare in vector(array)</h1>
+        <p>IExemplu complet de aplicație <strong>Windows Forms (C#)</strong> care citește date dintr-un fișier text (de exemplu, un fișier de tip CSV sau TXT delimitat prin virgulă/virgulă și punct) și calculeaza suma numerelor citite.</p>
+        <ol>
+            <li>Citește un șir de numere întregi dintr-un fișier .txt.</li>
+            <li>Salvează numerele într-un int[].</li>
+            <li>Calculează suma elementelor din array.</li>
+            <li>Afișează numerele și suma în interfață.</li>
+        </ol>
+
+<h3>Pasul 1: Pregătirea Interfeței Grafice (Designer)</h3>
+<ol>
+  <li>Deschide Visual Studio și creează un proiect nou de tip <strong>Windows Forms App (.NET Framework sau .NET)</strong> în C#.</li>
+  <li>Pe formularul principal (<code>Form1</code>), adaugă următoarele controale din <strong>Toolbox</strong>:
+    <ul>
+      <li><strong>Button</strong> (<code>Name</code>: <code>btnIncarca</code>, <code>Text</code>: "Încarcă fișier")</li>
+      <li>TextBox → Name: <code>txtNumere</code></li>
+      <li>Label → Name: <code>lblSuma</code>, Text: <code>Suma:</code></li>
+      <li><strong>OpenFileDialog</strong> (<code>Name</code>: <code>openFileDialog1</code>)</li>
+    </ul>
+  </li>
+</ol>
+        <h3>Pasul 2: Codul C# (Form1.cs)</h3>
+        <p>Dă dublu-click pe butonul btnIncarca pentru a genera evenimentul Click, apoi înlocuiește codul din Form1.cs cu următoarea implementare:</p>
+        <pre><code>
+using System;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
+
+namespace AplicatieNumere
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void btnCiteste_Click(object sender, EventArgs e)
+        {
+            // Creăm OpenFileDialog
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            // Filtrăm pentru fișiere .txt
+            openFileDialog.Filter = "Fișiere text (*.txt)|*.txt|Toate fișierele (*.*)|*.*";
+
+            // Titlul ferestrei
+            openFileDialog.Title = "Selectează fișierul cu numere";
+
+            // Deschidem fereastra
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // Citim conținutul fișierului
+                    string text = File.ReadAllText(openFileDialog.FileName);
+
+                    // Transformăm numerele într-un array
+                    int[] numere = text
+                        .Split(new char[] { ' ', '\r', '\n', '\t' },StringSplitOptions.RemoveEmptyEntries)
+                        .Select(int.Parse)
+                        .ToArray();
+
+                    // Calculăm suma
+                    int suma = 0;
+
+                    foreach (int numar in numere)
+                    {
+                        suma += numar;
+                    }
+
+                    // Afișăm numerele
+                    txtNumere.Text = string.Join(" ", numere);
+
+                    // Afișăm suma
+                    lblSuma.Text = "Suma = " + suma;
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show(
+                        "Fișierul conține valori care nu sunt numere întregi.",
+                        "Eroare",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        "A apărut o eroare: " + ex.Message,
+                        "Eroare",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                }
+            }
+        }
+    }
+}
+        </code></pre>
+        <h3>Pasul 3: Model de fișier text de test</h3>
+        <p>Creează un fișier text date.txt sau date.csv pe calculatorul tău cu următorul conținut:</p>
+        <pre>
+10,20,25,33,21,67
+        </pre>
+    </body>
+</html>
