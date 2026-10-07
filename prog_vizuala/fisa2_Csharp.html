@@ -99,7 +99,7 @@ namespace CitireFisierDataGridView
                         // Restul liniilor reprezintă datele
                         DataRow row = dt.NewRow();
 
-                        for (int i = 0; i &lt; valori.Length &amp;&amp; i  dt.Columns.Count; i++)
+                        for (int i = 0; i &lt; valori.Length &amp;&amp; i &lt; dt.Columns.Count; i++)
                         {
                             row[i] = valori[i].Trim();
                         }
