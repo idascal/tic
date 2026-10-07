@@ -70,7 +70,7 @@ namespace AplicatieNumere
 
                     // Transformăm numerele într-un array
                     int[] numere = text
-                        .Split(new char[] { ' ', '\r', '\n', '\t' },StringSplitOptions.RemoveEmptyEntries)
+                        .Split(new char[] { ' ', '\r', '\n', '\t', ',' },StringSplitOptions.RemoveEmptyEntries)
                         .Select(int.Parse)
                         .ToArray();
 
