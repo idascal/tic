@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La ce folosește un control ListBox</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            color: #0078d4;
+            border-bottom: 2px solid #0078d4;
+            padding-bottom: 10px;
+        }
+        h3 {
+            color: #2b579a;
+            margin-top: 25px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        strong {
+            color: #000;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #0078d4;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        pre {
+            background-color: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            font-size: 14px;
+        }
+        code {
+            font-family: 'Consolas', 'Courier New', Courier, monospace;
+            background-color: #e8ecef;
+            color: #c7254e;
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-size: 90%;
+        }
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+            border-radius: 0;
+            font-size: inherit;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .highlight {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>La ce folosește un control ListBox?</h1>
+    
+    <p>Controlul <strong>ListBox</strong> este utilizat în aplicațiile cu interfață grafică (cum ar fi WinForms sau WPF) pentru <strong>a afișa o listă de elemente din care utilizatorul poate selecta unul sau mai multe obiecte</strong>.</p>
+    
+    <p>În loc să folosești zeci de căsuțe separate pentru fiecare opțiune, un <code>ListBox</code> grupează totul într-un singur loc compact.</p>
+
+    <h3>💡 Cele mai comune utilizări:</h3>
+    <ul>
+        <li><strong>Selecția de opțiuni (Single Selection):</strong> Utilizatorul alege o singură variantă dintr-o listă predefinită (de exemplu: alegerea unei țări dintr-o listă, selectarea unui utilizator dintr-o bază de date sau alegerea unei dimensiuni de font).</li>
+        <li><strong>Selecții multiple (Multiple Selection):</strong> Permite utilizatorului să selecteze mai multe elemente simultan folosind tastele <code>Ctrl</code> sau <code>Shift</code> (de exemplu: selectarea mai multor melodii pentru a crea un playlist sau alegerea categoriilor de interes dintr-un formular).</li>
+        <li><strong>Afișarea și gestionarea de colecții (Liste dinamice):</strong> Este ideal pentru ecrane de tip „Coș de cumpărături” sau liste de sarcini (To-Do Lists), unde utilizatorul poate adăuga elemente noi în timp real sau le poate șterge pe cele existente.</li>
+        <li><strong>Legarea la baze de date (Data Binding):</strong> Poate prelua automat informații din surse de date externe (tabele SQL, liste de obiecte din cod sau fișiere text) și le poate afișa ordonat sub formă de text (folosind proprietatea <code>DisplayMember</code>).</li>
+    </ul>
+
+    <h3>🔍 Comparație rapidă: Când folosești ListBox și când alegi altceva?</h3>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Control</th>
+                <th>Când este cel mai bine să îl folosești?</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>ListBox</strong></td>
+                <td>Când ai o listă de elemente de dimensiune medie (5 - 50 elemente) și vrei ca <strong>toate opțiunile să fie vizibile pe ecran direct</strong>, sau când ai nevoie de <strong>selecție multiplă</strong>.</td>
+            </tr>
+            <tr>
+                <td><strong>ComboBox</strong></td>
+                <td>Când spațiul pe ecran este limitat. Este o listă ascunsă care se deschide (drop-down) doar când dai click pe ea. Permite doar o singură selecție.</td>
+            </tr>
+            <tr>
+                <td><strong>ListView</strong></td>
+                <td>Când lista ta este foarte complexă și ai nevoie de <strong>coloane</strong>, detalii suplimentare, pictograme mari sau organizare pe grupuri.</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="container">
+        <h1>Exemplu Complet: Adăugare și Ștergere elemente în ListBox (C# WinForms)</h1>
+        <p>Acesta este un exemplu de cod în <strong>C# WinForms</strong> care permite utilizatorului să adauge text dintr-o casetă (<code>TextBox</code>) într-un <code>ListBox</code> și să șteargă elementul selectat curent prin intermediul a două butoane.</p>
+
+        <h2>1. Design-ul Formularului (Interfața Vizuală)</h2>
+        <p>Pentru ca acest cod să funcționeze, trage din <em>Toolbox</em> pe formularul tău următoarele componente și redenumește-le (opțional, din proprietatea <span class="highlight">Name</span>) astfel:</p>
+        <ul>
+            <li><strong><code>listBox1</code></strong> (un control <code>ListBox</code>)</li>
+            <li><strong><code>txtElementNou</code></strong> (un control <code>TextBox</code> pentru introducerea textului)</li>
+            <li><strong><code>btnAdauga</code></strong> (un buton pentru adăugare)</li>
+            <li><strong><code>btnSterge</code></strong> (un buton pentru ștergere)</li>
+        </ul>
+
+        <h2>2. Codul din spatele Formularului (<code>Form1.cs</code>)</h2>
+        <p>Dă dublu-click pe butoane în interfața grafică pentru a le genera evenimentele de <code>Click</code> și adaugă următorul cod:</p>
+
+        <pre><code>using System;
+using System.Windows.Forms;
+
+namespace ExempluListBox
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // Evenimentul pentru butonul de adăugare
+        private void btnAdauga_Click(object sender, EventArgs e)
+        {
+            // Verificăm dacă utilizatorul a introdus text (eliminând spațiile goale)
+            if (!string.IsNullOrWhiteSpace(txtElementNou.Text))
+            {
+                // Adăugăm textul în ListBox
+                listBox1.Items.Add(txtElementNou.Text);
+
+                // Curățăm căsuța de text pentru o nouă introducere
+                txtElementNou.Clear();
+                txtElementNou.Focus(); // Punem cursorul înapoi în căsuță
+            }
+            else
+            {
+                MessageBox.Show("Te rog să introduci un text mai întâi!", "Atenție", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        // Evenimentul pentru butonul de ștergere
+        private void btnSterge_Click(object sender, EventArgs e)
+        {
+            // Verificăm dacă este selectat vreun element în ListBox
+            // Dacă SelectedIndex este -1, înseamnă că nu s-a selectat nimic
+            if (listBox1.SelectedIndex != -1)
+            {
+                // Ștergem elementul de la poziția (indexul) selectată
+                listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+            }
+            else
+            {
+                MessageBox.Show("Te rog să selectezi un element din listă pentru a-l șterge!", "Atenție", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+    }
+}</code></pre>
+
+        <h2>3. Cum funcționează</h2>
+        <ul>
+            <li><strong>Adăugarea:</strong> Scrii un cuvânt în căsuța de text și apeși butonul „Adaugă”. Codul verifică să nu fie gol, îl pune în listă și golește căsuța ca să poți scrie următorul element.</li>
+            <li><strong>Ștergerea:</strong> Dai click pe oricare element din listă (devine albastru) și apeși butonul „Șterge”. Codul verifică dacă ai selectat ceva corect și îl elimină instant prin metoda <code>RemoveAt()</code>.</li>
+        </ul>
+    </div>
+     <div class="container">
+        <h1>Ghid Avansat: Încărcarea și Gestiunea Datelor în ListBox (C# WinForms)</h1>
+        <p>Acest document centralizează două metode esențiale de lucru cu <code>ListBox</code>: utilizarea unui <strong>Array static</strong> pentru colecții fixe și utilizarea unei <strong>Liste dinamice (BindingList)</strong> prin Data Binding pentru sincronizare automată.</p>
+
+        <!-- SECȚIUNEA 1: ARRAY STATIC -->
+        <h2>Metoda 1: Preluarea elementelor dintr-un Array static</h2>
+        <p>Această metodă este ideală atunci când ai o listă fixă de opțiuni care nu se schimbă pe parcursul rulării aplicației. Încărcarea se face la pornirea formularului (evenimentul <code>Load</code>).</p>
+
+        <h3>Codul sursă C# (<code>Form1.cs</code>)</h3>
+<pre><code><span class="keyword">using</span> System;
+<span class="keyword">using</span> System.Windows.Forms;
+
+<span class="keyword">namespace</span> ExempluListBoxArray
+{
+    <span class="keyword">public partial class</span> Form1 : Form
+    {
+        <span class="keyword">public</span> Form1()
+        {
+            InitializeComponent();
+        }
+
+        <span class="comment">// Se execută automat când se deschide fereastra aplicației</span>
+        <span class="keyword">private void</span> Form1_Load(<span class="keyword">object</span> sender, EventArgs e)
+        {
+            <span class="comment">// 1. Declarăm și inițializăm un array cu elemente fixe</span>
+            <span class="keyword">string</span>[] masini = { <span class="string">"Dacia Logan"</span>, <span class="string">"Volkswagen Golf"</span>, <span class="string">"BMW Seria 3"</span>, <span class="string">"Audi A4"</span>, <span class="string">"Ford Focus"</span> };
+
+            <span class="comment">// 2. Curățăm ListBox-ul pentru a evita dublarea elementelor</span>
+            listBox1.Items.Clear();
+
+            <span class="comment">// 3. Adăugăm rapid tot vectorul în ListBox</span>
+            listBox1.Items.AddRange(masini);
+        }
+
+        <span class="comment">// Opțional: Afișează ce element a fost selectat</span>
+        <span class="keyword">private void</span> listBox1_SelectedIndexChanged(<span class="keyword">object</span> sender, EventArgs e)
+        {
+            <span class="keyword">if</span> (listBox1.SelectedIndex != -1)
+            {
+                <span class="keyword">string</span> masinaSelectata = listBox1.SelectedItem.ToString();
+                MessageBox.Show(<span class="string">$"Ai selectat mașina: {masinaSelectata}"</span>, <span class="string">"Selecție"</span>);
+            }
+        }
+    }
+}</code></pre>
+
+        <div class="info-box">
+            <h3>Alternativă cu DataSource (Read-Only)</h3>
+            <p>Dacă asignezi array-ul prin sursa de date: <code>listBox1.DataSource = orase;</code>, structura din interfață devine blocată. Nu vei mai putea folosi metodele <code>.Add()</code> sau <code>.Remove()</code> direct pe ListBox din cauza limitărilor de dimensiune fixă ale array-ului.</p>
+        </div>
+
+
+        <!-- SECȚIUNEA 2: LISTA DINAMICĂ -->
+        <h2>Metoda 2: Gestiunea dinamică folosind o Listă (BindingList)</h2>
+        <p>Cea mai bună practică în WinForms implică separarea datelor de design. Utilizând <span class="type">BindingList&lt;T&gt;</span>, orice modificare adusă listei din cod se va reflecta <strong>automat</strong> pe ecran, eliminând nevoia de a scrie manual cod de reîmprospătare.</p>
+
+        <h3>Codul sursă C# (<code>Form1.cs</code>)</h3>
+<pre><code><span class="keyword">using</span> System;
+<span class="keyword">using</span> System.ComponentModel; <span class="comment">// Necesar pentru BindingList</span>
+<span class="keyword">using</span> System.Windows.Forms;
+
+<span class="keyword">namespace</span> ExempluListBoxLista
+{
+    <span class="keyword">public partial class</span> Form1 : Form
+    {
+        <span class="comment">// Declarăm lista dinamică la nivelul clasei</span>
+        <span class="keyword">private</span> BindingList&lt;<span class="keyword">string</span>&gt; listaCumparaturi;
+
+        <span class="keyword">public</span> Form1()
+        {
+            InitializeComponent();
+        }
+
+        <span class="keyword">private void</span> Form1_Load(<span class="keyword">object</span> sender, EventArgs e)
+        {
+            <span class="comment">// 1. Inițializăm lista cu câteva elemente standard</span>
+            listaCumparaturi = <span class="keyword">new</span> BindingList&lt;<span class="keyword">string</span>&gt; { <span class="string">"Lapte"</span>, <span class="string">"Pâine"</span>, <span class="string">"Ouă"</span> };
+
+            <span class="comment">// 2. Legăm lista direct la ListBox</span>
+            listBox1.DataSource = listaCumparaturi;
+        }
+
+        <span class="comment">// Evenimentul butonului de adăugare</span>
+        <span class="keyword">private void</span> btnAdauga_Click(<span class="keyword">object</span> sender, EventArgs e)
+        {
+            <span class="keyword">string</span> elementNou = txtElement.Text.Trim();
+
+            <span class="keyword">if</span> (!string.IsNullOrWhiteSpace(elementNou))
+            {
+                <span class="comment">// Adăugăm în LISTĂ, nu în ListBox! Interfața se actualizează singură.</span>
+                listaCumparaturi.Add(elementNou);
+                txtElement.Clear();
+                txtElement.Focus();
+            }
+        }
+
+        <span class="comment">// Evenimentul butonului de ștergere</span>
+        <span class="keyword">private void</span> btnSterge_Click(<span class="keyword">object</span> sender, EventArgs e)
+        {
+            <span class="keyword">if</span> (listBox1.SelectedIndex != -1)
+            {
+                <span class="keyword">string</span> elementDeSters = listBox1.SelectedItem.ToString();
+                
+                <span class="comment">// Ștergem direct din LISTĂ</span>
+                listaCumparaturi.Remove(elementDeSters);
+            }
+            <span class="keyword">else</span>
+            {
+                MessageBox.Show(<span class="string">"Selectează un produs din listă pentru a-l șterge!"</span>);
+            }
+        }
+    }
+}</code></pre>
+
+        <h2>De ce este superioară metoda cu Listă (Data Binding)?</h2>
+        <ol>
+            <li><strong>Separarea conceptelor:</strong> Datele stau stocate în siguranță în variabila din C#, în timp ce controlul vizual doar le desenează.</li>
+            <li><strong>Sincronizare nativă:</strong> Când vrei să trimiți datele către salvare (bază de date/fișier JSON), nu mai extragi rândurile din ListBox, ci lucrezi direct cu <code>listaCumparaturi</code>.</li>
+            <li><strong>Scalabilitate rapidă:</strong> Dacă decizi ulterior să transformi lista de string-uri simple într-o listă de obiecte complexe (ex: o clasă <code>Produs</code> cu proprietăți precum Nume și Preț), logica adăugării și ștergerii rămâne intactă.</li>
+        </ol>
+    </div>
+
+</body>
+</html>
