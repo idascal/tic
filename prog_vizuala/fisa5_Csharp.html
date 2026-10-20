@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Ghid TabControl în WinForms C#</title>
+    <style>
+        table,td,th{
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        th{
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ghid Utilizare TabControl în WinForms (C#)</h1>
+    
+    <p>În C# Windows Forms, componenta <strong>TabControl</strong> gestionează pagini multiple (file), permițându-vă să folosiți același spațiu din fereastră pentru seturi diferite de controale. Fiecare filă este reprezentată de un obiect de tip <strong>TabPage</strong>.</p>
+
+    <hr>
+
+    <h2>1. Utilizarea Designerului din Visual Studio</h2>
+    <p>Cea mai simplă metodă de a configura un TabControl este prin drag-and-drop în designer:</p>
+    <ul>
+        <li><strong>Adăugați controlul:</strong> Deschideți <em>Toolbox</em>, căutați <code>TabControl</code> și trageți-l pe <code>Form</code>.</li>
+        <li><strong>Gestionați filele:</strong> În mod implicit, acesta creează două file (<code>tabPage1</code> și <code>tabPage2</code>). Selectați <code>TabControl</code>, mergeți în fereastra <em>Properties</em> și dați click pe butonul <code>...</code> din dreptul colecției <strong>TabPages</strong>. Aici puteți adăuga sau șterge pagini.
+        <a href="https://www.youtube.com/watch?v=LAMeuPztFgs">Vezi aici</a></li>
+        <li><strong>Modificați textul filelor:</strong> Selectați o pagină din editorul acelei colecții (sau dați click pe antetul ei în designer) și schimbați proprietatea <strong>Text</strong> (de exemplu, „Setări” sau „Profil”).</li>
+        <li><strong>Adăugați controale:</strong> Dați click pe corpul unei anumite pagini pentru a o selecta, apoi trageți butoane, casete de text (textboxes) sau etichete (labels) direct pe acea pagină.</li>
+    </ul>
+
+    <h2>2. Proprietăți utile de reținut</h2>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Proprietate</th>
+                <th>Descriere</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>TabPages</strong></td>
+                <td>Colecția tuturor elementelor <code>TabPage</code> asociate controlului.</td>
+            </tr>
+            <tr>
+                <td><strong>SelectedIndex</strong></td>
+                <td>Returnează sau setează indexul numeric al filei active (începe de la <code>0</code>).</td>
+            </tr>
+            <tr>
+                <td><strong>SelectedTab</strong></td>
+                <td>Returnează sau setează obiectul <code>TabPage</code> care este activ în prezent.</td>
+            </tr>
+            <tr>
+                <td><strong>Alignment</strong></td>
+                <td>Poziționează antetele filelor în partea de <strong>Sus (Top)</strong>, <strong>Jos (Bottom)</strong>, <strong>Stânga (Left)</strong> sau <strong>Dreapta (Right)</strong> a controlului.</td>
+            </tr>
+            <tr>
+                <td><strong>ImageList</strong></td>
+                <td>Permite asocierea unui control <code>ImageList</code> pentru a afișa pictograme (iconițe) mici lângă textul fiecărei file.</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
+
